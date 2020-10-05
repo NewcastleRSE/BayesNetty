@@ -1,0 +1,1901 @@
+*title* BayesNetty: Bayesian Network Software for Genetic Analyses */title* *stylefile* bayesnettystyles.css */stylefile* *logo* bayesnetty-logo.png */logo* *logowidth* 150 */logowidth*
+
+*webpage*
+
+*webpage-name* index */webpage-name*
+
+*webpage-title* Home */webpage-title*
+
+<h1>Welcome to BayesNetty's webpage!</h1>
+
+Please use the menu to the left to navigate through the documentation for BayesNetty or use the PDF of these webpages, <a href="bayesnetty.pdf">bayesnetty.pdf</a>.
+
+<h2>Citation</h2>
+
+* The BayesNetty software may be referenced as follows (until a publication is available): *
+
+*codeexample* @Misc{bayesnetty, author={Howey, R}, title={{bayesnetty}}, note={{http://www.staff.ncl.ac.uk/richard.howey/bayesnetty/}}
+ }
+ */codeexample*
+
+* BayesNetty is copyright, 2015-present Richard Howey, GNU General Public License, version 3. *
+
+*/webpage*
+
+***************************************
+
+*************************
+
+*webpage*
+
+*webpage-name* downloads */webpage-name*
+
+*webpage-title* Download */webpage-title*
+
+<h1>Download</h1>
+
+<h2>Documentation</h2>
+
+* Documentation for BayesNetty is taken from these web pages and may be downloaded from here: <a href="bayesnetty.pdf">bayesnetty.pdf</a>. *
+
+<h2>Executables</h2>
+
+*tablel* *tr* Platform & File */tr*
+
+*tr* *html* Linux (x86_64) */html* *tex* Linux (x86\_64) */tex* & *html* <a href="bayesnetty-v1.1-linux-x86_64.zip">bayesnetty-v1.1-linux-x86_64.zip</a> */html* *tex* bayesnetty-v1.1-linux-x86\_64.zip */tex* */tr*
+
+*tr* *html* Linux (x86_32) */html* *tex* Linux (x86\_32) */tex* & *html* <a href="bayesnetty-v1.1-linux-x86_32.zip">bayesnetty-v1.1-linux-x86_32.zip</a> */html* *tex* bayesnetty-v1.1-linux-x86\_32.zip */tex* */tr*
+
+*tr* *html* Windows (x86_64) */html* *tex* Windows (x86\_64) */tex* & *html* <a href="bayesnetty-v1.1-windows-x86_64.zip">bayesnetty-v1.1-windows-x86_64.zip</a> */html* *tex* bayesnetty-v1.1-windows-x86\_64.zip */tex* */tr*
+
+*tr* *html* Windows (x86_32) */html* *tex* Windows (x86\_32) */tex* & *html* <a href="bayesnetty-v1.1-windows-x86_32.zip">bayesnetty-v1.1-windows-x86_32.zip</a> */html* *tex* bayesnetty-v1.1-windows-x86\_32.zip */tex* */tr*
+
+*/tablel*
+
+<h2>Source Code</h2>
+
+* Source code for BayesNetty (C/C++) may be downloaded from here: <a href="bayesnetty-v1.1-code.zip">bayesnetty-v1.1-code.zip</a>. *
+
+
+*/webpage*
+
+*********************************
+
+*webpage*
+
+*webpage-name* contact */webpage-name*
+
+*webpage-title* Contact */webpage-title*
+
+<h1>Contact</h1>
+
+ * Please contact <a href="http://www.staff.ncl.ac.uk/richard.howey/">Richard Howey</a> with any queries about the BayesNetty software. *
+
+
+*/webpage*
+
+******************************** ******************************** ********************************
+
+*section*
+
+*section-name* introduction */section-name*
+
+*section-title* Introduction */section-title*
+
+* BayesNetty is a C++ program written to perform Bayesian network analyses using genetic and phenotypic data. *
+
+* BayesNetty is copyright, 2015-present Richard Howey, GNU General Public License, version 3. *
+
+
+*/section*
+
+*************************************** ***************************************
+
+*section*
+
+*section-name* installation */section-name*
+
+*section-title* Installation */section-title*
+
+* Download an executable file from the *html* <a href="downloads.html">download</a>&nbsp; */html* *tex* download$\:$ */tex* page for your system and off you go, or do the following: *
+
+*numlist*
+
+*item* Download the code from the download page.
+
+*item* Compile it by typing something like the following:
+
+*codeexample* g++ -m64 -O3 *.cpp -o bayesnetty */codeexample*
+
+*item* Start using BayesNetty!
+
+*/numlist*
+
+*/section*
+
+******************************** ********************************
+
+*section*
+
+*section-name* using */section-name*
+
+*section-title* Using BayesNetty */section-title*
+
+
+* BayesNetty is executed as follows: *
+
+*codeexample*
+ ./bayesnetty paras.txt
+*/codeexample*
+
+
+* where *code* paras.txt */code* is a parameter file as described in the following sections. *
+
+
+**********************
+
+*subsection*
+
+*subsection-name* basic-options */subsection-name*
+
+*subsection-title* Basic Options */subsection-title*
+
+* The basic options for BayesNetty are as follows (typing *code* ./bayesnetty */code* with no options will output the available options): *
+
+*tablel* *tr* Option & Description & Default */tr*
+
+*tr*
+ -log file.log & log file of screen output & bayesnetty.log
+*/tr*
+
+*tr*
+  -so           & suppress output to screen &
+*/tr*
+
+
+*tr*
+  -seed           & random number generator seed &
+*/tr*
+
+*/table*
+
+*/subsection*
+
+*************
+
+*subsection*
+
+*subsection-name* parameterfile */subsection-name*
+
+*subsection-title* Parameter file */subsection-title*
+
+* There are many different things that BayesNetty can do, each of these different things is referred to as a *q* task */q*. The parameter file defines which tasks BayesNetty will perform and the order in which they are executed. With the exception of the basic options in *ref* basic-options */ref*, all options in the parameter file define tasks. For example, a task to input some continuous data may be given as follows: *
+
+*codeexample* -input-data -input-data-name myGreatData -input-data-file example-cts.dat -input-data-cts -input-data-ids 1 */codeexample*
+
+* There are a few basic rules for parameter files: *
+
+*numlist*
+
+*item* Each option must be written on a separate line.
+
+*item* Each line that does not start with a dash, *q* - */q*, will be ignored, thus allowing comments to be written.
+
+*item* The task must first be declared and then followed by any options for the task.
+
+*item* An option for a task is always written by first writing the name of the task. For example, the task option to give the name of an input data file is given by *code* -input-data-file */code*, which begins with *code* -input-data */code*, the name of the task to input data.
+
+*item* A task, *code* XXX */code*, may always be given a task name with the option *code* XXX-name */code*. The task may then be referenced by other tasks (if permitted). This may be useful if there is more than one network.
+
+*item* Tasks are executed in order, so any tasks that depend on other tasks must be ordered accordingly.
+
+*item* Any tasks that require a network will be default use the previously defined network. Therefore, if there is only one network it is not necessary to name or reference it. By default tasks are name *q* Task-n */q*, where n is the number of the task.
+
+*/numlist*
+
+* The following is an extract from an example parameter file where a network is referenced by a task to calculate the network score: *
+
+*codeexample*
+
+...
+
+# This is my comment -input-network -input-network-name myNetwork -input-network-file network-model.dat
+
+-calc-network-score -calc-network-score-network-name myNetwork */codeexample*
+
+* The parameter file could be thought of as in an *code* R */code* programming style, such that the above would look as follows: *
+
+*codeexample*
+
+...
+
+# This is my comment myNetwork<-input.network(file = "network-model.dat")
+
+calc.network.score(network.name = myNetwork) */codeexample*
+
+* However, as BayesNetty is not an *code* R */code* package (or a programming language), the parameter file uses an unambiguous, longhand, and easy to parse style of syntax. *
+
+* The options for all the different tasks may be found in the different task sections of the documentation. *
+
+*/subsection*
+
+*************
+
+*subsection*
+
+*subsection-name* simple-example */subsection-name*
+
+*subsection-title* Simple Example */subsection-title*
+
+* Example data and parameter files can be found in the file *html* <a href="example.zip">example.zip</a> */html* *tex* example.zip */tex* . The example parameter file, *code* paras-example.txt */code*, can be used to perform a simple analysis by typing *
+
+*codeexample*
+ ./bayesnetty paras-example.txt
+*/codeexample*
+
+* The following shows the *code* paras-example.txt */code* file *
+
+*codeexample* #input continuous data -input-data -input-data-file example-cts.dat -input-data-cts
+
+#input discrete data -input-data -input-data-file example-discrete.dat -input-data-discrete
+
+#input SNP data as discrete data -input-data -input-data-file example.bed -input-data-discrete-snp
+
+#search network models -search-models */codeexample*
+
+* The parameter file instructs BayesNetty to perform 4 tasks: (i) load continuous data from file *code* example-cts.dat */code*; (ii) load discrete data from file *code* example-discrete.dat */code*; (iii) load SNP data to be treated as discrete data from file *code* example.bed */code*; and finally (iv) search the network models. The screen output, which is also saved to a log file, will look something as follows: *
+
+*codeexample* BayesNetty: Bayesian Network software, v1.00 -------------------------------------------------- Copyright 2015-present Richard Howey, GNU General Public License, v3 Institute of Genetic Medicine, Newcastle University
+
+-------------------------------------------------- Task name: Task-1 Loading data Continuous data file: example-cts.dat Number of ID columns: 2 Including (all) 2 variables in analysis Each variable has 1500 data entries Missing value: -9 -------------------------------------------------- -------------------------------------------------- Task name: Task-2 Loading data Discrete data file: example-discrete.dat Number of ID columns: 2 Including the 1 and only variable in analysis Each variable has 1500 data entries Missing value: NA -------------------------------------------------- -------------------------------------------------- Task name: Task-3 Loading data SNP binary data file: example.bed Total number of SNPs: 2 Total number of subjects: 1500 Number of ID columns: 2 Including (all) 2 variables in analysis Each variable has 1500 data entries -------------------------------------------------- -------------------------------------------------- Loading defaultNetwork network Network type: BNLearn Network score type: BIC Total number of nodes: 5 (Discrete: 3 | Continuous: 2) Total number of edges: 0 Network Structure: [express][pheno][mood][rs1][rs2] Total data at each node: 1495 Missing data at each node: 5 -------------------------------------------------- -------------------------------------------------- Task name: Task-4 Searching network models Network: defaultNetwork Search: Greedy Random restarts: 0 Random jitter restarts: 0 Network Structure: [mood][rs1][rs2][express|rs1:rs2][pheno|express:mood] Network score type: BIC Network score = -11568.7 --------------------------------------------------
+
+Run time: 1 second */codeexample*
+
+
+*/subsection*
+
+
+*/section*
+
+******************************** ********************************
+
+*section*
+
+*section-name* input-data */section-name*
+
+*section-title* Input data */section-title*
+
+* All data must be input using the *code* -input-data */code* task. *
+
+**********************
+
+*subsection*
+
+*subsection-name* input-data-options */subsection-name*
+
+*subsection-title* Options */subsection-title*
+
+* The options are as follows: *
+
+*tablelopt* *tr* Option & Description & Default */tr*
+
+*tr*
+ -input-data  & do a task to input data  &
+*/tr*
+
+*tr*
+  -input-data-name name & label the task with a name & Task-n
+*/tr*
+
+*tr*
+  -input-data-file data.dat & the file containing the data for each network node &
+*/tr*
+
+*tr*
+  -input-data-include-file nodes.dat & a list of nodes/variables from the data file to be included in the network. Only the nodes in this list will be used in any analysis. &
+*/tr*
+
+*tr*
+  -input-data-exclude-file nodes.dat & a list of nodes/variables to be excluded from the network &
+*/tr*
+
+*tr*
+  -input-data-cts & set the data file as containing continuous data &
+*/tr*
+
+*tr*
+  -input-data-discrete & set the data file as containing discrete data &
+*/tr*
+
+*tr*
+  -input-data-discrete-snp & set the data file as containing SNP data to be treated as discrete data in the network &
+*/tr*
+
+*tr*
+  -input-data-cts-snp & set the data file as containing SNP data to be treated as continuous data in the network &
+*/tr*
+
+*tr* -input-data-factor & set the data file as containing discrete data encoded using factor variables & */tr*
+
+*tr* -input-data-factor-snp & set the data file as containing SNP data to be treated as discrete factor data in the network & */tr*
+
+*tr*
+  -input-data-cts-missing-value x & set the value of missing data for continuous data to x & -9
+*/tr*
+
+*tr*
+  -input-data-discrete-missing-value x & set the value of missing data for discrete data to x & NA
+*/tr*
+
+*tr*
+  -input-data-ids n & the number of ID columns in each data file & 2
+*/tr*
+
+*tr* -input-data-csv & set the data file as a comma separated file, .csv & */tr*
+
+*/table*
+
+*/subsection*
+
+**********************
+
+*subsection*
+
+*subsection-name* input-data-discrete */subsection-name*
+
+*subsection-title* Discrete data */subsection-title*
+
+* Discrete data is input by using the *code* -input-data */code* task, setting the data file and setting the data file to discrete. For example, the following *
+
+*codeexample* -input-data -input-data-file example-discrete.dat -input-data-discrete */codeexample*
+
+* could be used and the output would be something as follows: *
+
+*codeexample* BayesNetty: Bayesian Network software, v1.00 -------------------------------------------------- Copyright 2015-present Richard Howey, GNU General Public License, v3 Institute of Genetic Medicine, Newcastle University
+
+-------------------------------------------------- Task name: Task-1 Loading data Discrete data file: example-discrete.dat Number of ID columns: 2 Including the 1 and only variable in analysis Each variable has 1500 data entries Missing value: NA --------------------------------------------------
+
+Run time: less than one second */codeexample*
+
+* This parameter file can be found *code* paras-input-discrete.txt */code* in the examples, *html* <a href="example.zip">example.zip</a> */html* *tex* example.zip */tex* . *
+
+*/subsection*
+
+**********************
+
+*subsection*
+
+*subsection-name* input-data-cts */subsection-name*
+
+*subsection-title* Continuous data */subsection-title*
+
+* Continuous data is input by using the *code* -input-data */code* task, setting the data file and setting the data file to continuous. For example, the following *
+
+*codeexample* -input-data -input-data-file example-cts.dat -input-data-cts */codeexample*
+
+* could be used and the output would be something as follows: *
+
+*codeexample* BayesNetty: Bayesian Network software, v1.00 -------------------------------------------------- Copyright 2015-present Richard Howey, GNU General Public License, v3 Institute of Genetic Medicine, Newcastle University
+
+-------------------------------------------------- Task name: Task-1 Loading data Continuous data file: example-cts.dat Number of ID columns: 2 Including (all) 2 variables in analysis Each variable has 1500 data entries Missing value: -9 --------------------------------------------------
+
+Run time: less than one second */codeexample*
+
+* This parameter file can be found *code* paras-input-cts.txt */code* in the examples, *html* <a href="example.zip">example.zip</a> */html* *tex* example.zip */tex* . *
+
+*/subsection*
+
+**********************
+
+*subsection*
+
+*subsection-name* input-data-snp */subsection-name*
+
+*subsection-title* SNP data */subsection-title*
+
+* SNP data must be input as a *html* <a href="http://pngu.mgh.harvard.edu/~purcell/plink/binary.shtml">binary</a>&nbsp; */html* *tex* binary */tex* PLINK format pedigree file, a *code* .bed */code* file, see *cite* purcell:etal:07 */cite*. This requires that the corresponding *code* .bim */code* and *code* .fam */code*, files are also available. A text PLINK pedigree file, *code* .ped */code*, with corresponding map file, *code* .map */code*, may be used to create a binary file using PLINK as follows:
+
+*codeexample* plink --noweb --file mydata --make-bed --out myfile */codeexample*
+
+* This will create the binary pedigree file, *code* myfile.bed */code*, map file, *code* myfile.bim */code*, and family file, *code* myfile.fam */code* required. *
+
+* The SNP data is input by using the *code* -input-data */code* task, setting the PLINK binary file and setting the data file to a SNP file in discrete mode. For example, the following *
+
+*codeexample* -input-data -input-data-file example.bed -input-data-discrete-snp */codeexample*
+
+* could be used and the output would be something as follows: *
+
+*codeexample* BayesNetty: Bayesian Network software, v1.00 -------------------------------------------------- Copyright 2015-present Richard Howey, GNU General Public License, v3 Institute of Genetic Medicine, Newcastle University
+
+-------------------------------------------------- Task name: Task-1 Loading data SNP binary data file: example.bed Total number of SNPs: 2 Total number of subjects: 1500 Number of ID columns: 2 Including (all) 2 variables in analysis Each variable has 1500 data entries --------------------------------------------------
+
+Run time: less than one second */codeexample*
+
+* This parameter file can be found *code* paras-input-snp.txt */code* in the examples, *html* <a href="example.zip">example.zip</a> */html* *tex* example.zip */tex* . *
+
+
+*/subsection*
+
+**********************
+
+
+*subsection*
+
+*subsection-name* input-data-missing */subsection-name*
+
+*subsection-title* Missing data */subsection-title*
+
+* Missing data is determined by any data any matching the given missing value as defined by *code* -input-data-discrete-missing-value */code* and *code* -input-data-cts-missing-value */code* when inputting discrete and continuous data respectively. Missing data for SNP data is given as defined by the PLINK *html* <a href="http://pngu.mgh.harvard.edu/~purcell/plink/binary.shtml">binary</a>&nbsp; */html* *tex* binary */tex* pedigree format. When there is missing data for a node for a certain individual then data for this certain individual is considered as missing for *i* every */i* node in the network. Therefore the amount of missing data depends on which nodes are in the network. *
+
+* Consider a network with 2 continuous nodes, as given by network file *code* example-network-missing1.dat */code* and input using parameter file *code* paras-input-missing1.txt */code* as given in *html* <a href="example.zip">example.zip</a>,&nbsp; */html* *tex* example.zip, */tex* then the output will be will look something as follows: *
+
+*codeexample* BayesNetty: Bayesian Network software, v1.00 -------------------------------------------------- Copyright 2015-present Richard Howey, GNU General Public License, v3 Institute of Genetic Medicine, Newcastle University
+
+-------------------------------------------------- Task name: Task-1 Loading data Continuous data file: example-cts.dat Number of ID columns: 2 Including (all) 2 variables in analysis Each variable has 1500 data entries Missing value: -9 -------------------------------------------------- -------------------------------------------------- Task name: myNetwork Loading network Network file: example-network-missing1.dat Network type: BNLearn Network score type: BIC Total number of nodes: 2 (Discrete: 0 | Continuous: 2) Total number of edges: 1 Network Structure: [express][pheno|express] Total data at each node: 1500 Missing data at each node: 0 --------------------------------------------------
+
+Run time: less than one second */codeexample*
+
+* As indicated in the network details there is no missing data. However, if the SNP node, *code* rs1 */code*, is added then the following is given: *
+
+
+*codeexample* BayesNetty: Bayesian Network software, v1.00 -------------------------------------------------- Copyright 2015-present Richard Howey, GNU General Public License, v3 Institute of Genetic Medicine, Newcastle University
+
+-------------------------------------------------- Task name: Task-1 Loading data SNP binary data file: example.bed Total number of SNPs: 2 Total number of subjects: 1500 Number of ID columns: 2 Including (all) 2 variables in analysis Each variable has 1500 data entries -------------------------------------------------- -------------------------------------------------- Task name: Task-2 Loading data Continuous data file: example-cts.dat Number of ID columns: 2 Including (all) 2 variables in analysis Each variable has 1500 data entries Missing value: -9 -------------------------------------------------- -------------------------------------------------- Task name: myNetwork Loading network Network file: example-network-missing2.dat Network type: BNLearn Network score type: BIC Total number of nodes: 3 (Discrete: 1 | Continuous: 2) Total number of edges: 2 Network Structure: [rs1][express|rs1][pheno|express] Total data at each node: 1497 Missing data at each node: 3 -------------------------------------------------- */codeexample*
+
+* This example is given in network file *code* example-network-missing2.dat */code* and parameter file *code* paras-input-missing2.txt */code*. The amount of missing data for the network is now 3, indicating that 3 individuals have missing SNP data for *code* rs1 */code*. Adding in another SNP node, *code* rs2 */code*, results in the following: *
+
+*codeexample* BayesNetty: Bayesian Network software, v1.00 -------------------------------------------------- Copyright 2015-present Richard Howey, GNU General Public License, v3 Institute of Genetic Medicine, Newcastle University
+
+-------------------------------------------------- Task name: Task-1 Loading data SNP binary data file: example.bed Total number of SNPs: 2 Total number of subjects: 1500 Number of ID columns: 2 Including (all) 2 variables in analysis Each variable has 1500 data entries -------------------------------------------------- -------------------------------------------------- Task name: Task-2 Loading data Continuous data file: example-cts.dat Number of ID columns: 2 Including (all) 2 variables in analysis Each variable has 1500 data entries Missing value: -9 -------------------------------------------------- -------------------------------------------------- Task name: myNetwork Loading network Network file: example-network-missing3.dat Network type: BNLearn Network score type: BIC Total number of nodes: 4 (Discrete: 2 | Continuous: 2) Total number of edges: 3 Network Structure: [rs1][rs2][express|rs1:rs2][pheno|express] Total data at each node: 1495 Missing data at each node: 5 --------------------------------------------------
+
+Run time: less than one second */codeexample*
+
+* Similarly, this example is given in network file *code* example-network-missing3.dat */code* and parameter file *code* paras-input-missing3.txt */code*. Here we see that the amount of missing data in the network has increased due to missing data for SNP node *code* rs2 */code*. This node also has missing data for 3 individuals, but as one of the SNPs is the same the total amount of missing data for each node is 5. *
+
+*/subsection* **********************
+
+*subsection*
+
+*subsection-name* input-data-ids */subsection-name*
+
+*subsection-title* Data IDs */subsection-title*
+
+* By default the first two columns of a data file should be IDs and match those in any other data files. The number of ID columns can be changed using the *code* -input-data-ids */code*. If the data is a binary pedigree file, *code* file.bed */code*, then the family and individual IDs must match the IDs in any other data files, and all SNPs may be used as network nodes. If the data contains SNP data in a PLINK binary pedigree file, *code* .bed */code*, then the number of ID columns should be set to 2. *
+
+
+*/subsection* ********************** *subsection*
+
+*subsection-name* input-data-example */subsection-name*
+
+*subsection-title* Example */subsection-title*
+
+* See the above sections for examples of inputting data. *
+
+
+*/subsection*
+
+*************
+
+*/section*
+
+********************************
+
+ ********************************
+
+*section*
+
+*section-name* input-network */section-name*
+
+*section-title* Input network */section-title*
+
+* A network may be specified using the *code* -input-network */code* task. The network may be used as a starting point for analyses, such as searches, or to perform an analysis on this network. Only nodes in input files will be used in the network so that a subset of the data may be specified. *
+
+* If no network is specified then a network with no edges and a node for every data variable (as given by the input data) will be created and named *q* defaultNetwork */q*. *
+
+**********************
+
+*subsection*
+
+*subsection-name* input-network-options */subsection-name*
+
+*subsection-title* Options */subsection-title*
+
+* The options are as follows: *
+
+*tablelopt* *tr* Option & Description & Default */tr*
+
+*tr*
+ -input-network  & do a task to input a network &
+*/tr*
+
+*tr*
+  -input-network-name name & label the task and network with a name & Task-n
+*/tr*
+
+*tr*
+  -input-network-type t & the type of network, choose between bnlearn or deal &  bnlearn
+*/tr*
+
+*tr*
+  -input-network-file network.dat & input the network in a format where the nodes and then the edges are listed &
+*/tr*
+
+*tr*
+  -input-network-file2 network2.dat & input the network in this style of format: *code* [a][b|a][c|a:b] */code* &
+*/tr*
+
+*tr*
+  -input-network-igraph-file-prefix mygraph & input the network from igraph format files consisting of mygraph-nodes.dat and mygraph-edges.dat &
+*/tr*
+
+*tr*
+  -input-network-empty & set the network to one with no edges and one node for every data variable. An input network file is not required if this option is used &
+*/tr*
+
+*tr*
+  -input-network-whitelist-file whitelist.dat & a list of edges that must be included in any network &
+*/tr*
+
+*tr*
+  -input-network-blacklist-file blacklist.dat & a list of edges that must *i* not */i* be included in any network &
+*/tr*
+
+*tr*
+  -input-network-blacklist-edge-type dataName1 dataName2 & edge types that may *i* not */i* be included in any network. The collection of nodes are given by the data input name &
+*/tr*
+
+*tr*
+  -input-network-imaginary-sample-size i & for deal networks this sets the imaginary sample size & 10
+*/tr*
+
+*tr*
+  -input-network-score score & for a bnlearn network choose between loglike, AIC, BIC or bayes (BDe) & BIC
+*/tr*
+
+*tr* -input-network-score-fix & fix for likelihood calculation when discrete data (or combinations) has too few points for logistic regression, choose between none, average or skip & none */tr*
+
+*/table*
+
+*/subsection*
+
+*************
+
+*subsection*
+
+*subsection-name* input-network-black */subsection-name*
+
+*subsection-title* Black lists */subsection-title*
+
+* A black list can be given using the *code* -input-network-blacklist-file */code* option to define a list of edges that must not be included in any network. The text file should be formatted as follows: *
+
+*codeexample* node1 node2 node2 node1 node1 node3 */codeexample*
+
+* such that the two nodes of each blacklisted edge are on one line. The nodes are ordered so the first line states that the edge node1 to node2 is not permitted. The next line states that the edge in the reverse direction is also not permitted. *
+
+* Any searches will ignore these blacklisted edges and attempting to use a network with a blacklisted edge will result in the edge being removed. *
+
+* Edges between different types of nodes may also be blacklisted. This can be done using the *code* -input-network-blacklist-edge-type */code* option. It can be used as follows: *
+
+*codeexample* -input-data -input-data-name horses -input-data-file horses.dat -input-data-cts
+
+-input-data -input-data-name whips -input-data-file whips.dat -input-data-cts
+
+-input-network -input-network-name race -input-network-file model.dat -input-network-blacklist-edge-type horses whips */codeexample*
+
+* Firstly the different node types must be loaded separately and given names using the *code* -input-data-name */code* option. Then, when initially loading a network, the *code* -input-network-blacklist-edge-type */code* can be used to forbid any edge from one data set to another data set (or the same data if desired). In the above example the network may not have any edge that goes from a horse to a whip, that is, a whip node may not have a horse node as a parent. In any search that is performed these edges will not be considered. *
+
+
+
+*/subsection*
+
+*************
+
+*subsection*
+
+*subsection-name* input-network-white */subsection-name*
+
+*subsection-title* White lists */subsection-title*
+
+* A white list can be given using the *code* -input-network-whitelist-file */code* option to define a list of edges that must be included in any network. The text file should be formatted as follows: *
+
+*codeexample* node1 node3 node1 node2 node2 node1 */codeexample*
+
+* such that the two nodes of each whitelisted edge are on one line. The nodes are ordered so the first line states that the edge node1 to node3 must be included. If both directions are included between two nodes then the edge must be included but may be in any direction. *
+
+* If the whitelist and blacklist contradict one another then an error will be given. *
+
+* Any searches will ignore these blacklisted searches and attempting to use a network with a blacklisted edge will result in an error. *
+
+*/subsection*
+
+********************** *subsection*
+
+*subsection-name* input-network-formats */subsection-name*
+
+*subsection-title* Network formats */subsection-title*
+
+* The network may be defined using one of 3 different formats. *
+
+
+*subsubsection*
+
+*subsubsection-name* input-network-formats-format1 */subsection-name*
+
+*subsubsection-title* Network file format 1 */subsection-title*
+
+* The first format is given by using the *code* -input-network-file */code* option and the network text file should be formatted as follows: *
+
+*codeexample* node1 node2 node3 node2 node1 node3 node1 */codeexample*
+
+* where the nodes are listed first followed by the edges. In the above example there are 3 nodes and 2 edges, which are node2 to node1 and node3 to node1. *
+
+*/subsubsection*
+
+
+*subsubsection*
+
+*subsubsection-name* input-network-formats-format2 */subsection-name*
+
+*subsubsection-title* Network file format 2 */subsection-title*
+
+* The second format is given by using the *code* -input-network-file2 */code* option and the network text file should be formatted as follows: *
+
+*codeexample* [node2][node3][node1|node2:node3] */codeexample*
+
+* where the nodes are listed in order of dependency. The independent nodes node2 and node3 are list first followed by node1 which is a child node of both node2 and node3. This is the format that is typically output for searches and such like. *
+
+
+*/subsubsection*
+
+
+*subsubsection*
+
+*subsubsection-name* input-network-formats-format3 */subsection-name*
+
+*subsubsection-title* Network file format 3 */subsection-title*
+
+* The third format is given by using the *code* -input-network-igraph-file-prefix */code* option using the files that were output to draw the network in *code* R */code*, see *ref* igraph */ref*. There will be one file for the nodes and one for the nodes, for example *code* myNetwork-nodes.dat */code* and *code* myNetwork-edges.dat */code* respectively. The node file will look something as follows: *
+
+*codeexample* id name type fileno 1 node1 c 1 2 node2 c 1 3 node3 c 1 */codeexample*
+
+* and the edges file will look like something as follows: *
+
+*codeexample* from to chisq 2 1 6860.83 3 1 5709.51 */codeexample*
+
+*/subsubsection*
+
+*/subsection*
+
+********************** *subsection*
+
+*subsection-name* input-network-example */subsection-name*
+
+*subsection-title* Example */subsection-title*
+
+* The following is an example parameter file to input a network. *
+
+*codeexample* #input continuous data -input-data -input-data-file example-cts.dat -input-data-cts
+
+#input discrete data -input-data -input-data-file example-discrete.dat -input-data-discrete
+
+#input SNP data as discrete data -input-data -input-data-file example.bed -input-data-discrete-snp
+
+#input the example network in format 1 -input-network -input-network-name myNetwork -input-network-file example-network-format1.dat */codeexample*
+
+* This parameter file, *code* paras-input-network.txt */code*, can be found in *html* <a href="example.zip">example.zip</a>&nbsp; */html* *tex* example.zip */tex* and can be used as follows: *
+
+*codeexample* ./bayesnetty paras-input-network.txt */codeexample*
+
+* Which should produce output that looks like something as follows: *
+
+*codeexample* BayesNetty: Bayesian Network software, v1.00 -------------------------------------------------- Copyright 2015-present Richard Howey, GNU General Public License, v3 Institute of Genetic Medicine, Newcastle University
+
+-------------------------------------------------- Task name: Task-1 Loading data Continuous data file: example-cts.dat Number of ID columns: 2 Including (all) 2 variables in analysis Each variable has 1500 data entries Missing value: -9 -------------------------------------------------- -------------------------------------------------- Task name: Task-2 Loading data Discrete data file: example-discrete.dat Number of ID columns: 2 Including the 1 and only variable in analysis Each variable has 1500 data entries Missing value: NA -------------------------------------------------- -------------------------------------------------- Task name: Task-3 Loading data SNP binary data file: example.bed Total number of SNPs: 2 Total number of subjects: 1500 Number of ID columns: 2 Including (all) 2 variables in analysis Each variable has 1500 data entries -------------------------------------------------- -------------------------------------------------- Task name: myNetwork Loading network Network file: example-network-format1.dat Network type: BNLearn Network score type: BIC Total number of nodes: 5 (Discrete: 3 | Continuous: 2) Total number of edges: 4 Network Structure: [mood][rs1][rs2][pheno|rs1:rs2][express|pheno:mood] Total data at each node: 1495 Missing data at each node: 5 --------------------------------------------------
+
+Run time: less than one second */codeexample*
+
+* The data is loaded and then the network is loaded. The network has been named *q* myNetwork */q*, and basic information about the network is output. *
+
+* Similarly, the network may be input using format 2 and 3 as given in parameter files *code* paras-input-network2.txt */code* and *code* paras-input-network3.txt */code* respectively. *
+
+*/subsection*
+
+*************
+
+*/section*
+
+******************************** ********************************
+
+*section*
+
+*section-name* bnlearn */section-name*
+
+*section-title* bnlearn network */section-title*
+
+* The default network in BayesNetty is the bnlearn network and is the recommended network to use. All future extensions are intended to be built upon this approach. See *cite* bnlearn */cite* and *cite* bnlearn2 */cite* for details of bnlearn methodology and R package. *
+
+********************** *subsection*
+
+*subsection-name* bnlearn-score */subsection-name*
+
+*subsection-title* Network score */subsection-title*
+
+* The network score for a bnlearn network may be set to either the log likelihood, AIC or BIC using the *code* -input-network-score */code* option, see *ref* input-network-options */ref*. *
+
+
+*/subsection*
+
+*************
+
+*/section*
+
+******************************** ********************************
+
+*section*
+
+*section-name* deal */section-name*
+
+*section-title* deal network */section-title*
+
+* The deal Bayesian network approach was developed by *cite* deal */cite* as an approach to model mixed discrete/continuous networks. However we found several issues with the method, not least that it is no longer actively supported. Therefore, it is not recommended to use a deal network for network analyses and is included only for comparison purposes. *
+
+
+********************** *subsection*
+
+*subsection-name* imaginary-sample-size */subsection-name*
+
+*subsection-title* Imaginary sample size */subsection-title*
+
+* When analysis is performed with a deal network the imaginary sample size (ISS) must be set. The higher the value the larger the weight of the priors. This can be set using the *code* -input-network-imaginary-sample-size */code* option, see *ref* input-network-options */ref*. The results given by deal have been found to be very sensitive to the setting of this parameter and there is no obvious *q* good */q* default setting. *
+
+
+*/subsection*
+
+
+*/section*
+
+******************************** ********************************
+
+*section*
+
+*section-name* calc-posterior */section-name*
+
+*section-title* Calculate posterior */section-title*
+
+* If only the posterior is of interest then the *code* -calc-posterior */code* option can be used without the need to perform any other analyses. One would probably want to also use the *code* -output-posteriors */code* option to output the posteriors, see *ref* output-posteriors */ref*. *
+
+**********************
+
+*subsection*
+
+*subsection-name* calc-posterior-options */subsection-name*
+
+*subsection-title* Options */subsection-title*
+
+* The options are as follows: *
+
+*tablelopt* *tr* Option & Description & Default */tr*
+
+*tr*
+ -calc-posterior  & do a task to calculate the posterior &
+*/tr*
+
+*tr*
+  -calc-posterior-name name & label the task with a name & Task-n
+*/tr*
+
+*tr*
+  -calc-posterior-network-name network & the name of the network to calculate the posterior of & previous network
+*/tr*
+
+*/table*
+
+*/subsection*
+
+********************** *subsection*
+
+*subsection-name* calc-post-example */subsection-name*
+
+*subsection-title* Example */subsection-title*
+
+* The posterior is calculated by simply using the *code* -calc-posterior */code* option in the parameter file after the data and network has been set up. For example: *
+
+*codeexample* #input continuous data -input-data -input-data-file example-cts.dat -input-data-cts
+
+#input discrete data -input-data -input-data-file example-discrete.dat -input-data-discrete
+
+#input SNP data as discrete data -input-data -input-data-file example.bed -input-data-discrete-snp
+
+#input the example network in format 1 -input-network -input-network-file example-network-format1.dat
+
+#calculate the posterior of the network -calc-posterior */codeexample*
+
+
+* Note that the network has not been set for the *code* -calc-posterior */code* task as there is only one network, and so by default the most recent network is used. This parameter file, *code* paras-calc-post.txt */code*, can be found in *html* <a href="example.zip">example.zip</a>&nbsp; */html* *tex* example.zip */tex* and produces the following output: *
+
+*codeexample* BayesNetty: Bayesian Network software, v1.00 -------------------------------------------------- Copyright 2015-present Richard Howey, GNU General Public License, v3 Institute of Genetic Medicine, Newcastle University
+
+-------------------------------------------------- Task name: Task-1 Loading data Continuous data file: example-cts.dat Number of ID columns: 2 Including (all) 2 variables in analysis Each variable has 1500 data entries Missing value: -9 -------------------------------------------------- -------------------------------------------------- Task name: Task-2 Loading data Discrete data file: example-discrete.dat Number of ID columns: 2 Including the 1 and only variable in analysis Each variable has 1500 data entries Missing value: NA -------------------------------------------------- -------------------------------------------------- Task name: Task-3 Loading data SNP binary data file: example.bed Total number of SNPs: 2 Total number of subjects: 1500 Number of ID columns: 2 Including (all) 2 variables in analysis Each variable has 1500 data entries -------------------------------------------------- -------------------------------------------------- Task name: Task-4 Loading network Network file: example-network-format1.dat Network type: BNLearn Network score type: BIC Total number of nodes: 5 (Discrete: 3 | Continuous: 2) Total number of edges: 4 Network Structure: [mood][rs1][rs2][pheno|rs1:rs2][express|pheno:mood] Total data at each node: 1495 Missing data at each node: 5 -------------------------------------------------- -------------------------------------------------- Task name: Task-5 Calculating posterior Network: Task-4 Network Structure: [mood][rs1][rs2][pheno|rs1:rs2][express|pheno:mood] --------------------------------------------------
+
+Run time: less than one second */codeexample*
+
+* For an example of calculating and outputting the posterior to file, see *ref* output-posts-example */ref*. *
+
+*/subsection* *************************
+
+*/section*
+
+******************************** ********************************
+
+*section*
+
+*section-name* calc-score */section-name*
+
+*section-title* Calculate network score */section-title*
+
+* The network score is used as a measure of how well the network model describes the data and is used to compare different models when searching through models. By convention the lower the score the better the model is and is typically based on the negative log likelihood. BayesNetty considers the network score to be a property of the network and is set when the network input with the option *code* -input-network-score */code*, see section *ref* input-network */ref*. *
+
+*******************
+
+*subsection*
+
+*subsection-name* calc-score-options */subsection-name*
+
+*subsection-title* Options */subsection-title*
+
+* The options are as follows: *
+
+*tablelopt* *tr* Option & Description & Default */tr*
+
+*tr*
+ -calc-network-score  & do a task to calculate the score &
+*/tr*
+
+*tr*
+  -calc-network-score-name name & label the task with a name & Task-n
+*/tr*
+
+*tr*
+  -calc-network-score-network-name network & the name of the network to calculate the score of & previous network
+*/tr*
+
+*tr*
+  -calc-network-score-all-scores network-scores.dat & calculate the scores of *i* every */i* possible network and record the results in network-scores.dat &
+*/tr*
+
+*/table*
+
+*/subsection*
+
+
+********************** *subsection*
+
+*subsection-name* calc-score-example */subsection-name*
+
+*subsection-title* Example */subsection-title*
+
+* As an example of calculating the score the parameter file *code* paras-calc-score.txt */code*, which can be found in *html* <a href="example.zip">example.zip</a> */html* *tex* example.zip */tex* , calculates the score for the same network but for different score methods. *
+
+*codeexample* #input continuous data -input-data -input-data-file example-cts.dat -input-data-cts
+
+#input discrete data -input-data -input-data-file example-discrete.dat -input-data-discrete
+
+#input SNP data as discrete data -input-data -input-data-file example.bed -input-data-discrete-snp
+
+#input the example network in format 1 -input-network -input-network-name networkLike -input-network-score loglike -input-network-file example-network-format1.dat
+
+#input the example network in format 1 -input-network -input-network-name networkBIC -input-network-score BIC -input-network-file example-network-format1.dat
+
+#calculate the network of the network with BIC -calc-network-score
+
+#calculate the network of the network with log likelihood -calc-network-score -calc-network-score-network-name networkLike */codeexample*
+
+* This can be executed as usual *
+
+*codeexample* ./bayesnetty paras-calc-score.txt */codeexample*
+
+* and will output something as follows *
+
+*codeexample* BayesNetty: Bayesian Network software, v1.00 -------------------------------------------------- Copyright 2015-present Richard Howey, GNU General Public License, v3 Institute of Genetic Medicine, Newcastle University
+
+-------------------------------------------------- Task name: Task-1 Loading data Continuous data file: example-cts.dat Number of ID columns: 2 Including (all) 2 variables in analysis Each variable has 1500 data entries Missing value: -9 -------------------------------------------------- -------------------------------------------------- Task name: Task-2 Loading data Discrete data file: example-discrete.dat Number of ID columns: 2 Including the 1 and only variable in analysis Each variable has 1500 data entries Missing value: NA -------------------------------------------------- -------------------------------------------------- Task name: Task-3 Loading data SNP binary data file: example.bed Total number of SNPs: 2 Total number of subjects: 1500 Number of ID columns: 2 Including (all) 2 variables in analysis Each variable has 1500 data entries -------------------------------------------------- -------------------------------------------------- Task name: networkLike Loading network Network file: example-network-format1.dat Network type: BNLearn Network score type: log likelihood Total number of nodes: 5 (Discrete: 3 | Continuous: 2) Total number of edges: 4 Network Structure: [mood][rs1][rs2][pheno|rs1:rs2][express|pheno:mood] Total data at each node: 1495 Missing data at each node: 5 -------------------------------------------------- -------------------------------------------------- Task name: networkBIC Loading network Network file: example-network-format1.dat Network type: BNLearn Network score type: BIC Total number of nodes: 5 (Discrete: 3 | Continuous: 2) Total number of edges: 4 Network Structure: [mood][rs1][rs2][pheno|rs1:rs2][express|pheno:mood] Total data at each node: 1495 Missing data at each node: 5 -------------------------------------------------- -------------------------------------------------- Task name: Task-6 Calculating network score Network: networkBIC Network structure: [mood][rs1][rs2][pheno|rs1:rs2][express|pheno:mood] Network score type: BIC Network score = -12050.6 -------------------------------------------------- -------------------------------------------------- Task name: Task-7 Calculating network score Network: networkLike Network structure: [mood][rs1][rs2][pheno|rs1:rs2][express|pheno:mood] Network score type: log likelihood Network score = -11984.8 --------------------------------------------------
+
+Run time: less than one second */codeexample*
+
+* The above shows the data input and then two networks input with the same structure but with different scores. The score of network with the BIC score is calculated with specifying the network as the default network option is used to use the latest network. The network using the log likelihood is then calculated by using the *code* -calc-network-score-network-name */code* option to specify which network should be used. *
+
+*/subsection*
+
+*************
+
+*/section*
+
+******************************** ********************************
+
+*section*
+
+*section-name* search-models */section-name*
+
+*section-title* Search models */section-title*
+
+* Network models can be searched for one that best describes the data as given by the network model assumptions, network constraints, the network score and the data itself. *
+
+**********************
+
+*subsection*
+
+*subsection-name* search-models-options */subsection-name*
+
+*subsection-title* Options */subsection-title*
+
+* The options are as follows: *
+
+*tablelopt* *tr* Option & Description & Default */tr*
+
+*tr*
+ -search-models  & do a task to search network models &
+*/tr*
+
+*tr*
+  -search-models-name name & label the task with a name & Task-n
+*/tr*
+
+*tr*
+  -search-models-network-name network & the name of the network to start the search from & previous network
+*/tr*
+
+*tr*
+  -search-models-file search.dat & record the network models and scores in the search path to file search.dat &
+*/tr*
+
+*tr*
+  -search-models-random-restarts n & do another n searches starting from a random network & 0
+*/tr*
+
+*tr*
+  -search-models-jitter-restarts m & after the initial search and every random restart search do another m searches jittered from the recently found network & 0
+*/tr*
+
+*/table*
+
+*/subsection*
+
+**************************
+
+*subsection*
+
+*subsection-name* search-models-greedy */subsection-name*
+
+*subsection-title* Greedy search */subsection-title*
+
+* The greedy search algorithm is the default algorithm for searching through network models, and is currently the only search algorithm. *
+
+
+*subsubsection*
+
+*subsubsection-name* search-models-greedy-restart */subsection-name*
+
+*subsubsection-title* Number of random restarts for the greedy algorithm */subsection-title*
+
+* The greedy algorithm can be ran a further number of times from a random starting network. The number of random restarts is set by using the option *code* -search-models-random-restarts */code*. *
+
+*/subsubsection*
+
+
+*subsubsection*
+
+*subsubsection-name* search-models-greedy-jitter */subsection-name*
+
+*subsubsection-title* Number of jitter restarts for the greedy algorithm */subsection-title*
+
+* Once the greedy algorithm has converged on a final best fit network, the algorithm can be restarted at a network given by slightly modifying the best fit network, also called *i* jittering */i*. This may be useful to avoid the algorithm sticking in a local minimum whilst still retaining more or less the same network. The number of times times the search should be jittered is set by using the option *code* -search-models-jitter-restarts */code*. *
+
+* Random restarts and jittered restarts can be used together, if there are n random restarts and m jittered restarts then there will be an additional n times m searches. *
+
+*/subsubsection*
+
+
+*/subsection* ********************************
+
+
+
+*subsection*
+
+*subsection-name* search-models-example */subsection-name*
+
+*subsection-title* Example */subsection-title*
+
+* As an example of searching through network models the parameter file *code* paras-search.txt */code*, which can be found in *html* <a href="example.zip">example.zip</a> */html* *tex* example.zip */tex* , searches through network models using the default model given by a node for each data variable and no edges. *
+
+*codeexample* #input continuous data -input-data -input-data-file example-cts.dat -input-data-cts
+
+#input discrete data -input-data -input-data-file example-discrete.dat -input-data-discrete
+
+#input SNP data as discrete data -input-data -input-data-file example.bed -input-data-discrete-snp
+
+#search network models -search-models */codeexample*
+
+* This can be executed as usual *
+
+*codeexample* ./bayesnetty paras-search.txt */codeexample*
+
+* and will output something as follows *
+
+*codeexample* BayesNetty: Bayesian Network software, v1.00 -------------------------------------------------- Copyright 2015-present Richard Howey, GNU General Public License, v3 Institute of Genetic Medicine, Newcastle University
+
+-------------------------------------------------- Task name: Task-1 Loading data Continuous data file: example-cts.dat Number of ID columns: 2 Including (all) 2 variables in analysis Each variable has 1500 data entries Missing value: -9 -------------------------------------------------- -------------------------------------------------- Task name: Task-2 Loading data Discrete data file: example-discrete.dat Number of ID columns: 2 Including the 1 and only variable in analysis Each variable has 1500 data entries Missing value: NA -------------------------------------------------- -------------------------------------------------- Task name: Task-3 Loading data SNP binary data file: example.bed Total number of SNPs: 2 Total number of subjects: 1500 Number of ID columns: 2 Including (all) 2 variables in analysis Each variable has 1500 data entries -------------------------------------------------- -------------------------------------------------- Loading defaultNetwork network Network type: BNLearn Network score type: BIC Total number of nodes: 5 (Discrete: 3 | Continuous: 2) Total number of edges: 0 Network Structure: [express][pheno][mood][rs1][rs2] Total data at each node: 1495 Missing data at each node: 5 -------------------------------------------------- -------------------------------------------------- Task name: Task-4 Searching network models Network: defaultNetwork Search: Greedy Random restarts: 0 Random jitter restarts: 0 Network Structure: [mood][rs1][rs2][express|rs1:rs2][pheno|express:mood] Network score type: BIC Network score = -11568.7 --------------------------------------------------
+
+Run time: 1 second */codeexample*
+
+* The above shows the data input and then the default network input consisting of a node for each data variable given by the data and no edges. The network with the lowest network score is shown in the output. *
+
+*/subsection* *************************
+
+
+
+*/section* ******************************** ********************************
+
+*section*
+
+*section-name* average-network */section-name*
+
+*section-title* Average network */section-title*
+
+* An average network can be calculated using the methods described by *cite* bnlearn */cite*. *
+
+**********************
+
+*subsection*
+
+*subsection-name* average-network-options */subsection-name*
+
+*subsection-title* Options */subsection-title*
+
+* The options are as follows: *
+
+*tablelopt* *tr* Option & Description & Default */tr*
+
+*tr*
+ -average-networks  & do a task to calcualte an average network &
+*/tr*
+
+*tr*
+  -average-networks-name name & label the task with a name & Task-n
+*/tr*
+
+*tr*
+  -average-networks-network-name network & the name of the network to calculate the average network from & previous network
+*/tr*
+
+*tr*
+  -average-networks-file average-network.dat & the name of the file to record the average network in &
+*/tr*
+
+*tr* -average-networks-igraph-file-prefix mygraph & output igraph format files consisting of mygraph-nodes.dat, mygraph-edges.dat and R code mygraph-plot.R & */tr*
+
+*tr* -average-networks-threshold thres & the strength threshold used to include an edge in the drawn average network & estimated */tr*
+
+*tr* -average-networks-bootstraps k & the number of bootstraps used to calculate the average network & */tr*
+
+*tr*
+  -average-networks-random-restarts n & for each network fit do another n searches starting from a random network & 0
+*/tr*
+
+*tr*
+  -average-networks-jitter-restarts m & for each network fit after the initial search and every random restart search do another m searches jittered from the recently found network & 0
+*/tr*
+
+*/table*
+
+*/subsection*
+
+**************************
+
+********************************
+
+
+
+*subsection*
+
+*subsection-name* average-network-example */subsection-name*
+
+*subsection-title* Example */subsection-title*
+
+* An example of calculating an average network is contained in the parameter file *code* paras-average.txt */code*, which can be found in *html* <a href="example.zip">example.zip</a> */html* *tex* example.zip */tex* . *
+
+*codeexample* #input continuous data -input-data -input-data-file example-cts.dat -input-data-cts
+
+#input discrete data -input-data -input-data-file example-discrete.dat -input-data-discrete
+
+#input SNP data as discrete data -input-data -input-data-file example.bed -input-data-discrete-snp
+
+#calculate average network -average-networks -average-networks-file average-network-example.dat -average-networks-igraph-file-prefix ave-graph-example -average-networks-bootstraps 1000 */codeexample*
+
+* This can be executed as usual *
+
+*codeexample* ./bayesnetty paras-average.txt */codeexample*
+
+* and will output something as follows *
+
+*codeexample* BayesNetty: Bayesian Network software, v1.00 -------------------------------------------------- Copyright 2015-present Richard Howey, GNU General Public License, v3 Institute of Genetic Medicine, Newcastle University
+
+Random seed: 1488192712 -------------------------------------------------- Task name: Task-1 Loading data Continuous data file: example-cts.dat Number of ID columns: 2 Including (all) 2 variables in analysis Each variable has 1500 data entries Missing value: not set -------------------------------------------------- -------------------------------------------------- Task name: Task-2 Loading data Discrete data file: example-discrete.dat Number of ID columns: 2 Including the 1 and only variable in analysis Each variable has 1500 data entries Missing value: NA -------------------------------------------------- -------------------------------------------------- Task name: Task-3 Loading data SNP binary data file: example.bed SNP data treated as discrete data Total number of SNPs: 2 Total number of subjects: 1500 Number of ID columns: 2 Including (all) 2 variables in analysis Each variable has 1500 data entries -------------------------------------------------- -------------------------------------------------- Task name: Task-4 Calculating average network using bootstrapping -------------------------------------------------- Loading defaultNetwork network Network type: BNLearn Network score type: BIC Total number of nodes: 5 (Discrete: 3 | Factor: 0 | Continuous: 2) Total number of edges: 0 Network Structure: [express][pheno][mood][rs1][rs2] Total data at each node: 1495 Missing data at each node: 5 -------------------------------------------------- Network: defaultNetwork Number of bootstrap iterations: 1000 Random restarts: 0 Random jitter restarts: 0 Average network output to file: average-network-example.dat R code to plot average network: ave-graph-example.R Estimated edge threshold: 0.421 Network structure (after above threshold): [mood][rs1][rs2][express|rs1:rs2][pheno|express:mood] Network score type: BIC Network score = -11568.7 --------------------------------------------------
+
+Run time: 2 minutes and 13 seconds */codeexample*
+
+* The above shows the data input and then the default network input consisting of a node for each data variable given by the data and no edges. The average network is written to the file *code* average-network-example.dat */code* and will look something like: *
+
+*codeexample* from  type1  to  type2  strength  direction mood  d  pheno  c  1  1 express  c  pheno  c  1  0.579 rs2  d  express  c  0.579  1 rs1  d  express  c  0.57  1 rs2  d  pheno  c  0.421  1 mood  d  express  c  0.421  1 rs1  d  pheno  c  0.297  1 mood  d  rs1  d  0.005  0.5 */codeexample*
+
+* The option to output R code and data to plot the average network, *code* -average-networks-igraph-file-prefix */code*, was also used. This is similar to the method used to draw a regular network, see *ref* plot-network */ref*. *
+
+* The R file will look something as follows: *
+
+*codeexample* #threshold, an arc must be greater than the threshold to be plotted threshold<-0.421 plotThresholdEst<-TRUE
+
+#load igraph library, http://igraph.org/r/ library(igraph)
+
+#load average network graph aveGraph<-read.table("average-network-example.dat", header=TRUE, stringsAsFactors=FALSE)
+
+#plot arc strength versus cumulative number of arcs with strength <= arc strength if(plotThresholdEst) { png(filename="ave-graph-example-thresholdEst.png", width=600, height=600) y<-c() for(stren in aveGraph$strength) y<-append(y, sum(aveGraph$strength <= stren)) plot.stepfun(aveGraph$strength, xlab="arc strength", ylab="cumulative distribution function", verticals=FALSE, xlim=c(0,1), pch=19, main="") abline(v=threshold, lty=2) dev.off() }
+
+#create node and edge tables for igraph #map node names to numbers nodeList<-as.numeric(as.factor(c(aveGraph$from, aveGraph$to))) noArcs<-length(aveGraph$from) fromNum<-nodeList[1:noArcs] toNum<-nodeList[(noArcs+1):(2*noArcs)] nodes1<-as.data.frame(cbind(fromNum, aveGraph$from, aveGraph$type1)) colnames(nodes1)<-c("id", "name", "type") nodes2<-as.data.frame(cbind(toNum, aveGraph$to, aveGraph$type2)) colnames(nodes2)<-c("id", "name", "type") nodes<-unique(rbind(nodes1, nodes2)) edges<-as.data.frame(cbind(fromNum, toNum, aveGraph$strength, aveGraph$direction)) colnames(edges)<-c("from", "to", "strength", "direction")
+
+#apply threshold for plotting arc/edge edges<-edges[edges$strength > threshold,]
+
+#create graph graph<-graph_from_data_frame(edges, directed = TRUE, vertices = nodes)
+
+#plot the network and output png file, edit style as required
+
+#style for continuous nodes shape<-rep("circle", length(nodes$type)) vcolor<-rep("#eeeeee", length(nodes$type)) vsize<-rep(25, length(nodes$type)) color<-rep("black", length(nodes$type))
+
+#style for discrete nodes shape[nodes$type=="d"]<-"rectangle" vcolor[nodes$type=="d"]<-"#111111" vsize[nodes$type=="d"]<-20 color[nodes$type=="d"]<-"white"
+
+#style for factor nodes shape[nodes$type=="f"]<-"rectangle" vcolor[nodes$type=="f"]<-"#eeeeee" vsize[nodes$type=="f"]<-20 color[nodes$type=="f"]<-"black"
+
+#edge widths for significances minWidth<-0.3 maxWidth<-10 edgeMax<-max(edges$strength) edgeMin<-min(edges$strength) widths<-((edges$strength-edgeMin)/(edgeMax-edgeMin))*(maxWidth - minWidth) + minWidth widths<-pmax(widths, minWidth) styles<-rep(1, length(widths))
+
+#plot to a png file png(filename="ave-graph-example.png", width=800, height=800)
+
+plot(graph, vertex.shape=shape, vertex.size=vsize, vertex.color=vcolor, vertex.label.color=color, edge.width=widths, edge.lty=styles,
+ edge.color="black", edge.arrow.size=1.5, edge.label = signif(edges$direction,3), edge.label.cex=1.5, edge.label.color="red")
+
+#finish png file dev.off() */codeexample*
+
+* This R file can be ran as follows in Linux *
+
+*codeexample* R --vanilla < ave-graph-example.R */codeexample*
+
+* and produces the .png image file of the average network *
+
+*figure* ave-graph-example.png
+
+*caption* Plot of the average network drawn using the igraph R package. */caption* *label* plot-ave1-fig */label* *width* 700 */width* *widthtex* 400 */widthtex* */figure*
+
+* The edges are drawn proportional to the edge strength, that is, the proportion of best fit networks that the edge appears in after bootstrapping. The direction indicates the proportion of times the edge points in the given direction when it appears in a best fit network. The edges are labelled with the direction values in red. The plot can easily be updated to your needs by following the *html* <a href="http://igraph.org">igraph</a>&nbsp; */html* *tex* igraph */tex* R package documentation. *
+
+* A graph may also be output to show the cumulative number of edges in the average network for different strength thresholds. If an edge has a strength greater than the strength threshold then it is included in the average network. *
+
+*figure* ave-graph-example-thresholdEst.png
+
+*caption* Plot of the cumulative number of edges in the average network for different strength thresholds. */caption* *label* plot-ave2-fig */label* *width* 700 */width* *widthtex* 400 */widthtex* */figure*
+
+
+*/subsection* *************************
+
+
+*/section* ******************************** ********************************
+
+
+******************************** ********************************
+
+*section*
+
+*section-name* compare-models */section-name*
+
+*section-title* Compare models */section-title*
+
+* Later there may be features to compare models, such as taking an intersection or union of a collection of models. No such features exist yet. *
+
+**********************
+
+*subsection*
+
+*subsection-name* compare-models-options */subsection-name*
+
+*subsection-title* Options */subsection-title*
+
+* The options are as follows: *
+
+*tablelopt* *tr* Option & Description & Default */tr*
+
+*tr*
+ -compare-models  & do a task to search compare two (or more) models &
+*/tr*
+
+*tr*
+  -compare-models name & label the task with a name & Task-n
+*/tr*
+
+*/table*
+
+*/subsection*
+
+************* *subsection*
+
+*subsection-name* compare-models-example */subsection-name*
+
+*subsection-title* Example */subsection-title*
+
+* There will be an example here when this feature is available. *
+
+
+*/subsection* *************************
+
+*/section*
+
+******************************** ********************************
+
+*section*
+
+*section-name* sim-data */section-name*
+
+*section-title* Simulate network data */section-title*
+
+* It is possible to simulate data for a given network using BayesNetty. The network must be a BNLearn network, see *ref* bnlearn */ref*, and can be set using a network file which has the same format as a posterior file and sets the network structure and the network parameters. Alternatively, simulating network can be set using any other method that results in a BNLearn network with calculated posteriors. *
+
+**********************
+
+*subsection*
+
+*subsection-name* sim-data-options */subsection-name*
+
+*subsection-title* Options */subsection-title*
+
+* The options are as follows: *
+
+*tablelopt* *tr* Option & Description & Default */tr*
+
+*tr*
+ -simulate-network-data  & do a task to simulate network data for a given network &
+*/tr*
+
+*tr*
+  -simulate-network-data-name name & label the task with a name & Task-n
+*/tr*
+
+*tr*
+  -simulate-network-data-network-name network & simulate data for this network & previous network
+*/tr*
+
+*tr*
+  -simulate-network-data-no-sims n & simulate n replicates of network data & 100
+*/tr*
+
+*tr*
+  -simulate-network-data-parameter-file parameters.txt & network with parameters in BNLearn posteriors file format &
+*/tr*
+
+*tr*
+  -simulate-network-data-whitelist-file whitelist.dat & a list of edges that must be included in any network &
+*/tr*
+
+*tr*
+  -simulate-network-data-blacklist-file blacklist.dat & a list of edges that must *i* not */i* be included in any network &
+*/tr*
+
+*tr*
+  -simulate-network-data-imaginary-sample-size i & for deal networks this sets the imaginary sample size & 10
+*/tr*
+
+*tr*
+  -simulate-network-data-score score score & for a bnlearn network choose between loglike, AIC, BIC or bayes & BIC
+*/tr*
+
+*tr*
+  -simulate-network-data-score-fix f & fudge for when not enough points to fit logistic regression so that a score is returned instead of NaN. Choose between, none, average or skip. Average option assumes contribution of unevaluated points in likelihood is equal to average of the points that were evaluated. Skip option skips unevaluated points & none
+*/tr*
+
+*/table*
+
+*/subsection*
+
+
+* The following sections show some examples of simulating data and can all be found in *html* <a href="example.zip">example.zip</a> */html* *tex* example.zip */tex* *
+
+************* *subsection*
+
+*subsection-name* sim-data-example1 */subsection-name*
+
+*subsection-title* Example 1: no data */subsection-title*
+
+* This example simulates node data using a given network structure with network parameters. *
+
+* The network structure with network parameters must be given to simulate network data. These can be set by using a network parameters file which takes the same format as a posterior file and may be quite complex. To create this network parameter file it is therefore recommenced to first output a posterior file for the network that you wish to simulate data for and then to edit this posterior file as required. *
+
+* To create a network parameter file, *code* example-network-parameters.txt */code*, run the parameter file, *code* paras-make-network-paras.txt */code*: *
+
+*codeexample* #input the example network in format 1 -input-network -input-network-file example-network-sim.dat
+
+#simulate data using default parameters -simulate-network-data
+
+#calculate the posterior of the network using default parameters -calc-posterior
+
+#output the posteriors to be used as a network parameters file -output-posteriors -output-posteriors-file example-network-parameters.txt */codeexample*
+
+* The example network file, *code* example-network-sim.dat */code*, is in network format 1, see *ref* input-network-formats */ref*, except that extra (optional) node information is given as there is no node data to determine the node type. After each node either *code* |dis.snp */code*, *code* |cts.snp */code*, *code* |dis|2 */code* or *code* |cts */code* may be written to give a discrete SNP node, a continuous SNP node, a discrete node with the number of levels or a continuous node respectively. If the type of node is not set then the node is set to a continuous node. If a discrete node is specified without the number of levels then the number of levels is set to 0. The example network file is as follows. *
+
+*codeexample* rs1|dis.snp rs2|dis.snp mood|dis|2 express|cts pheno|cts rs1 pheno rs2 pheno mood express pheno express */codeexample*
+
+* The network parameter file, *code* example-network-parameters.txt */code*, can then be created by running the parameter file *
+
+*codeexample* ./bayesnetty paras-make-network-paras.txt */codeexample*
+
+* The output will look something as follows *
+
+*codeexample* BayesNetty: Bayesian Network software, v1.00 -------------------------------------------------- Copyright 2015-present Richard Howey, GNU General Public License, v3 Institute of Genetic Medicine, Newcastle University
+
+-------------------------------------------------- Task name: Task-1 Loading network Network file: example-network-sim.dat Network type: BNLearn Network score type: BIC Total number of nodes: 5 (Discrete: 0 | Continuous: 0 | No data: 5) Total number of edges: 4 Network Structure: [rs1][rs2][mood][pheno|rs1:rs2][express|mood:pheno] The network has nodes with no data -------------------------------------------------- -------------------------------------------------- Task name: Task-2 Simulating network data Data simulation network given by network: Task-1 Number of simulations: 100 Network: Task-2 Network type: BNLearn Network score type: BIC Total number of nodes: 5 (Discrete: 3 | Continuous: 2) Total number of edges: 4 Network Structure: [rs1][rs2][mood][pheno|rs1:rs2][express|mood:pheno] Total data at each node: 100 Missing data at each node: 0 -------------------------------------------------- -------------------------------------------------- Task name: Task-3 Calculating network score Network: Task-2 Network structure: [rs1][rs2][mood][pheno|rs1:rs2][express|mood:pheno] Network score type: BIC Network score = -578.11 -------------------------------------------------- -------------------------------------------------- Task name: Task-4 Outputting posteriors Network: Task-2 Network Structure: [rs1][rs2][mood][pheno|rs1:rs2][express|mood:pheno] Output posteriors to file: example-network-parameters.txt --------------------------------------------------
+
+Run time: 1 second */codeexample*
+
+* The network parameter file, *code* example-network-parameters.txt */code*, will look something like as follows: *
+
+*codeexample* Posteriors: ===========
+
+DISCRETE SNP NODE: rs2
+  0: 0.2
+  1: 0.56
+  2: 0.24
+
+DISCRETE SNP NODE: rs1
+  0: 0.25
+  1: 0.58
+  2: 0.17
+
+DISCRETE NODE: mood
+  0: 0.42
+  1: 0.58
+
+CONTINUOUS NODE: express
+ DISCRETE PARENTS: mood
+ 0:
+  Intercept: 10.485
+  Coefficients: pheno: 0.935973
+  Mean: 11.421
+  Variance: 0.976054
+ 1:
+  Intercept: 10.9878
+  Coefficients: pheno: 0.907882
+  Mean: 11.8957
+  Variance: 0.840512
+
+CONTINUOUS NODE: pheno
+ DISCRETE PARENTS: rs1:rs2
+ 0:0:
+  Intercept: 9.99939
+  Coefficients:
+  Mean: 9.99939
+  Variance: 0.295201
+ 1:0:
+  Intercept: 9.88189
+  Coefficients:
+  Mean: 9.88189
+  Variance: 1.05842
+ 2:0:
+  Intercept: 8.64937
+  Coefficients:
+  Mean: 8.64937
+  Variance: 0.311091
+ 0:1:
+  Intercept: 9.66223
+  Coefficients:
+  Mean: 9.66223
+  Variance: 1.84061
+ 1:1:
+  Intercept: 9.94082
+  Coefficients:
+  Mean: 9.94082
+  Variance: 1.24815
+ 2:1:
+  Intercept: 9.74536
+  Coefficients:
+  Mean: 9.74536
+  Variance: 0.981623
+ 0:2:
+  Intercept: 10.1863
+  Coefficients:
+  Mean: 10.1863
+  Variance: 0.740771
+ 1:2:
+  Intercept: 10.0824
+  Coefficients:
+  Mean: 10.0824
+  Variance: 0.699125
+ 2:2:
+  Intercept: 9.92638
+  Coefficients:
+  Mean: 9.92638
+  Variance: 1.29355
+*/codeexample*
+
+* The data was simulated using default network node parameters. These are default probabilities for a discrete SNP node are 0.25, 0.5 and 0.25 for levels 0, 1 and 2 respectively, as a minor allele frequency of 0.5 would give. For a discrete node the levels are given by equal probabilities. For a continuous node the intercept is set to 10 and the coefficients and variance are set to 1. The simulated node data and subsequent fitted parameters are thus close to these values. *
+
+* The network parameter file, *code* example-network-parameters.txt */code*, can now be edited using parameters of your choice. The mean is not required, this simply reports the mean of the node data for continuous nodes. The *q* Posteriors */q* title in the file is also not required, but these may be left in the file. The levels of discrete nodes are labelled 0, 1, 2 etc. These may be renamed to something more meaningful in this file. For example, for node *q* mood */q* the levels could be renamed *q* sad */q* and *q* happy */q*. *
+
+* Finally, network node data may be simulated for a network with chosen network parameters where initially there was no data available for the network. *
+
+*codeexample* #simulate data -simulate-network-data -simulate-network-data-no-sims 200 -simulate-network-data-parameter-file example-network-parameters.txt
+
+#output simulated data -output-network -output-network-node-data-file-prefix sim-data -output-network-node-data-bed-file */codeexample*
+
+* The network parameter file, *code* example-network-parameters.txt */code*, can then be created by running the parameter file *
+
+*codeexample* ./bayesnetty paras-sim-data1.txt */codeexample*
+
+* The output will look something as follows *
+
+*codeexample* BayesNetty: Bayesian Network software, v1.00 -------------------------------------------------- Copyright 2015-present Richard Howey, GNU General Public License, v3 Institute of Genetic Medicine, Newcastle University
+
+-------------------------------------------------- Task name: Task-1 Simulating network data Number of simulations: 200 Parameter file name: example-network-parameters.txt Network: Task-1 Network type: BNLearn Network score type: BIC Total number of nodes: 5 (Discrete: 3 | Continuous: 2) Total number of edges: 4 Network Structure: [rs2][rs1][mood][pheno|rs2:rs1][express|mood:pheno] Total data at each node: 200 Missing data at each node: 0 -------------------------------------------------- -------------------------------------------------- Task name: Task-2 Outputting network Network: Task-1 Network Structure: [rs2][rs1][mood][pheno|rs2:rs1][express|mood:pheno] Network output to file: network.dat Node data output to files:
+ sim-data-discrete.dat
+ sim-data-cts.dat
+ sim-data.bed/.bim/.fam
+--------------------------------------------------
+
+Run time: less than one second */codeexample*
+
+* The file *code* sim-data-discrete.dat */code* contains the discrete node data, *code* sim-data-cts.dat */code* the continuous node data and *code* sim-data.bed */code*, *code* sim-data.bim */code* and *code* sim-data.fam */code* the SNP node data in PLINK binary pedigree format. *
+
+*/subsection* *************************
+
+************* *subsection*
+
+*subsection-name* sim-data-example2 */subsection-name*
+
+*subsection-title* Example 2: data and fitted network */subsection-title*
+
+* This example inputs some data, sets the network structure, fits network posterior parameters and then simulates network node data using these parameters. The simulated data is then output to file. The parameter file, *code* paras-sim-data2.txt */code*, in the example files does this and is as follows: *
+
+*codeexample* #input continuous data -input-data -input-data-file example-cts.dat -input-data-cts
+
+#input discrete data -input-data -input-data-file example-discrete.dat -input-data-discrete
+
+#input SNP data as discrete data -input-data -input-data-file example.bed -input-data-discrete-snp
+
+#input the example network in format 1 -input-network -input-network-file example-network-format1.dat
+
+#simulate data -simulate-network-data -simulate-network-data-no-sims 200
+
+#output simulated data -output-network -output-network-node-data-file-prefix sim-data -output-network-node-data-bed-file */codeexample*
+
+
+*codeexample* ./bayesnetty paras-sim-data2.txt */codeexample*
+
+* The output will look something as follows *
+
+*codeexample* BayesNetty: Bayesian Network software, v1.00 -------------------------------------------------- Copyright 2015-present Richard Howey, GNU General Public License, v3 Institute of Genetic Medicine, Newcastle University
+
+-------------------------------------------------- Task name: Task-1 Loading data Continuous data file: example-cts.dat Number of ID columns: 2 Including (all) 2 variables in analysis Each variable has 1500 data entries Missing value: -9 -------------------------------------------------- -------------------------------------------------- Task name: Task-2 Loading data Discrete data file: example-discrete.dat Number of ID columns: 2 Including the 1 and only variable in analysis Each variable has 1500 data entries Missing value: NA -------------------------------------------------- -------------------------------------------------- Task name: Task-3 Loading data SNP binary data file: example.bed Total number of SNPs: 2 Total number of subjects: 1500 Number of ID columns: 2 Including (all) 2 variables in analysis Each variable has 1500 data entries -------------------------------------------------- -------------------------------------------------- Task name: Task-4 Loading network Network file: example-network-format1.dat Network type: BNLearn Network score type: BIC Total number of nodes: 5 (Discrete: 3 | Continuous: 2) Total number of edges: 4 Network Structure: [mood][rs1][rs2][pheno|rs1:rs2][express|pheno:mood] Total data at each node: 1495 Missing data at each node: 5 -------------------------------------------------- -------------------------------------------------- Task name: Task-5 Simulating network data Data simulation network given by network: Task-4 Number of simulations: 200 Network: Task-5 Network type: BNLearn Network score type: BIC Total number of nodes: 5 (Discrete: 3 | Continuous: 2) Total number of edges: 4 Network Structure: [mood][rs1][rs2][pheno|rs1:rs2][express|pheno:mood] Total data at each node: 200 Missing data at each node: 0 -------------------------------------------------- -------------------------------------------------- Task name: Task-6 Outputting network Network: Task-5 Network Structure: [mood][rs1][rs2][pheno|rs1:rs2][express|pheno:mood] Network output to file: network.dat Node data output to files:
+ sim-data-discrete.dat
+ sim-data-cts.dat
+ sim-data.bed/.bim/.fam
+--------------------------------------------------
+
+Run time: less than one second */codeexample*
+
+* As in the previous example the simulated node data is output to a number of files. *
+
+*/subsection* *************************
+
+************* *subsection*
+
+*subsection-name* sim-data-example3 */subsection-name*
+
+*subsection-title* Example 3: data and unknown network */subsection-title*
+
+* In this example the network that the data will be simulated for is not known initially. To do this, some data is input, the best fitting network is chosen using a network search and then node data is simulated using the fitted parameters. The parameter file, *code* paras-sim-data3.txt */code*, in the example files does this and is as follows: *
+
+*codeexample* #input continuous data -input-data -input-data-file example-cts.dat -input-data-cts
+
+#input discrete data -input-data -input-data-file example-discrete.dat -input-data-discrete
+
+#input SNP data as discrete data -input-data -input-data-file example.bed -input-data-discrete-snp
+
+#search for the best fitting model -search-models
+
+#simulate data -simulate-network-data -simulate-network-data-no-sims 200
+
+#output simulated data -output-network -output-network-node-data-file-prefix sim-data -output-network-node-data-bed-file */codeexample*
+
+
+*codeexample* ./bayesnetty paras-sim-data3.txt */codeexample*
+
+* The output will look something as follows *
+
+*codeexample* BayesNetty: Bayesian Network software, v1.00 -------------------------------------------------- Copyright 2015-present Richard Howey, GNU General Public License, v3 Institute of Genetic Medicine, Newcastle University
+
+-------------------------------------------------- Task name: Task-1 Loading data Continuous data file: example-cts.dat Number of ID columns: 2 Including (all) 2 variables in analysis Each variable has 1500 data entries Missing value: -9 -------------------------------------------------- -------------------------------------------------- Task name: Task-2 Loading data Discrete data file: example-discrete.dat Number of ID columns: 2 Including the 1 and only variable in analysis Each variable has 1500 data entries Missing value: NA -------------------------------------------------- -------------------------------------------------- Task name: Task-3 Loading data SNP binary data file: example.bed Total number of SNPs: 2 Total number of subjects: 1500 Number of ID columns: 2 Including (all) 2 variables in analysis Each variable has 1500 data entries -------------------------------------------------- -------------------------------------------------- Task name: Task-4 Searching network models -------------------------------------------------- Loading defaultNetwork network Network type: BNLearn Network score type: BIC Total number of nodes: 5 (Discrete: 3 | Continuous: 2) Total number of edges: 0 Network Structure: [express][pheno][mood][rs1][rs2] Total data at each node: 1495 Missing data at each node: 5 -------------------------------------------------- Network: defaultNetwork Search: Greedy Random restarts: 0 Random jitter restarts: 0 Network Structure: [mood][rs1][rs2][express|rs1:rs2][pheno|express:mood] Network score type: BIC Network score = -11568.7 -------------------------------------------------- -------------------------------------------------- Task name: Task-5 Simulating network data Data simulation network given by network: defaultNetwork Number of simulations: 200 Network: Task-5 Network type: BNLearn Network score type: BIC Total number of nodes: 5 (Discrete: 3 | Continuous: 2) Total number of edges: 4 Network Structure: [mood][rs1][rs2][express|rs1:rs2][pheno|express:mood] Total data at each node: 200 Missing data at each node: 0 -------------------------------------------------- -------------------------------------------------- Task name: Task-6 Outputting network Network: Task-5 Network Structure: [mood][rs1][rs2][express|rs1:rs2][pheno|express:mood] Network output to file: network.dat Node data output to files:
+ sim-data-discrete.dat
+ sim-data-cts.dat
+ sim-data.bed/.bim/.fam
+--------------------------------------------------
+
+Run time: less than one second */codeexample*
+
+* As in the previous example the simulated node data is output to a number of files. *
+
+
+
+*/subsection* *************************
+
+*/section*
+
+******************************** ********************************
+
+*section*
+
+*section-name* output-network */section-name*
+
+*section-title* Output network */section-title*
+
+
+* A network may be output using the *code* -output-network */code* task. The network may be output in one of three different formats. *
+
+**********************
+
+*subsection*
+
+*subsection-name* output-network-options */subsection-name*
+
+*subsection-title* Options */subsection-title*
+
+* The options are as follows: *
+
+*tablelopt* *tr* Option & Description & Default */tr*
+
+*tr*
+ -output-network & do a task to output a network to file &
+*/tr*
+
+*tr*
+  -output-network-name name & label the task with a name & Task-n
+*/tr*
+
+*tr*
+  -output-network-network-name network & output this network & previous network
+*/tr*
+
+*tr*
+  -output-network-file network.dat & output the network in a format where the nodes and then the edges are listed &
+*/tr*
+
+*tr*
+  -output-network-file2 network2.dat & output the network in this style of format: *code* [a][b|a][c|a:b] */code* &
+*/tr*
+
+*tr* -output-network-equivalent-networks-file equiv-networks.dat & output a list of equivalent networks to file equiv-networks.dat & */tr*
+
+*tr*
+  -output-network-igraph-file-prefix mygraph & output igraph format files consisting of mygraph-nodes.dat, mygraph-edges.dat and R code mygraph-plot.R &
+*/tr*
+
+*tr* -output-network-node-data-file-prefix mydata & output network discrete data to mydata-discrete.dat and continuous data to mydata-cts.dat & */tr*
+
+*tr* -output-network-node-data-bed-file & output SNP data to files mydata.bed, mydata.bim and mydata.fam and not to files mydata-discrete.dat and mydata-cts.dat & */tr*
+
+*/table*
+
+*/subsection*
+
+*************
+
+*subsection*
+
+*subsection-name* output-network-example */subsection-name*
+
+*subsection-title* Example */subsection-title*
+
+* The following is an example parameter file to output a network. *
+
+*codeexample* #input continuous data -input-data -input-data-file example-cts.dat -input-data-cts
+
+#input discrete data -input-data -input-data-file example-discrete.dat -input-data-discrete
+
+#input SNP data as discrete data -input-data -input-data-file example.bed -input-data-discrete-snp
+
+#search network models -search-models
+
+#output the fitted network -output-network -output-network-file fittedNetwork.dat */codeexample*
+
+* This parameter file, *code* paras-output-network.txt */code*, can be found in *html* <a href="example.zip">example.zip</a>&nbsp; */html* *tex* example.zip */tex* and can be used as follows: *
+
+*codeexample* ./bayesnetty paras-output-network.txt */codeexample*
+
+* Which should produce output that looks like something as follows: *
+
+*codeexample* BayesNetty: Bayesian Network software, v1.00 -------------------------------------------------- Copyright 2015-present Richard Howey, GNU General Public License, v3 Institute of Genetic Medicine, Newcastle University
+
+-------------------------------------------------- Task name: Task-1 Loading data Continuous data file: example-cts.dat Number of ID columns: 2 Including (all) 2 variables in analysis Each variable has 1500 data entries Missing value: -9 -------------------------------------------------- -------------------------------------------------- Task name: Task-2 Loading data Discrete data file: example-discrete.dat Number of ID columns: 2 Including the 1 and only variable in analysis Each variable has 1500 data entries Missing value: NA -------------------------------------------------- -------------------------------------------------- Task name: Task-3 Loading data SNP binary data file: example.bed Total number of SNPs: 2 Total number of subjects: 1500 Number of ID columns: 2 Including (all) 2 variables in analysis Each variable has 1500 data entries -------------------------------------------------- -------------------------------------------------- Loading defaultNetwork network Network type: BNLearn Network score type: BIC Total number of nodes: 5 (Discrete: 3 | Continuous: 2) Total number of edges: 0 Network Structure: [express][pheno][mood][rs1][rs2] Total data at each node: 1495 Missing data at each node: 5 -------------------------------------------------- -------------------------------------------------- Task name: Task-4 Searching network models Network: defaultNetwork Search: Greedy Random restarts: 0 Random jitter restarts: 0 Network Structure: [mood][rs1][rs2][express|rs1:rs2][pheno|express:mood] Network score type: BIC Network score = -11568.7 -------------------------------------------------- -------------------------------------------------- Task name: Task-5 Outputting network Network: defaultNetwork Network Structure: [mood][rs1][rs2][express|rs1:rs2][pheno|express:mood] Network output to file: fittedNetwork.dat --------------------------------------------------
+
+Run time: less than one second */codeexample*
+
+* The data is loaded, a search is performed and then the network is output to a file. *
+
+
+*/subsection*
+
+*************************
+
+*/section*
+
+******************************** ********************************
+
+*section*
+
+*section-name* output-priors */section-name*
+
+*section-title* Output priors */section-title*
+
+* The priors may be output to file for inspection with the *code* -output-priors */code*. *
+
+**********************
+
+*subsection*
+
+*subsection-name* output-priors-options */subsection-name*
+
+*subsection-title* Options */subsection-title*
+
+* The options are as follows: *
+
+*tablelopt* *tr* Option & Description & Default */tr*
+
+*tr*
+ -output-priors  & do a task to output the priors of a network to file &
+*/tr*
+
+*tr*
+  -output-priors-name name & label the task with a name & Task-n
+*/tr*
+
+*tr*
+  -output-priors-network-name network & output priors for this network & previous network
+*/tr*
+
+*tr*
+  -output-priors-file priors.dat & output the priors to file priors.dat & priors.dat
+*/tr*
+
+*/table*
+
+*/subsection*
+
+************* *subsection*
+
+*subsection-name* output-priors-example */subsection-name*
+
+*subsection-title* Example */subsection-title*
+
+
+* The following is an example parameter file to output the priors of a network. *
+
+*codeexample* #input continuous data -input-data -input-data-file example-cts.dat -input-data-cts
+
+#input discrete data -input-data -input-data-file example-discrete.dat -input-data-discrete
+
+#input SNP data as discrete data -input-data -input-data-file example.bed -input-data-discrete-snp
+
+#input the example network in format 1 -input-network -input-network-file example-network-format1.dat
+
+#output the priors to file -output-priors -output-priors-file example-priors.dat */codeexample*
+
+* This parameter file, *code* paras-output-priors.txt */code*, can be found in *html* <a href="example.zip">example.zip</a>&nbsp; */html* *tex* example.zip */tex* and can be used as follows: *
+
+*codeexample* ./bayesnetty paras-output-priors.txt */codeexample*
+
+* Which should produce output that looks like something as follows: *
+
+*codeexample* BayesNetty: Bayesian Network software, v1.00 -------------------------------------------------- Copyright 2015-present Richard Howey, GNU General Public License, v3 Institute of Genetic Medicine, Newcastle University
+
+-------------------------------------------------- Task name: Task-1 Loading data Continuous data file: example-cts.dat Number of ID columns: 2 Including (all) 2 variables in analysis Each variable has 1500 data entries Missing value: -9 -------------------------------------------------- -------------------------------------------------- Task name: Task-2 Loading data Discrete data file: example-discrete.dat Number of ID columns: 2 Including the 1 and only variable in analysis Each variable has 1500 data entries Missing value: NA -------------------------------------------------- -------------------------------------------------- Task name: Task-3 Loading data SNP binary data file: example.bed Total number of SNPs: 2 Total number of subjects: 1500 Number of ID columns: 2 Including (all) 2 variables in analysis Each variable has 1500 data entries -------------------------------------------------- -------------------------------------------------- Task name: Task-4 Loading network Network file: example-network-format1.dat Network type: BNLearn Network score type: BIC Total number of nodes: 5 (Discrete: 3 | Continuous: 2) Total number of edges: 4 Network Structure: [mood][rs1][rs2][pheno|rs1:rs2][express|pheno:mood] Total data at each node: 1495 Missing data at each node: 5 -------------------------------------------------- -------------------------------------------------- Task name: Task-5 Outputting priors Network: Task-4 Network Structure: [mood][rs1][rs2][pheno|rs1:rs2][express|pheno:mood] Output priors to file: example-priors.dat --------------------------------------------------
+
+Run time: less than one second */codeexample*
+
+* The data is loaded, the network input and then the prior is output to a file. *
+
+
+
+*/subsection* *************************
+
+*/section*
+
+******************************** ********************************
+
+*section*
+
+*section-name* output-posteriors */section-name*
+
+*section-title* Output posteriors */section-title*
+
+
+* The posteriors may be output to file for inspection with the *code* -output-posteriors */code*. *
+
+**********************
+
+*subsection*
+
+*subsection-name* output-posteriors-options */subsection-name*
+
+*subsection-title* Options */subsection-title*
+
+* The options are as follows: *
+
+*tablelopt* *tr* Option & Description & Default */tr*
+
+*tr*
+ -output-posteriors  & do a task to output the posteriors of a network to file &
+*/tr*
+
+*tr*
+  -output-posteriors-name name & label the task with a name & Task-n
+*/tr*
+
+*tr*
+  -output-posteriors-network-name network & output posteriors for this network & previous network
+*/tr*
+
+*tr*
+  -output-posteriors-file posts.dat & output the posteriors to file posts.dat & posteriors.dat
+*/tr*
+
+
+*/table*
+
+*/subsection*
+
+************* *subsection*
+
+*subsection-name* output-posts-example */subsection-name*
+
+*subsection-title* Example */subsection-title*
+
+* The following is an example parameter file to output the posteriors of a network. *
+
+*codeexample* #input continuous data -input-data -input-data-file example-cts.dat -input-data-cts
+
+#input discrete data -input-data -input-data-file example-discrete.dat -input-data-discrete
+
+#input SNP data as discrete data -input-data -input-data-file example.bed -input-data-discrete-snp
+
+#input the example network in format 1 -input-network -input-network-file example-network-format1.dat
+
+#calculate the posterior of the network -calc-posterior
+
+#output the posteriors to file -output-posteriors -output-posteriors-file example-posteriors.dat */codeexample*
+
+* This parameter file, *code* paras-output-post.txt */code*, can be found in *html* <a href="example.zip">example.zip</a>&nbsp; */html* *tex* example.zip */tex* and can be used as follows: *
+
+*codeexample* ./bayesnetty paras-output-post.txt */codeexample*
+
+* Which should produce output that looks like something as follows: *
+
+*codeexample* BayesNetty: Bayesian Network software, v1.00 -------------------------------------------------- Copyright 2015-present Richard Howey, GNU General Public License, v3 Institute of Genetic Medicine, Newcastle University
+
+-------------------------------------------------- Task name: Task-1 Loading data Continuous data file: example-cts.dat Number of ID columns: 2 Including (all) 2 variables in analysis Each variable has 1500 data entries Missing value: -9 -------------------------------------------------- -------------------------------------------------- Task name: Task-2 Loading data Discrete data file: example-discrete.dat Number of ID columns: 2 Including the 1 and only variable in analysis Each variable has 1500 data entries Missing value: NA -------------------------------------------------- -------------------------------------------------- Task name: Task-3 Loading data SNP binary data file: example.bed Total number of SNPs: 2 Total number of subjects: 1500 Number of ID columns: 2 Including (all) 2 variables in analysis Each variable has 1500 data entries -------------------------------------------------- -------------------------------------------------- Task name: Task-4 Loading network Network file: example-network-format1.dat Network type: BNLearn Network score type: BIC Total number of nodes: 5 (Discrete: 3 | Continuous: 2) Total number of edges: 4 Network Structure: [mood][rs1][rs2][pheno|rs1:rs2][express|pheno:mood] Total data at each node: 1495 Missing data at each node: 5 -------------------------------------------------- -------------------------------------------------- Task name: Task-5 Calculating posterior Network: Task-4 Network Structure: [mood][rs1][rs2][pheno|rs1:rs2][express|pheno:mood] -------------------------------------------------- -------------------------------------------------- Task name: Task-6 Outputting posteriors Network: Task-4 Network Structure: [mood][rs1][rs2][pheno|rs1:rs2][express|pheno:mood] Output posteriors to file: example-posteriors.dat --------------------------------------------------
+
+Run time: less than one second */codeexample*
+
+* The data is loaded, the network input, the posterior is calculated and then output to a file. *
+
+
+
+
+*/subsection* *************************
+
+*/section*
+
+******************************** ********************************
+
+*section*
+
+*section-name* plot-network */section-name*
+
+*section-title* Network plotting */section-title*
+
+**********************
+
+*subsection*
+
+*subsection-name* igraph */subsection-name*
+
+*subsection-title* igraph */subsection-title*
+
+* A network may be plotted using the *html* <a href="http://igraph.org">igraph</a>&nbsp; */html* *tex* igraph */tex* R package, see *cite* igraph */cite* for details,
+
+*/subsection*
+
+*************************** *subsection*
+
+*subsection-name* igraph-example */subsection-name*
+
+*subsection-title* Example */subsection-title*
+
+
+* The following is an example parameter file to output the necessary files to plot the network in R with the igraph package. *
+
+*codeexample* #input continuous data -input-data -input-data-file example-cts.dat -input-data-cts
+
+#input discrete data -input-data -input-data-file example-discrete.dat -input-data-discrete
+
+#input SNP data as discrete data -input-data -input-data-file example.bed -input-data-discrete-snp
+
+#input the example network in format 1 -input-network -input-network-file example-network-format1.dat
+
+#output files to plot the network -output-network -output-network-igraph-file-prefix exampleGraph */codeexample*
+
+* This parameter file, *code* paras-plot-network.txt */code*, can be found in *html* <a href="example.zip">example.zip</a>&nbsp; */html* *tex* example.zip */tex* and can be used as follows: *
+
+*codeexample* ./bayesnetty paras-plot-network.txt */codeexample*
+
+* Which should produce output that looks like something as follows: *
+
+*codeexample* BayesNetty: Bayesian Network software, v1.00 -------------------------------------------------- Copyright 2015-present Richard Howey, GNU General Public License, v3 Institute of Genetic Medicine, Newcastle University
+
+-------------------------------------------------- Task name: Task-1 Loading data Continuous data file: example-cts.dat Number of ID columns: 2 Including (all) 2 variables in analysis Each variable has 1500 data entries Missing value: -9 -------------------------------------------------- -------------------------------------------------- Task name: Task-2 Loading data Discrete data file: example-discrete.dat Number of ID columns: 2 Including the 1 and only variable in analysis Each variable has 1500 data entries Missing value: NA -------------------------------------------------- -------------------------------------------------- Task name: Task-3 Loading data SNP binary data file: example.bed Total number of SNPs: 2 Total number of subjects: 1500 Number of ID columns: 2 Including (all) 2 variables in analysis Each variable has 1500 data entries -------------------------------------------------- -------------------------------------------------- Task name: Task-4 Loading network Network file: example-network-format1.dat Network type: BNLearn Network score type: BIC Total number of nodes: 5 (Discrete: 3 | Continuous: 2) Total number of edges: 4 Network Structure: [mood][rs1][rs2][pheno|rs1:rs2][express|pheno:mood] Total data at each node: 1495 Missing data at each node: 5 -------------------------------------------------- -------------------------------------------------- Task name: Task-5 Network: Task-4 Network Structure: [mood][rs1][rs2][pheno|rs1:rs2][express|pheno:mood] Network output to igraph files:
+ exampleGraph-nodes.dat
+ exampleGraph-edges.dat
+R code to plot network using igraph package: exampleGraph-plot.R --------------------------------------------------
+
+Run time: less than one second */codeexample*
+
+* The data is loaded, the network input and output to 2 separate files, one containing the node data and another containing the edge data. *
+
+* There is also an R file which is output which will look something as follows: *
+
+*codeexample* #load igraph library, http://igraph.org/r/ library(igraph)
+
+#load network graph nodes<-read.table("exampleGraph-nodes.dat", header=TRUE) edges<-read.table("exampleGraph-edges.dat", header=TRUE)
+
+#create graph graph<-graph_from_data_frame(edges, directed = TRUE, vertices = nodes)
+
+#plot the network and output png file, edit style as required
+
+#style for continuous nodes shape<-rep("circle", length(nodes$type)) vcolor<-rep("#eeeeee", length(nodes$type)) vsize<-rep(25, length(nodes$type)) color<-rep("black", length(nodes$type))
+
+#style for discrete nodes shape[nodes$type=="d"]<-"rectangle" vcolor[nodes$type=="d"]<-"#111111" vsize<-vsize[nodes$type=="d"]<-20 color[nodes$type=="d"]<-"white"
+
+#edge widths for significances minWidth<-0.3 maxWidth<-10 edgeMax<-max(edges$chisq) edgeMin<-min(edges$chisq) widths<-((edges$chisq-edgeMin)/(edgeMax-edgeMin))*(maxWidth - minWidth) + minWidth widths<-pmax(widths, minWidth) styles<-rep(1, length(widths))
+
+#plot to a png file png(filename="exampleGraph.png", width=800, height=800)
+
+plot(graph, vertex.shape=shape, vertex.size=vsize, vertex.color=vcolor, vertex.label.color=color, edge.width=widths, edge.lty=styles, edge.color="black", edge.arrow.size=1.5)
+
+#finish png file dev.off() */codeexample*
+
+* This R file can be ran as follows in Linux *
+
+*codeexample* R --vanilla < exampleGraph-plot.R */codeexample*
+
+* and produces the .png image file of the network *
+
+
+*figure* exampleGraph.png
+
+*caption* Plot of the example network drawn using the igraph R package. */caption* *label* plot1-fig */label* *width* 700 */width* *widthtex* 400 */widthtex* */figure*
+
+* The edges are drawn proportional to the log likelihood difference between networks with and without the edge in question. The plot can easily be updated to your needs by following the *html* <a href="http://igraph.org">igraph</a>&nbsp; */html* *tex* igraph */tex* R package documentation. *
+
+* If a search is performed to find the best network, it can be plotted as above and gives the following network: *
+
+*figure* exampleGraph2.png
+
+*caption* Plot of the best fit network drawn using the igraph R package. */caption* *label* plot2-fig */label* *width* 700 */width* *widthtex* 400 */widthtex* */figure*
+
+
+
+*/subsection* *************************
+
+*/section*
+
+******************************** ******************************** 

@@ -1,0 +1,12 @@
+#rm bayesnetty.aux
+#rm bayesnetty.bbl
+#rm bayesnetty.blg
+#rm bayesnetty.toc
+
+pdflatex bayesnetty.tex
+
+bibtex bayesnetty
+
+pdflatex bayesnetty.tex
+
+pdflatex bayesnetty.tex

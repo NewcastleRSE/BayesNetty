@@ -1,0 +1,48 @@
+\begin{thebibliography}{7}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+
+\bibitem[\protect\citeauthoryear{Boettcher and Dethlefsen}{Boettcher and
+  Dethlefsen}{2003}]{deal}
+Boettcher SG, Dethlefsen C. 2003.
+\newblock deal: A package for learning bayesian networks.
+\newblock Journal of Statistical Software 8.
+
+\bibitem[\protect\citeauthoryear{Csardi and Nepusz}{Csardi and
+  Nepusz}{2006}]{igraph}
+Csardi G, Nepusz T. 2006.
+\newblock The igraph software package for complex network research.
+\newblock InterJournal Complex Systems:1695.
+
+\bibitem[\protect\citeauthoryear{{MPI Forum}}{{MPI Forum}}{1996}]{mpi}
+{MPI Forum}. 1996.
+\newblock {MPI Forum}.
+\newblock {https://www.mpi-forum.org/}.
+
+\bibitem[\protect\citeauthoryear{Nagarajan, Scutari, and L{\`e}bre}{Nagarajan
+  et~al.}{2013}]{bnlearn2}
+Nagarajan R, Scutari M, L{\`e}bre M. 2013.
+\newblock Bayesian Networks in R with Applications in Systems Biology.
+\newblock Springer (US).
+
+\bibitem[\protect\citeauthoryear{Purcell, Neale, Todd-Brown, Thomas, Ferreira,
+  Bender, Maller, Sklar, de~Bakker, Daly, and Sham}{Purcell
+  et~al.}{2007}]{purcell:etal:07}
+Purcell S, Neale B, Todd-Brown K, Thomas L, Ferreira MA, Bender D, Maller J,
+  Sklar P, de~Bakker PI, Daly MJ, Sham PC. 2007.
+\newblock {PLINK: a tool set for whole-genome association and population-based
+  linkage analyses}.
+\newblock Am J Hum Genet 81:559--575.
+
+\bibitem[\protect\citeauthoryear{Scutari and Denis}{Scutari and
+  Denis}{2014}]{bnlearn}
+Scutari M, Denis JB. 2014.
+\newblock Bayesian Networks with Examples in R.
+\newblock Texts in Statistical Science, Chapman \& Hall/CRC (US).
+
+\bibitem[\protect\citeauthoryear{{The Open MPI Project}}{{The Open MPI
+  Project}}{2004}]{openmpi}
+{The Open MPI Project}. 2004.
+\newblock {Open MPI: Open Source High Performance Computing}.
+\newblock {https://www.open-mpi.org/}.
+
+\end{thebibliography}

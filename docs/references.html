@@ -1,0 +1,239 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>BayesNetty: Bayesian Network Software for Genetic Analyses</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<link rel="stylesheet" type="text/css" href="bayesnettystyles.css" />
+<link rel="shortcut icon" href="favicon.ico" />
+</head>
+<body>
+<!-- Begin Wrapper -->
+<div id="wrapper">
+<table width="100%" border="0" cellpadding="0" cellspacing="0"><tr><td>
+<!-- Begin Header -->
+<div id="header">
+<table><tr>
+<td>
+<img width="150" src="bayesnetty-logo.png" alt="BayesNetty: Bayesian Network Software for Genetic Analyses"/>
+</td>
+<td>
+<p style="margin-left: 1em;">BayesNetty: Bayesian Network Software for Genetic Analyses</p>
+</td></tr>
+</table>
+</div>
+<!-- End Header -->
+<!-- Begin Menu Navigation -->
+<ul id="menunav">
+<li><a href="index.html">Home</a></li>
+<li><a href="downloads.html">Download</a></li>
+<li><a href="contact.html">Contact</a></li>
+</ul>
+<!-- End Menu Navigation -->
+
+</td></tr>
+<tr><td>
+<table border="0" cellpadding="0" cellspacing="0"><tr>
+<td valign="top">
+<!-- Begin Left Column -->
+<div id="leftcolumn">
+<!-- Begin Contents Navigation -->
+<div id="navcontainer">
+<ul>
+<li><a href="introduction.html">1 Introduction</a>
+</li>
+<li><a href="installation.html">2 Installation</a>
+</li>
+<li><a href="using.html">3 Using BayesNetty</a>
+<ul>
+<li><a href="using.html#basic-options">3.1 Basic Options</a></li>
+<li><a href="using.html#parameterfile">3.2 Parameter file</a></li>
+<li><a href="using.html#simple-example">3.3 Simple Example</a></li>
+<li><a href="using.html#command-line">3.4 Command-line Options</a></li>
+</ul>
+</li>
+<li><a href="parallel.html">4 Parallel BayesNetty</a>
+<ul>
+<li><a href="parallel.html#compile-parallel-code">4.1 Compilation Scripts</a></li>
+</ul>
+</li>
+<li><a href="input-data.html">5 Input data</a>
+<ul>
+<li><a href="input-data.html#input-data-options">5.1 Options</a></li>
+<li><a href="input-data.html#input-data-discrete">5.2 Discrete data</a></li>
+<li><a href="input-data.html#input-data-cts">5.3 Continuous data</a></li>
+<li><a href="input-data.html#input-data-factor">5.4 Factor data</a></li>
+<li><a href="input-data.html#input-data-snp">5.5 SNP data</a></li>
+<li><a href="input-data.html#input-data-missing">5.6 Missing data</a></li>
+<li><a href="input-data.html#input-data-ids">5.7 Data IDs</a></li>
+<li><a href="input-data.html#input-data-example">5.8 Example</a></li>
+</ul>
+</li>
+<li><a href="input-network.html">6 Input network</a>
+<ul>
+<li><a href="input-network.html#input-network-options">6.1 Options</a></li>
+<li><a href="input-network.html#input-network-black">6.2 Black lists</a></li>
+<li><a href="input-network.html#input-network-white">6.3 White lists</a></li>
+<li><a href="input-network.html#input-network-soft-con">6.4 Soft Constraints</a></li>
+<li><a href="input-network.html#input-network-formats">6.5 Network formats</a></li>
+<li><a href="input-network.html#input-network-example">6.6 Example</a></li>
+</ul>
+</li>
+<li><a href="bnlearn.html">7 bnlearn network</a>
+<ul>
+<li><a href="bnlearn.html#bnlearn-score">7.1 Network score</a></li>
+</ul>
+</li>
+<li><a href="deal.html">8 deal network</a>
+<ul>
+<li><a href="deal.html#imaginary-sample-size">8.1 Imaginary sample size</a></li>
+</ul>
+</li>
+<li><a href="calc-score.html">9 Calculate network score</a>
+<ul>
+<li><a href="calc-score.html#calc-score-options">9.1 Options</a></li>
+<li><a href="calc-score.html#calc-score-example">9.2 Example</a></li>
+</ul>
+</li>
+<li><a href="calc-posterior.html">10 Calculate posterior</a>
+<ul>
+<li><a href="calc-posterior.html#calc-posterior-options">10.1 Options</a></li>
+<li><a href="calc-posterior.html#calc-post-example">10.2 Example</a></li>
+</ul>
+</li>
+<li><a href="search-models.html">11 Search models</a>
+<ul>
+<li><a href="search-models.html#search-models-options">11.1 Options</a></li>
+<li><a href="search-models.html#search-models-greedy">11.2 Greedy search</a></li>
+<li><a href="search-models.html#search-models-example">11.3 Example</a></li>
+</ul>
+</li>
+<li><a href="average-network.html">12 Average network</a>
+<ul>
+<li><a href="average-network.html#average-network-options">12.1 Options</a></li>
+<li><a href="average-network.html#average-network-score">12.2 Score Method</a></li>
+<li><a href="average-network.html#average-network-example">12.3 Example</a></li>
+<li><a href="average-network.html#average-network-parallel">12.4 Parallel Example</a></li>
+</ul>
+</li>
+<li><a href="impute-data.html">13 Impute Data</a>
+<ul>
+<li><a href="impute-data.html#impute-data-options">13.1 Options</a></li>
+<li><a href="impute-data.html#impute-example">13.2 Example</a></li>
+<li><a href="impute-data.html#impute-parallel-example">13.3 Parallel Example</a></li>
+</ul>
+</li>
+<li><a href="sim-data.html">14 Simulate network data</a>
+<ul>
+<li><a href="sim-data.html#sim-data-options">14.1 Options</a></li>
+<li><a href="sim-data.html#sim-data-example1">14.2 Example 1: no data</a></li>
+<li><a href="sim-data.html#sim-data-example2">14.3 Example 2: data and fitted network</a></li>
+<li><a href="sim-data.html#sim-data-example3">14.4 Example 3: data and unknown network</a></li>
+</ul>
+</li>
+<li><a href="markov-blanket.html">15 Markov blanket</a>
+<ul>
+<li><a href="markov-blanket.html#markov-blanket-options">15.1 Options</a></li>
+<li><a href="markov-blanket.html#calc-blanket-example">15.2 Example</a></li>
+</ul>
+</li>
+<li><a href="output-network.html">16 Output network</a>
+<ul>
+<li><a href="output-network.html#output-network-options">16.1 Options</a></li>
+<li><a href="output-network.html#output-network-example">16.2 Example</a></li>
+</ul>
+</li>
+<li><a href="output-priors.html">17 Output priors (deal only)</a>
+<ul>
+<li><a href="output-priors.html#output-priors-options">17.1 Options</a></li>
+<li><a href="output-priors.html#output-priors-example">17.2 Example</a></li>
+</ul>
+</li>
+<li><a href="output-posteriors.html">18 Output posteriors</a>
+<ul>
+<li><a href="output-posteriors.html#output-posteriors-options">18.1 Options</a></li>
+<li><a href="output-posteriors.html#output-posts-example">18.2 Example</a></li>
+</ul>
+</li>
+<li><a href="plot-network.html">19 Network plotting</a>
+<ul>
+<li><a href="plot-network.html#igraph">19.1 igraph</a></li>
+<li><a href="plot-network.html#igraph-example">19.2 Example</a></li>
+</ul>
+</li>
+<li><a href="references.html">References</a></li>
+</ul>
+</div>
+<!-- End Contents Navigation -->
+</div>
+<!-- End Left Column -->
+</td>
+<td valign="top">
+<!-- Begin Right Column -->
+<div id="rightcolumn">
+<h1>References</h1><br />
+<p>
+<a id="deal">
+S. G. Boettcher and C. Dethlefsen.<br />
+</a>
+<b>&ldquo;deal: A Package for Learning Bayesian Networks.&rdquo;</b><br />
+<i>Journal of Statistical Software,</i> 8(20), 2003. <small><a target="_blank" href="http://www.google.com/search?as_epq=deal: A Package for Learning Bayesian Networks&as_q=Journal of Statistical Software&as_oq=Boettcher and Dethlefsen (2003)">Search</a></small></p>
+<br />
+<p>
+<a id="igraph">
+G. Csardi and T. Nepusz.<br />
+</a>
+<b>&ldquo;The igraph software package for complex network research.&rdquo;</b><br />
+<i>InterJournal,</i> Complex Systems, pp. 1695, 2006. <small><a target="_blank" href="http://www.google.com/search?as_epq=The igraph software package for complex network research&as_q=InterJournal&as_oq=Csardi and Nepusz (2006)">Search</a></small></br>
+ <a href="http://igraph.org">http://igraph.org</a></p>
+<br />
+<p>
+<a id="mpi">
+MPI Forum.<br />
+</a>
+<b>&ldquo;MPI Forum.&rdquo;</b><br />
+<a target="_blank" href="https://www.mpi-forum.org/">https://www.mpi-forum.org/</a> 1996. <small><a target="_blank" href="http://www.google.com/search?as_epq=MPI Forum&as_oq=MPI Forum">Search</a></small></p>
+<br />
+<p>
+<a id="howey:etal:20">
+R. Howey, S-Y. Shin, C. Relton, G. Davey Smith and H. J. Cordell.<br />
+</a>
+<b>&ldquo;Bayesian network analysis incorporating genetic anchors complements conventional Mendelian randomization approaches for exploratory analysis of causal relationships in complex data.&rdquo;</b><br />
+<i>PLOS Genetics,</i> <i>Public Library of Science,</i> 16(3), pp. 1-35, 2020. <small><a target="_blank" href="http://www.google.com/search?as_epq=Bayesian network analysis incorporating genetic anchors complements conventional Mendelian randomization approaches for exploratory analysis of causal relationships in complex data&as_q=PLOS Genetics&as_oq=Howey et al. (2020)">Search</a></small></br>
+ <a href="https://doi.org/10.1371/journal.pgen.1008198">https://doi.org/10.1371/journal.pgen.1008198</a></p>
+<br />
+<p>
+<a id="bnlearn2">
+R. Nagarajan, M. Scutari and M. L{\`e}bre.<br />
+</a>
+<b>&ldquo;Bayesian Networks in R with Applications in Systems Biology.&rdquo;</b><br />
+<i>Springer (US),</i> 2013. <small><a target="_blank" href="http://www.google.com/search?as_epq=Bayesian Networks in R with Applications in Systems Biology&as_oq=Nagarajan et al. (2013)">Search</a></small></p>
+<br />
+<p>
+<a id="openmpi">
+The Open MPI Project.<br />
+</a>
+<b>&ldquo;Open MPI: Open Source High Performance Computing.&rdquo;</b><br />
+<a target="_blank" href="https://www.open-mpi.org/">https://www.open-mpi.org/</a> 2004. <small><a target="_blank" href="http://www.google.com/search?as_epq=Open MPI: Open Source High Performance Computing&as_oq=The Open MPI Project">Search</a></small></p>
+<br />
+<p>
+<a id="purcell:etal:07">
+S. Purcell, B. Neale, K. Todd-Brown, L. Thomas, M. A. Ferreira, D. Bender, J. Maller, P. Sklar, P. I. de Bakker, M. J. Daly and P. C. Sham.<br />
+</a>
+<b>&ldquo;PLINK: a tool set for whole-genome association and population-based linkage analyses.&rdquo;</b><br />
+<i>Am J Hum Genet,</i> 81, pp. 559--575, 2007. <small><a target="_blank" href="http://www.google.com/search?as_epq=PLINK: a tool set for whole-genome association and population-based linkage analyses&as_q=Am J Hum Genet&as_oq=Purcell et al. (2007)">Search</a></small></p>
+<br />
+<p>
+<a id="bnlearn">
+M. Scutari and J-B. Denis.<br />
+</a>
+<b>&ldquo;Bayesian Networks with Examples in R.&rdquo;</b><br />
+<i>Texts in Statistical Science, Chapman &amp; Hall/CRC (US),</i> 2014. <small><a target="_blank" href="http://www.google.com/search?as_epq=Bayesian Networks with Examples in R&as_oq=Scutari and Denis (2014)">Search</a></small></p>
+</div>
+<!-- End Right Column -->
+</td>
+</tr></table>
+<!-- End Wrapper -->
+</td></tr></table>
+</div>
+ <!-- Default Statcounter code for Bayesnetty https://www.staff.ncl.ac.uk/richard.howey/bayesnetty/ --> <script type="text/javascript"> var sc_project=12004770; var sc_invisible=1; var sc_security="1ca06837"; </script> <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script> <noscript><div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img class="statcounter" src="https://c.statcounter.com/12004770/0/1ca06837/1/" alt="Web Analytics"></a></div></noscript> <!-- End of Statcounter Code --></body>
+</html>

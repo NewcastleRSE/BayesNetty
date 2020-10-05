@@ -1,0 +1,612 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>BayesNetty: Bayesian Network Software for Genetic Analyses</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<link rel="stylesheet" type="text/css" href="bayesnettystyles.css" />
+<link rel="shortcut icon" href="favicon.ico" />
+</head>
+<body>
+<!-- Begin Wrapper -->
+<div id="wrapper">
+<table width="100%" border="0" cellpadding="0" cellspacing="0"><tr><td>
+<!-- Begin Header -->
+<div id="header">
+<table><tr>
+<td>
+<img width="150" src="bayesnetty-logo.png" alt="BayesNetty: Bayesian Network Software for Genetic Analyses"/>
+</td>
+<td>
+<p style="margin-left: 1em;">BayesNetty: Bayesian Network Software for Genetic Analyses</p>
+</td></tr>
+</table>
+</div>
+<!-- End Header -->
+<!-- Begin Menu Navigation -->
+<ul id="menunav">
+<li><a href="index.html">Home</a></li>
+<li><a href="downloads.html">Download</a></li>
+<li><a href="contact.html">Contact</a></li>
+</ul>
+<!-- End Menu Navigation -->
+
+</td></tr>
+<tr><td>
+<table border="0" cellpadding="0" cellspacing="0"><tr>
+<td valign="top">
+<!-- Begin Left Column -->
+<div id="leftcolumn">
+<!-- Begin Contents Navigation -->
+<div id="navcontainer">
+<ul>
+<li><a href="introduction.html">1 Introduction</a>
+</li>
+<li><a href="installation.html">2 Installation</a>
+</li>
+<li><a href="using.html">3 Using BayesNetty</a>
+<ul>
+<li><a href="using.html#basic-options">3.1 Basic Options</a></li>
+<li><a href="using.html#parameterfile">3.2 Parameter file</a></li>
+<li><a href="using.html#simple-example">3.3 Simple Example</a></li>
+<li><a href="using.html#command-line">3.4 Command-line Options</a></li>
+</ul>
+</li>
+<li><a href="parallel.html">4 Parallel BayesNetty</a>
+<ul>
+<li><a href="parallel.html#compile-parallel-code">4.1 Compilation Scripts</a></li>
+</ul>
+</li>
+<li><a href="input-data.html">5 Input data</a>
+<ul>
+<li><a href="input-data.html#input-data-options">5.1 Options</a></li>
+<li><a href="input-data.html#input-data-discrete">5.2 Discrete data</a></li>
+<li><a href="input-data.html#input-data-cts">5.3 Continuous data</a></li>
+<li><a href="input-data.html#input-data-factor">5.4 Factor data</a></li>
+<li><a href="input-data.html#input-data-snp">5.5 SNP data</a></li>
+<li><a href="input-data.html#input-data-missing">5.6 Missing data</a></li>
+<li><a href="input-data.html#input-data-ids">5.7 Data IDs</a></li>
+<li><a href="input-data.html#input-data-example">5.8 Example</a></li>
+</ul>
+</li>
+<li><a href="input-network.html">6 Input network</a>
+<ul>
+<li><a href="input-network.html#input-network-options">6.1 Options</a></li>
+<li><a href="input-network.html#input-network-black">6.2 Black lists</a></li>
+<li><a href="input-network.html#input-network-white">6.3 White lists</a></li>
+<li><a href="input-network.html#input-network-soft-con">6.4 Soft Constraints</a></li>
+<li><a href="input-network.html#input-network-formats">6.5 Network formats</a></li>
+<li><a href="input-network.html#input-network-example">6.6 Example</a></li>
+</ul>
+</li>
+<li><a href="bnlearn.html">7 bnlearn network</a>
+<ul>
+<li><a href="bnlearn.html#bnlearn-score">7.1 Network score</a></li>
+</ul>
+</li>
+<li><a href="deal.html">8 deal network</a>
+<ul>
+<li><a href="deal.html#imaginary-sample-size">8.1 Imaginary sample size</a></li>
+</ul>
+</li>
+<li><a href="calc-score.html">9 Calculate network score</a>
+<ul>
+<li><a href="calc-score.html#calc-score-options">9.1 Options</a></li>
+<li><a href="calc-score.html#calc-score-example">9.2 Example</a></li>
+</ul>
+</li>
+<li><a href="calc-posterior.html">10 Calculate posterior</a>
+<ul>
+<li><a href="calc-posterior.html#calc-posterior-options">10.1 Options</a></li>
+<li><a href="calc-posterior.html#calc-post-example">10.2 Example</a></li>
+</ul>
+</li>
+<li><a href="search-models.html">11 Search models</a>
+<ul>
+<li><a href="search-models.html#search-models-options">11.1 Options</a></li>
+<li><a href="search-models.html#search-models-greedy">11.2 Greedy search</a></li>
+<li><a href="search-models.html#search-models-example">11.3 Example</a></li>
+</ul>
+</li>
+<li><a href="average-network.html">12 Average network</a>
+<ul>
+<li><a href="average-network.html#average-network-options">12.1 Options</a></li>
+<li><a href="average-network.html#average-network-score">12.2 Score Method</a></li>
+<li><a href="average-network.html#average-network-example">12.3 Example</a></li>
+<li><a href="average-network.html#average-network-parallel">12.4 Parallel Example</a></li>
+</ul>
+</li>
+<li><a href="impute-data.html">13 Impute Data</a>
+<ul>
+<li><a href="impute-data.html#impute-data-options">13.1 Options</a></li>
+<li><a href="impute-data.html#impute-example">13.2 Example</a></li>
+<li><a href="impute-data.html#impute-parallel-example">13.3 Parallel Example</a></li>
+</ul>
+</li>
+<li><a href="sim-data.html">14 Simulate network data</a>
+<ul>
+<li><a href="sim-data.html#sim-data-options">14.1 Options</a></li>
+<li><a href="sim-data.html#sim-data-example1">14.2 Example 1: no data</a></li>
+<li><a href="sim-data.html#sim-data-example2">14.3 Example 2: data and fitted network</a></li>
+<li><a href="sim-data.html#sim-data-example3">14.4 Example 3: data and unknown network</a></li>
+</ul>
+</li>
+<li><a href="markov-blanket.html">15 Markov blanket</a>
+<ul>
+<li><a href="markov-blanket.html#markov-blanket-options">15.1 Options</a></li>
+<li><a href="markov-blanket.html#calc-blanket-example">15.2 Example</a></li>
+</ul>
+</li>
+<li><a href="output-network.html">16 Output network</a>
+<ul>
+<li><a href="output-network.html#output-network-options">16.1 Options</a></li>
+<li><a href="output-network.html#output-network-example">16.2 Example</a></li>
+</ul>
+</li>
+<li><a href="output-priors.html">17 Output priors (deal only)</a>
+<ul>
+<li><a href="output-priors.html#output-priors-options">17.1 Options</a></li>
+<li><a href="output-priors.html#output-priors-example">17.2 Example</a></li>
+</ul>
+</li>
+<li><a href="output-posteriors.html">18 Output posteriors</a>
+<ul>
+<li><a href="output-posteriors.html#output-posteriors-options">18.1 Options</a></li>
+<li><a href="output-posteriors.html#output-posts-example">18.2 Example</a></li>
+</ul>
+</li>
+<li><a href="plot-network.html">19 Network plotting</a>
+<ul>
+<li><a href="plot-network.html#igraph">19.1 igraph</a></li>
+<li><a href="plot-network.html#igraph-example">19.2 Example</a></li>
+</ul>
+</li>
+<li><a href="references.html">References</a></li>
+</ul>
+</div>
+<!-- End Contents Navigation -->
+</div>
+<!-- End Left Column -->
+</td>
+<td valign="top">
+<!-- Begin Right Column -->
+<div id="rightcolumn">
+<h1>12 Average network</h1>
+<p>
+The primary usage of BayesNetty is to calculate an average network as described in this section. An average network can be calculated using the methods described by <a href="references.html#bnlearn">Scutari and Denis (2014)</a>. In brief, a bootstrap sample (with replacement) of the data is taken and a network search is used to find a best fit network. The process is repeated <i>k</i> times and the resulting <i>k</i> networks are averaged to give a final average network, in which the edge strengths represent the proportion of replicates in which that edge appeared. </p>
+<h2><a name="average-network-options">12.1 Options</a></h2>
+<p>
+The options are as follows: </p>
+<table id="tablestylel" class="center">
+<tr><th>Option </th><th>Description </th><th>Default</th></tr>
+<tr class="alt"><td valign="top">-average-networks </td><td valign="top">do a task to calcualte an average network </td><td valign="top"></td></tr>
+<tr><td valign="top">-average-networks-name name </td><td valign="top">label the task with a name </td><td valign="top">Task-n</td></tr>
+<tr class="alt"><td valign="top">-average-networks-network-name network </td><td valign="top">the name of the network for which the average network is calculated </td><td valign="top">previous network (or the default model given by a node for each data variable and no edges if there is no previous network)</td></tr>
+<tr><td valign="top">-average-networks-file average-network.dat </td><td valign="top">the name of the output file to record the average network in </td><td valign="top"></td></tr>
+<tr class="alt"><td valign="top">-average-networks-igraph-file-prefix mygraph </td><td valign="top">output igraph format files consisting of mygraph-nodes.dat, mygraph-edges.dat and R code mygraph-plot.R </td><td valign="top"></td></tr>
+<tr><td valign="top">-average-networks-threshold thres </td><td valign="top">the strength threshold used to include an edge in the average network plotted using the igraph files </td><td valign="top">estimated</td></tr>
+<tr class="alt"><td valign="top">-average-networks-bootstraps k </td><td valign="top">the number of bootstraps used to calculate the average network </td><td valign="top">100</td></tr>
+<tr><td valign="top">-average-networks-random-restarts n </td><td valign="top">for each network fit do another n searches starting from a random network </td><td valign="top">0</td></tr>
+<tr class="alt"><td valign="top">-average-networks-jitter-restarts m </td><td valign="top">for each network fit after the initial search and every random restart search do another m searches jittered from the recently found network </td><td valign="top">0</td></tr>
+<tr><td valign="top">-average-networks-use-weight-method </td><td valign="top">use edge chi square significance values to weight the edge strengths </td><td valign="top"></td></tr>
+<tr class="alt"><td valign="top">-average-networks-use-score-method </td><td valign="top">use network score method instead of bootstrapping (slow) </td><td valign="top"></td></tr>
+<tr><td valign="top">-average-networks-likelihood-file </td><td valign="top">output likelihoods of separate bootstrap networks to file </td><td valign="top"></td></tr>
+</table>
+<h2><a name="average-network-score">12.2 Score Method</a></h2>
+<p>
+An alternative method for computing the average network instead of bootstrapping the data is available using the <tt>-average-networks-use-score-method</tt> option. This method requires calculating the likelihoods of every possible network and is therefore more accurate but takes much more time to compute. For large networks this can normally be unfeasible to calculate within acceptable time limits. Investigations comparing the two approaches for small networks found no major differences between the two approaches. </p>
+<h2><a name="average-network-example">12.3 Example</a></h2>
+<p>
+An example of calculating an average network is contained in the parameter file <tt>paras-average.txt</tt>, which can be found in <a href="example.zip">example.zip</a>. </p>
+<pre>
+#input continuous data
+-input-data
+-input-data-file example-cts.dat
+-input-data-cts
+
+#input discrete data
+-input-data
+-input-data-file example-discrete.dat
+-input-data-discrete
+
+#input SNP data as discrete data
+-input-data
+-input-data-file example.bed
+-input-data-discrete-snp
+
+#calculate average network
+-average-networks
+-average-networks-file average-network-example.dat
+-average-networks-igraph-file-prefix ave-graph-example
+-average-networks-bootstraps 1000
+</pre>
+<p>
+This can be executed as usual </p>
+<pre>
+./bayesnetty paras-average.txt
+</pre>
+<p>
+and will output something as follows </p>
+<pre>
+BayesNetty: Bayesian Network software, v1.00
+--------------------------------------------------
+Copyright 2015-present Richard Howey, GNU General Public License, v3
+Institute of Genetic Medicine, Newcastle University
+
+Random seed: 1551700618
+--------------------------------------------------
+Task name: Task-1
+Loading data
+Continuous data file: example-cts.dat
+Number of ID columns: 2
+Including (all) 2 variables in analysis
+Each variable has 1500 data entries
+Missing value: not set
+--------------------------------------------------
+--------------------------------------------------
+Task name: Task-2
+Loading data
+Discrete data file: example-discrete.dat
+Number of ID columns: 2
+Including the 1 and only variable in analysis
+Each variable has 1500 data entries
+Missing value: NA
+--------------------------------------------------
+--------------------------------------------------
+Task name: Task-3
+Loading data
+SNP binary data file: example.bed
+SNP data treated as discrete data
+Total number of SNPs: 2
+Total number of subjects: 1500
+Number of ID columns: 2
+Including (all) 2 variables in analysis
+Each variable has 1500 data entries
+--------------------------------------------------
+--------------------------------------------------
+Task name: Task-4
+Calculating average network using bootstrapping
+--------------------------------------------------
+Loading defaultNetwork network
+Network type: bnlearn
+Network score type: BIC
+Total number of nodes: 5 (Discrete: 3 | Factor: 0 | Continuous: 2)
+Total number of edges: 0
+Network Structure: [express][pheno][mood][rs1][rs2]
+Total data at each node: 1495
+Missing data at each node: 5
+--------------------------------------------------
+Network: defaultNetwork
+Number of bootstrap iterations: 1000
+Random restarts: 0
+Random jitter restarts: 0
+Average network output to file: average-network-example.dat
+R code to plot average network: ave-graph-example.R
+Estimated edge threshold: 0.09
+Network structure (after above threshold): [mood][rs1][rs2][express|rs1:rs2][pheno|express:mood]
+Network score type: BIC
+Network score = -8213.45
+--------------------------------------------------
+
+Run time: 1 minute and 10 seconds
+</pre>
+<p>
+The above shows the data input and then the default network input consisting of a node for each data variable given by the data and no edges. The average network is written to the file <tt>average-network-example.dat</tt> and will look something like: </p>
+<pre>
+from    type1   to      type2   strength        direction
+express c       pheno   c       1       0.949
+rs1     d       express c       0.999   1
+mood    d       pheno   c       0.992   1
+rs2     d       express c       0.992   1
+rs2     d       pheno   c       0.09    1
+rs1     d       pheno   c       0.09    1
+mood    d       express c       0.073   1
+rs2     d       mood    d       0.003   1
+rs1     d       mood    d       0.002   1
+</pre>
+<p>
+The option to output R code and data to plot the average network, <tt>-average-networks-igraph-file-prefix</tt>, was also used. This is similar to the method used to draw a regular network, see <a href="plot-network.html">section 19</a>. </p>
+<p>
+The R file, <tt>ave-graph-example.R</tt>, will look something as follows: </p>
+<pre>
+#threshold, an arc must be greater than the threshold to be plotted
+threshold&lt;-0.09
+plotThresholdEst&lt;-TRUE
+
+#load igraph library, http://igraph.org/r/
+library(igraph)
+
+#load average network graph
+aveGraph&lt;-read.table("average-network-example.dat", header=TRUE, stringsAsFactors=FALSE)
+
+#plot arc strength versus cumulative number of arcs with strength &lt;= arc strength
+if(plotThresholdEst) {
+png(filename="ave-graph-example-thresholdEst.png", width=600, height=600)
+y&lt;-c()
+for(stren in aveGraph$strength) y&lt;-append(y, sum(aveGraph$strength &lt;= stren))
+plot.stepfun(aveGraph$strength, xlab="arc strength", ylab="cumulative distribution function", verticals=FALSE, xlim=c(0,1), pch=19, main="")
+abline(v=threshold, lty=2)
+dev.off()
+}
+
+#create node and edge tables for igraph
+#map node names to numbers
+nodeList&lt;-as.numeric(as.factor(c(aveGraph$from, aveGraph$to)))
+noArcs&lt;-length(aveGraph$from)
+fromNum&lt;-nodeList[1:noArcs]
+toNum&lt;-nodeList[(noArcs+1):(2*noArcs)]
+nodes1&lt;-as.data.frame(cbind(fromNum, aveGraph$from, aveGraph$type1))
+colnames(nodes1)&lt;-c("id", "name", "type")
+nodes2&lt;-as.data.frame(cbind(toNum, aveGraph$to, aveGraph$type2))
+colnames(nodes2)&lt;-c("id", "name", "type")
+nodes&lt;-unique(rbind(nodes1, nodes2))
+edges&lt;-as.data.frame(cbind(fromNum, toNum, aveGraph$strength, aveGraph$direction))
+colnames(edges)&lt;-c("from", "to", "strength", "direction")
+
+#apply threshold for plotting arc/edge
+edges&lt;-edges[edges$strength &gt; threshold,]
+
+#create graph
+graph&lt;-graph_from_data_frame(edges, directed = TRUE, vertices = nodes)
+
+#plot the network and output png file, edit style as required
+
+#style for continuous nodes
+shape&lt;-rep("circle", length(nodes$type))
+vcolor&lt;-rep("#eeeeee", length(nodes$type))
+vsize&lt;-rep(25, length(nodes$type))
+color&lt;-rep("black", length(nodes$type))
+
+#style for discrete nodes
+shape[nodes$type=="d"]&lt;-"rectangle"
+vcolor[nodes$type=="d"]&lt;-"#111111"
+vsize[nodes$type=="d"]&lt;-20
+color[nodes$type=="d"]&lt;-"white"
+
+#style for factor nodes
+shape[nodes$type=="f"]&lt;-"rectangle"
+vcolor[nodes$type=="f"]&lt;-"#eeeeee"
+vsize[nodes$type=="f"]&lt;-20
+color[nodes$type=="f"]&lt;-"black"
+
+#edge widths for significances
+minWidth&lt;-0.3
+maxWidth&lt;-10
+edgeMax&lt;-max(edges$strength)
+edgeMin&lt;-min(edges$strength)
+widths&lt;-((edges$strength-edgeMin)/(edgeMax-edgeMin))*(maxWidth - minWidth) + minWidth
+styles&lt;-rep(1, length(widths))
+
+#plot to a png file
+png(filename="ave-graph-example.png", width=800, height=800)
+
+plot(graph, vertex.shape=shape, vertex.size=vsize, vertex.color=vcolor, vertex.label.color=color, edge.width=widths, edge.lty=styles,
+ edge.color="black", edge.arrow.size=1.5, edge.label = signif(edges$direction,3), edge.label.cex=1.5, edge.label.color="red")
+
+#finish png file
+dev.off()
+</pre>
+<p>
+This R file can be ran as follows in Linux </p>
+<pre>
+R --vanilla &lt; ave-graph-example.R
+</pre>
+<p>
+and produces the .png image file of the average network </p>
+<div id="fig"><a href="ave-graph-example.png"><img src="ave-graph-example.png" border="0" class="figimg" width="700"></a><br />
+<br />
+Figure 1. Plot of the average network drawn using the igraph R package.
+</div>
+<p>
+The edges are drawn proportional to the edge strength (but scaled to be between the minimum and maximum edge widths), that is, the proportion of best fit networks that the edge appears in after bootstrapping. Although using the <tt>-average-networks-use-weight-method</tt> option the strength can be weighted using the chi square values of each edge significance. The direction indicates the proportion of times the edge points in the given direction when it appears in a best fit network. The edges are labelled in red with the strength values followed by the direction values in brackets. Edges between discrete and continuous nodes do not have a direction value as they are constrained to be from the discrete node to the continuus node. The plot can easily be updated to your needs by following the <a href="http://igraph.org">igraph</a>&nbsp;R package documentation. </p>
+<p>
+A graph may also be output to show the cumulative number of edges in the average network for different strength thresholds. If an edge has a strength greater than the strength threshold then it is included in the average network. </p>
+<div id="fig"><a href="ave-graph-example-thresholdEst.png"><img src="ave-graph-example-thresholdEst.png" border="0" class="figimg" width="700"></a><br />
+<br />
+Figure 2. Plot of the cumulative number of edges in the average network for different strength thresholds.
+</div>
+<h2><a name="average-network-parallel">12.4 Parallel Example</a></h2>
+<p>
+As calculating the average network is a computationally intensive task, it makes sense it calculate it in parallel. This can be done by running the parallel version of BayesNetty as described in <a href="parallel.html">section 4</a>, but a much quicker way is given here by running the non-parallel version of BayesNetty in parallel and then combining the individual average network results in one final average network. </p>
+<p>
+The handy Unix script <tt>runCalcAveNetPara</tt> can be ran to do this as follows: </p>
+<pre>
+./runCalcAveNetPara paras-average-parallel.txt average-network-example 20
+</pre>
+<p>
+Where the first argument is a BayesNetty parameter file to calculate an average network, as below for example. The second argument is the file name of the average network to output, and the last argument is the number of processes to run in parallel. This will run 50 times 20 bootstraps (equal to 1000 bootstraps) overall to calculate the average network. </p>
+<pre>
+#input continuous data
+-input-data
+-input-data-file example-cts.dat
+-input-data-cts
+
+#input discrete data
+-input-data
+-input-data-file example-discrete.dat
+-input-data-discrete
+
+#input SNP data as discrete data
+-input-data
+-input-data-file example.bed
+-input-data-discrete-snp
+
+#calculate average network
+-average-networks
+-average-networks-bootstraps 50
+</pre>
+<p>
+The linux script <tt>runCalcAveNetPara</tt>, as shown below, runs a number of BayesNetty processes in parallel and sets different output files. As the random number seed is set by default by the execution time, and the processes are set off at the same time, it is necessary to set the seed to different values. The individual average networks are then combined using the <tt>collate-average-nets.R</tt> R script. Also, R code to plot the average graph is also output, which is modified for the appropriate threshold to plot the edges and the final average network file name. </p>
+<pre>
+#!/bin/bash                                                                                                                                          
+
+# $1 = parameter file to calculate average network in parallel                                                                                       
+# $2 = average network file name                                                                                                                     
+# $3 = no. of processes to run in parallel                                                                                                           
+
+RANDOM=$$
+#run bayesnetty $3 times for X bootstraps each                                                                                                       
+#all processes are ran simultaneously in the background
+for i in $(seq 1 $3);
+do
+
+./bayesnetty $1 -so -seed $i0$RANDOM -average-networks-file $2$i-i.dat -average-networks-igraph-file-prefix $2-graph&
+
+done
+
+#wait for all processes to finish                                                                                                                    
+wait
+
+#collate the results into a final average file                                                                                                       
+R --vanilla --args $2 $3 &lt; collate-average-nets.R
+
+#delete individual average network files                                                                                                             
+rm $2*-i.dat
+
+#plot the final network                                                                                                                              
+#set threshold                                                                                                                                       
+t=$(cat "$2-threshold.dat")
+sed -i "s/threshold&lt;-/threshold&lt;-$t #/g" $2-graph.R
+
+#set final average file name                                                                                                                         
+sed -i "s/aveGraph&lt;-/aveGraph&lt;-read.table(\"$2.dat\", header=TRUE, stringsAsFactors=FALSE) #/g" $2-graph.R
+
+#plot average network                                                                                                                                
+R --vanilla &lt; $2-graph.R
+</pre>
+<p>
+The R script <tt>collate-average-nets.R</tt> (used in the linux script above) combines the average networks and calculates a suggested threshold for plotting the network, as given below: </p>
+<pre>
+#R file to collate average networks ran in parallel - all average networks must have been calculated with the same number of bootstraps
+cmd_args&lt;-commandArgs()
+
+fileName&lt;-cmd_args[4]
+noFiles&lt;-as.numeric(cmd_args[5])
+
+totalNet&lt;-read.table(paste(fileName,1,"-i.dat",sep=""), header=TRUE, stringsAsFactors=FALSE)
+
+totalNet&lt;-cbind(totalNet, rep(1, length(totalNet[,1])))
+colnames(totalNet)[7]&lt;-"count"
+
+for(i in 2:noFiles)
+{
+   aveNet&lt;-read.table(paste(fileName,i,"-i.dat",sep=""), header=TRUE, stringsAsFactors=FALSE)
+   aveNet&lt;-cbind(aveNet, rep(1, length(aveNet[,1])))
+   colnames(aveNet)[7]&lt;-"count"
+   
+   ##loop thro' rows of average table
+   for(j in 1:length(aveNet[,1]))
+   {
+     ##find edge in total
+     totRow&lt;-which(aveNet$from[j]==totalNet$from & aveNet$to[j]==totalNet$to)
+     if(length(totRow) == 1)
+     {
+         totalNet$strength[totRow]&lt;-totalNet$strength[totRow] + aveNet$strength[j]
+         totalNet$direction[totRow]&lt;-totalNet$direction[totRow] + aveNet$direction[j]
+         totalNet[totRow,7]&lt;-totalNet[totRow,7]+1
+     } else {
+         totRow&lt;-which(aveNet$from[j]==totalNet$to & aveNet$to[j]==totalNet$from)
+         if(length(totRow) == 1)
+         {
+           totalNet$strength[totRow]&lt;-totalNet$strength[totRow] + aveNet$strength[j]
+           totalNet$direction[totRow]&lt;-totalNet$direction[totRow] + 1 - aveNet$direction[j]
+           totalNet[totRow,7]&lt;-totalNet[totRow,7]+1
+         } else {     
+           totalNet&lt;-rbind(totalNet, aveNet[j,])            
+         }     
+     }     
+   }
+}
+
+##take average over all average networks
+totalNet$strength&lt;-totalNet$strength/noFiles
+totalNet$direction&lt;-totalNet$direction/totalNet[,7]
+
+totalNet&lt;-totalNet[order(-totalNet$strength),1:6]
+
+#reorder edges if direction &lt; 0.5
+for(j in 1:length(totalNet[,1]))
+{
+   if(totalNet$direction[j] &lt; 0.5)
+   {
+      totalNet[j,]&lt;-c(totalNet$to[j], totalNet[j,2], totalNet$from[j], totalNet[j,4], totalNet[j,5], 1-as.numeric(totalNet[j,6]))
+   }
+}
+
+write.table(totalNet, paste(fileName,".dat",sep=""), quote=FALSE, col.names=TRUE, row.names=FALSE)
+
+#calculate suggested threshold for plotting network
+cumCount = 0;
+arcStrength = 0;
+arcStrengths&lt;-c()
+cumArcStrengths&lt;-c()
+oas&lt;-1
+    
+repeat
+{
+		arcStrength = rev(totalNet$strength)[oas];
+		
+		repeat
+		{			
+			oas&lt;-oas+1
+			cumCount&lt;-cumCount+1
+
+		 if(rev(totalNet$strength)[oas] &gt; arcStrength || oas &gt; length(rev(totalNet$strength))) break
+    }
+    
+    if(length(arcStrengths) &gt; 0 && arcStrength == arcStrengths[length(arcStrengths)])
+    {
+      arcStrengths[length(arcStrengths)]&lt;-arcStrength
+      cumArcStrengths[length(arcStrengths)]&lt;-cumCount
+    } else {
+      arcStrengths&lt;-append(arcStrengths, arcStrength)
+      cumArcStrengths&lt;-append(cumArcStrengths, cumCount)
+    } 
+     
+     if(oas &gt; length(rev(totalNet$strength))) break
+}
+ 
+bestL1score&lt;-cumCount
+propArcs&lt;-cumArcStrengths/cumArcStrengths[length(cumArcStrengths)]
+
+for(i in 1:length(arcStrengths)) #casTh in acumTot) 
+{
+    j&lt;-1
+		L1score = propArcs[i] *arcStrengths[1];
+  
+		prevCum = propArcs[j];
+		prevStrength = arcStrengths[j];
+		j&lt;-j+1;
+
+		while(j &lt;= length(arcStrengths)) 
+		{
+			if(prevCum &gt; propArcs[i]) L1score&lt;-L1score + (prevCum - propArcs[i]) *(arcStrengths[j] - prevStrength)
+			else L1score&lt;-L1score + (propArcs[i] - prevCum) *(arcStrengths[j] - prevStrength)
+			
+			prevCum = propArcs[j];
+			prevStrength = arcStrengths[j];
+			j&lt;-j+1
+		}
+
+		if(L1score &lt; bestL1score)
+		{
+			bestL1score = L1score;
+			bestThreshold = arcStrengths[i]
+		}
+}
+ 
+write.table(bestThreshold, paste(fileName,"-threshold.dat",sep=""), quote=FALSE, col.names=FALSE, row.names=FALSE)
+</pre>
+<p>
+The files <tt>paras-average-parallel.txt</tt>, <tt>runCalcAveNetPara</tt> and <tt>collate-average-nets.R</tt> can be found in the <a href="example.zip">example.zip</a>&nbsp;file. </p>
+<br />
+<div class="prevnext"><span class="left"><a href="search-models.html">&lt;-prev</a>
+</span><span class="right"><a href="impute-data.html">next-&gt;</a>
+</span></div><!-- End Right Column -->
+</div>
+</td>
+</tr></table>
+<!-- End Wrapper -->
+</td></tr></table>
+</div>
+ <!-- Default Statcounter code for Bayesnetty https://www.staff.ncl.ac.uk/richard.howey/bayesnetty/ --> <script type="text/javascript"> var sc_project=12004770; var sc_invisible=1; var sc_security="1ca06837"; </script> <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script> <noscript><div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img class="statcounter" src="https://c.statcounter.com/12004770/0/1ca06837/1/" alt="Web Analytics"></a></div></noscript> <!-- End of Statcounter Code --></body>
+</html>

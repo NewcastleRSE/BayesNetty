@@ -1,0 +1,184 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>BayesNetty: Bayesian Network Software for Genetic Analyses</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<link rel="stylesheet" type="text/css" href="bayesnettystyles.css" />
+<link rel="shortcut icon" href="favicon.ico" />
+</head>
+<body>
+<!-- Begin Wrapper -->
+<div id="wrapper">
+<table width="100%" border="0" cellpadding="0" cellspacing="0"><tr><td>
+<!-- Begin Header -->
+<div id="header">
+<table><tr>
+<td>
+<img width="150" src="bayesnetty-logo.png" alt="BayesNetty: Bayesian Network Software for Genetic Analyses"/>
+</td>
+<td>
+<p style="margin-left: 1em;">BayesNetty: Bayesian Network Software for Genetic Analyses</p>
+</td></tr>
+</table>
+</div>
+<!-- End Header -->
+<!-- Begin Menu Navigation -->
+<ul id="menunav">
+<li><a href="index.html">Home</a></li>
+<li><a href="downloads.html">Download</a></li>
+<li><a href="contact.html">Contact</a></li>
+</ul>
+<!-- End Menu Navigation -->
+
+</td></tr>
+<tr><td>
+<table border="0" cellpadding="0" cellspacing="0"><tr>
+<td valign="top">
+<!-- Begin Left Column -->
+<div id="leftcolumn">
+<!-- Begin Contents Navigation -->
+<div id="navcontainer">
+<ul>
+<li><a href="introduction.html">1 Introduction</a>
+</li>
+<li><a href="installation.html">2 Installation</a>
+</li>
+<li><a href="using.html">3 Using BayesNetty</a>
+<ul>
+<li><a href="using.html#basic-options">3.1 Basic Options</a></li>
+<li><a href="using.html#parameterfile">3.2 Parameter file</a></li>
+<li><a href="using.html#simple-example">3.3 Simple Example</a></li>
+</ul>
+</li>
+<li><a href="input-data.html">4 Input data</a>
+<ul>
+<li><a href="input-data.html#input-data-options">4.1 Options</a></li>
+<li><a href="input-data.html#input-data-discrete">4.2 Discrete data</a></li>
+<li><a href="input-data.html#input-data-cts">4.3 Continuous data</a></li>
+<li><a href="input-data.html#input-data-factor">4.4 Factor data</a></li>
+<li><a href="input-data.html#input-data-snp">4.5 SNP data</a></li>
+<li><a href="input-data.html#input-data-missing">4.6 Missing data</a></li>
+<li><a href="input-data.html#input-data-ids">4.7 Data IDs</a></li>
+<li><a href="input-data.html#input-data-example">4.8 Example</a></li>
+</ul>
+</li>
+<li><a href="input-network.html">5 Input network</a>
+<ul>
+<li><a href="input-network.html#input-network-options">5.1 Options</a></li>
+<li><a href="input-network.html#input-network-black">5.2 Black lists</a></li>
+<li><a href="input-network.html#input-network-white">5.3 White lists</a></li>
+<li><a href="input-network.html#input-network-soft-con">5.4 Soft Constraints</a></li>
+<li><a href="input-network.html#input-network-formats">5.5 Network formats</a></li>
+<li><a href="input-network.html#input-network-example">5.6 Example</a></li>
+</ul>
+</li>
+<li><a href="bnlearn.html">6 bnlearn network</a>
+<ul>
+<li><a href="bnlearn.html#bnlearn-score">6.1 Network score</a></li>
+</ul>
+</li>
+<li><a href="deal.html">7 deal network</a>
+<ul>
+<li><a href="deal.html#imaginary-sample-size">7.1 Imaginary sample size</a></li>
+</ul>
+</li>
+<li><a href="calc-posterior.html">8 Calculate posterior</a>
+<ul>
+<li><a href="calc-posterior.html#calc-posterior-options">8.1 Options</a></li>
+<li><a href="calc-posterior.html#calc-post-example">8.2 Example</a></li>
+</ul>
+</li>
+<li><a href="calc-score.html">9 Calculate network score</a>
+<ul>
+<li><a href="calc-score.html#calc-score-options">9.1 Options</a></li>
+<li><a href="calc-score.html#calc-score-example">9.2 Example</a></li>
+</ul>
+</li>
+<li><a href="search-models.html">10 Search models</a>
+<ul>
+<li><a href="search-models.html#search-models-options">10.1 Options</a></li>
+<li><a href="search-models.html#search-models-greedy">10.2 Greedy search</a></li>
+<li><a href="search-models.html#search-models-example">10.3 Example</a></li>
+</ul>
+</li>
+<li><a href="average-network.html">11 Average network</a>
+<ul>
+<li><a href="average-network.html#average-network-options">11.1 Options</a></li>
+<li><a href="average-network.html#average-network-score">11.2 Score Method</a></li>
+<li><a href="average-network.html#average-network-example">11.3 Example</a></li>
+</ul>
+</li>
+<li><a href="compare-models.html">12 Compare models</a>
+<ul>
+<li><a href="compare-models.html#compare-models-options">12.1 Options</a></li>
+<li><a href="compare-models.html#compare-models-example">12.2 Example</a></li>
+</ul>
+</li>
+<li><a href="sim-data.html">13 Simulate network data</a>
+<ul>
+<li><a href="sim-data.html#sim-data-options">13.1 Options</a></li>
+<li><a href="sim-data.html#sim-data-example1">13.2 Example 1: no data</a></li>
+<li><a href="sim-data.html#sim-data-example2">13.3 Example 2: data and fitted network</a></li>
+<li><a href="sim-data.html#sim-data-example3">13.4 Example 3: data and unknown network</a></li>
+</ul>
+</li>
+<li><a href="output-network.html">14 Output network</a>
+<ul>
+<li><a href="output-network.html#output-network-options">14.1 Options</a></li>
+<li><a href="output-network.html#output-network-example">14.2 Example</a></li>
+</ul>
+</li>
+<li><a href="output-priors.html">15 Output priors</a>
+<ul>
+<li><a href="output-priors.html#output-priors-options">15.1 Options</a></li>
+<li><a href="output-priors.html#output-priors-example">15.2 Example</a></li>
+</ul>
+</li>
+<li><a href="output-posteriors.html">16 Output posteriors</a>
+<ul>
+<li><a href="output-posteriors.html#output-posteriors-options">16.1 Options</a></li>
+<li><a href="output-posteriors.html#output-posts-example">16.2 Example</a></li>
+</ul>
+</li>
+<li><a href="plot-network.html">17 Network plotting</a>
+<ul>
+<li><a href="plot-network.html#igraph">17.1 igraph</a></li>
+<li><a href="plot-network.html#igraph-example">17.2 Example</a></li>
+</ul>
+</li>
+<li><a href="references.html">References</a></li>
+</ul>
+</div>
+<!-- End Contents Navigation -->
+</div>
+<!-- End Left Column -->
+</td>
+<td valign="top">
+<!-- Begin Right Column -->
+<div id="rightcolumn">
+<h1>12 Compare models</h1>
+<p>
+Later there may be features to compare models, such as taking an intersection or union of a collection of models. No such features exist yet. </p>
+<h2><a name="compare-models-options">12.1 Options</a></h2>
+<p>
+The options are as follows: </p>
+<table id="tablestylel" class="center">
+<tr><th>Option </th><th>Description </th><th>Default</th></tr>
+<tr class="alt"><td valign="top">-compare-models </td><td valign="top">do a task to search compare two (or more) models </td><td valign="top"></td></tr>
+<tr><td valign="top">-compare-models name </td><td valign="top">label the task with a name </td><td valign="top">Task-n</td></tr>
+</table>
+<h2><a name="compare-models-example">12.2 Example</a></h2>
+<p>
+There will be an example here when this feature is available. </p>
+<br />
+<div class="prevnext"><span class="left"><a href="average-network.html">&lt;-prev</a>
+</span><span class="right"><a href="sim-data.html">next-&gt;</a>
+</span></div><!-- End Right Column -->
+</div>
+</td>
+</tr></table>
+<!-- End Wrapper -->
+</td></tr></table>
+</div>
+</body>
+</html>
