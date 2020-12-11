@@ -122,42 +122,54 @@
 <li><a href="impute-data.html#impute-parallel-example">13.3 Parallel Example</a></li>
 </ul>
 </li>
-<li><a href="sim-data.html">14 Simulate network data</a>
+<li><a href="estimate-impute.html">14 Estimate Imputation Benefit</a>
 <ul>
-<li><a href="sim-data.html#sim-data-options">14.1 Options</a></li>
-<li><a href="sim-data.html#sim-data-example1">14.2 Example 1: no data</a></li>
-<li><a href="sim-data.html#sim-data-example2">14.3 Example 2: data and fitted network</a></li>
-<li><a href="sim-data.html#sim-data-example3">14.4 Example 3: data and unknown network</a></li>
+<li><a href="estimate-impute.html#estimate-impute-options">14.1 Options</a></li>
+<li><a href="estimate-impute.html#estimate-impute-example">14.2 Example</a></li>
 </ul>
 </li>
-<li><a href="markov-blanket.html">15 Markov blanket</a>
+<li><a href="calc-recall-precision.html">15 Calculate Recall and Precision</a>
 <ul>
-<li><a href="markov-blanket.html#markov-blanket-options">15.1 Options</a></li>
-<li><a href="markov-blanket.html#calc-blanket-example">15.2 Example</a></li>
+<li><a href="calc-recall-precision.html#calc-recall-precision-options">15.1 Options</a></li>
+<li><a href="calc-recall-precision.html#calc-recall-precision-example">15.2 Example</a></li>
 </ul>
 </li>
-<li><a href="output-network.html">16 Output network</a>
+<li><a href="sim-data.html">16 Simulate network data</a>
 <ul>
-<li><a href="output-network.html#output-network-options">16.1 Options</a></li>
-<li><a href="output-network.html#output-network-example">16.2 Example</a></li>
+<li><a href="sim-data.html#sim-data-options">16.1 Options</a></li>
+<li><a href="sim-data.html#sim-data-example1">16.2 Example 1: no data</a></li>
+<li><a href="sim-data.html#sim-data-example2">16.3 Example 2: data and fitted network</a></li>
+<li><a href="sim-data.html#sim-data-example3">16.4 Example 3: data and unknown network</a></li>
 </ul>
 </li>
-<li><a href="output-priors.html">17 Output priors (deal only)</a>
+<li><a href="markov-blanket.html">17 Markov blanket</a>
 <ul>
-<li><a href="output-priors.html#output-priors-options">17.1 Options</a></li>
-<li><a href="output-priors.html#output-priors-example">17.2 Example</a></li>
+<li><a href="markov-blanket.html#markov-blanket-options">17.1 Options</a></li>
+<li><a href="markov-blanket.html#calc-blanket-example">17.2 Example</a></li>
 </ul>
 </li>
-<li><a href="output-posteriors.html">18 Output posteriors</a>
+<li><a href="output-network.html">18 Output network</a>
 <ul>
-<li><a href="output-posteriors.html#output-posteriors-options">18.1 Options</a></li>
-<li><a href="output-posteriors.html#output-posts-example">18.2 Example</a></li>
+<li><a href="output-network.html#output-network-options">18.1 Options</a></li>
+<li><a href="output-network.html#output-network-example">18.2 Example</a></li>
 </ul>
 </li>
-<li><a href="plot-network.html">19 Network plotting</a>
+<li><a href="output-priors.html">19 Output priors (deal only)</a>
 <ul>
-<li><a href="plot-network.html#igraph">19.1 igraph</a></li>
-<li><a href="plot-network.html#igraph-example">19.2 Example</a></li>
+<li><a href="output-priors.html#output-priors-options">19.1 Options</a></li>
+<li><a href="output-priors.html#output-priors-example">19.2 Example</a></li>
+</ul>
+</li>
+<li><a href="output-posteriors.html">20 Output posteriors</a>
+<ul>
+<li><a href="output-posteriors.html#output-posteriors-options">20.1 Options</a></li>
+<li><a href="output-posteriors.html#output-posts-example">20.2 Example</a></li>
+</ul>
+</li>
+<li><a href="plot-network.html">21 Network plotting</a>
+<ul>
+<li><a href="plot-network.html#igraph">21.1 igraph</a></li>
+<li><a href="plot-network.html#igraph-example">21.2 Example</a></li>
 </ul>
 </li>
 <li><a href="references.html">References</a></li>
@@ -205,7 +217,7 @@ If an individual has too much missing data then it may not be beneficial to impu
 <p>
 The <tt>-impute-network-data-random-restarts</tt> and <tt>-impute-network-data-jitter-restarts</tt> options can be increased to improve the network search at each step of the algorithm and may potentially increase the quality of the imputed data at the expense of a longer running time. </p>
 <p>
-The <tt>-impute-network-data-start-indiv</tt>, <tt>-impute-network-data-end-indiv</tt> and <tt>-impute-network-data-job</tt> options may be used to only impute a range of individuals. These options may be useful for large networks to impute data in parallel and then combine later if the data is output to file (see <a href="output-network.html">section 16</a> to output data). See <a href="impute-data.html#impute-parallel-example">section 13.3</a> for an example. </p>
+The <tt>-impute-network-data-start-indiv</tt>, <tt>-impute-network-data-end-indiv</tt> and <tt>-impute-network-data-job</tt> options may be used to only impute a range of individuals. These options may be useful for large networks to impute data in parallel and then combine later if the data is output to file (see <a href="output-network.html">section 18</a> to output data). See <a href="impute-data.html#impute-parallel-example">section 13.3</a> for an example. </p>
 <p>
 The option <tt>-impute-network-data-job</tt> can also be used to only impute data for some individuals and makes it easier to split the imputation into a number of jobs. </p>
 <h2><a name="impute-example">13.2 Example</a></h2>
@@ -320,7 +332,7 @@ There are a lot of individuals with missing data in this example data resulting 
 It may be possible that some individuals are not imputed as they have too much missing data, or sometimes only partially imputed if the data is not suitable for the imputation algorithm. </p>
 <h2><a name="impute-parallel-example">13.3 Parallel Example</a></h2>
 <p>
-As imputing network data is a computationally intensive task, it makes sense to do it in parallel. This can be done by running the parallel version of BayesNetty as described in <a href="parallel.html">section 4</a>, but a much quicker way is given here by running the non-parallel version of BayesNetty in parallel where each process imputes a subset of the individuals. The data of the imputed individuals can then be output for each process (see <a href="output-network.html">section 16</a>) and then combined into the final imputed data set. </p>
+As imputing network data is a computationally intensive task, it makes sense to do it in parallel. This can be done by running the parallel version of BayesNetty as described in <a href="parallel.html">section 4</a>, but a much quicker way is given here by running the non-parallel version of BayesNetty in parallel where each process imputes a subset of the individuals. The data of the imputed individuals can then be output for each process (see <a href="output-network.html">section 18</a>) and then combined into the final imputed data set. </p>
 <p>
 A handy Unix script has been written to do this and is ran as follows: </p>
 <pre>
@@ -442,7 +454,7 @@ Where the parameter file is as follows: </p>
 The files <tt>paras-impute-parallel.txt</tt>, <tt>runImputeParallel</tt> and <tt>paras-search-imputed-data.txt</tt> can be found in the <a href="impute-example.zip">impute-example.zip</a>&nbsp;file. </p>
 <br />
 <div class="prevnext"><span class="left"><a href="average-network.html">&lt;-prev</a>
-</span><span class="right"><a href="sim-data.html">next-&gt;</a>
+</span><span class="right"><a href="estimate-impute.html">next-&gt;</a>
 </span></div><!-- End Right Column -->
 </div>
 </td>

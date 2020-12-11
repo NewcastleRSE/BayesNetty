@@ -182,17 +182,114 @@
 <td valign="top">
 <!-- Begin Right Column -->
 <div id="rightcolumn">
-<h1>1 Introduction</h1>
+<h1>15 Calculate Recall and Precision</h1>
 <p>
-BayesNetty is a C++ program written to perform Bayesian network analyses using genetic and phenotypic data. </p>
+It is possible to calculate the recall and precision of a network against the &ldquo;true&rdquo; network structure. Typically this option will be used when the true network structure is chosen and used to simulate data. A best fit network can then be found for this data and the accuaracy assessed by calculating the recall and precision. </p>
 <p>
-BayesNetty is copyright, 2015-present Richard Howey, GNU General Public License, version 3. </p>
+For a network the recall is the percentage of edges found from the original true network. The precision is the percentage of edges in the network that are also in the original true network. For an edge to be correct it must be in the correct direction. However, if the true network has equivalent networks such that some edges may be in either direction, then these edges are considered correct if they are in either direction. </p>
+<h2><a name="calc-recall-precision-options">15.1 Options</a></h2>
 <p>
-<br> <br></p>
+The options are as follows: </p>
+<table id="tablestylel" class="center">
+<tr><th>Option </th><th>Description </th><th>Default</th></tr>
+<tr class="alt"><td valign="top">-calculate-recall-precision </td><td valign="top"></td><td valign="top"></td></tr>
+<tr><td valign="top">-calculate-recall-precision-name </td><td valign="top">label the task with a name </td><td valign="top">Task-n</td></tr>
+<tr class="alt"><td valign="top">-calculate-recall-precision-network-name network1 </td><td valign="top">the name of the network to calculate the recall and precision for </td><td valign="top"></td></tr>
+<tr><td valign="top">-calculate-recall-precision-true-network-name network2 </td><td valign="top">the name of the true network to calculate the recall and precision against </td><td valign="top"></td></tr>
+<tr class="alt"><td valign="top">-calculate-recall-precision-file file.dat </td><td valign="top">file to write recall and precision results to </td><td valign="top"></td></tr>
+</table>
+<h2><a name="calc-recall-precision-example">15.2 Example</a></h2>
 <p>
-The <b>recommended use</b> of BayesNetty is to calculate the average network as described in <a href="average-network.html">section 12</a>, possibly additionally using imputation to fill in missing data as descibed in <a href="impute-data.html">section 13</a>. However, for new users we reccomend you work your way through all sections in numerical order, in order to understand the functionality of the program. </p>
+An example of calculating the recall and precision is contained in the parameter file <tt>paras-example-calc-recall-precision.txt</tt>, which can be found in <a href="example.zip">example.zip</a>.The network is again taken from the <tt>child</tt> network from the bnlearn repository <a href="references.html#bnlearn">Scutari and Denis (2014)</a>. </p>
+<p>
+For example, the following parameter file: </p>
+<pre>
+#input the network to calculate the recall and precision of
+-input-network
+-input-network-name example-net
+-input-network-file example-net-calc-recall-pre.dat
+
+#input true network structure for these nodes
+-input-network
+-input-network-name true-net
+-input-network-file example-true-net-child.dat
+
+#calculate the recall and precision
+-calculate-recall-precision
+-calculate-recall-precision-network-name example-net
+-calculate-recall-precision-true-network-name true-net
+-calculate-recall-precision-file recall-precision.dat
+</pre>
+<p>
+can be ran in the usual way </p>
+<pre>
+./bayesnetty paras-example-calc-recall-precision.txt
+</pre>
+<p>
+and will output something as follows </p>
+<pre>
+BayesNetty: Bayesian Network software, v1.1
+--------------------------------------------------
+Copyright 2015-present Richard Howey, GNU General Public License, v3
+Institute of Genetic Medicine, Newcastle University
+
+Random seed: 1605806239
+--------------------------------------------------
+Task name: example-net
+Loading network
+Network file: example-net-calc-recall-pre.dat
+Network type: bnlearn
+Network score type: BIC
+Total number of nodes: 20 (Discrete: 0 | Factor: 0 | Continuous: 0 | No data: 20)
+Total number of edges: 16
+Network Structure: [BirthAsphyxia][LVHreport][RUQO2][Sick][XrayReport][Age|Sick]
+[ChestXray|XrayReport][LVH|LVHreport][LowerBodyO2|LVHreport][CO2Report|Age]
+[HypDistrib|LowerBodyO2][LungFlow|ChestXray][CO2|CO2Report][DuctFlow|LungFlow]
+[Disease|DuctFlow][CardiacMixing|Disease][HypoxiaInO2|CardiacMixing][GruntingReport|Hy...
+The network has nodes with no data
+--------------------------------------------------
+--------------------------------------------------
+Task name: true-net
+Loading network
+Network file: example-true-net-child.dat
+Network type: bnlearn
+Network score type: BIC
+Total number of nodes: 20 (Discrete: 0 | Factor: 0 | Continuous: 0 | No data: 20)
+Total number of edges: 25
+Network Structure: [BirthAsphyxia][Disease|BirthAsphyxia][CardiacMixing|Disease][DuctFlow|Disease]
+[LVH|Disease][LungFlow|Disease][LungParench|Disease][Sick|Disease][Age|Disease:Sick][CO2|LungParench]
+[ChestXray|LungFlow:LungParench][Grunting|LungParench:Sick][HypDistrib|CardiacMixing:DuctFlow][HypoxiaInO2|CardiacMixing...
+The network has nodes with no data
+--------------------------------------------------
+--------------------------------------------------
+Task name: Task-3
+Calculating the recall and precision
+Network: example-net
+Network Structure: [BirthAsphyxia][LVHreport][RUQO2][Sick][XrayReport][Age|Sick][ChestXray|XrayReport]
+[LVH|LVHreport][LowerBodyO2|LVHreport][CO2Report|Age][HypDistrib|LowerBodyO2][LungFlow|ChestXray]
+[CO2|CO2Report][DuctFlow|LungFlow][Disease|DuctFlow][CardiacMixing|Disease][HypoxiaInO2|CardiacMixing][GruntingReport|Hy...
+True Network: true-net
+True Network Structure: [BirthAsphyxia][Disease|BirthAsphyxia][CardiacMixing|Disease][DuctFlow|Disease]
+[LVH|Disease][LungFlow|Disease][LungParench|Disease][Sick|Disease][Age|Disease:Sick][CO2|LungParench]
+[ChestXray|LungFlow:LungParench][Grunting|LungParench:Sick][HypDistrib|CardiacMixing:DuctFlow][HypoxiaInO2|CardiacMixing...
+Recall and precision written to file: recall-precision.dat
+
+Recall: the percentage of edges found from the original true network
+Precision: the percentage of edges in the network that are also in the original true network
+
+Recall: 32
+Precision: 50
+
+Recall and precision written to file: recall-precision.dat
+--------------------------------------------------
+
+Run time: less than one second
+</pre>
+<p>
+In this example the network for which we wish we calculate the recall and precision is input into BayesNetty. The true network structure is then also input into BayesNetty. Finally the recall and precision is calculated and the results output to a file. This file simply contains 2 numbers: the recall followed by the precision. </p>
 <br />
-<div class="prevnext"><span class="right"><a href="installation.html">next-&gt;</a>
+<div class="prevnext"><span class="left"><a href="estimate-impute.html">&lt;-prev</a>
+</span><span class="right"><a href="sim-data.html">next-&gt;</a>
 </span></div><!-- End Right Column -->
 </div>
 </td>

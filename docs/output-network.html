@@ -122,42 +122,54 @@
 <li><a href="impute-data.html#impute-parallel-example">13.3 Parallel Example</a></li>
 </ul>
 </li>
-<li><a href="sim-data.html">14 Simulate network data</a>
+<li><a href="estimate-impute.html">14 Estimate Imputation Benefit</a>
 <ul>
-<li><a href="sim-data.html#sim-data-options">14.1 Options</a></li>
-<li><a href="sim-data.html#sim-data-example1">14.2 Example 1: no data</a></li>
-<li><a href="sim-data.html#sim-data-example2">14.3 Example 2: data and fitted network</a></li>
-<li><a href="sim-data.html#sim-data-example3">14.4 Example 3: data and unknown network</a></li>
+<li><a href="estimate-impute.html#estimate-impute-options">14.1 Options</a></li>
+<li><a href="estimate-impute.html#estimate-impute-example">14.2 Example</a></li>
 </ul>
 </li>
-<li><a href="markov-blanket.html">15 Markov blanket</a>
+<li><a href="calc-recall-precision.html">15 Calculate Recall and Precision</a>
 <ul>
-<li><a href="markov-blanket.html#markov-blanket-options">15.1 Options</a></li>
-<li><a href="markov-blanket.html#calc-blanket-example">15.2 Example</a></li>
+<li><a href="calc-recall-precision.html#calc-recall-precision-options">15.1 Options</a></li>
+<li><a href="calc-recall-precision.html#calc-recall-precision-example">15.2 Example</a></li>
 </ul>
 </li>
-<li><a href="output-network.html">16 Output network</a>
+<li><a href="sim-data.html">16 Simulate network data</a>
 <ul>
-<li><a href="output-network.html#output-network-options">16.1 Options</a></li>
-<li><a href="output-network.html#output-network-example">16.2 Example</a></li>
+<li><a href="sim-data.html#sim-data-options">16.1 Options</a></li>
+<li><a href="sim-data.html#sim-data-example1">16.2 Example 1: no data</a></li>
+<li><a href="sim-data.html#sim-data-example2">16.3 Example 2: data and fitted network</a></li>
+<li><a href="sim-data.html#sim-data-example3">16.4 Example 3: data and unknown network</a></li>
 </ul>
 </li>
-<li><a href="output-priors.html">17 Output priors (deal only)</a>
+<li><a href="markov-blanket.html">17 Markov blanket</a>
 <ul>
-<li><a href="output-priors.html#output-priors-options">17.1 Options</a></li>
-<li><a href="output-priors.html#output-priors-example">17.2 Example</a></li>
+<li><a href="markov-blanket.html#markov-blanket-options">17.1 Options</a></li>
+<li><a href="markov-blanket.html#calc-blanket-example">17.2 Example</a></li>
 </ul>
 </li>
-<li><a href="output-posteriors.html">18 Output posteriors</a>
+<li><a href="output-network.html">18 Output network</a>
 <ul>
-<li><a href="output-posteriors.html#output-posteriors-options">18.1 Options</a></li>
-<li><a href="output-posteriors.html#output-posts-example">18.2 Example</a></li>
+<li><a href="output-network.html#output-network-options">18.1 Options</a></li>
+<li><a href="output-network.html#output-network-example">18.2 Example</a></li>
 </ul>
 </li>
-<li><a href="plot-network.html">19 Network plotting</a>
+<li><a href="output-priors.html">19 Output priors (deal only)</a>
 <ul>
-<li><a href="plot-network.html#igraph">19.1 igraph</a></li>
-<li><a href="plot-network.html#igraph-example">19.2 Example</a></li>
+<li><a href="output-priors.html#output-priors-options">19.1 Options</a></li>
+<li><a href="output-priors.html#output-priors-example">19.2 Example</a></li>
+</ul>
+</li>
+<li><a href="output-posteriors.html">20 Output posteriors</a>
+<ul>
+<li><a href="output-posteriors.html#output-posteriors-options">20.1 Options</a></li>
+<li><a href="output-posteriors.html#output-posts-example">20.2 Example</a></li>
+</ul>
+</li>
+<li><a href="plot-network.html">21 Network plotting</a>
+<ul>
+<li><a href="plot-network.html#igraph">21.1 igraph</a></li>
+<li><a href="plot-network.html#igraph-example">21.2 Example</a></li>
 </ul>
 </li>
 <li><a href="references.html">References</a></li>
@@ -170,12 +182,12 @@
 <td valign="top">
 <!-- Begin Right Column -->
 <div id="rightcolumn">
-<h1>16 Output network</h1>
+<h1>18 Output network</h1>
 <p>
-A network may be output using the <tt>-output-network</tt> task. The network may be output in one of three different formats. The <tt>-output-network-igraph-file-prefix</tt> option can also be used to output igraph files, see <a href="plot-network.html">section 19</a> for more details. </p>
+A network may be output using the <tt>-output-network</tt> task. The network may be output in one of three different formats. The <tt>-output-network-igraph-file-prefix</tt> option can also be used to output igraph files, see <a href="plot-network.html">section 21</a> for more details. </p>
 <p>
 The output network task can also be used to output node data using the <tt>-output-network-node-data-file-prefix</tt> option and optionally the <tt>-output-network-node-data-bed-file</tt> option. </p>
-<h2><a name="output-network-options">16.1 Options</a></h2>
+<h2><a name="output-network-options">18.1 Options</a></h2>
 <p>
 The options are as follows: </p>
 <table id="tablestylel" class="center">
@@ -193,7 +205,7 @@ The options are as follows: </p>
 <tr class="alt"><td valign="top">-output-network-node-data-end-indiv b </td><td valign="top">stop output of data at individual b </td><td valign="top">last individual</td></tr>
 <tr><td valign="top">-output-network-node-data-job i t </td><td valign="top">only output individuals for subset i from a total of t subsets </td><td valign="top"></td></tr>
 </table>
-<h2><a name="output-network-example">16.2 Example</a></h2>
+<h2><a name="output-network-example">18.2 Example</a></h2>
 <p>
 The following is an example parameter file to output a network. </p>
 <pre>
