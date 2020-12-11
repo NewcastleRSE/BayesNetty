@@ -1,5 +1,5 @@
 /************************************************************************
- * BayesNetty, version 1.1
+ * BayesNetty, version 1.1.1
  * Copyright 2015-present,
  * Richard Howey
  * Institute of Genetic Medicine, Newcastle University
@@ -190,8 +190,9 @@ void TaskCentral::setupRestartNetwork(Network * restartNetwork, Network * networ
 	double imaginarySampleSize = network->getImaginarySampleSize();
 	restartNetwork->setImaginarySampleSize(imaginarySampleSize);
 
-	if(preNodeName == "") restartNetwork->updateBlackWhite(network); //also updates allowed edges
-	else restartNetwork->updateBlackWhiteDifferentData(network, preNodeName);
+	restartNetwork->updateBlackWhite(network); //also updates allowed edges
+	//if(preNodeName == "") 
+	//else restartNetwork->updateBlackWhiteDifferentData(network, preNodeName); //restarat network always has the same name nodes
 
 	//copy edge costs
 	map<pair<unsigned int, unsigned int>, double> costEdges = network->getCostEdges();
@@ -2301,7 +2302,7 @@ void SearchNetworkModelsTask::doTask()
 	//choose network for search
 	if(networkName != "") bestNetwork =	taskCentral->getNetwork(networkName);
 	else bestNetwork = taskCentral->getLatestNetwork(networkName);
-		
+
 	searchNetworks = new GreedySearch();
 	
 	//check all of the Nodes have the same amount of data
@@ -2323,7 +2324,7 @@ void SearchNetworkModelsTask::doTask()
 	};
 
 	taskCentral->setupRestartNetwork(restartNetwork, bestNetwork, preNodeName);
-	
+
 	//keep record of the best network score and network
 	bestNetworkScore = searchNetworks->doSearch(bestNetwork);
 
@@ -2351,9 +2352,9 @@ void SearchNetworkModelsTask::doTask()
 			//do jitters
 			if(jitterRestartsToDo > 0)
 			{
-				
+			
 				taskCentral->updateRestartNetwork(restartNetwork, bestNetwork, minEdgesJitter, maxEdgesJitter, true);
-
+		
 				if(outputSearch && jitterRestartsToDoPrev != jitterRestartsToDo){
 						searchNetworks->outputSearchText("0 jitter_restart_");
 						searchNetworks->outputSearchNum(randomRestarts-randomRestartsToDo);
@@ -2375,13 +2376,13 @@ void SearchNetworkModelsTask::doTask()
 			} //end of jitter
 			else
 			{
-				
+		
 				taskCentral->updateRestartNetwork(restartNetwork, bestNetwork, minEdges, maxEdges, false);
 
 				if(outputSearch && randomRestartsToDoPrev != randomRestartsToDo){searchNetworks->outputSearchText("0 random_restart_"); searchNetworks->outputSearchNum(randomRestarts-randomRestartsToDo+1); searchNetworks->outputSearchText("\n");};
-
+			
 				networkScore = searchNetworks->doSearch(restartNetwork);
-
+		
 				if(networkScore*0 == 0)
 				{
 					randomRestartsToDo--;
@@ -3711,7 +3712,6 @@ Network * TaskCentral::createSimNetworkFromNetwork(Network * network, const stri
 
 	if(!emptyDataNetwork) addNetworkMissingData(network->updateNetworkMissingData());
 	
-
 	//calculate the posterior in order to ensure everything is set up in nodes for simulating the data
 	network->calculatePriorsAndPosteriorsBNL();
 
@@ -3728,7 +3728,7 @@ Network * TaskCentral::createSimNetworkFromNetwork(Network * network, const stri
 
 	//set the same network score type
 	simNetwork->setScoreType(network->getScoreType());
-
+	
 	//add nodes
 	unsigned int nd = 1;
 	unsigned int noCurNetworkNodes = 0;
@@ -3749,6 +3749,7 @@ Network * TaskCentral::createSimNetworkFromNetwork(Network * network, const stri
 
 	while(nd <= noAllDataNodes && noCurNetworkNodes < noNodes)
 	{
+		
 		if(network->nodeExists(nd)) 
 		{
 			aNode = network->getNetworkNode(nd);
@@ -3865,7 +3866,7 @@ Network * TaskCentral::createSimNetworkFromNetwork(Network * network, const stri
 
 	//create new missing data object for this sim network
 	addNetworkMissingData(simNetwork->updateNetworkMissingData());
-	
+
 	if(createDifferentNodeData) simNetwork->updateBlackWhiteDifferentData(network, preNodeName); 
 	else simNetwork->updateBlackWhite(network); 
 
@@ -3873,7 +3874,7 @@ Network * TaskCentral::createSimNetworkFromNetwork(Network * network, const stri
 	map<pair<unsigned int, unsigned int>, double> costEdges = network->getCostEdges();
 	map<pair<unsigned int, unsigned int>, double> costEdgeTypes = network->getCostEdgeTypes();;
 	simNetwork->setCostEdges(costEdges, costEdgeTypes);
-	
+
 	addNetwork(taskName, simNetwork); //add network with name of this task
 
 	return simNetwork;
@@ -4919,6 +4920,7 @@ void ImputeNetworkDataTask::doTask()
 
 	//check all of the Nodes have the same amount of data
 	taskCentral->checkData(); //do not update missing data here
+
 	taskCentral->addNetworkMissingData(network->updateNetworkMissingData());
 
 	//impute the network data
@@ -5004,10 +5006,6 @@ void ImputeNetworkDataTask::doNetworkDataImputation(const bool & doNotDoAdjust, 
 	//setup bootstrap network
 	BootstrapNetworkTaskHelp bootstrapNetworkTaskHelp;
 
-	//choose network for analyses
-	if(networkName != "") network =	taskCentral->getNetwork(networkName);
-	else network = taskCentral->getLatestNetwork(networkName);
-	
 	//get copy of the initial network
 	string bootNetworkName = name; 
 	string preNodeName = name + "-";
@@ -5093,12 +5091,12 @@ void ImputeNetworkDataTask::doNetworkDataImputation(const bool & doNotDoAdjust, 
 				
 					bootstrapNetwork->removeAllEdges(); // with data changed the current
 					if(usePrevNetwork) bootstrapNetwork->setNetwork(prevNetworkStr, preNodeName);
-
+					
 					bootstrapNetwork->updateBlackWhiteDifferentData(network, preNodeName);
-			
+					
 					//fit network with bootstrap data
 					searchNetworkModelsTask.doTask();
-	
+				
 					};
 
 	
@@ -5108,7 +5106,7 @@ void ImputeNetworkDataTask::doNetworkDataImputation(const bool & doNotDoAdjust, 
 						//missingDataNodes.push(*nwmd);
 						missingDataNodesSet.insert(*nwmd);
 					};
-
+					
 					groupID = 0;
 
 					while(!missingDataNodesSet.empty())
@@ -5117,13 +5115,13 @@ void ImputeNetworkDataTask::doNetworkDataImputation(const bool & doNotDoAdjust, 
 						if(freeClearMemory) set<unsigned int>().swap(someNodes); else someNodes.clear();
 						someNodes.insert(missNodeID);
 						missingDataNodesSet.erase(missNodeID);
-
+						
 						//put factor nodes in the same group to be imputed
 						if(bootstrapNetwork->getNetworkNode(bootstrapNetwork->convertID(missNodeID))->getIsFactorNode())
 						{
 							//add other factors variables if this node is a head factor node
 							otherFactors = taskCentral->getAllNodeData()->getFactorDataGroup(missNodeID);
-
+						
 							for(list<unsigned int>::const_iterator of = otherFactors.begin(); of != otherFactors.end(); ++of)
 							{
 								mdns2 = missingDataNodesSet.find(*of);
@@ -5138,7 +5136,7 @@ void ImputeNetworkDataTask::doNetworkDataImputation(const bool & doNotDoAdjust, 
 						groupID++;
 						groupNodesWithMissingData[groupID] = someNodes;
 					};
-
+				
 
 					//set up connected nodes with complete data for each group of missing data
 					for(map<unsigned int, set<unsigned int> >::const_iterator gwmd = groupNodesWithMissingData.begin(); gwmd != groupNodesWithMissingData.end(); ++gwmd)
@@ -5147,7 +5145,7 @@ void ImputeNetworkDataTask::doNetworkDataImputation(const bool & doNotDoAdjust, 
 						for(set<unsigned int>::const_iterator md = gwmd->second.begin(); md != gwmd->second.end(); ++md)
 						{				
 							connectedBootNodes = bootstrapNetwork->getConnectedNodes(bootstrapNetwork->convertID(*md));
-
+					
 							for(list<unsigned int>::iterator cn3 = connectedBootNodes.begin(); cn3 != connectedBootNodes.end(); ++cn3)
 							{
 								//check the node has complete data for the indiv that is being imputed
@@ -5158,7 +5156,7 @@ void ImputeNetworkDataTask::doNetworkDataImputation(const bool & doNotDoAdjust, 
 
 						groupNodesWithCompleteData[gwmd->first] = someNodes;
 					};
-
+				
 					//find single missing nodes which have no connected complete data nodes, then if connected to other missing node(s) then add to this one of these groups randomly
 					if(false)
 					{
@@ -5245,21 +5243,21 @@ void ImputeNetworkDataTask::doNetworkDataImputation(const bool & doNotDoAdjust, 
 						};
 
 					};*/
-
+				
 					//try require minimum no of edges not connected to a missing edge
 					if(useMinNonMissingEdges)
 					{
 						bootstrapNetwork->getNoEdgesNotMissing(groupNodesWithMissingData, network, noEdgesNotMissing, totalEdges, noNonMissingSingltonNodes, totalSingltonNodes);
 						if((double)((double)noEdgesNotMissing+(double)noNonMissingSingltonNodes)/(double)((double)totalEdges+(double)totalSingltonNodes) < minNonMissingEdges) skipImp = true; 			
 					};
-
+				
 					//loop thro' data and find nearest neighbour
 					if(!skipImp)
 					{
 						if(tryNo==1) noIndivsImputed++;
 						noBitsOfDataNotImputed += network->imputeDataNN(groupNodesWithMissingData, groupNodesWithCompleteData, bootstrapNetwork, doNotDoAdjust, updateImpImmed);
 					};
-			
+				
 					noBitsOfDataToImpute += nodesWithMissingData.size();
 				};
 
@@ -5317,14 +5315,14 @@ void ImputeEstimateRecallPrecisionTask::outputTaskDetails()
 		out("Recall: the percentage of edges found from the original true network\n");
 		out("Precision: the percentage of edges in the network that are also in the original true network\n");
 		out("\n");
-		out("                              Recall     Precision\n");		
-		out("No imputation                 "); out(toString2DP(recallNoImp*100)); out("     "); out(toString2DP(preNoImp*100)); out("\n");
+		out("                                   Recall     Precision\n");		
+		out("No imputation                      "); out(toString2DP(recallNoImp*100)); out("     "); out(toString2DP(preNoImp*100)); out("\n");
 		if(doImps)
 		{
-			out("Imputation                    "); out(toString2DP(recallImpRT*100)); out("     "); out(toString2DP(preImpRT*100)); out("\n");
-			out("Imputation (complete tr.)     "); out(toString2DP(recallImp*100)); out("     "); out(toString2DP(preImp*100)); out("\n");
+			out("Imputation                         "); out(toString2DP(recallImpRT*100)); out("     "); out(toString2DP(preImpRT*100)); out("\n");
+			out("Imputation (complete training)     "); out(toString2DP(recallImp*100)); out("     "); out(toString2DP(preImp*100)); out("\n");
 		};
-		out("Full data (upper limit)       "); out(toString2DP(recallFull*100)); out("     "); out(toString2DP(preFull*100)); out("\n");
+		out("Full data (upper limit)            "); out(toString2DP(recallFull*100)); out("     "); out(toString2DP(preFull*100)); out("\n");
 		out("\n");
 	}
 	else {
@@ -5391,9 +5389,9 @@ void ImputeEstimateRecallPrecisionTask::doTask()
 		imputeNetworkDataTask.setMinNonMissingEdges(minNonMissingEdges);
 		imputeNetworkDataTask.initialiseTask();	
 		imputeNetworkDataTask.setUseRandomData();
-	
+
 		imputeNetworkDataTask.doTask();
-			
+
 		//fit network to missing sim data, call it network-miss
 		searchNetworkModelsTask.setNetworkName(networkName);
 		searchNetworkModelsTask.setRandomRestarts(randomRestarts);
@@ -5410,7 +5408,7 @@ void ImputeEstimateRecallPrecisionTask::doTask()
 		dummyNet->copyMissingness(network, dummyPreNodeName, true);
 	
 		if(iterations == 1) dummyNet->deleteAllNetworkNodeData();
-		
+	
 		/////////////////////////////////////////////////
 		//simulate data for the fitted network	
 		
@@ -5424,20 +5422,20 @@ void ImputeEstimateRecallPrecisionTask::doTask()
 		simulateNetworkDataTask.doTask();
 	
 		simNetwork = taskCentral->getNetwork(simDataTaskName);
-
+	
 		simNetwork->removeAllEdges();
 
 		/////////////////////////////////////////////////
 		//fit a network to the full data, call it network-full
 		searchNetworkModelsTask.setNetworkName(simDataTaskName);		
 		searchNetworkModelsTask.doTask();
-	
+		
 		/////////////////////////////////////////////////
 		//compare the full net to the orig net to get recall and precision
 	
 		network->calcRecallPrecision(simNetwork, recallFull, simDataPreNodeName, true);
 		simNetwork->calcRecallPrecision(network, preFull, "", false);
-
+	
 		/////////////////////////////////////////////////
 		//add missingness to sim data as in orig data
 		network->copyMissingness(simNetwork, simDataPreNodeName);
@@ -5451,9 +5449,9 @@ void ImputeEstimateRecallPrecisionTask::doTask()
 		searchNetworkModelsTask.setTaskCentral(taskCentral); 
 		searchNetworkModelsTask.initialiseTask();	
 		searchNetworkModelsTask.setCopyCoeffs(true);
-
+	
 		searchNetworkModelsTask.doTask();
-
+		
 		/////////////////////////////////////////////////
 		//compare the miss net to the orig net to get recall and precision
 		network->calcRecallPrecision(simNetwork, recallNoImp, simDataPreNodeName, true);
@@ -5463,7 +5461,7 @@ void ImputeEstimateRecallPrecisionTask::doTask()
 		{
 			/////////////////////////////////////////////////
 			//impute data using complete training, call it network-imp-com
-	
+		
 			imputeNetworkDataTask.setTaskName("i ");
 			imputeNetworkDataTask.setNetworkName(simDataTaskName);
 			imputeNetworkDataTask.setRandomRestarts(randomRestarts);
@@ -5472,36 +5470,34 @@ void ImputeEstimateRecallPrecisionTask::doTask()
 			imputeNetworkDataTask.setMinNonMissingEdges(minNonMissingEdges);
 			imputeNetworkDataTask.initialiseTask();	
 			imputeNetworkDataTask.setUseCompleteData();
-	
+		
 			imputeNetworkDataTask.doTask();
-
+		
 			simNetwork->removeAllEdges();
 			//fit network to missing sim data, call it network-miss
 			searchNetworkModelsTask.initialiseTask();
 			searchNetworkModelsTask.doTask();
-
+		
 			/////////////////////////////////////////////////
 			//compare the imp complete net to the orig net to get recall and precision
 			network->calcRecallPrecision(simNetwork, recallImp, simDataPreNodeName, true);
 			simNetwork->calcRecallPrecision(network, preImp, "", false);
-
+		
 			/////////////////////////////////////////////////
 			//impute data using random training, call it network-imp-rt
 	
 			//add missingness to sim data as in orig data
 			network->copyMissingness(simNetwork, simDataPreNodeName);
-	
-			imputeNetworkDataTask.setUseRandomData();
-	
+		
+			imputeNetworkDataTask.setUseRandomData();	
 			imputeNetworkDataTask.initialiseTask();	
 			imputeNetworkDataTask.doTask();
-
+	
 			simNetwork->removeAllEdges();
 			//fit network to missing sim data, call it network-miss	
-			searchNetworkModelsTask.initialiseTask();
-
+			searchNetworkModelsTask.initialiseTask();	
 			searchNetworkModelsTask.doTask();
-
+		
 			/////////////////////////////////////////////////
 			//compare the imp RT net to the orig net to get recall and precision
 			network->calcRecallPrecision(simNetwork, recallImpRT, simDataPreNodeName, true);
@@ -5586,6 +5582,11 @@ void CalculateRecallPrecisionTask::outputTaskDetails()
 	out("\n");
 	out("Recall: "); out(toString2DP(recall*100)); out("\n");
 	out("Precision: "); out(toString2DP(precision*100)); out("\n");
+	if(filename != "")
+	{
+		out("\n");
+		out("Recall and precision written to file: "); out(filename); out("\n");
+	};
 };
 
 

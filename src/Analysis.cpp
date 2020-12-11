@@ -1,5 +1,5 @@
 /************************************************************************
- * BayesNetty, version 1.1
+ * BayesNetty, version 1.1.1
  * Copyright 2015-present,
  * Richard Howey
  * Institute of Genetic Medicine, Newcastle University
@@ -685,6 +685,7 @@ bool Analysis::processOption(string & option)
 	else if(option == "-impute-estimate-recall-precision-output-sim-data-file") getLatestImputeEstimateRecallPrecisionTask()->setSimDataFilename(getStringOptionValue());
 	else if(option == "-impute-estimate-recall-precision-output-sim-network-file") getLatestImputeEstimateRecallPrecisionTask()->setSimNetworkFilename(getStringOptionValue());
 	else if(option == "-calculate-recall-precision") {CalculateRecallPrecisionTask * crpt = new CalculateRecallPrecisionTask(); calculateRecallPrecisionTasks.push_back(crpt); orderedTasks.push_back(crpt);}
+	else if(option == "-calculate-recall-precision-name") getLatestImputeEstimateRecallPrecisionTask()->setTaskName(getStringOptionValue());
 	else if(option == "-calculate-recall-precision-network-name") getLatestCalculateRecallPrecisionTask()->setNetworkName(getStringOptionValue());
 	else if(option == "-calculate-recall-precision-true-network-name") getLatestCalculateRecallPrecisionTask()->setTrueNetworkName(getStringOptionValue());
 	else if(option == "-calculate-recall-precision-file") getLatestCalculateRecallPrecisionTask()->setFilename(getStringOptionValue());

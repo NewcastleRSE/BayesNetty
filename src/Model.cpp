@@ -1,5 +1,5 @@
 /************************************************************************
- * BayesNetty, version 1.1
+ * BayesNetty, version 1.1.1
  * Copyright 2015-present,
  * Richard Howey
  * Institute of Genetic Medicine, Newcastle University

@@ -1,5 +1,5 @@
 /************************************************************************
- * BayesNetty, version 1.1
+ * BayesNetty, version 1.1.1
  * Copyright 2015-present,
  * Richard Howey
  * Institute of Genetic Medicine, Newcastle University
@@ -750,22 +750,22 @@ void Network::updateBlackWhiteDifferentData(Network * network, const string & pr
 	set<unsigned int> otherWhiteNodes = network->getWhiteNodes();
 	for(set<unsigned int>::const_iterator own = otherWhiteNodes.begin(); own != otherWhiteNodes.end(); ++own)
 	{
-		nodeName1 = preNodeName + network->getNetworkNode(*own)->getDisplayName();
+		nodeName1 = preNodeName + network->getNetworkNode(*own)->getName();
 		addWhiteNode(nodeName1);
 	};
 
 	set<unsigned int> otherBlackNodes = network->getBlackNodes();
 	for(set<unsigned int>::const_iterator obn = otherBlackNodes.begin(); obn != otherBlackNodes.end(); ++obn)
 	{
-		nodeName1 = preNodeName + network->getNetworkNode(*obn)->getDisplayName();
+		nodeName1 = preNodeName + network->getNetworkNode(*obn)->getName();
 		addBlackNode(nodeName1);
 	};
 
 	set<pair<unsigned int, unsigned int> > otherWhiteEdges = network->getWhiteEdges();
 	for(set<pair<unsigned int, unsigned int> >::const_iterator owe = otherWhiteEdges.begin(); owe != otherWhiteEdges.end(); ++owe)
 	{
-		nodeName1 = preNodeName + network->getNetworkNode(owe->first)->getDisplayName();
-		nodeName2 = preNodeName + network->getNetworkNode(owe->second)->getDisplayName();
+		nodeName1 = preNodeName + network->getNetworkNode(owe->first)->getName();
+		nodeName2 = preNodeName + network->getNetworkNode(owe->second)->getName();
 
 		addWhiteEdge(nodeName1, nodeName2);
 	};
@@ -773,8 +773,8 @@ void Network::updateBlackWhiteDifferentData(Network * network, const string & pr
 	set<pair<unsigned int, unsigned int> > otherBlackEdges = network->getBlackEdges();
 	for(set<pair<unsigned int, unsigned int> >::const_iterator obe = otherBlackEdges.begin(); obe != otherBlackEdges.end(); ++obe)
 	{
-		nodeName1 = preNodeName + network->getNetworkNode(obe->first)->getDisplayName();
-		nodeName2 = preNodeName + network->getNetworkNode(obe->second)->getDisplayName();
+		nodeName1 = preNodeName + network->getNetworkNode(obe->first)->getName();
+		nodeName2 = preNodeName + network->getNetworkNode(obe->second)->getName();
 		addBlackEdge(nodeName1, nodeName2);
 	};
 	
@@ -783,14 +783,14 @@ void Network::updateBlackWhiteDifferentData(Network * network, const string & pr
 	set<unsigned int> otherNoParents = network->getNoParentsNodes();
 	for(set<unsigned int>::const_iterator op = otherNoParents.begin(); op != otherNoParents.end(); ++op)
 	{
-		nodeName1 = preNodeName + network->getNetworkNode(*op)->getDisplayName();		
+		nodeName1 = preNodeName + network->getNetworkNode(*op)->getName();		
 		addNoParentsNode(nodeName1);
 	};
 	
 	set<unsigned int> otherNoChildren = network->getNoChildrenNodes();
 	for(set<unsigned int>::const_iterator oc = otherNoChildren.begin(); oc != otherNoChildren.end(); ++oc)
 	{
-		nodeName1 = preNodeName + network->getNetworkNode(*oc)->getDisplayName();		
+		nodeName1 = preNodeName + network->getNetworkNode(*oc)->getName();		
 		addNoChildrenNode(nodeName1);
 	};
 
@@ -4840,7 +4840,8 @@ void Network::calcRecallPrecision(Network * otherNetwork, double & recallOrPreci
 	};
 	
 	//add to prev recall as may be taking ave later
-	recallOrPrecision += edgesFound/totalEdges;
+	if(totalEdges != 0) recallOrPrecision += edgesFound / totalEdges;
+	else recallOrPrecision += 1;
 };
 
 //! Copies missingness pattern to the other network data from the corresponding network nodes of this network. 

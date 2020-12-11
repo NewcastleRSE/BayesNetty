@@ -1,5 +1,5 @@
 /************************************************************************
- * BayesNetty, version 1.1
+ * BayesNetty, version 1.1.1
  * Copyright 2015-present,
  * Richard Howey
  * Institute of Genetic Medicine, Newcastle University
@@ -68,7 +68,7 @@ void exitErr(const string & message)
 //! Output program title to screen.
 void header()
 {
-	out("\nBayesNetty: Bayesian Network software, v1.1\n");
+	out("\nBayesNetty: Bayesian Network software, v1.1.1\n");
 	out("--------------------------------------------------\n");
 	out("Copyright 2015-present Richard Howey, GNU General Public License, v3\n");
 	out("Institute of Genetic Medicine, Newcastle University\n\n");
@@ -183,7 +183,15 @@ void usage()
 		out("  -impute-estimate-recall-precision-jitter-restarts m       -- for each network fit after the initial search and every random restart search do another m searches jittered from the recently found network (default: 0)\n");
 		out("  -impute-estimate-recall-precision-skip-imputation         -- do not estimate recall and precision for imputed data\n");
 		out("  -impute-estimate-recall-precision-iterations i            -- estimate the recall and precision i times and take the average (default: 1)\n");
+		out("  -impute-estimate-recall-precision                         -- do a task to estimate recall and precision before and after data imputation\n");
+		out("  -impute-estimate-recall-precision name                    -- label the task with a name (default: Task-n)\n");
 		out("\n");
+		out("Calculate Recall and Precision\n");
+		out("  -calculate-recall-precision                              -- do a task to calculate the recall and precision of a network\n"); 
+		out("  -calculate-recall-precision-name name                    -- label the task with a name (default: Task-n)\n");
+		out("  -calculate-recall-precision-network-name network1        -- the name of the network to calculate the recall and precision for (default: previous network)\n");
+		out("  -calculate-recall-precision-true-network-name network2   -- the name of the true network to calculate the recall and precision against\n");
+		out("  -calculate-recall-precision-file results.dat             -- file to write recall and precision results to\n");
 		out("Simulate Network Data Options\n");
 		out("  -simulate-network-data                               -- do a task to simulate network data for a given network\n");	
 		out("  -simulate-network-data-name name                     -- label the task with a name (default: Task-n)\n");
