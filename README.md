@@ -9,6 +9,6 @@ or look at the BayesNetty website which is easier to navigate and read:
 
 https://www.staff.ncl.ac.uk/richard.howey/bayesnetty
 
-If the website is not available then download the docs directory and view the website offline:
+If the website is not available then please download the docs directory and view the website offline:
 
 docs/index.html
