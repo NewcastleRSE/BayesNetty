@@ -1707,6 +1707,38 @@ double Network::getEdgeProb(const string & aParent, const string & nodeStr)
 	return aNode1->getEdgeProb(nodeNumber2);
 };
 
+//! Gets number of parents of node.
+unsigned int Network::getNumberOfParents(const string & nodeStr)
+{
+	unsigned int nodeNumber1 = allNodeData->getNodeDataNumber(nodeStr);
+	Node * aNode1 = getNetworkNode(nodeNumber1);
+
+	unsigned int numParents = aNode1->getNoParents();
+
+	return numParents;
+};
+
+//! Gets number of children of node.
+unsigned int Network::getNumberOfChildren(const string & nodeStr)
+{
+	unsigned int nodeNumber1 = allNodeData->getNodeDataNumber(nodeStr);
+	
+	map<unsigned int, Node *> parents;
+	unsigned int numOfChildren = 0;
+
+	for(map<unsigned int, Node *>::iterator nd = allNetworkNodes.begin(); nd != allNetworkNodes.end(); ++nd)
+	{
+		parents = nd->second->getParents();
+		for(map<unsigned int, Node *>::const_iterator p = parents.begin(); p != parents.end(); ++p)
+		{
+			if(p->first == nodeNumber1) numOfChildren++;
+		};
+	};
+
+	return numOfChildren;
+};
+
+
 //! Gets edge signif.
 pair<double, unsigned int> Network::getEdgeSign(const string & aParent, const string & nodeStr)
 {
@@ -1730,7 +1762,6 @@ unsigned int Network::getNumberOfParameters()
 		noParameters += nd->second->getNumberOfParameters();
 	};
 
-	
 	return noParameters;
 };
 
@@ -2644,6 +2675,64 @@ unsigned int Network::imputeDataNN(const map<unsigned int, set<unsigned int> > &
 		aNode->setImputedDataDis(ndDis->second, updateImpImmed);
 	};
 	
+	//calculate how many points failed to impute
+	unsigned int noToImpute = 0;
+	for(map<unsigned int, set<unsigned int> >::const_iterator i = groupNodesWithMissingData.begin(); i != groupNodesWithMissingData.end(); ++i)
+	{
+		noToImpute += i->second.size();
+
+		/*for(set<unsigned int>::const_iterator j = i->second.begin(); j != i->second.end(); ++j)
+		{
+			aNode = getNetworkNode(*j);
+		};*/
+	};
+
+	return noToImpute - (nodeDataBestCtsValue.size() + nodeDataBestDisValue.size());
+};
+
+//! Replaces missing data with the mean for each variable (terrible method).  
+unsigned int Network::imputeDataMean(const map<unsigned int, set<unsigned int> > & groupNodesWithMissingData, Network * bootstrapNetwork, const bool & updateImpImmed)
+{
+	map<unsigned int, double> nodeDataBestCtsValue; //(missing data) node ID, best found cts value for this node
+	map<unsigned int, unsigned int> nodeDataBestDisValue; //(missing data) node ID, best found dis value for this node
+
+	map<unsigned int, set<unsigned int> >::const_iterator gnwmd;
+	
+	Node * aNode;
+	
+	//loop thro' nodes(group of nodes) with missing data, and corresponding connected complete data		
+	for(gnwmd = groupNodesWithMissingData.begin(); gnwmd != groupNodesWithMissingData.end(); ++gnwmd)
+	{	
+					
+		for(set<unsigned int>::const_iterator nd = gnwmd->second.begin(); nd != gnwmd->second.end(); ++nd)
+		{
+			aNode = getNetworkNode(*nd);
+
+			if(aNode->getIsDiscreteNode())
+			{
+				//nodeDataBestDisValue[*nd] = aNode->getNodeMode(); //maybe later
+			}
+			else
+			{
+				nodeDataBestCtsValue[*nd] = aNode->getMean(); // mean will be set after the first use, so mean will remain the same for all missing data for a given variable
+			};
+		};
+				
+	}; // end of missing data node (or nodes) loop, nodes that are imputed together
+
+	//set missing data with imputed data
+	for(map<unsigned int, double>::const_iterator ndCts = nodeDataBestCtsValue.begin(); ndCts != nodeDataBestCtsValue.end(); ++ndCts)
+	{
+		aNode = getNetworkNode(ndCts->first);
+		aNode->setImputedDataCts(ndCts->second, updateImpImmed);
+	};
+
+	for(map<unsigned int, unsigned int>::const_iterator ndDis = nodeDataBestDisValue.begin(); ndDis != nodeDataBestDisValue.end(); ++ndDis)
+	{
+		aNode = getNetworkNode(ndDis->first);
+		aNode->setImputedDataDis(ndDis->second, updateImpImmed);
+	};
+
 	//calculate how many points failed to impute
 	unsigned int noToImpute = 0;
 	for(map<unsigned int, set<unsigned int> >::const_iterator i = groupNodesWithMissingData.begin(); i != groupNodesWithMissingData.end(); ++i)

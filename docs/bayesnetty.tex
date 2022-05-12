@@ -685,7 +685,7 @@ Similarly, this example is given in network file \code{example-network-missing3.
 \subsection{Data IDs}
 \label{input-data-ids}
 
-By default the first two columns of a data file should be IDs and match those in any other data files (although the ID names in the header do not need to match). The number of ID columns can be changed using the \code{-input-data-ids} option, and may be set to zero. If the data contains SNP data in a PLINK binary pedigree file, \code{.bed}, then the number of ID columns must be set to 2. If the data is a binary pedigree file, \code{file.bed}, then the family and individual IDs in the file \code{file.fam} must match the IDs in any other data files, and all SNPs may be used as network nodes. 
+By default the first two columns of a data file should be IDs and match those in any other data files, and be in the same order (although the ID names in the header do not need to match). The number of ID columns can be changed using the \code{-input-data-ids} option, and may be set to zero. If the data contains SNP data in a PLINK binary pedigree file, \code{.bed}, then the number of ID columns must be set to 2. If the data is a binary pedigree file, \code{file.bed}, then the family and individual IDs in the file \code{file.fam} must match the IDs in any other data files, and all SNPs may be used as network nodes. The IDs in different files are checked to be the same including the order, if not BayesNetty will report an error. If there are zero IDs then the individuals are assumed to be in the same order in each file and are only checked to have the same number of individuals. 
 
 %============ End of subsection "input-data-ids"============
 
@@ -730,7 +730,7 @@ Option  & Description  & Default\\
 -input-network-prob-edge node1 node2 prob  & set the prior probability of edge direction of node1 to node2 as prob  & \\
 -input-network-prob-edge-type nodeType1 nodeType2 prob  & set the prior probabilities of edge direction of nodeType1 to nodeType2 as prob  & \\
 -input-network-imaginary-sample-size i  & for deal networks this sets the imaginary sample size  & 10\\
--input-network-score score  & for a bnlearn network choose between loglike, AIC, BIC or bayes (BDe)  & BIC\\
+-input-network-score score  & for a bnlearn network choose between loglike, AIC or BIC  & BIC\\
 \end{tabular}}\end{center}}
 
 %============ End of subsection "input-network-options"============
@@ -993,6 +993,12 @@ The default and recommended Bayesian network in BayesNetty is given by the bnlea
 
 The network score for a bnlearn network may be set to either the log likelihood, AIC or BIC using the \code{-input-network-score} option, see  section \ref{input-network-options}. 
 
+{\bf NOTE:} The BIC network score is based on the definition used by bnlearn (see \citet{bnlearn}) such that BIC = log(L) - (d/2)log(n), where L is the likelihood of the network for the given data set, d is the number of parameters and n is the number of individuals. This is the original definition used by Swartz in 1978, see \citet{swartz:1978}, rather than subsequent definitions of BIC which are multplied by negative two (for example see \citet{wit:2012}). Therefore in BayesNetty the BIC will always be negative and higher values of the network score imply a better fit network. (Whichever definition of BIC that one considers, the closer the BIC is to zero the better the model fit.) 
+
+The AIC network score in BayesNetty is defined similarly to the BIC such that AIC = log(L) - d, where L and d are defined as above. Therefore higher values of the negatively valued AIC (closer to zero) imply a better network fit to the given data set. 
+
+Naturally if only the log likelihood is used then higher values imply a better network fit. 
+
 %============ End of subsection "bnlearn-score"============
 
 
@@ -1007,6 +1013,8 @@ The deal Bayesian network approach was developed by \citet{deal} as an approach 
 
 When analysis is performed with a deal network the imaginary sample size (ISS) must be set. The ISS reflects how much confidence we have in the (in)dependencies expressed in the assumed prior network. This can be set using the \code{-input-network-imaginary-sample-size} option, see  section \ref{input-network-options}. The results given by deal have been found to be very sensitive to the setting of this parameter and there is no obvious ``good'' default setting. 
 
+The network score in a deal network is based upon the log likelihood and so higher values imply a better network fit to the given data set. 
+
 %============ End of subsection "imaginary-sample-size"============
 
 
@@ -1015,7 +1023,7 @@ When analysis is performed with a deal network the imaginary sample size (ISS) m
 \section{Calculate network score}
 \label{calc-score}
 
-The network score is used as a measure of how well the network model describes the data and is used to compare different models when searching through models. By convention the lower the score the better the model is and is typically based on the negative log likelihood. This is calculated assuming that discrete nodes follow a multinomial distribution and continuous nodes a normal distribution. BayesNetty considers the network score to be a property of the network and its method of calculation is set using the option \code{-input-network-score}, see  section \ref{input-network}. 
+The network score is used as a measure of how well the network model describes the data and is used to compare different models when searching through models. In BayesNetty the network score is based on the log likelihood and higher values imply a better model (see  section \ref{bnlearn-score} for further details). This is calculated assuming that discrete nodes follow a multinomial distribution and continuous nodes a normal distribution. BayesNetty considers the network score to be a property of the network and its method of calculation is set using the option \code{-input-network-score}, see  section \ref{input-network}. 
 \subsection{Options}
 \label{calc-score-options}
 
@@ -1289,7 +1297,7 @@ For an example of calculating and outputting the posterior to file, see  section
 \section{Search models}
 \label{search-models}
 
-Network models can be searched for one that best describes the data as given by the network model assumptions, network constraints, the network score and the data itself. 
+Network models can be searched for one that best describes the data as given by the network model assumptions, network constraints, the network score and the data itself. The search option uses a network to start the search and finishes with it updated to the found best fit network. (If a network is not set then a default network is used.) Any constraints to the search must be set when the network is setup, see  section \ref{input-network}. 
 \subsection{Options}
 \label{search-models-options}
 
@@ -1322,9 +1330,9 @@ The greedy algorithm can be ran a further number of times from a random starting
 \subsubsection{Number of jitter restarts for the greedy algorithm}
 \label{search-models-greedy-jitter}
 
-Once the greedy algorithm has converged on a final best fit network, the algorithm can be restarted at a network given by slightly modifying the best fit network, also called {\it jittering}. This may be useful to avoid the algorithm sticking in a local minimum whilst still retaining more or less the same network. The number of times times the search should be jittered is set by using the option \code{-search-models-jitter-restarts}. 
+Once the greedy algorithm has converged on a final best fit network, the algorithm can be restarted at a network given by slightly modifying the best fit network, also called {\it jittering}. This may be useful to avoid the algorithm sticking in a local maximum whilst still retaining more or less the same network. The number of times times the search should be jittered is set by using the option \code{-search-models-jitter-restarts}. 
 
-Random restarts and jittered restarts can be used together, if there are n random restarts and m jittered restarts then there will be an additional n times m searches. 
+Random restarts and jittered restarts can be used together, if there are n random restarts and m jittered restarts then there will be (n + 1) times m searches. 
 
 %====== End of subsubsection "search-models-greedy-jitter"======
 
@@ -1425,7 +1433,7 @@ Network score = -8213.45
 Run time: less than one second
 
 \end{lstlisting} \vspace{0.35cm}
-The above shows the data input and then the default network input consisting of a node for each data variable given by the data and no edges. The network with the lowest network score is shown in the output. 
+The above shows the data input and then the default network input consisting of a node for each data variable given by the data and no edges. The network with the highest network score is shown in the output. 
 
 %============ End of subsection "search-models-example"============
 
@@ -2468,7 +2476,7 @@ Option  & Description  & Default\\
 -simulate-network-data-parameter-file parameters.txt  & network with parameters in bnlearn posteriors file format  & \\
 -simulate-network-data-whitelist-file whitelist.dat  & a list of edges that must be included in any network  & \\
 -simulate-network-data-blacklist-file blacklist.dat  & a list of edges that must {\it not} be included in any network  & \\
--simulate-network-data-score score  & for a bnlearn network choose between loglike, AIC, BIC or bayes  & BIC\\
+-simulate-network-data-score score  & for a bnlearn network choose between loglike, AIC or BIC  & BIC\\
 \end{tabular}}\end{center}}
 
 %============ End of subsection "sim-data-options"============

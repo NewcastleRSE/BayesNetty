@@ -260,6 +260,23 @@ AverageNetworksTask * Analysis::getLatestAverageNetworksTask()
 };
 
 //! Gets the latest task of this type.
+MeasurementErrorRobustnessTask * Analysis::getLatestMeasurementErrorRobustnessTask()
+{
+	list<MeasurementErrorRobustnessTask *>::const_reverse_iterator t = measurementErrorRobustnessTasks.rbegin();
+
+	//create new task if none exists
+	if(t == measurementErrorRobustnessTasks.rend())
+	{
+		MeasurementErrorRobustnessTask * aMeasurementErrorRobustnessTask = new MeasurementErrorRobustnessTask();
+		measurementErrorRobustnessTasks.push_back(aMeasurementErrorRobustnessTask);
+		orderedTasks.push_back(aMeasurementErrorRobustnessTask);
+		return aMeasurementErrorRobustnessTask;
+	};
+
+	return *t;
+};
+
+//! Gets the latest task of this type.
 CompareNetworksTask * Analysis::getLatestCompareNetworksTask()
 {
 	list<CompareNetworksTask *>::const_reverse_iterator t = compareNetworksTasks.rbegin();
@@ -515,7 +532,7 @@ bool Analysis::processOption(string & option)
 	else if(option == "-input-data-cts-snp2") getLatestInputDataTask()->setDataType(7);
 	else if(option == "-input-data-discrete-snp2") getLatestInputDataTask()->setDataType(8);
 	else if(option == "-input-data-factor-snp2") getLatestInputDataTask()->setDataType(9);
-	else if(option == "-input-data-cts-missing-value") getLatestInputDataTask()->setCtsMissingValue(getDoubleOptionValue());
+	else if(option == "-input-data-cts-missing-value") getLatestInputDataTask()->setCtsMissingValue(getStringOptionValue());
 	else if(option == "-input-data-discrete-missing-value" || option == "-input-data-factor-missing-value" ) getLatestInputDataTask()->setDiscreteMissingValue(getStringOptionValue());
 	else if(option == "-input-data-ids") getLatestInputDataTask()->setNumberOfIDs(getUIntOptionValue());
 	else if(option == "-input-data-csv") getLatestInputDataTask()->setIsCSV(true);
@@ -574,32 +591,33 @@ bool Analysis::processOption(string & option)
 		validOption1 = false;
 	};
 
-	if(option == "-calc-posterior") {CalculatePosteriorTask * cpt = new CalculatePosteriorTask(); calculatePosteriorTasks.push_back(cpt); orderedTasks.push_back(cpt);}
+	if(option == "-calc-posterior") { CalculatePosteriorTask * cpt = new CalculatePosteriorTask(); calculatePosteriorTasks.push_back(cpt); orderedTasks.push_back(cpt); }
 	else if(option == "-calc-posterior-name") getLatestCalculatePosteriorTask()->setTaskName(getStringOptionValue());
 	else if(option == "-calc-posterior-network-name") getLatestCalculatePosteriorTask()->setNetworkName(getStringOptionValue());
 
-	else if(option == "-calc-network-score") {CalculateNetworkScoreTask * cnst = new CalculateNetworkScoreTask(); calculateNetworkScoreTasks.push_back(cnst); orderedTasks.push_back(cnst);}
+	else if(option == "-calc-network-score") { CalculateNetworkScoreTask * cnst = new CalculateNetworkScoreTask(); calculateNetworkScoreTasks.push_back(cnst); orderedTasks.push_back(cnst); }
 	else if(option == "-calc-network-score-name") getLatestCalculateNetworkScoreTask()->setTaskName(getStringOptionValue());
 	else if(option == "-calc-network-score-network-name") getLatestCalculateNetworkScoreTask()->setNetworkName(getStringOptionValue());
 	else if(option == "-calc-network-score-file") getLatestCalculateNetworkScoreTask()->setFilename(getStringOptionValue());
 	else if(option == "-calc-network-score-all-scores") getLatestCalculateNetworkScoreTask()->setAllScoresFilename(getStringOptionValue());
 
-	else if(option == "-markov-blanket") {CalculateMarkovBlanketTask * cnst = new CalculateMarkovBlanketTask(); calculateMarkovBlanketTasks.push_back(cnst); orderedTasks.push_back(cnst);}
+	else if(option == "-markov-blanket") { CalculateMarkovBlanketTask * cnst = new CalculateMarkovBlanketTask(); calculateMarkovBlanketTasks.push_back(cnst); orderedTasks.push_back(cnst); }
 	else if(option == "-markov-blanket-name") getLatestCalculateMarkovBlanketTask()->setTaskName(getStringOptionValue());
 	else if(option == "-markov-blanket-network-name") getLatestCalculateMarkovBlanketTask()->setNetworkName(getStringOptionValue());
 	else if(option == "-markov-blanket-node-name") getLatestCalculateMarkovBlanketTask()->setNodeName(getStringOptionValue());
 
-	else if(option == "-search-models") {SearchNetworkModelsTask * snmt = new SearchNetworkModelsTask(); searchNetworkModelsTasks.push_back(snmt); orderedTasks.push_back(snmt);}
+	else if(option == "-search-models") { SearchNetworkModelsTask * snmt = new SearchNetworkModelsTask(); searchNetworkModelsTasks.push_back(snmt); orderedTasks.push_back(snmt); }
 	else if(option == "-search-models-name") getLatestSearchNetworkModelsTask()->setTaskName(getStringOptionValue());
 	else if(option == "-search-models-network-name") getLatestSearchNetworkModelsTask()->setNetworkName(getStringOptionValue());
 	else if(option == "-search-models-file") getLatestSearchNetworkModelsTask()->setFilename(getStringOptionValue());
 	else if(option == "-search-models-random-restarts") getLatestSearchNetworkModelsTask()->setRandomRestarts(getUIntOptionValue());
 	else if(option == "-search-models-jitter-restarts") getLatestSearchNetworkModelsTask()->setJitterRestarts(getUIntOptionValue());
-	
-	else if(option == "-average-networks") {AverageNetworksTask * snmt = new AverageNetworksTask(); averageNetworksTasks.push_back(snmt); orderedTasks.push_back(snmt);}
+
+	else if(option == "-average-networks") { AverageNetworksTask * snmt = new AverageNetworksTask(); averageNetworksTasks.push_back(snmt); orderedTasks.push_back(snmt); }
 	else if(option == "-average-networks-name") getLatestAverageNetworksTask()->setTaskName(getStringOptionValue());
 	else if(option == "-average-networks-network-name") getLatestAverageNetworksTask()->setNetworkName(getStringOptionValue());
 	else if(option == "-average-networks-file") getLatestAverageNetworksTask()->setFilename(getStringOptionValue());
+	else if(option == "-average-networks-threshold-file") getLatestAverageNetworksTask()->setThresholdFilename(getStringOptionValue());
 	else if(option == "-average-networks-fam-file") getLatestAverageNetworksTask()->setFamilyFile(getStringOptionValue());
 	else if(option == "-average-networks-igraph-file-prefix") getLatestAverageNetworksTask()->setRFilenamePrefix(getStringOptionValue());
 	else if(option == "-average-networks-threshold") getLatestAverageNetworksTask()->setArcThreshold(getDoubleOptionValue());
@@ -609,6 +627,37 @@ bool Analysis::processOption(string & option)
 	else if(option == "-average-networks-likelihood-file") getLatestAverageNetworksTask()->setLikelihoodFilename(getStringOptionValue());
 	else if(option == "-average-networks-use-score-method") getLatestAverageNetworksTask()->setUseNetworkScoreMethod(true);
 	else if(option == "-average-networks-use-weight-method") getLatestAverageNetworksTask()->setUseNetworkWeightMethod(true);
+
+	else if(option == "-measurement-error-robustness") { MeasurementErrorRobustnessTask * mert = new MeasurementErrorRobustnessTask(); measurementErrorRobustnessTasks.push_back(mert); orderedTasks.push_back(mert); }
+	else if(option == "-measurement-error-robustness-name") getLatestMeasurementErrorRobustnessTask()->setTaskName(getStringOptionValue());
+	else if(option == "-measurement-error-robustness-network-name") getLatestMeasurementErrorRobustnessTask()->setNetworkName(getStringOptionValue());
+	else if(option == "-measurement-error-robustness-file-prefix") getLatestMeasurementErrorRobustnessTask()->setFilename(getStringOptionValue());
+	else if(option == "-measurement-error-robustness-threshold-file") getLatestMeasurementErrorRobustnessTask()->setThresholdFilename(getStringOptionValue());
+	else if(option == "-measurement-error-robustness-stdev-multiple") getLatestMeasurementErrorRobustnessTask()->setMeasurementErrorMultiple(getDoubleOptionValue());
+	else if(option == "-measurement-error-robustness-stdev-multiple-file") getLatestMeasurementErrorRobustnessTask()->setMeasurementErrorMultipleFile(getStringOptionValue());
+	else if(option == "-measurement-error-robustness-node-stdev-multiple")
+	{
+		string node = getStringOptionValue();
+		double error = getDoubleOptionValue();
+		getLatestMeasurementErrorRobustnessTask()->setMeasurementErrorMultiple(node, error);
+	}
+	else if(option == "-measurement-error-robustness-effect-size") getLatestMeasurementErrorRobustnessTask()->setEffectSizeError(true);
+	else if(option == "-measurement-error-robustness-stdev") getLatestMeasurementErrorRobustnessTask()->setMeasurementError(getDoubleOptionValue());
+	else if(option == "-measurement-error-robustness-stdev-file") getLatestMeasurementErrorRobustnessTask()->setMeasurementErrorFile(getStringOptionValue());
+	else if(option == "-measurement-error-robustness-node-stdev")
+	{
+		string node = getStringOptionValue();
+		double error = getDoubleOptionValue();
+		getLatestMeasurementErrorRobustnessTask()->setMeasurementError(node, error);
+	}
+	else if(option == "-measurement-error-robustness-fam-file") getLatestMeasurementErrorRobustnessTask()->setFamilyFile(getStringOptionValue()); 
+	else if(option == "-measurement-error-robustness-igraph-file-prefix") getLatestMeasurementErrorRobustnessTask()->setRFilenamePrefix(getStringOptionValue());
+	else if(option == "-measurement-error-robustness-threshold") getLatestMeasurementErrorRobustnessTask()->setArcThreshold(getDoubleOptionValue());
+	else if(option == "-measurement-error-robustness-bootstrap") getLatestMeasurementErrorRobustnessTask()->setUseBootstraps(true);
+	else if(option == "-measurement-error-robustness-iterations") getLatestMeasurementErrorRobustnessTask()->setNoIterations(getUIntOptionValue());
+	else if(option == "-measurement-error-robustness-random-restarts") getLatestMeasurementErrorRobustnessTask()->setRandomRestarts(getUIntOptionValue());
+	else if(option == "-measurement-error-robustness-jitter-restarts") getLatestMeasurementErrorRobustnessTask()->setJitterRestarts(getUIntOptionValue());	
+	else if(option == "-measurement-error-robustness-use-equiv-nets") getLatestMeasurementErrorRobustnessTask()->setUseEquivNets(true);
 	else
 	{
 		validOption2 = false;
@@ -671,6 +720,9 @@ bool Analysis::processOption(string & option)
 	else if(option == "-impute-network-data-jitter-restarts") getLatestImputeNetworkDataTask()->setJitterRestarts(getUIntOptionValue());
 	else if(option == "-impute-network-data-start-indiv") getLatestImputeNetworkDataTask()->setStartIndivNo(getUIntOptionValue());
 	else if(option == "-impute-network-data-end-indiv") getLatestImputeNetworkDataTask()->setEndIndivNo(getUIntOptionValue());
+	else if(option == "-impute-network-subsample-percent") getLatestImputeNetworkDataTask()->setSubsetPercent(getUIntOptionValue());
+	else if(option == "-impute-network-data-use-mean") getLatestImputeNetworkDataTask()->setUseMean();
+	else if(option == "-impute-network-data-all-NN") getLatestImputeNetworkDataTask()->setUseAllNN();
 	else if(option == "-impute-network-data-job") {
 		getLatestImputeNetworkDataTask()->setJobNo(getUIntOptionValue());
 		getLatestImputeNetworkDataTask()->setJobTotal(getUIntOptionValue());

@@ -511,6 +511,48 @@ void AllNodeData::checkData()
 	dataChecked = true;
 };
 
+//! Update data names to remove ":" and other things maybe later.
+void AllNodeData::updateDataNames()
+{
+	bool updated = false;
+	bool updated1 = false;
+	size_t posColon;
+	string name = "";
+	map<string, unsigned int>::iterator nn; // nameNumber
+
+	for(map<unsigned int, Data *>::iterator nd = allNodeData.begin(); nd != allNodeData.end(); ++nd)
+	{	
+		updated1 = false;
+		do{
+			name = nd->second->name;
+			posColon = nd->second->name.find_first_of(':');
+			if(posColon < nd->second->name.length() && posColon != string::npos)
+			{
+				updated = true; updated1 = true;
+				nd->second->name = nd->second->name.substr(0, posColon) + "_";
+				if((posColon + 1) < name.length()) nd->second->name = nd->second->name + name.substr(posColon+1);	
+			};
+		}while(posColon < nd->second->name.length() && posColon != string::npos);
+
+		if(updated1)
+		{
+			nn = nameNumber.find(nd->second->name);
+			if(nn != nameNumber.end())
+			{
+				out("\nWARNING: variables with colons, \":\", are not allowed and have been replaced with underscores, \"_\".\n\n");
+				string mess = "Attempt to add variable \"" + nd->second->name + "\" twice to the data set!";
+				exitErr(mess);
+			};
+			nameNumber[nd->second->name] = nd->first; //add reference
+		};
+	};
+	
+	if(updated)
+	{
+		out("\nWARNING: variables with colons, \":\", are not allowed and have been replaced with underscores, \"_\".\n\n");
+	};	
+};
+
 //! Returns number of indivs.
 unsigned int AllNodeData::getAmountOfData() const
 {

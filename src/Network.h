@@ -155,6 +155,7 @@ public:
 	map<pair<unsigned int, unsigned int>, double> getCostEdgeTypes() const {return costEdgeTypes;};
 	void setCostEdges(map<pair<unsigned int, unsigned int>, double> & costEdges, map<pair<unsigned int, unsigned int>, double> & costEdgeTypes);
 	Node * getNetworkNode(unsigned int nodeNo);
+	map<unsigned int, Node *> getNetworkNodes() {return allNetworkNodes;};
 	Node * getNoDataNetworkNode(const string & nodeName) const;
 	bool hasNodesWithNoData() const {return !noDataNetworkNodes.empty();};
 	unsigned int getNoNodes() {return allNetworkNodes.size();};
@@ -188,7 +189,9 @@ public:
 	unsigned int getNodesGroupNo();
 	void setAllNodesUnfixed();
 	void calcEdgeSignifs();
-	double getEdgeProb(const string & aParent, const string & nodeStr);	
+	double getEdgeProb(const string & aParent, const string & nodeStr);
+	unsigned int getNumberOfParents(const string & nodeStr);
+	unsigned int getNumberOfChildren(const string & nodeStr);
 	pair<double, unsigned int> getEdgeSign(const string & aParent, const string & nodeStr);
 	unsigned int getNumberOfParameters();
 	void setScoreType(const unsigned int & dst) {scoreType = dst;};
@@ -271,6 +274,7 @@ public:
 	void advanceDataIterators3();
 	list<unsigned int> getNodesWithMissingData();
 	unsigned int imputeDataNN(const map<unsigned int, set<unsigned int> > & groupNodesWithMissingData, const map<unsigned int, set<unsigned int> > & groupNodesWithCompleteData, Network * bootstrapNetwork, const bool & doNotDoAdjust, const bool & updateImpImmed);
+	unsigned int imputeDataMean(const map<unsigned int, set<unsigned int> > & groupNodesWithMissingData, Network * bootstrapNetwork, const bool & updateImpImmed);
 	void setStandardDevs();
 	list<unsigned int> getConnectedNodes(const unsigned int & nodeID);
 	void getNoEdgesNotMissing(const map<unsigned int, set<unsigned int> > & groupNodesWithMissingData, Network * network, unsigned int & noEdgesNotMissing, unsigned int & totalEdges, unsigned int & noNonMissingSingltonNodes, unsigned int & totalSingltonNodes);

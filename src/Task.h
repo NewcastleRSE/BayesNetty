@@ -101,6 +101,7 @@ public:
 	void setFileNoFromDataName(const string & fileDataName, const unsigned int & fileNo) {dataNameFileNo[fileDataName] = fileNo;};
 	unsigned int getFileNoFromDataName(const string & fileDataName);
 	void checkData() {allNodeData->checkData();};
+	void updateDataNames() {allNodeData->updateDataNames();};
 	unsigned int getAmountOfData() const {return allNodeData->getAmountOfData();};
 	void checkIDs(string & filename, list<string> & dataIDsToCheck) {allNodeData->checkIDs(filename, dataIDsToCheck);};
 	void setNameOfIDs(list<string> & nids) {allNodeData->setNameOfIDs(nids);};
@@ -239,6 +240,7 @@ private:
 	istringstream lineStream;
 
 	unsigned int totalNodeDatas;
+	string ctsMissingValueStr;
 	double ctsMissingValue;
 	bool ctsMissingValueSet;
 	string discreteMissingValue;
@@ -257,7 +259,7 @@ private:
 public:
 
 	InputDataTask() : filename(""), variableFilename(""), fileno(0), includeVariables(), excludeVariables(), taskDataType(0), isCSV(false), comma(','), line(""), aNumber(""), prefixName(""), lineStream(""), descSNPs(), totalNodeDatas(0),
-		ctsMissingValue(-9), ctsMissingValueSet(false), discreteMissingValue("NA"), numberOfIDs(2), totalNoSubjects(0), bitCount(9), one('\1'), aBit(0) { buffer[0] = ' '; };
+		ctsMissingValueStr(""), ctsMissingValue(-9), ctsMissingValueSet(false), discreteMissingValue("NA"), numberOfIDs(2), totalNoSubjects(0), bitCount(9), one('\1'), aBit(0) { buffer[0] = ' '; };
 
 	~InputDataTask() {};
 
@@ -273,7 +275,7 @@ public:
 	void setIsCSV(const bool & csv) {isCSV = csv;};
 	void getStringInputData(ifstream & readData, string & aString);
 	void getNumberInputData(ifstream & readData, double & aNum, bool & missing, string & badNumber);
-	void setCtsMissingValue(const double & cmv) {ctsMissingValue = cmv; ctsMissingValueSet = true;};
+	void setCtsMissingValue(const string & cmv);
 	void setDiscreteMissingValue(const string & dmv) {discreteMissingValue = dmv;};
 	void setIncludeVariables(const string & filename);
 	void setExcludeVariables(const string & filename);
@@ -491,9 +493,16 @@ private:
 	unsigned int noFamiliesNotMiss;
 	map<unsigned int, string> familyIDs;
 	
+	bool useMeasurementError;
+	bool useEffectSize;
+	bool useBootstraps;
+	//double measurementError;
+	string measurementErrorFile;
+	list<double> measurementErrors;
+
 public:
 
-	BootstrapNetworkTaskHelp() : noFamiliesNotMiss(0), totalMissingData(0), totalNonMissingData(0) {};
+	BootstrapNetworkTaskHelp() : noFamiliesNotMiss(0), totalMissingData(0), totalNonMissingData(0), useMeasurementError(false), useEffectSize(false), useBootstraps(true), measurementErrors(), measurementErrorFile("") {};
 
 	~BootstrapNetworkTaskHelp() {};
 
@@ -502,7 +511,14 @@ public:
 	void updateBootstrapData(Network * bootstrapNetwork, Network * network);
 	void updateBootstrapDataSubset(Network * bootstrapNetwork, Network * network, const bool & useRandomData, const unsigned int & percent);
 	void setupFamilyIDs(const string & famFile, TaskCentral * taskCentral, Network * network);
-	
+	void setMeasurementErrors(const map<unsigned int, double> & mes, const double & me, const map<unsigned int, double> & mesm, const double & mem, Network * network);
+	void setMeasurementErrorFile(const string & mef) { measurementErrorFile = mef; useMeasurementError = true; };
+	void setUseBootstraps(const bool & ub) {useBootstraps = ub;};
+	void setUseEffectSize(const bool & ues) { useEffectSize = ues; };
+	void setupMEStDevs(const double & measurementError);
+	void setupMEStDevMultiples(const double & measurementErrorMultiple);
+	list<double> getMeasurementErrors() {return measurementErrors;};
+	list<CtsData *> getOrigCtsData() {return origCtsData;};
 };
 
 //! Calculate average networks.
@@ -520,10 +536,13 @@ private:
 
 	double arcThreshold;
 	bool arcThresholdSet;
+	string thresholdFilename;
+	bool useEquivNets;
 	unsigned int noBootstraps;
 	unsigned int randomRestarts;
 	unsigned int jitterRestarts;
 	
+	BootstrapNetworkTaskHelp bootstrapNetworkTaskHelp;
 	map<string, pair<double, double> > arcStrengths; //"node1 node2", arc strength, arc direction
 	map<string, double> arcCounts; //number of times an arc apeears in any direction
 	map<string, pair<double, double> > networkArcStrengths;
@@ -536,11 +555,21 @@ private:
 	unsigned int noNetworksEval;
 	double offSet;
 	bool offSetSet;
+	bool useMeasurementError;
+	bool useBootstraps;
+	bool useEffectSize;
+	double measurementError;
+	string measurementErrorFile;
+	map<unsigned int, double> measurementErrors;	
+	double measurementErrorMultiple;
+	string measurementErrorMultipleFile;
+	map<unsigned int, double> measurementErrorMultiples;
+	map<pair<unsigned int, unsigned int>, double> fromToProb; //from node, to node, prob. for robustness output
 
 public:
 
-	AverageNetworksTask() : filename(""), igraphPrefix(""), arcThreshold(0), arcThresholdSet(false), noBootstraps(100), randomRestarts(0), jitterRestarts(0), useNetworkScoreMethod(false), useNetworkWeightMethod(false), famFilename(""), likelihoodFilename(""),
-	   bootstrapNetwork(0), network(0), networkProb(0), noNetworksEval(0), offSet(0), offSetSet(false), totalProb(0) {};
+	AverageNetworksTask() : filename("averageNetwork.dat"), thresholdFilename(""), igraphPrefix(""), arcThreshold(0), arcThresholdSet(false), useEquivNets(false), noBootstraps(100), randomRestarts(0), jitterRestarts(0), bootstrapNetworkTaskHelp(), useNetworkScoreMethod(false), useNetworkWeightMethod(false), famFilename(""), likelihoodFilename(""),
+	   bootstrapNetwork(0), network(0), networkProb(0), noNetworksEval(0), offSet(0), offSetSet(false), totalProb(0), useMeasurementError(false), useBootstraps(true), useEffectSize(false), measurementError(0), measurementErrorFile(""), measurementErrors(), measurementErrorMultiple(), measurementErrorMultipleFile(""), measurementErrorMultiples() {};
 
 	~AverageNetworksTask()
 	{
@@ -556,13 +585,42 @@ public:
 	//average network methods
 	void setNetworkName(const string & nm) {networkName = nm;};
 	void setFilename(const string & fn) {filename = fn;};
+	void setThresholdFilename(const string & fn) {thresholdFilename = fn;};
 	void setFamilyFile(const string & ff) {famFilename = ff;};
 	void setArcThreshold(const double & th) {arcThreshold = th; arcThresholdSet = true;};
+	double getArcThreshold() {return arcThreshold;};
 	void setNoBootstraps(const unsigned int & nb) {noBootstraps = nb;};
+	void setUseEquivNets(const bool & dqc) { useEquivNets = dqc; };
 	void setRandomRestarts(const unsigned int & rr) {randomRestarts = rr;};
 	void setJitterRestarts(const unsigned int & jr) {jitterRestarts = jr;};
 	void setRFilenamePrefix(const string & rfn) {igraphPrefix = rfn;};
 	void setLikelihoodFilename(const string & fn) {likelihoodFilename = fn;};
+	void setMeasurementError(const double & me) {measurementError = me; useMeasurementError = true;};
+	void setMeasurementErrors(const map<unsigned int, double> & mes)
+	{ 
+		for(map<unsigned int, double>::const_iterator m = mes.begin(); m != mes.end(); ++m)
+		{
+			measurementErrors[m->first] = m->second;
+		};
+		useMeasurementError = true;
+	};
+	void setMeasurementErrorFile(const string & mef) { measurementErrorFile = mef; useMeasurementError = true; };
+	void setMeasurementErrorMultiple(const double & me) { measurementErrorMultiple = me; useMeasurementError = true; };
+	void setMeasurementErrorMultiples(const map<unsigned int, double> & mes)
+	{
+		for(map<unsigned int, double>::const_iterator m = mes.begin(); m != mes.end(); ++m)
+		{
+			measurementErrorMultiples[m->first] = m->second;
+		};
+		useMeasurementError = true;
+	};
+	void setMeasurementErrorMultipleFile(const string & mef) { measurementErrorMultipleFile = mef; useMeasurementError = true; };
+	void setUseMeasurementError(const bool & um) { useMeasurementError = um; };
+	void setUseEffectSize(const bool & ues) { useEffectSize = ues; };
+	void outputNodeRobustnessSummary();
+	void outputEdgeRobustnessSummary();
+	void getNodeAveEdgeProbs(string & nodeName, double & aveParentProb, double & aveChildProb, double & aveProb);
+	void setUseBootstraps(const bool & ub) {useBootstraps = ub;};
 	void updateArcStrengths(Network * net);
 	void updateArcStrengthsNetwork(const string & networkStr, const string & preNodeName = "");
 	void updateArcStrengthsTotal();
@@ -793,9 +851,11 @@ private:
 	string networkName;
 	Network * network;
 	Network * bootstrapNetwork;	
-	bool usePrevNetwork; //useprevious netwrok as starting point in bootstrap search
+	bool usePrevNetwork; //use previous network as starting point in bootstrap search
 	bool useCompleteData;
 	bool useRandomData;
+	bool useMean; //just substitute mean for cts variables - just for evalution purposes
+	bool useAllNN; //use all variables for NN - just for evalution purposes
 	unsigned int minIndivsForCompleteData; //if training data method not set then this is the min amount to auto set to complete data
 	unsigned int randomRestarts;
 	unsigned int jitterRestarts;
@@ -811,11 +871,12 @@ private:
 	unsigned int noIndivsImputed;
 	bool useMinNonMissingEdges;
 	double minNonMissingEdges;
+	unsigned int subsetPercent;
 
 public:
 
-	ImputeNetworkDataTask() : usePrevNetwork(false), useCompleteData(false), useRandomData(false), minIndivsForCompleteData(40), randomRestarts(0), jitterRestarts(0), impStartIndivNo(0), impEndIndivNo(0), jobNo(0), jobTotal(0),
-		network(0), bootstrapNetwork(0), maxMissing(0), noIndivsWithMissing(0), noIndivsImputed(0), useMinNonMissingEdges(true), minNonMissingEdges(0), noBitsOfDataNotImputed(0), noBitsOfDataNotImputed1(0), noBitsOfDataNotImputed2(0), noBitsOfDataNotImputed3(0), noBitsOfDataToImpute(0) {};
+	ImputeNetworkDataTask() : usePrevNetwork(false), useCompleteData(false), useRandomData(false), useMean(false), useAllNN(false), minIndivsForCompleteData(40), randomRestarts(0), jitterRestarts(0), impStartIndivNo(0), impEndIndivNo(0), jobNo(0), jobTotal(0),
+		network(0), bootstrapNetwork(0), maxMissing(0), noIndivsWithMissing(0), noIndivsImputed(0), useMinNonMissingEdges(true), minNonMissingEdges(0), noBitsOfDataNotImputed(0), noBitsOfDataNotImputed1(0), noBitsOfDataNotImputed2(0), noBitsOfDataNotImputed3(0), noBitsOfDataToImpute(0), subsetPercent(90) {};
 
 	~ImputeNetworkDataTask() {};
 
@@ -836,8 +897,11 @@ public:
 	void setJobTotal(const unsigned int & jt) {jobTotal = jt;};
 	void setMaxMissing(const unsigned int & mm) {maxMissing = mm;};
 	void setMinNonMissingEdges(const double & mnme) {minNonMissingEdges = mnme/100.0; if(minNonMissingEdges == 0) useMinNonMissingEdges = false;};
+	void setSubsetPercent(const unsigned int & sp) {subsetPercent = sp;};
 	void setUseCompleteData() {useCompleteData = true; useRandomData = false;};
 	void setUseRandomData() {useRandomData = true; useCompleteData = false;};
+	void setUseMean() {useMean = true; useCompleteData = true; useRandomData = false;};
+	void setUseAllNN() {useAllNN = true;};
 	void setUsePrevNetwork() {usePrevNetwork = true;};
 };
 
@@ -918,6 +982,71 @@ public:
 	void setNetworkName(const string & nm) {networkName = nm;};
 	void setTrueNetworkName(const string & tnm) {trueNetworkName = tnm;};
 	void setFilename(const string & fnm) {filename = fnm;};
+};
+
+//! Analysis the Robustness of the network fitted where data has Measurement Error.
+class MeasurementErrorRobustnessTask : public Task
+{
+private:	
+	string networkName;
+	string filename;
+	string thresholdFilename;
+	string igraphPrefix;
+	Network * network;
+	Network * bootstrapNetwork;
+	string famFilename;
+	AverageNetworksTask averageNetworksTask;
+
+	double arcThreshold;
+	bool arcThresholdSet;
+	bool useBootstraps;
+	unsigned int noIterations;
+	unsigned int randomRestarts;
+	unsigned int jitterRestarts;
+	bool useEquivNets;
+
+	double measurementError;
+	double measurementErrorMultiple;
+	map<unsigned int, double> measurementErrors;
+	map<unsigned int, double> measurementErrorMultiples;
+	map<string, double> measurementStrErrors;
+	map<string, double> measurementStrErrorMultiples;
+	string measurementErrorFile;
+	string measurementErrorMultipleFile;
+	bool useEffectSize;
+
+public:
+
+	MeasurementErrorRobustnessTask() : networkName(""), filename("robustness"), thresholdFilename(""), igraphPrefix(""), arcThreshold(0), arcThresholdSet(false), useBootstraps(false), noIterations(100), randomRestarts(0), jitterRestarts(0), useEquivNets(false), famFilename(""),
+		bootstrapNetwork(0), network(0), measurementError(0), measurementErrorMultiple(0), measurementStrErrors(), measurementErrorFile(""), measurementErrorMultipleFile(""), useEffectSize(false) {};
+
+	~MeasurementErrorRobustnessTask() {};
+
+	//general task methods
+	void initialiseTask();
+	void outputTaskHeader();
+	void outputTaskDetails();
+	void doTask();
+
+	//Measurement Error Robustness Task methods	
+	void setNetworkName(const string & nm) { networkName = nm; };
+	void setFilename(const string & fn) { filename = fn; };
+	void setThresholdFilename(const string & fn) { thresholdFilename = fn; };
+	void setFamilyFile(const string & ff) { famFilename = ff; };
+	void setArcThreshold(const double & th) { arcThreshold = th; arcThresholdSet = true; };
+	void setUseBootstraps(const bool & ub) { useBootstraps = ub; };
+	void setNoIterations(const unsigned int & nb) { noIterations = nb; };
+	void setRandomRestarts(const unsigned int & rr) { randomRestarts = rr; };
+	void setJitterRestarts(const unsigned int & jr) { jitterRestarts = jr; };
+	void setRFilenamePrefix(const string & rfn) { igraphPrefix = rfn; };
+	void setMeasurementError(const double & me) { measurementError = me; };
+	void setMeasurementError(const string & nd, const double & me);
+	void setMeasurementErrorFile(const string & mef) { measurementErrorFile = mef; };
+	void setMeasurementErrorMultiple(const double & mem) { measurementErrorMultiple = mem; };
+	void setEffectSizeError(const bool & e) { useEffectSize = e; };
+	void setMeasurementErrorMultiple(const string & nd, const double & me);
+	void setMeasurementErrorMultipleFile(const string & mef) { measurementErrorMultipleFile = mef; };	
+	void setUseEquivNets(const bool & dqc) { useEquivNets = dqc; };
 };
 
 #endif

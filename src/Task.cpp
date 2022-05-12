@@ -39,6 +39,7 @@ using namespace std; // initiates the "std" or "standard" namespace
 #include "main.h"
 #include "Network.h"
 #include "Utils.h"
+#include "cdflib.h"
 #include <math.h>
 #include <stack>
 #include <vector>
@@ -466,7 +467,8 @@ void InputDataTask::outputTaskDetails()
 		if(!ctsMissingValueSet) out("Missing value: not set\n");
 		else
 		{
-			out("Missing value: "); out(ctsMissingValue); out("\n");
+			if(ctsMissingValueStr != "") { out("Missing value: "); out(ctsMissingValueStr); out("\n"); }
+			else { out("Missing value: "); out(ctsMissingValue); out("\n"); };
 		};
 	}
 	else if(taskDataType == 2 || taskDataType == 5 || taskDataType == 8 || taskDataType == 9) {out("Missing value: "); out(discreteMissingValue); out("\n");};
@@ -496,6 +498,8 @@ void InputDataTask::doTask()
 	else if(taskDataType == 7) loadCtsData(true);
 	else if(taskDataType == 8) loadDiscreteData(true);
 	else if(taskDataType == 9) loadDiscreteDataAsFactors(true);
+
+	taskCentral->updateDataNames(); //update node names to remove ":"s from names
 
 	taskCentral->nextFileNo();
 
@@ -1096,6 +1100,29 @@ void InputDataTask::getNumberInputData(ifstream & readData, double & aNum, bool 
 
 	};
 
+};
+
+//! Sets missing value for cts data.
+void InputDataTask::setCtsMissingValue(const string & cmv)
+{ 
+	double dbl = 0.0;
+	istringstream num(cmv);
+
+	num >> dbl;
+
+	if(!num.fail() && num.eof()) // This second test is important! This makes sure that the entire string was converted to a number
+	{
+		// success
+		ctsMissingValue = dbl;
+		ctsMissingValueStr = "";
+	}
+	else
+	{
+		// failure
+		ctsMissingValueStr = cmv;
+	};
+
+	ctsMissingValueSet = true;
 };
 
 //! Loads data for cts data.
@@ -1739,7 +1766,7 @@ unsigned int getNetworkType(const string & score)
 	else if(score == "bayes") {scoreType = 3; exitErr("Bayes not done!"); }
 	else if(score == "cost") scoreType = 4;
 	else if(score == "BICprob") scoreType = 5;
-	else exitErr("Network score, " + score + ", not recognized! (Can be: loglike, BIC, AIC or bayes)");
+	else exitErr("Network score, " + score + ", not recognized! (Can be: BIC, AIC or loglike)");
 
 	return scoreType;
 };
@@ -1803,7 +1830,7 @@ void InputNetworkTask::loadNetworkDataFormat1(const unsigned int & type)
 
 	if(!readNetwork.is_open())
 	{
-		string mess = "Cannot read network file: " + filename + "!";
+		string mess = "Cannot read network file: " + theFilename + "!";
 		exitErr(mess);
 	};
 
@@ -2476,6 +2503,7 @@ void AverageNetworksTask::outputTaskDetails()
 
 	if(arcThresholdSet) {out("Set edge threshold: "); out(arcThreshold); out("\n");}
 	else {out("Estimated edge threshold: "); out(arcThreshold); out("\n");};
+	if(thresholdFilename != "") { out("Estimated edge threshold output to file: "); out(thresholdFilename); out("\n"); };
 	out("Network structure (after above threshold): "); out(network->getNetworkString()); out("\n");
 	out("Network score type: "); out(network->getScoreTypeName()); out("\n");
 	if(network->getScoreFixName() != "none") { out("Network score fix: "); out(network->getScoreFixName()); out("\n"); };
@@ -2605,6 +2633,172 @@ void BootstrapNetworkTaskHelp::setupBootstrap(TaskCentral * taskCentral, Network
 	taskCentral->addNetworkMissingData(bootstrapNetwork->updateNetworkMissingData());
 };
 
+//! Set up st. dev.s of MEs.
+void BootstrapNetworkTaskHelp::setupMEStDevs(const double & measurementError)
+{
+	list<CtsData *>::const_iterator ocd;
+	map<string, double> variableStDevs;
+	map<string, double>::const_iterator vsd;
+
+	string variableName;
+	string preVariableName;
+	double stDev;
+
+	if(measurementErrorFile != "")
+	{
+		ifstream readMEFile;
+		readMEFile.open(measurementErrorFile.c_str());
+		if(!readMEFile.is_open())
+		{
+			string mess = "Cannot read measurement error file: " + measurementErrorFile + "!";
+			exitErr(mess);
+		};
+
+		//loop thro' st devs
+		do{
+			readMEFile >> variableName >> stDev;
+
+			if(preVariableName != variableName)
+			{
+				variableStDevs[variableName] = stDev;
+			};
+
+			preVariableName = variableName;
+		} while(!readMEFile.eof());
+
+		readMEFile.close();
+
+		for(ocd = origCtsData.begin(); ocd != origCtsData.end(); ++ocd)
+		{
+			vsd = variableStDevs.find((*ocd)->name);
+			if(vsd != variableStDevs.end())
+			{
+				stDev = vsd->second;				
+			}
+			else
+			{
+				stDev = measurementError;
+			};
+
+			if(stDev != 0) useMeasurementError = true;
+			measurementErrors.push_back(stDev);
+		};
+	}
+	else
+	{
+		for(ocd = origCtsData.begin(); ocd != origCtsData.end(); ++ocd)
+		{
+			measurementErrors.push_back(measurementError);
+		};
+		if(measurementError != 0) useMeasurementError = true;
+	};
+
+};
+
+//! Set up st. dev.s of MEs.
+void BootstrapNetworkTaskHelp::setupMEStDevMultiples(const double & measurementErrorMultiple)
+{
+	list<CtsData *>::const_iterator ocd;
+	map<string, double> variableMEStDevMultiples;
+	map<string, double>::const_iterator vsd;
+
+	string variableName;
+	string preVariableName;
+	double stDevMultiple;
+	double stDev;
+
+	if(measurementErrorFile != "")
+	{
+		ifstream readMEFile;
+		readMEFile.open(measurementErrorFile.c_str());
+		if(!readMEFile.is_open())
+		{
+			string mess = "Cannot read measurement error multiple file: " + measurementErrorFile + "!";
+			exitErr(mess);
+		};
+
+		//loop thro' ME st devs multiples
+		do{
+			readMEFile >> variableName >> stDevMultiple;
+	
+			if(preVariableName != variableName)
+			{
+				variableMEStDevMultiples[variableName] = stDevMultiple;
+			};
+
+			preVariableName = variableName;
+		} while(!readMEFile.eof());
+
+		readMEFile.close();
+
+		for(ocd = origCtsData.begin(); ocd != origCtsData.end(); ++ocd)
+		{
+			vsd = variableMEStDevMultiples.find((*ocd)->name);
+			if(vsd != variableMEStDevMultiples.end())
+			{
+				stDevMultiple = vsd->second;
+			}
+			else
+			{
+				stDevMultiple = measurementErrorMultiple;
+			};
+
+			if(stDevMultiple != 0) useMeasurementError = true;
+
+			stDev = stDevMultiple*(*ocd)->getStDev();
+			measurementErrors.push_back(stDev);
+		};
+	}
+	else
+	{
+		for(ocd = origCtsData.begin(); ocd != origCtsData.end(); ++ocd)
+		{
+			stDev = measurementErrorMultiple * (*ocd)->getStDev();
+			measurementErrors.push_back(stDev);
+		};
+		if(measurementErrorMultiple != 0) useMeasurementError = true;
+	};
+
+};
+
+//! Sets up measurement errors for each variable
+void BootstrapNetworkTaskHelp::setMeasurementErrors(const map<unsigned int, double> & mes, const double & me, const map<unsigned int, double> & mesm, const double & mem, Network * network)
+{
+	map<unsigned int, CtsNode *> origNetworkCtsNodes = network->getCtsNodes();
+	double measureErr;
+	double measureErrMultiple;
+	map<unsigned int, double>::const_iterator varME;
+	map<unsigned int, double>::const_iterator varMEMulti;
+
+	for(map<unsigned int, CtsNode *>::const_iterator oncn = origNetworkCtsNodes.begin(); oncn != origNetworkCtsNodes.end(); ++oncn)
+	{
+		varMEMulti = mesm.find(oncn->first);
+		varME = mes.find(oncn->first);
+
+		if(varMEMulti != mesm.end())
+		{
+			measureErrMultiple = varMEMulti->second;
+			measureErr = measureErrMultiple * (oncn->second->getCtsData()->getStDev());
+		}
+		else if(varME != mes.end())
+		{
+			measureErr = varME->second;
+		}
+		else if(mem != 0)
+		{
+			measureErr = mem * (oncn->second->getCtsData()->getStDev());
+		}
+		else
+		{
+			measureErr = me;
+		};
+
+		if(measureErr != 0) useMeasurementError = true;
+
+		measurementErrors.push_back(measureErr);
+	};
+
+};
 
 //! Sets up family IDs for sampling from
 void BootstrapNetworkTaskHelp::setupFamilyIDs(const string & famFile, TaskCentral * taskCentral, Network * network)
@@ -2665,21 +2859,26 @@ void BootstrapNetworkTaskHelp::setupFamilyIDs(const string & famFile, TaskCentra
 
 };
 
+//! Draws a random value from random dist, equivalent to R command: rnorm(1, 0, measurmentError)
+double getRandomMeasurmentError(const double & measurmentError)
+{
+	int which = 2; //set for drawing random number
+	double p = (double)rand() / (double)RAND_MAX;
+	double q = 1 - p;
+	int status = 0;
+	double bound = 0;
+	double value;
+	double mean = 0;
+	double sd = measurmentError;
+
+	cdfnor(&which, &p, &q, &value, &mean, &sd, &status, &bound);
+
+	return value;
+};
+
 //! Updates bootstrap data for network.
 void BootstrapNetworkTaskHelp::updateBootstrapData(Network * bootstrapNetwork, Network * network)
 {
-	//reset boostrap counts
-	map<unsigned int, unsigned int>::iterator nb;
-	for(nb = noTimesDataForBootstrap.begin(); nb != noTimesDataForBootstrap.end(); ++nb)
-	{
-		nb->second = 0;
-	};
-
-	unsigned int randomDataNo;
-	map<unsigned int, unsigned int>::const_iterator dfb; // dataForBootstrap;
-
-	bool dataOK = true;
-
 	//family stuff
 	bool useFamily = famFilename != "";
 	set<unsigned int> usedIndivIDs; //indiv ID
@@ -2690,45 +2889,72 @@ void BootstrapNetworkTaskHelp::updateBootstrapData(Network * bootstrapNetwork, N
 	if(useFamily) noIndivstoPick = noFamiliesNotMiss;
 	else noIndivstoPick = totalNonMissingData;
 
-	//choose random bootstraps
-	for(unsigned int dataNo = 1; dataNo <= noIndivstoPick; )
+	//reset boostrap counts
+	unsigned int dataNo = 1;
+	map<unsigned int, unsigned int>::iterator nb;
+	for(nb = noTimesDataForBootstrap.begin(); nb != noTimesDataForBootstrap.end(); ++nb, ++dataNo)
 	{
-		randomDataNo = rand() % totalNonMissingData + 1;
-
-		//ensure diff indivs from same family are not chosen
-		if(useFamily)
+		if(useBootstraps || dataNo > noIndivstoPick)
 		{
-			dataOK = false;
-			
-			if(usedIndivIDs.find(randomDataNo) != usedIndivIDs.end()) dataOK = true; //can reuse for bootstrapping
-			else
-			{
-				fi = familyIDs.find(randomDataNo);
-				if(fi == familyIDs.end())
-				{
-					string mess = "Problem finding family ID for individual: " + toString(randomDataNo) + "!";
-					exitErr(mess);
-				};
+			nb->second = 0;
+		}
+		else
+		{
+			nb->second = 1;
+		};
+	};
 
-				if(usedFamIDs.find(fi->second) == usedFamIDs.end()) //do not pick if fam already used
+	unsigned int randomDataNo;
+	map<unsigned int, unsigned int>::const_iterator dfb; // dataForBootstrap;
+
+	bool dataOK = true;
+	
+	//choose random bootstraps
+	if(useBootstraps)
+	{
+		for(dataNo = 1; dataNo <= noIndivstoPick; )
+		{
+			randomDataNo = rand() % totalNonMissingData + 1;
+
+			//ensure diff indivs from same family are not chosen
+			if(useFamily)
+			{
+				dataOK = false;
+
+				if(usedIndivIDs.find(randomDataNo) != usedIndivIDs.end()) dataOK = true; //can reuse for bootstrapping
+				else
 				{
-					dataOK = true;
-					usedIndivIDs.insert(randomDataNo);
-					usedFamIDs.insert(fi->second);
+					fi = familyIDs.find(randomDataNo);
+					if(fi == familyIDs.end())
+					{
+						string mess = "Problem finding family ID for individual: " + toString(randomDataNo) + "!";
+						exitErr(mess);
+					};
+
+					if(usedFamIDs.find(fi->second) == usedFamIDs.end()) //do not pick if fam already used
+					{
+						dataOK = true;
+						usedIndivIDs.insert(randomDataNo);
+						usedFamIDs.insert(fi->second);
+					};
+
 				};
 
 			};
 
-		};
+			if(dataOK)
+			{
+				dfb = dataForBootstrap.find(randomDataNo);
+				nb = noTimesDataForBootstrap.find(dfb->second);
+				nb->second++;
+				++dataNo;
+			};
 
-		if(dataOK)
-		{
-			dfb = dataForBootstrap.find(randomDataNo);
-			nb = noTimesDataForBootstrap.find(dfb->second);
-			nb->second++;
-			++dataNo;
 		};
-		
+	}
+	else
+	{
+
 	};
 
 	//update discrete node data
@@ -2758,6 +2984,7 @@ void BootstrapNetworkTaskHelp::updateBootstrapData(Network * bootstrapNetwork, N
 	list<CtsData *>::iterator bc = bootCtsData.begin();
 	list<double>::iterator bcv;
 	unsigned int test = 1;
+	list<double>::const_iterator me = measurementErrors.begin();
 
 	for( ; oc != origCtsData.end(); ++oc, ++bc)
 	{
@@ -2771,9 +2998,15 @@ void BootstrapNetworkTaskHelp::updateBootstrapData(Network * bootstrapNetwork, N
 			for(unsigned int i = 1; i <= nb->second; ++i, ++bcv)
 			{
 				*bcv = *ocv;
+				if(useMeasurementError)
+				{
+					if(!useEffectSize) *bcv += getRandomMeasurmentError(*me); //noise
+					else *bcv *= (1 + getRandomMeasurmentError(*me)); //effect size noise
+				}
 			};	
 		};
-
+		
+		if(useMeasurementError) ++me;
 	};
 
 	//clear caches for network evaluations
@@ -2903,23 +3136,35 @@ void AverageNetworksTask::doTask()
 		return;
 	};
 
-	BootstrapNetworkTaskHelp bootstrapNetworkTaskHelp;
-
 	//choose network for analyses
-	if(networkName != "") network =	taskCentral->getNetwork(networkName);
+	if(networkName != "") network = taskCentral->getNetwork(networkName);
 	else network = taskCentral->getLatestNetwork(networkName);
 	
+	bootstrapNetworkTaskHelp.setUseBootstraps(useBootstraps);
+	if(measurementErrorMultipleFile != "")
+	{
+		bootstrapNetworkTaskHelp.setMeasurementErrorFile(measurementErrorMultipleFile);
+		bootstrapNetworkTaskHelp.setupMEStDevMultiples(measurementErrorMultiple);
+	}
+	else if(measurementErrorFile != "")
+	{
+		bootstrapNetworkTaskHelp.setMeasurementErrorFile(measurementErrorFile);
+		bootstrapNetworkTaskHelp.setupMEStDevs(measurementError);
+	}
+	else bootstrapNetworkTaskHelp.setMeasurementErrors(measurementErrors, measurementError, measurementErrorMultiples, measurementErrorMultiple, network);
+
+	bootstrapNetworkTaskHelp.setUseEffectSize(useEffectSize);
+
 	//check all of the Nodes have the same amount of data
 	taskCentral->checkData();
 	taskCentral->addNetworkMissingData(network->updateNetworkMissingData());
 
-
 	if(famFilename != "") bootstrapNetworkTaskHelp.setupFamilyIDs(famFilename, taskCentral, network);
 
 	//get copy of the initial network
-	string bootNetworkName = name; 
+	string bootNetworkName = name;
 	string preNodeName = name + "-";
-	
+
 	bootstrapNetwork = bootstrapNetworkTaskHelp.createBootstrapNetwork(taskCentral, network, bootNetworkName);
 
 	//set up list of data for bootstrapping
@@ -2931,21 +3176,21 @@ void AverageNetworksTask::doTask()
 	searchNetworkModelsTask.setNetworkName(bootNetworkName);
 	searchNetworkModelsTask.setRandomRestarts(randomRestarts);
 	searchNetworkModelsTask.setJitterRestarts(jitterRestarts);
-	searchNetworkModelsTask.setTaskCentral(taskCentral); 
+	searchNetworkModelsTask.setTaskCentral(taskCentral);
 	searchNetworkModelsTask.initialiseTask();
 	searchNetworkModelsTask.setPreNodeName(preNodeName);
 
-	
+
 	string PDAG;
 	double bootScore = 0;
-	
+
 
 	ofstream outLikes;
 	unsigned int randomSeed = taskCentral->getRandomSeed();
 
 	if(likelihoodFilename != "")
 	{
-		outLikes.open(likelihoodFilename.c_str());		
+		outLikes.open(likelihoodFilename.c_str());
 	};
 
 	for(unsigned int iter = 1; iter <= noBootstraps; ++iter)
@@ -2954,7 +3199,7 @@ void AverageNetworksTask::doTask()
 		taskCentral->setRandomSeed(randomSeed);
 
 		bootstrapNetworkTaskHelp.updateBootstrapData(bootstrapNetwork, network);
-	
+
 		bootstrapNetwork->removeAllEdges(); // with data changed the current
 		bootstrapNetwork->updateBlackWhiteDifferentData(network, preNodeName);
 
@@ -2967,9 +3212,9 @@ void AverageNetworksTask::doTask()
 		updateArcStrengths(bootstrapNetwork);
 
 	};
-	
+
 	if(likelihoodFilename != "") outLikes.close();
-	
+
 	outputAverageNetworkFile();
 };
 
@@ -3017,10 +3262,11 @@ void AverageNetworksTask::outputAverageNetworkFile()
 	unsigned int nodeNumber1;
 	unsigned int nodeNumber2;
 	
-
 	AllNodeData * allNodeData = taskCentral->getAllNodeData();
 
-	ofstream outArcs(filename.c_str());
+	string outFilename = filename;
+	if(useMeasurementError) outFilename = filename + "-ave.dat";
+	ofstream outArcs(outFilename.c_str());
 
 	outArcs << "from\ttype1\tto\ttype2\tstrength\tdirection\n";
 
@@ -3092,14 +3338,274 @@ void AverageNetworksTask::outputAverageNetworkFile()
 		outArcs << strength << "\t" << direction << "\n";
 
 		if(!arcThresholdSet) orderedArcStrengths.push_back(strength);
+		if(useMeasurementError)
+		{
+			fromToProb[make_pair(nodeNumber1, nodeNumber2)] = strength * direction;
+		};
 	};
 	
 	outArcs.close();
 
+	if(useMeasurementError)
+	{
+		//output measurment error summaries against the "true" network befor it is overwritten
+		outputNodeRobustnessSummary();
+		outputEdgeRobustnessSummary();
+	};
+
 	setFinalNetwork();
 
 	if(igraphPrefix != "") outputRGraph();
+
+	//output file with estimated threshold in it
+	if(thresholdFilename != "")
+	{		
+		ofstream outThres;
+		outThres.open(thresholdFilename.c_str());
+		outThres << arcThreshold << "\n";
+		outThres.close();
+	};
 };
+
+//! Get probs of edges connected to node.
+void AverageNetworksTask::getNodeAveEdgeProbs(string & nodeName, double & aveParentProb, double & aveChildProb, double & aveProb)
+{
+	aveParentProb = 0;
+	aveChildProb = 0;
+	aveProb = 0;
+	double parTot = 0;
+	double childTot = 0;
+
+	for(map<pair<unsigned int, unsigned int>, double>::const_iterator ftp = fromToProb.begin(); ftp != fromToProb.end(); ++ftp)
+	{
+		if(network->edgeExists((*ftp).first.first, (*ftp).first.second)) //check is in true network
+		{
+			if(network->getNetworkNode((*ftp).first.second)->getDisplayName() == nodeName)
+			{
+				aveParentProb += ftp->second;
+				parTot++;
+			} else if(network->getNetworkNode((*ftp).first.first)->getDisplayName() == nodeName)
+			{
+				aveChildProb += ftp->second;
+				childTot++;
+			}
+
+		};
+	};
+
+	if(parTot != 0) aveParentProb /= parTot;
+	else
+	{
+		if(network->getNumberOfParents(nodeName) > 0) aveParentProb = 0; else aveParentProb = -1;
+	};
+
+	if(childTot != 0) aveChildProb /= childTot;
+	else
+	{
+		if(network->getNumberOfChildren(nodeName) > 0) aveChildProb = 0; else aveChildProb = -1;	
+	};
+
+	if(childTot != 0 && parTot != 0)
+	{
+		aveProb = (aveChildProb + aveParentProb) / (childTot + parTot);
+	}
+	else if(childTot != 0)
+	{
+		aveProb = aveChildProb;
+	}
+	else if(parTot != 0)
+	{
+		aveProb = aveParentProb;
+	}
+	else
+	{
+		if(aveParentProb == 0 || aveChildProb == 0) aveProb = 0; else aveProb = -1;
+	};
+};
+
+//! Outputs node robustness summary
+void AverageNetworksTask::outputNodeRobustnessSummary()
+{
+	list<double> measurementErrors = bootstrapNetworkTaskHelp.getMeasurementErrors();
+	list<CtsData *> origCtsData = bootstrapNetworkTaskHelp.getOrigCtsData();
+	string nodeName;
+	unsigned int nodeNumber;
+	double stDev;
+	double stDevME;
+	double ratio;
+	double aveParentProb;
+	double aveChildProb;
+	double aveProb;
+
+	string outFilename = filename;
+	if(useMeasurementError) outFilename = filename + "-nodes.dat";
+	ofstream outNodes(outFilename.c_str());
+
+	outNodes << "node\tst_dev\tME_st_dev\tratio\tave_parent_edge_prob\tave_child_edge_prob\tave_edge_prob\n";
+
+	list<double>::const_iterator me = measurementErrors.begin();
+	for(list<CtsData *>::const_iterator ocd = origCtsData.begin(); ocd != origCtsData.end(); ++ocd, ++me)
+	{
+		nodeName = (*ocd)->name;		
+		stDev = (*ocd)->getStDev();
+		stDevME = *me;
+		ratio = stDevME / stDev;
+		getNodeAveEdgeProbs(nodeName, aveParentProb, aveChildProb, aveProb);
+		
+		outNodes << nodeName << "\t" << stDev << "\t" << stDevME << "\t" << ratio << "\t";
+		if(aveParentProb != -1) outNodes << aveParentProb << "\t"; else outNodes << "NA\t";
+		if(aveChildProb != -1) outNodes << aveChildProb << "\t"; else outNodes << "NA\t";
+		if(aveProb != -1) outNodes << aveProb << "\t"; else outNodes << "NA\t";
+		outNodes << "\n";
+	};
+
+	outNodes.close();
+};
+
+//! Outputs edge robustness summary
+void AverageNetworksTask::outputEdgeRobustnessSummary()
+{
+	list<double> measurementErrors = bootstrapNetworkTaskHelp.getMeasurementErrors();
+	list<CtsData *> origCtsData = bootstrapNetworkTaskHelp.getOrigCtsData();
+	map<string, double> nodeME;
+	map<string, double>::const_iterator nME;
+	list<double>::const_iterator me = measurementErrors.begin();
+	
+	double stDev = 0;
+	double stDevME = 0;
+	double ratio = 0;
+
+	set<pair<unsigned int, unsigned int> > outPuttedEdges;
+
+	string outFilename = filename;
+	if(useMeasurementError) outFilename = filename + "-edges.dat";
+	ofstream outEdges(outFilename.c_str());
+
+	for(list<CtsData *>::const_iterator ocd = origCtsData.begin(); ocd != origCtsData.end(); ++ocd, ++me)
+	{
+		nodeME[(*ocd)->name] = *me;		
+	};
+
+	outEdges << "from\tto\tst_dev_from\tME_st_dev_from\tratio_from\tst_dev_to\tME_st_dev_to\tratio_to\tprob\n";
+
+	for(map<pair<unsigned int, unsigned int>, double>::const_iterator ftp = fromToProb.begin(); ftp != fromToProb.end(); ++ftp)
+	{
+		if(network->edgeExists((*ftp).first.first, (*ftp).first.second)) //check is in true network
+		{
+			outPuttedEdges.insert(make_pair((*ftp).first.first, (*ftp).first.second));
+			outEdges << network->getNetworkNode((*ftp).first.first)->getDisplayName() << "\t" << network->getNetworkNode((*ftp).first.second)->getDisplayName() << "\t";
+			
+			//from node
+			if(network->getNetworkNode((*ftp).first.first)->getIsDiscreteNode())
+			{
+				stDev = 0;
+				stDevME = 0; 
+				ratio = 0;
+			}
+			else {
+				stDev = network->getNetworkNode((*ftp).first.first)->getCtsData()->getStDev();
+				nME = nodeME.find(network->getNetworkNode((*ftp).first.first)->getCtsData()->name);
+				if(nME != nodeME.end())
+				{
+					stDevME = nME->second;
+				}
+				else
+				{
+					stDevME = 0;
+				};
+				ratio = stDevME / stDev;
+			};
+
+			outEdges << stDev << "\t" << stDevME << "\t" << ratio << "\t";
+
+			//to node
+			if(network->getNetworkNode((*ftp).first.second)->getIsDiscreteNode())
+			{
+				stDev = 0;
+				stDevME = 0;
+				ratio = 0;
+			}
+			else {
+				stDev = network->getNetworkNode((*ftp).first.second)->getCtsData()->getStDev();
+				nME = nodeME.find(network->getNetworkNode((*ftp).first.second)->getCtsData()->name);
+				if(nME != nodeME.end())
+				{
+					stDevME = nME->second;
+				}
+				else
+				{
+					stDevME = 0;
+				};
+			};
+			ratio = stDevME / stDev;
+			outEdges << stDev << "\t" << stDevME << "\t" << ratio << "\t" << ftp->second <<"\n";
+		};
+	};
+
+	//add missing edges...
+	map<unsigned int, Node *> networkNodes = network->getNetworkNodes();
+	map<unsigned int, Node *> parents;
+	set<pair<unsigned int, unsigned int> >::const_iterator ope;
+
+	for(map<unsigned int, Node *>::const_iterator nn = networkNodes.begin(); nn != networkNodes.end(); ++nn)
+	{
+		parents = nn->second->getParents();
+		for(map<unsigned int, Node *>::const_iterator p = parents.begin(); p != parents.end(); ++p)
+		{
+			if(outPuttedEdges.find(make_pair(p->first, nn->first)) == outPuttedEdges.end())
+			{
+				outEdges << p->second->getDisplayName() << "\t" << nn->second->getDisplayName() << "\t";
+				
+				//from node
+				if(p->second->getIsDiscreteNode())
+				{
+					stDev = 0;
+					stDevME = 0;
+					ratio = 0;
+				}
+				else {
+					stDev = p->second->getCtsData()->getStDev();
+					nME = nodeME.find(p->second->getCtsData()->name);
+					if(nME != nodeME.end())
+					{
+						stDevME = nME->second;
+					}
+					else
+					{
+						stDevME = 0;
+					};
+				};
+				ratio = stDevME / stDev;			
+				outEdges << stDev << "\t" << stDevME << "\t" << ratio << "\t";
+
+				//to node
+				if(nn->second->getIsDiscreteNode())
+				{
+					stDev = 0;
+					stDevME = 0;
+					ratio = 0;
+				}
+				else {
+					stDev = nn->second->getCtsData()->getStDev();
+					nME = nodeME.find(nn->second->getCtsData()->name);
+					if(nME != nodeME.end())
+					{
+						stDevME = nME->second;
+					}
+					else
+					{
+						stDevME = 0;
+					};
+				};
+				ratio = stDevME / stDev;
+				outEdges << stDev << "\t" << stDevME << "\t" << ratio << "\t0\n";
+			};
+		};
+	};
+
+	outEdges.close();
+};
+
 
 //! Outputs R code for plotting the average network.
 void AverageNetworksTask::outputRGraph()
@@ -3300,22 +3806,29 @@ void AverageNetworksTask::updateArcStrengths(Network * net)
 
 	string preNodeName = name + "-";
 
-	//get list of equivalent networks for the current network
-	unsigned int noEqivNets = net->outputEquivalentNetworks(true, eqNetworks, preNodeName);
-	
-	//loop thro' equiv networks and calc and record arc strengths
-	for(list<string>::const_iterator en = eqNetworks.begin(); en != eqNetworks.end(); ++en)
+	if(!useEquivNets)
 	{
-		updateArcStrengthsNetwork(*en, preNodeName);		
-	};
-
-	double noNets = (double)eqNetworks.size();
-
-	//scale to between 0 and 1 for this PDAG
-	for(map<string, pair<double, double> >::iterator nas = networkArcStrengths.begin(); nas != networkArcStrengths.end(); ++nas)
+		updateArcStrengthsNetwork(net->getNetworkString(0), preNodeName);
+	}
+	else
 	{
-		nas->second.first /= noNets; 
-		nas->second.second /= noNets;
+		//get list of equivalent networks for the current network
+		unsigned int noEqivNets = net->outputEquivalentNetworks(true, eqNetworks, preNodeName);
+
+		//loop thro' equiv networks and calc and record arc strengths
+		for(list<string>::const_iterator en = eqNetworks.begin(); en != eqNetworks.end(); ++en)
+		{
+			updateArcStrengthsNetwork(*en, preNodeName);
+		};
+
+		double noNets = (double)eqNetworks.size();
+
+		//scale to between 0 and 1 for this PDAG
+		for(map<string, pair<double, double> >::iterator nas = networkArcStrengths.begin(); nas != networkArcStrengths.end(); ++nas)
+		{
+			nas->second.first /= noNets;
+			nas->second.second /= noNets;
+		};
 	};
 
 	updateArcStrengthsTotal();
@@ -4978,7 +5491,8 @@ void ImputeNetworkDataTask::doNetworkDataImputation(const bool & doNotDoAdjust, 
 	stack<unsigned int> missingDataNodes;
 	stack<unsigned int> connectedMissingDataNodes;
 	unsigned int missNodeID;
-	unsigned int subsetPercent = 90;
+	map<unsigned int, Node *> bootNetworkNodes;
+	//unsigned int subsetPercent = 90; //default 90, but changable
 
 	list<unsigned int> connectedBootNodes;
 	set<unsigned int>::const_iterator nd;
@@ -5143,14 +5657,29 @@ void ImputeNetworkDataTask::doNetworkDataImputation(const bool & doNotDoAdjust, 
 					{
 						if(freeClearMemory) set<unsigned int>().swap(someNodes); else someNodes.clear();
 						for(set<unsigned int>::const_iterator md = gwmd->second.begin(); md != gwmd->second.end(); ++md)
-						{				
-							connectedBootNodes = bootstrapNetwork->getConnectedNodes(bootstrapNetwork->convertID(*md));
-					
-							for(list<unsigned int>::iterator cn3 = connectedBootNodes.begin(); cn3 != connectedBootNodes.end(); ++cn3)
+						{
+							if(!useAllNN)
 							{
-								//check the node has complete data for the indiv that is being imputed
-								aNode = network->getNetworkNode(network->convertID(*cn3));
-								if(!aNode->nodeDataIsMissing2()) someNodes.insert(aNode->getNodeID());
+								connectedBootNodes = bootstrapNetwork->getConnectedNodes(bootstrapNetwork->convertID(*md));
+
+								for(list<unsigned int>::iterator cn3 = connectedBootNodes.begin(); cn3 != connectedBootNodes.end(); ++cn3)
+								{
+									//check the node has complete data for the indiv that is being imputed
+									aNode = network->getNetworkNode(network->convertID(*cn3));
+									if(!aNode->nodeDataIsMissing2()) someNodes.insert(aNode->getNodeID());
+								};
+							}
+							else
+							{
+								//use all other nodes with complete data - just here for evaluation purposes not to be used for proper analysis of real data
+								bootNetworkNodes = bootstrapNetwork->getNetworkNodes();
+
+								for(map<unsigned int, Node *>::iterator bnn = bootNetworkNodes.begin(); bnn != bootNetworkNodes.end(); ++bnn)
+								{
+									//check the node has complete data for the indiv that is being imputed
+									aNode = network->getNetworkNode(network->convertID(bnn->first));
+									if(!aNode->nodeDataIsMissing2()) someNodes.insert(aNode->getNodeID());
+								};
 							};
 						};
 
@@ -5255,7 +5784,8 @@ void ImputeNetworkDataTask::doNetworkDataImputation(const bool & doNotDoAdjust, 
 					if(!skipImp)
 					{
 						if(tryNo==1) noIndivsImputed++;
-						noBitsOfDataNotImputed += network->imputeDataNN(groupNodesWithMissingData, groupNodesWithCompleteData, bootstrapNetwork, doNotDoAdjust, updateImpImmed);
+						if(useMean) noBitsOfDataNotImputed += network->imputeDataMean(groupNodesWithMissingData, bootstrapNetwork, updateImpImmed);
+						else noBitsOfDataNotImputed += network->imputeDataNN(groupNodesWithMissingData, groupNodesWithCompleteData, bootstrapNetwork, doNotDoAdjust, updateImpImmed);
 					};
 				
 					noBitsOfDataToImpute += nodesWithMissingData.size();
@@ -5619,4 +6149,161 @@ void CalculateRecallPrecisionTask::doTask()
 		outResults.close();
 	};
 };
+
+
+//! Initialises the task for analysis of the robustness.
+void MeasurementErrorRobustnessTask::initialiseTask()
+{
+
+
+};
+
+//! Outputs task header for analysis of the robustness.
+void MeasurementErrorRobustnessTask::outputTaskHeader()
+{
+	outputTaskName();
+	out("Analysing robustness of the fitted network when accounting for measurement error\n");
+
+};
+
+//!  Outputs task details for analysis of the robustness.
+void MeasurementErrorRobustnessTask::outputTaskDetails()
+{
+	out("Network: "); out(networkName); out("\n");
+	
+	if(measurementErrorFile != "")
+	{
+		out("Standard deviation of measurement errors given in file: "); out(measurementErrorFile); out("\n");		
+	}
+	
+	if(measurementErrorMultipleFile != "")
+	{
+		out("Multiple of standard deviations defining measurement errors given in file: "); out(measurementErrorFile); out("\n");
+	}
+
+	if(measurementErrors.empty() && measurementErrorMultiples.empty())
+	{
+		if(measurementErrorMultiple != 0) { out("Multiple of standard deviations defining measurement error for all variables: "); out(measurementError); out("\n"); }
+		else { out("Standard deviation of measurement error for all variables: "); out(measurementError); out("\n"); }
+	}
+	else
+	{
+		if(!measurementErrorMultiples.empty())
+		{
+			out("Multiple of standard deviations defining measurement error for each variable is set to:\n");
+			for(map<unsigned int, double>::const_iterator me = measurementErrorMultiples.begin(); me != measurementErrorMultiples.end(); ++me)
+			{
+				out(network->getNetworkNode(me->first)->getDisplayName()); out(" ");  out(me->second); out("; ");
+			};			
+		}
+		else if(!measurementErrors.empty())
+		{
+			out("Standard deviation of measurement error for each variable is set to:\n");
+			for(map<unsigned int, double>::const_iterator me = measurementErrors.begin(); me != measurementErrors.end(); ++me)
+			{
+				out(network->getNetworkNode(me->first)->getDisplayName()); out(" ");  out(me->second); out("; ");
+			};		
+		};
+
+		if(measurementErrorMultiple != 0) { out("\nFor other variables the multiple of standard deviations defining measurement error is set to: "); out(measurementErrorMultiple); out("\n"); }
+		else { out("\nFor other variables the standard deviation of measurement error is set to: "); out(measurementError); out("\n"); }
+	};
+	
+	if(useBootstraps) { out("Number of bootstrap iterations: "); out(noIterations); out("\n"); }
+	else { out("Number of iterations: "); out(noIterations); out("\n"); };
+	out("Random restarts: "); out(randomRestarts); out("\n");
+	out("Random jitter restarts: "); out(jitterRestarts); out("\n");
+	
+
+	if(filename != "")
+	{
+		out("Average network output to file: "); out(filename); out("-ave.dat"); out("\n");
+		out("Nodes summary output to file: "); out(filename); out("-nodes.dat"); out("\n");
+		out("Edges summary output to file: "); out(filename); out("-edges.dat"); out("\n");
+	};	
+	if(igraphPrefix != "") { out("R code to plot average network: "); out(igraphPrefix + ".R"); out("\n"); };
+
+	if(arcThresholdSet) { out("Set edge threshold: "); out(arcThreshold); out("\n"); }
+	else { out("Estimated edge threshold: "); out(arcThreshold); out("\n"); };
+	if(thresholdFilename != "") { out("Estimated edge threshold output to file: "); out(thresholdFilename); out("\n"); };
+	out("Network structure (after above threshold): "); out(network->getNetworkString()); out("\n");
+	out("Network score type: "); out(network->getScoreTypeName()); out("\n");
+	if(network->getScoreFixName() != "none") { out("Network score fix: "); out(network->getScoreFixName()); out("\n"); };
+	if(network->hasLoop()) { out("The network contains a loop!\n"); }
+	if(!network->checkNetworkIsValid()) { out("The network is not valid!\n"); }
+	else { out("Network score = "); out(network->calcScore()); out("\n"); };
+
+};
+
+//! Do task for analysing robustness of the fitted network when accounting for measurement error
+void MeasurementErrorRobustnessTask::doTask()
+{
+	//choose network for analyses
+	if(networkName != "") network = taskCentral->getNetwork(networkName);
+	else network = taskCentral->getLatestNetwork(networkName);
+
+	//set up average network task
+	averageNetworksTask.setTaskCentral(taskCentral);
+	averageNetworksTask.setNetworkName(networkName);	
+	averageNetworksTask.setFilename(filename);
+	averageNetworksTask.setThresholdFilename(thresholdFilename);
+	averageNetworksTask.setFamilyFile(famFilename);
+	if(arcThresholdSet) averageNetworksTask.setArcThreshold(arcThreshold);
+	averageNetworksTask.setNoBootstraps(noIterations);
+	averageNetworksTask.setUseBootstraps(useBootstraps);
+	averageNetworksTask.setRandomRestarts(randomRestarts);
+	averageNetworksTask.setJitterRestarts(jitterRestarts);
+	averageNetworksTask.setRFilenamePrefix(igraphPrefix);
+	averageNetworksTask.setUseEquivNets(useEquivNets);
+
+	unsigned int nodeID;
+	for(map<string, double>::const_iterator mse = measurementStrErrors.begin(); mse != measurementStrErrors.end(); ++mse)
+	{
+		nodeID = taskCentral->getNodeDataNumberInit(mse->first);
+		if(nodeID != 0) measurementErrors[nodeID] = mse->second;
+		else
+		{
+			string mess = "Attempt to add measurement error " + toString(mse->second) + " to node \"" + mse->first + "\" but no such node exists!\n";
+			exitErr(mess);
+		};
+	};
+
+	for(map<string, double>::const_iterator msem = measurementStrErrorMultiples.begin(); msem != measurementStrErrorMultiples.end(); ++msem)
+	{
+		nodeID = taskCentral->getNodeDataNumberInit(msem->first);
+		if(nodeID != 0) measurementErrorMultiples[nodeID] = msem->second;
+		else
+		{
+			string mess = "Attempt to add measurement error multiple " + toString(msem->second) + " to node \"" + msem->first + "\" but no such node exists!\n";
+			exitErr(mess);
+		};
+	};
+
+	averageNetworksTask.setMeasurementError(measurementError);	
+	averageNetworksTask.setMeasurementErrors(measurementErrors);
+	averageNetworksTask.setMeasurementErrorFile(measurementErrorFile);
+	
+	averageNetworksTask.setMeasurementErrorMultiple(measurementErrorMultiple);
+	averageNetworksTask.setMeasurementErrorMultiples(measurementErrorMultiples);
+	averageNetworksTask.setMeasurementErrorMultipleFile(measurementErrorMultipleFile);
+
+	averageNetworksTask.setUseEffectSize(useEffectSize);
+
+	//averageNetworksTask.setUseMeasurementError(true);
+
+	averageNetworksTask.doTask();
+
+	if(!arcThresholdSet) arcThreshold = averageNetworksTask.getArcThreshold();
+};
+
+void MeasurementErrorRobustnessTask::setMeasurementError(const string & nd, const double & me)
+{
+	measurementStrErrors[nd] = me;
+};
+
+void MeasurementErrorRobustnessTask::setMeasurementErrorMultiple(const string & nd, const double & me)
+{
+	measurementStrErrorMultiples[nd] = me;
+};
+
 

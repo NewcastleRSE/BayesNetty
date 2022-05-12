@@ -184,7 +184,7 @@
 <div id="rightcolumn">
 <h1>11 Search models</h1>
 <p>
-Network models can be searched for one that best describes the data as given by the network model assumptions, network constraints, the network score and the data itself. </p>
+Network models can be searched for one that best describes the data as given by the network model assumptions, network constraints, the network score and the data itself. The search option uses a network to start the search and finishes with it updated to the found best fit network. (If a network is not set then a default network is used.) Any constraints to the search must be set when the network is setup, see <a href="input-network.html">section 6</a>. </p>
 <h2><a name="search-models-options">11.1 Options</a></h2>
 <p>
 The options are as follows: </p>
@@ -205,9 +205,9 @@ The greedy search algorithm is the default algorithm for searching through netwo
 The greedy algorithm can be ran a further number of times from a random starting network. The number of random restarts is set by using the option <tt>-search-models-random-restarts</tt>. </p>
 <h3><a name="search-models-greedy-jitter">Number of jitter restarts for the greedy algorithm</a></h3>
 <p>
-Once the greedy algorithm has converged on a final best fit network, the algorithm can be restarted at a network given by slightly modifying the best fit network, also called <i>jittering</i>. This may be useful to avoid the algorithm sticking in a local minimum whilst still retaining more or less the same network. The number of times times the search should be jittered is set by using the option <tt>-search-models-jitter-restarts</tt>. </p>
+Once the greedy algorithm has converged on a final best fit network, the algorithm can be restarted at a network given by slightly modifying the best fit network, also called <i>jittering</i>. This may be useful to avoid the algorithm sticking in a local maximum whilst still retaining more or less the same network. The number of times times the search should be jittered is set by using the option <tt>-search-models-jitter-restarts</tt>. </p>
 <p>
-Random restarts and jittered restarts can be used together, if there are n random restarts and m jittered restarts then there will be an additional n times m searches. </p>
+Random restarts and jittered restarts can be used together, if there are n random restarts and m jittered restarts then there will be (n + 1) times m searches. </p>
 <h2><a name="search-models-example">11.3 Example</a></h2>
 <p>
 As an example of searching through network models the parameter file <tt>paras-search.txt</tt>, which can be found in <a href="example.zip">example.zip</a>, searches through network models starting from the default model given by a node for each data variable and no edges. </p>
@@ -298,7 +298,7 @@ Network score = -8213.45
 Run time: less than one second
 </pre>
 <p>
-The above shows the data input and then the default network input consisting of a node for each data variable given by the data and no edges. The network with the lowest network score is shown in the output. </p>
+The above shows the data input and then the default network input consisting of a node for each data variable given by the data and no edges. The network with the highest network score is shown in the output. </p>
 <br />
 <div class="prevnext"><span class="left"><a href="calc-posterior.html">&lt;-prev</a>
 </span><span class="right"><a href="average-network.html">next-&gt;</a>

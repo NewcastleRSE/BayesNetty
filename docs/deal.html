@@ -188,6 +188,8 @@ The deal Bayesian network approach was developed by <a href="references.html#dea
 <h2><a name="imaginary-sample-size">8.1 Imaginary sample size</a></h2>
 <p>
 When analysis is performed with a deal network the imaginary sample size (ISS) must be set. The ISS reflects how much confidence we have in the (in)dependencies expressed in the assumed prior network. This can be set using the <tt>-input-network-imaginary-sample-size</tt> option, see <a href="input-network.html#input-network-options">section 6.1</a>. The results given by deal have been found to be very sensitive to the setting of this parameter and there is no obvious &ldquo;good&rdquo; default setting. </p>
+<p>
+The network score in a deal network is based upon the log likelihood and so higher values imply a better network fit to the given data set. </p>
 <br />
 <div class="prevnext"><span class="left"><a href="bnlearn.html">&lt;-prev</a>
 </span><span class="right"><a href="calc-score.html">next-&gt;</a>

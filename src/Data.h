@@ -39,7 +39,7 @@
 
 using namespace std;
 
-//! Stores SNP data for all subjects for a given traits.
+//! Stores data for all subjects for a given trait.
 struct Data
 {
 	string name; //column name of data
@@ -207,7 +207,7 @@ private:
 	map<unsigned int, Data *> allNodeData; //potential node data for any network
 	map<string, unsigned int> nameNumber;
 
-	list<string> dataIDs; //list of data IDs (multiple IDs one after another), used for check when readin data from file
+	list<string> dataIDs; //list of data IDs (multiple IDs one after another), used for check when reading data from file
 	list<string> nameOfIDs; //name of the ID columns
 	string dataFilename1; //name of first data file used to set up the dataIDs
 	map<unsigned int, list<unsigned int> > factorGroups; //data for a factor stored in multiple CtsData variables, first one is the head factor 
@@ -244,6 +244,7 @@ public:
 	string getNodeDataName(const unsigned int & nodeDataNo) const;
 	string getNodeDataNameError(const unsigned int & nodeDataNo) const;
 	void checkData();
+	void updateDataNames();
 	unsigned int getAmountOfData() const;
 	unsigned int getNoNodeData() const {return nameNumber.size();};
 	void checkIDs(string & filename, list<string> & dataIDsToCheck);

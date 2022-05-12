@@ -184,7 +184,7 @@
 <div id="rightcolumn">
 <h1>9 Calculate network score</h1>
 <p>
-The network score is used as a measure of how well the network model describes the data and is used to compare different models when searching through models. By convention the lower the score the better the model is and is typically based on the negative log likelihood. This is calculated assuming that discrete nodes follow a multinomial distribution and continuous nodes a normal distribution. BayesNetty considers the network score to be a property of the network and its method of calculation is set using the option <tt>-input-network-score</tt>, see <a href="input-network.html">section 6</a>. </p>
+The network score is used as a measure of how well the network model describes the data and is used to compare different models when searching through models. In BayesNetty the network score is based on the log likelihood and higher values imply a better model (see <a href="bnlearn.html#bnlearn-score">section 7.1</a> for further details). This is calculated assuming that discrete nodes follow a multinomial distribution and continuous nodes a normal distribution. BayesNetty considers the network score to be a property of the network and its method of calculation is set using the option <tt>-input-network-score</tt>, see <a href="input-network.html">section 6</a>. </p>
 <h2><a name="calc-score-options">9.1 Options</a></h2>
 <p>
 The options are as follows: </p>

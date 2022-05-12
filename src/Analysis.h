@@ -65,6 +65,7 @@ private:
 	list<ImputeNetworkDataTask *> imputeNetworkDataTasks;
 	list<ImputeEstimateRecallPrecisionTask *> imputeEstimateRecallPrecisionTasks;
 	list<CalculateRecallPrecisionTask *> calculateRecallPrecisionTasks;
+	list<MeasurementErrorRobustnessTask *> measurementErrorRobustnessTasks;
 
 	list<Task *> orderedTasks; //ordered task so that joint priors are done before posteriors etc
 	set<string> taskNames;
@@ -126,6 +127,7 @@ public:
 	ImputeNetworkDataTask * getLatestImputeNetworkDataTask();
 	ImputeEstimateRecallPrecisionTask * getLatestImputeEstimateRecallPrecisionTask();
 	CalculateRecallPrecisionTask * getLatestCalculateRecallPrecisionTask();
+	MeasurementErrorRobustnessTask * getLatestMeasurementErrorRobustnessTask();
 };
 
 
