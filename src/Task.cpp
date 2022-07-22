@@ -3429,7 +3429,7 @@ void AverageNetworksTask::outputNodeRobustnessSummary()
 	list<double> measurementErrors = bootstrapNetworkTaskHelp.getMeasurementErrors();
 	list<CtsData *> origCtsData = bootstrapNetworkTaskHelp.getOrigCtsData();
 	string nodeName;
-	unsigned int nodeNumber;
+	//unsigned int nodeNumber;
 	double stDev;
 	double stDevME;
 	double ratio;
@@ -5524,12 +5524,17 @@ void ImputeNetworkDataTask::doNetworkDataImputation(const bool & doNotDoAdjust, 
 	string bootNetworkName = name; 
 	string preNodeName = name + "-";
 	
+	//setup so if subsetPercent == 0 then the "bootstrap" network is only fitted once to speed things up
+	unsigned int subsetPercent2 = subsetPercent;
+	bool bootstrapFitted = false;
+	if(subsetPercent == 0) subsetPercent2 = 100;
+	
 	if(tryNo==1)
 	{
 		bootstrapNetwork = bootstrapNetworkTaskHelp.createBootstrapNetwork(taskCentral, network, bootNetworkName);
 
 		//set up list of data for bootstrapping (ok, we are not really bootstraping, we are taking a randomly sampled subset here)
-		bootstrapNetworkTaskHelp.setupBootstrap(taskCentral, bootstrapNetwork, network, useRandomData, subsetPercent);
+		bootstrapNetworkTaskHelp.setupBootstrap(taskCentral, bootstrapNetwork, network, useRandomData, subsetPercent2);
 	};
 
 	//setup search object to do the searches for the bootstrapping
@@ -5597,20 +5602,20 @@ void ImputeNetworkDataTask::doNetworkDataImputation(const bool & doNotDoAdjust, 
 						//missingNodesGrouped.clear();
 					};
 
-					if(true)
+					if(subsetPercent != 0 || !bootstrapFitted)
 					{
-					//bootstrap the complete data
+						//bootstrap the complete data
 				
-					bootstrapNetworkTaskHelp.updateBootstrapDataSubset(bootstrapNetwork, network, useRandomData, subsetPercent);
+						bootstrapNetworkTaskHelp.updateBootstrapDataSubset(bootstrapNetwork, network, useRandomData, subsetPercent2);
 				
-					bootstrapNetwork->removeAllEdges(); // with data changed the current
-					if(usePrevNetwork) bootstrapNetwork->setNetwork(prevNetworkStr, preNodeName);
+						bootstrapNetwork->removeAllEdges(); // with data changed the current
+						if(usePrevNetwork) bootstrapNetwork->setNetwork(prevNetworkStr, preNodeName);
 					
-					bootstrapNetwork->updateBlackWhiteDifferentData(network, preNodeName);
+						bootstrapNetwork->updateBlackWhiteDifferentData(network, preNodeName);
 					
-					//fit network with bootstrap data
-					searchNetworkModelsTask.doTask();
-				
+						//fit network with bootstrap data
+						searchNetworkModelsTask.doTask();
+						bootstrapFitted = true;
 					};
 
 	
@@ -6263,7 +6268,7 @@ void MeasurementErrorRobustnessTask::doTask()
 		if(nodeID != 0) measurementErrors[nodeID] = mse->second;
 		else
 		{
-			string mess = "Attempt to add measurement error " + toString(mse->second) + " to node \"" + mse->first + "\" but no such node exists!\n";
+			string mess = "Attempt to add measurement error " + toString2DP(mse->second) + " to node \"" + mse->first + "\" but no such node exists!\n";
 			exitErr(mess);
 		};
 	};
@@ -6274,7 +6279,7 @@ void MeasurementErrorRobustnessTask::doTask()
 		if(nodeID != 0) measurementErrorMultiples[nodeID] = msem->second;
 		else
 		{
-			string mess = "Attempt to add measurement error multiple " + toString(msem->second) + " to node \"" + msem->first + "\" but no such node exists!\n";
+			string mess = "Attempt to add measurement error multiple " + toString2DP(msem->second) + " to node \"" + msem->first + "\" but no such node exists!\n";
 			exitErr(mess);
 		};
 	};

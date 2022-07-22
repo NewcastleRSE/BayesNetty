@@ -4930,7 +4930,7 @@ void Network::calcRecallPrecision(Network * otherNetwork, double & recallOrPreci
 	
 	//add to prev recall as may be taking ave later
 	if(totalEdges != 0) recallOrPrecision += edgesFound / totalEdges;
-	else recallOrPrecision += 1;
+	else recallOrPrecision += NAN;
 };
 
 //! Copies missingness pattern to the other network data from the corresponding network nodes of this network. 
