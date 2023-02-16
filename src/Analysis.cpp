@@ -734,6 +734,7 @@ bool Analysis::processOption(string & option)
 	else if(option == "-impute-estimate-recall-precision-jitter-restarts") getLatestImputeEstimateRecallPrecisionTask()->setJitterRestarts(getUIntOptionValue());
 	else if(option == "-impute-estimate-recall-precision-skip-imputation") getLatestImputeEstimateRecallPrecisionTask()->setDoImps(false);
 	else if(option == "-impute-estimate-recall-precision-iterations") getLatestImputeEstimateRecallPrecisionTask()->setIterations(getUIntOptionValue());
+	else if(option == "-impute-estimate-recall-precision-subsample-percent") getLatestImputeEstimateRecallPrecisionTask()->setSubsetPercent(getUIntOptionValue());
 	else if(option == "-impute-estimate-recall-precision-output-sim-data-file") getLatestImputeEstimateRecallPrecisionTask()->setSimDataFilename(getStringOptionValue());
 	else if(option == "-impute-estimate-recall-precision-output-sim-network-file") getLatestImputeEstimateRecallPrecisionTask()->setSimNetworkFilename(getStringOptionValue());
 	else if(option == "-calculate-recall-precision") {CalculateRecallPrecisionTask * crpt = new CalculateRecallPrecisionTask(); calculateRecallPrecisionTasks.push_back(crpt); orderedTasks.push_back(crpt);}

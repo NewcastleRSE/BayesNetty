@@ -5920,6 +5920,7 @@ void ImputeEstimateRecallPrecisionTask::doTask()
 		imputeNetworkDataTask.setNetworkName(networkName);
 		imputeNetworkDataTask.setRandomRestarts(randomRestarts);
 		imputeNetworkDataTask.setJitterRestarts(jitterRestarts);
+		imputeNetworkDataTask.setSubsetPercent(subsetPercent);
 		imputeNetworkDataTask.setTaskCentral(taskCentral); 
 		imputeNetworkDataTask.setMinNonMissingEdges(minNonMissingEdges);
 		imputeNetworkDataTask.initialiseTask();	
@@ -6001,6 +6002,7 @@ void ImputeEstimateRecallPrecisionTask::doTask()
 			imputeNetworkDataTask.setNetworkName(simDataTaskName);
 			imputeNetworkDataTask.setRandomRestarts(randomRestarts);
 			imputeNetworkDataTask.setJitterRestarts(jitterRestarts);
+			imputeNetworkDataTask.setSubsetPercent(subsetPercent);
 			imputeNetworkDataTask.setTaskCentral(taskCentral); 
 			imputeNetworkDataTask.setMinNonMissingEdges(minNonMissingEdges);
 			imputeNetworkDataTask.initialiseTask();	

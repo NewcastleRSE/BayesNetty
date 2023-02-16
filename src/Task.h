@@ -914,6 +914,7 @@ private:
 	Network * simNetwork;
 	unsigned int randomRestarts;
 	unsigned int jitterRestarts;
+	unsigned int subsetPercent;
 	double recallNoImp;
 	double preNoImp;
 	double recallImp;
@@ -931,7 +932,7 @@ private:
 
 public:
 
-	ImputeEstimateRecallPrecisionTask() : network(0), simNetwork(0), randomRestarts(0), jitterRestarts(0), recallNoImp(0),	preNoImp(0), recallImp(0), preImp(0),
+	ImputeEstimateRecallPrecisionTask() : network(0), simNetwork(0), randomRestarts(0), jitterRestarts(0), subsetPercent(90), recallNoImp(0),	preNoImp(0), recallImp(0), preImp(0),
 		recallImpRT(0), preImpRT(0), recallFull(0), preFull(0), minNonMissingEdges(0), iterations(1), doImps(true), simDataFilename(""), simNetFilename("") {};
 
 	~ImputeEstimateRecallPrecisionTask() {};
@@ -947,6 +948,7 @@ public:
 	void setRandomRestarts(const unsigned int & rr) {randomRestarts = rr;};
 	void setJitterRestarts(const unsigned int & jr) {jitterRestarts = jr;};
 	void setIterations(const unsigned int & i) {iterations = i;};
+	void setSubsetPercent(const unsigned int & sp) { subsetPercent = sp; };
 	void setDoImps(const bool & di) {doImps = di;};	
 	void setSimDataFilename(const string & s) {simDataFilename = s;};
 	void outputSimData(const unsigned int & it);
