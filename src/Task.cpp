@@ -5928,7 +5928,7 @@ void ImputeEstimateRecallPrecisionTask::doTask()
 
 		imputeNetworkDataTask.doTask();
 
-		//fit network to missing sim data, call it network-miss
+		//fit network to imputed data
 		searchNetworkModelsTask.setNetworkName(networkName);
 		searchNetworkModelsTask.setRandomRestarts(randomRestarts);
 		searchNetworkModelsTask.setJitterRestarts(jitterRestarts);
