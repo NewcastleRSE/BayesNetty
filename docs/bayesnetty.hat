@@ -3559,7 +3559,11 @@ It is possible to simulate data for a given network using BayesNetty. The networ
 */subsection*
 
 *
-If posteriors are not given then default network node parameters are used to simulate data. The default probabilities for a discrete SNP node are 0.25, 0.5 and 0.25 for levels 0, 1 and 2 respectively. A minor allele frequency of 0.5 would give these probabilites. For a discrete node the levels are given by equal probabilities. For a continuous node the intercept is set to 10 and the coefficients and variance are set to 1.
+If posteriors are not given then default network node parameters are used to simulate data.
+ The default probabilities for a discrete SNP node are 0.25, 0.5 and 0.25 for levels 0, 1 and 2 respectively. A minor allele frequency of 0.5 would give these probabilites.
+ For a discrete node the levels are given by equal probabilities. For a continuous node the intercept is set to 10 and the coefficients and variance are set to 1.
+ *b* Note: */b* for edges from discrete variables to continuous variables there will be no effect by default, as the continuous node will be given the same intercept and coefficients for 
+ every different level configuration of the discrete variables.
 *
 
 *
