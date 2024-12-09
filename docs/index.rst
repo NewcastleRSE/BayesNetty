@@ -6,7 +6,7 @@
 Welcome to BayesNetty's webpage!
 ================================
 
-Please use the menu to the left to navigate through the documentation for BayesNetty or use the PDF of these webpages, `<bayesnetty.pdf https://github.com/NewcastleRSE/BayesNetty/blob/main/docs/_build/latex/bayesnetty.pdf>`.
+Please use the menu to the left to navigate through the documentation for BayesNetty or use the PDF of these webpages, `bayesnetty.pdf <https://github.com/NewcastleRSE/BayesNetty/blob/main/docs/_build/latex/bayesnetty.pdf>`_.
 
 Citation
 --------
@@ -16,7 +16,7 @@ Please use the following papers *cite* howey:etal:21 */cite* and *cite* howey:et
 .. code-block::
 
    @article{howey:etal:21,
-   author={Howey, R and Clark, A D AND Naamane, N AND Reynard, L N AND Pratt, A G AND Cordell, H J},
+   author={Howey, R AND Clark, A D AND Naamane, N AND Reynard, L N AND Pratt, A G AND Cordell, H J},
    title={{A Bayesian network approach incorporating imputation of missing data enables exploratory analysis of complex causal biological relationships}},
    journal={PLOS Genetics},
    month = {September},
@@ -47,3 +47,4 @@ BayesNetty is copyright, 2015-present Richard Howey, GNU General Public License,
    :maxdepth: 2
    :caption: Contents:
 
+   introduction
