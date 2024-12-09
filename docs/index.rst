@@ -14,9 +14,9 @@ Citation
 Please use the following papers *cite* howey:etal:21 */cite* and *cite* howey:etal:20 */cite* to reference the BayesNetty software as follows:
 
 .. code-block::
-   
+
    @article{howey:etal:21,
-   author={Howey, R and Clark, A D and Naamane, N and Reynard, L N and Pratt, A G and Cordell, H J},
+   author={Howey, R and Clark, A D AND Naamane, N AND Reynard, L N AND Pratt, A G AND Cordell, H J},
    title={{A Bayesian network approach incorporating imputation of missing data enables exploratory analysis of complex causal biological relationships}},
    journal={PLOS Genetics},
    month = {September},
