@@ -1,0 +1,284 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>BayesNetty: Bayesian Network Software for Genetic Analyses</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<link rel="stylesheet" type="text/css" href="bayesnettystyles.css" />
+<link rel="shortcut icon" href="favicon.ico" />
+</head>
+<body>
+<!-- Begin Wrapper -->
+<div id="wrapper">
+<table width="100%" border="0" cellpadding="0" cellspacing="0"><tr><td>
+<!-- Begin Header -->
+<div id="header">
+<table><tr>
+<td>
+<img width="150" src="bayesnetty-logo.png" alt="BayesNetty: Bayesian Network Software for Genetic Analyses"/>
+</td>
+<td>
+<p style="margin-left: 1em;">BayesNetty: Bayesian Network Software for Genetic Analyses</p>
+</td></tr>
+</table>
+</div>
+<!-- End Header -->
+<!-- Begin Menu Navigation -->
+<ul id="menunav">
+<li><a href="index.html">Home</a></li>
+<li><a href="downloads.html">Download</a></li>
+<li><a href="contact.html">Contact</a></li>
+</ul>
+<!-- End Menu Navigation -->
+
+</td></tr>
+<tr><td>
+<table border="0" cellpadding="0" cellspacing="0"><tr>
+<td valign="top">
+<!-- Begin Left Column -->
+<div id="leftcolumn">
+<!-- Begin Contents Navigation -->
+<div id="navcontainer">
+<ul>
+<li><a href="introduction.html">1 Introduction</a>
+</li>
+<li><a href="installation.html">2 Installation</a>
+</li>
+<li><a href="using.html">3 Using BayesNetty</a>
+<ul>
+<li><a href="using.html#basic-options">3.1 Basic Options</a></li>
+<li><a href="using.html#parameterfile">3.2 Parameter file</a></li>
+<li><a href="using.html#simple-example">3.3 Simple Example</a></li>
+<li><a href="using.html#command-line">3.4 Command-line Options</a></li>
+</ul>
+</li>
+<li><a href="parallel.html">4 Parallel BayesNetty</a>
+<ul>
+<li><a href="parallel.html#compile-parallel-code">4.1 Compilation Scripts</a></li>
+</ul>
+</li>
+<li><a href="input-data.html">5 Input data</a>
+<ul>
+<li><a href="input-data.html#input-data-options">5.1 Options</a></li>
+<li><a href="input-data.html#input-data-discrete">5.2 Discrete data</a></li>
+<li><a href="input-data.html#input-data-cts">5.3 Continuous data</a></li>
+<li><a href="input-data.html#input-data-factor">5.4 Factor data</a></li>
+<li><a href="input-data.html#input-data-snp">5.5 SNP data</a></li>
+<li><a href="input-data.html#input-data-missing">5.6 Missing data</a></li>
+<li><a href="input-data.html#input-data-ids">5.7 Data IDs</a></li>
+<li><a href="input-data.html#input-data-example">5.8 Example</a></li>
+</ul>
+</li>
+<li><a href="input-network.html">6 Input network</a>
+<ul>
+<li><a href="input-network.html#input-network-options">6.1 Options</a></li>
+<li><a href="input-network.html#input-network-black">6.2 Black lists</a></li>
+<li><a href="input-network.html#input-network-white">6.3 White lists</a></li>
+<li><a href="input-network.html#input-network-soft-con">6.4 Soft Constraints</a></li>
+<li><a href="input-network.html#input-network-formats">6.5 Network formats</a></li>
+<li><a href="input-network.html#input-network-example">6.6 Example</a></li>
+</ul>
+</li>
+<li><a href="bnlearn.html">7 bnlearn network</a>
+<ul>
+<li><a href="bnlearn.html#bnlearn-score">7.1 Network score</a></li>
+</ul>
+</li>
+<li><a href="deal.html">8 deal network</a>
+<ul>
+<li><a href="deal.html#imaginary-sample-size">8.1 Imaginary sample size</a></li>
+</ul>
+</li>
+<li><a href="calc-score.html">9 Calculate network score</a>
+<ul>
+<li><a href="calc-score.html#calc-score-options">9.1 Options</a></li>
+<li><a href="calc-score.html#calc-score-example">9.2 Example</a></li>
+</ul>
+</li>
+<li><a href="calc-posterior.html">10 Calculate posterior</a>
+<ul>
+<li><a href="calc-posterior.html#calc-posterior-options">10.1 Options</a></li>
+<li><a href="calc-posterior.html#calc-post-example">10.2 Example</a></li>
+</ul>
+</li>
+<li><a href="search-models.html">11 Search models</a>
+<ul>
+<li><a href="search-models.html#search-models-options">11.1 Options</a></li>
+<li><a href="search-models.html#search-models-greedy">11.2 Greedy search</a></li>
+<li><a href="search-models.html#search-models-example">11.3 Example</a></li>
+</ul>
+</li>
+<li><a href="average-network.html">12 Average network</a>
+<ul>
+<li><a href="average-network.html#average-network-options">12.1 Options</a></li>
+<li><a href="average-network.html#average-network-score">12.2 Score Method</a></li>
+<li><a href="average-network.html#average-network-example">12.3 Example</a></li>
+<li><a href="average-network.html#average-network-parallel">12.4 Parallel Example</a></li>
+</ul>
+</li>
+<li><a href="impute-data.html">13 Impute Data</a>
+<ul>
+<li><a href="impute-data.html#impute-data-options">13.1 Options</a></li>
+<li><a href="impute-data.html#impute-example">13.2 Example</a></li>
+<li><a href="impute-data.html#impute-parallel-example">13.3 Parallel Example</a></li>
+</ul>
+</li>
+<li><a href="estimate-impute.html">14 Estimate Imputation Benefit</a>
+<ul>
+<li><a href="estimate-impute.html#estimate-impute-options">14.1 Options</a></li>
+<li><a href="estimate-impute.html#estimate-impute-example">14.2 Example</a></li>
+</ul>
+</li>
+<li><a href="calc-recall-precision.html">15 Calculate Recall and Precision</a>
+<ul>
+<li><a href="calc-recall-precision.html#calc-recall-precision-options">15.1 Options</a></li>
+<li><a href="calc-recall-precision.html#calc-recall-precision-example">15.2 Example</a></li>
+</ul>
+</li>
+<li><a href="sim-data.html">16 Simulate network data</a>
+<ul>
+<li><a href="sim-data.html#sim-data-options">16.1 Options</a></li>
+<li><a href="sim-data.html#sim-data-example1">16.2 Example 1: no data</a></li>
+<li><a href="sim-data.html#sim-data-example2">16.3 Example 2: data and fitted network</a></li>
+<li><a href="sim-data.html#sim-data-example3">16.4 Example 3: data and unknown network</a></li>
+</ul>
+</li>
+<li><a href="markov-blanket.html">17 Markov blanket</a>
+<ul>
+<li><a href="markov-blanket.html#markov-blanket-options">17.1 Options</a></li>
+<li><a href="markov-blanket.html#calc-blanket-example">17.2 Example</a></li>
+</ul>
+</li>
+<li><a href="output-network.html">18 Output network</a>
+<ul>
+<li><a href="output-network.html#output-network-options">18.1 Options</a></li>
+<li><a href="output-network.html#output-network-example">18.2 Example</a></li>
+</ul>
+</li>
+<li><a href="output-priors.html">19 Output priors (deal only)</a>
+<ul>
+<li><a href="output-priors.html#output-priors-options">19.1 Options</a></li>
+<li><a href="output-priors.html#output-priors-example">19.2 Example</a></li>
+</ul>
+</li>
+<li><a href="output-posteriors.html">20 Output posteriors</a>
+<ul>
+<li><a href="output-posteriors.html#output-posteriors-options">20.1 Options</a></li>
+<li><a href="output-posteriors.html#output-posts-example">20.2 Example</a></li>
+</ul>
+</li>
+<li><a href="plot-network.html">21 Network plotting</a>
+<ul>
+<li><a href="plot-network.html#igraph">21.1 igraph</a></li>
+<li><a href="plot-network.html#igraph-example">21.2 Example</a></li>
+</ul>
+</li>
+<li><a href="references.html">References</a></li>
+</ul>
+</div>
+<!-- End Contents Navigation -->
+</div>
+<!-- End Left Column -->
+</td>
+<td valign="top">
+<!-- Begin Right Column -->
+<div id="rightcolumn">
+<h1>4 Parallel BayesNetty</h1>
+<p>
+It is possible to run BayesNetty using Open MPI (<a href="references.html#openmpi">The Open MPI Project</a>), which is an open source Message Passing Interface (MPI) (<a href="references.html#mpi">MPI Forum</a>) implementation designed for parallel programming. </p>
+<p>
+The parallel version of Bayesnetty speeds up the search through network space for the best network by simultaneously evaluating different networks. This is particularly useful for large networks and any type of analysis that depends on network searches, such as network averaging and imputing data. </p>
+<p>
+A much faster way to calculate an average network in parallel is given in <a href="average-network.html#average-network-parallel">section 12.4</a>. </p>
+<p>
+A much faster way to impute network data in parallel is given in <a href="impute-data.html#impute-parallel-example">section 13.3</a>. </p>
+<p>
+After installing Open MPI on your system if it is not already installed, see <a href="references.html#openmpi">The Open MPI Project</a>, a parallel version of BayesNetty needs to be compiled. This can be done by firstly uncommenting a few lines in the <tt>main.h</tt> file. So that the following: </p>
+<pre>
+// Comment out if not using Open MPI for parallel processing
+//#ifndef USING_OPEN_MPI
+//#define USING_OPEN_MPI
+//#endif //OPEN_MPI
+</pre>
+<p>
+becomes </p>
+<pre>
+// Comment out if not using Open MPI for parallel processing
+#ifndef USING_OPEN_MPI
+#define USING_OPEN_MPI
+#endif //OPEN_MPI
+</pre>
+<p>
+then compile the parallel code as follows: </p>
+<pre>
+mpicxx -O3 -o pbayesnetty *.cpp
+</pre>
+<p>
+The code can then be ran using how many processes that you wish, for example to run with 12 processes use </p>
+<pre>
+mpirun -n 12 ./pbayesnetty paras-example.txt
+</pre>
+<p>
+For such a trivial example the code will not run any quicker, and in fact for very small networks one may find that analyses take longer. There is some overhead in using the MPI libraries, so if trivial networks are used there may be no speed up. </p>
+<p>
+Even for large networks the optimal number of processes to perform the analysis as quick as possible may not be as many processes as you can use. As there is an overhead for processes the best amount to use may be a lot, but not too many... The best amount will vary depending on the analysis, the data and the computing system that you are using, so some trial and error may be needed. </p>
+<p>
+The output will show the number of processes as well as the random seed. If you wish to reproduce exactly the same results both of these need to be set to the same value. The seed is set with the <tt>-seed</tt> option. </p>
+<pre>
+BayesNetty: Bayesian Network software, v1.00
+--------------------------------------------------
+Copyright 2015-present Richard Howey, GNU General Public License, v3
+Institute of Genetic Medicine, Newcastle University
+
+Number of processes: 12
+Random seed: 1541430503
+--------------------------------------------------
+Task name: Task-1
+Loading data
+Continuous data file: example-cts.dat
+Number of ID columns: 2
+Including (all) 2 variables in analysis
+Each variable has 1500 data entries
+Missing value: not set
+--------------------------------------------------
+--------------------------------------------------
+
+...
+
+</pre>
+<h2><a name="compile-parallel-code">4.1 Compilation Scripts</a></h2>
+<p>
+Scripts to compile Bayesnetty as either parallel or non-parallel while automatically uncommenting or commenting the code as appropriate are given below. </p>
+<p>
+Script to compile code in parallel: </p>
+<pre>
+sed -i s://#ifndef\ USING_OPEN_MPI:#ifndef\ USING_OPEN_MPI:g main.h
+sed -i s://#define\ USING_OPEN_MPI:#define\ USING_OPEN_MPI:g main.h
+sed -i s://#endif\ //:#endif\ //:g main.h
+
+mpicxx -O3 -o pbayesnetty *.cpp
+</pre>
+<p>
+Script to compile code in non-parallel: </p>
+<pre>
+sed -i s://#ifndef\ USING_OPEN_MPI:#ifndef\ USING_OPEN_MPI:g main.h
+sed -i s://#define\ USING_OPEN_MPI:#define\ USING_OPEN_MPI:g main.h
+sed -i s://#endif\ //:#endif\ //:g main.h
+
+sed -i s:#ifndef\ USING_OPEN_MPI://#ifndef\ USING_OPEN_MPI:g main.h
+sed -i s:#define\ USING_OPEN_MPI://#define\ USING_OPEN_MPI:g main.h
+sed -i s:#endif\ //://#endif\ //:g main.h
+
+g++ -O3 *.cpp -o bayesnetty
+</pre>
+<br />
+<div class="prevnext"><span class="left"><a href="using.html">&lt;-prev</a>
+</span><span class="right"><a href="input-data.html">next-&gt;</a>
+</span></div><!-- End Right Column -->
+</div>
+</td>
+</tr></table>
+<!-- End Wrapper -->
+</td></tr></table>
+</div>
+ <!-- Default Statcounter code for Bayesnetty https://www.staff.ncl.ac.uk/richard.howey/bayesnetty/ --> <script type="text/javascript"> var sc_project=12004770; var sc_invisible=1; var sc_security="1ca06837"; </script> <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script> <noscript><div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img class="statcounter" src="https://c.statcounter.com/12004770/0/1ca06837/1/" alt="Web Analytics"></a></div></noscript> <!-- End of Statcounter Code --></body>
+</html>
