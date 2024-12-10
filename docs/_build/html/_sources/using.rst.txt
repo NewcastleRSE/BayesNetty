@@ -100,133 +100,124 @@ However, as BayesNetty is not an ``R`` package (or a programming language), the 
 The options for all the different tasks may be found in the different task sections of the documentation.
 
 
+.. _simple-example:
+
+Simple Example
+--------------
 
 
-*/subsection*
+Example data and parameter files can be found in the file `example.zip <https://github.com/NewcastleRSE/BayesNetty/raw/refs/heads/main/docs/resources/example.zip>`_.
+The example parameter file, ``paras-example.txt``, can be used to perform a simple analysis by typing
 
-*************
-
-*subsection*
-
-*subsection-name* simple-example */subsection-name*
-
-*subsection-title* Simple Example */subsection-title*
-
-*
-Example data and parameter files can be found in the file *html* <a href="example.zip">example.zip</a> */html* *tex* example.zip */tex* . The example parameter file, ``paras-example.txt``, can be used to perform a simple analysis by typing
-*
 
 .. code-block:: none
- ./bayesnetty paras-example.txt
+
+    ./bayesnetty paras-example.txt
 
 
-*
+
 The following shows the ``paras-example.txt`` file 
-*
 
 .. code-block:: none
-#input continuous data
--input-data
--input-data-file example-cts.dat
--input-data-cts
 
-#input discrete data
--input-data
--input-data-file example-discrete.dat
--input-data-discrete
+    #input continuous data
+    -input-data
+    -input-data-file example-cts.dat
+    -input-data-cts
 
-#input SNP data as discrete data
--input-data
--input-data-file example.bed
--input-data-discrete-snp
+    #input discrete data
+    -input-data
+    -input-data-file example-discrete.dat
+    -input-data-discrete
 
-#search network models
--search-models
--search-models-file search-example.dat
+    #input SNP data as discrete data
+    -input-data
+    -input-data-file example.bed
+    -input-data-discrete-snp
+
+    #search network models
+    -search-models
+    -search-models-file search-example.dat
 
 
-*
-The parameter file instructs BayesNetty to perform 4 tasks: (i) load continuous data from file ``example-cts.dat``; (ii) load discrete data from file ``example-discrete.dat``; (iii) load SNP data to be treated as discrete data from file ``example.bed``; and finally (iv) search the network models. The screen output, which is also saved to a log file, will look something as follows:
-*
+
+The parameter file instructs BayesNetty to perform 4 tasks: (i) load continuous data from file ``example-cts.dat``; (ii) load discrete data from file ``example-discrete.dat``;
+(iii) load SNP data to be treated as discrete data from file ``example.bed``; and finally (iv) search the network models. The screen output, which is also saved to a log file, will look something as follows:
+
 
 .. code-block:: none
-BayesNetty: Bayesian Network software, v1.00
---------------------------------------------------
-Copyright 2015-present Richard Howey, GNU General Public License, v3
-Institute of Genetic Medicine, Newcastle University
 
-Random seed: 1551700145
---------------------------------------------------
-Task name: Task-1
-Loading data
-Continuous data file: example-cts.dat
-Number of ID columns: 2
-Including (all) 2 variables in analysis
-Each variable has 1500 data entries
-Missing value: not set
---------------------------------------------------
---------------------------------------------------
-Task name: Task-2
-Loading data
-Discrete data file: example-discrete.dat
-Number of ID columns: 2
-Including the 1 and only variable in analysis
-Each variable has 1500 data entries
-Missing value: NA
---------------------------------------------------
---------------------------------------------------
-Task name: Task-3
-Loading data
-SNP binary data file: example.bed
-SNP data treated as discrete data
-Total number of SNPs: 2
-Total number of subjects: 1500
-Number of ID columns: 2
-Including (all) 2 variables in analysis
-Each variable has 1500 data entries
---------------------------------------------------
---------------------------------------------------
-Task name: Task-4
-Searching network models
---------------------------------------------------
-Loading defaultNetwork network
-Network type: bnlearn
-Network score type: BIC
-Total number of nodes: 5 (Discrete: 3 | Factor: 0 | Continuous: 2)
-Total number of edges: 0
-Network Structure: [express][pheno][mood][rs1][rs2]
-Total data at each node: 1495
-Missing data at each node: 5
---------------------------------------------------
-Network: defaultNetwork
-Search: Greedy
-Random restarts: 0
-Random jitter restarts: 0
-Network Structure: [mood][rs1][rs2][express|rs1:rs2][pheno|express:mood]
-Network score type: BIC
-Network score = -8213.45
-Network search output to file: search-example.dat
---------------------------------------------------
+    BayesNetty: Bayesian Network software, v1.00
+    --------------------------------------------------
+    Copyright 2015-present Richard Howey, GNU General Public License, v3
+    Institute of Genetic Medicine, Newcastle University
 
-Run time: less than one second
+    Random seed: 1551700145
+    --------------------------------------------------
+    Task name: Task-1
+    Loading data
+    Continuous data file: example-cts.dat
+    Number of ID columns: 2
+    Including (all) 2 variables in analysis
+    Each variable has 1500 data entries
+    Missing value: not set
+    --------------------------------------------------
+    --------------------------------------------------
+    Task name: Task-2
+    Loading data
+    Discrete data file: example-discrete.dat
+    Number of ID columns: 2
+    Including the 1 and only variable in analysis
+    Each variable has 1500 data entries
+    Missing value: NA
+    --------------------------------------------------
+    --------------------------------------------------
+    Task name: Task-3
+    Loading data
+    SNP binary data file: example.bed
+    SNP data treated as discrete data
+    Total number of SNPs: 2
+    Total number of subjects: 1500
+    Number of ID columns: 2
+    Including (all) 2 variables in analysis
+    Each variable has 1500 data entries
+    --------------------------------------------------
+    --------------------------------------------------
+    Task name: Task-4
+    Searching network models
+    --------------------------------------------------
+    Loading defaultNetwork network
+    Network type: bnlearn
+    Network score type: BIC
+    Total number of nodes: 5 (Discrete: 3 | Factor: 0 | Continuous: 2)
+    Total number of edges: 0
+    Network Structure: [express][pheno][mood][rs1][rs2]
+    Total data at each node: 1495
+    Missing data at each node: 5
+    --------------------------------------------------
+    Network: defaultNetwork
+    Search: Greedy
+    Random restarts: 0
+    Random jitter restarts: 0
+    Network Structure: [mood][rs1][rs2][express|rs1:rs2][pheno|express:mood]
+    Network score type: BIC
+    Network score = -8213.45
+    Network search output to file: search-example.dat
+    --------------------------------------------------
+
+    Run time: less than one second
 
 
+.. _command-line: 
 
-*/subsection*
+Command-line Options
+--------------------
 
-********************************
-
-*subsection*
-
-*subsection-name* command-line */subsection-name*
-
-*subsection-title* Command-line Options */subsection-title*
-
-*
 It is also possible to add options on the command line to modify or add to the options in the parameter file. For example
-*
+
 
 .. code-block:: none
-./bayesnetty paras-example.txt -seed 1 -log seed-1-results.log
+
+    ./bayesnetty paras-example.txt -seed 1 -log seed-1-results.log
 
 

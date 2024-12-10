@@ -9,6 +9,7 @@
   <title>Using BayesNetty &mdash; BayesNetty 1.2 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=d7927a0a" />
 
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
@@ -19,6 +20,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Parallel BayesNetty" href="parallel.html" />
     <link rel="prev" title="Installation" href="installation.html" /> 
 </head>
 
@@ -26,7 +28,7 @@
   <div class="wy-grid-for-nav">
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
+        <div class="wy-side-nav-search"  style="background: #884dff" >
 
           
           
@@ -51,17 +53,19 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#parameter-file">Parameter file</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#bayesnetty-bayesian-network-software-v1-00">BayesNetty: Bayesian Network software, v1.00</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#random-seed-1551700145">Random seed: 1551700145</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#simple-example">Simple Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#command-line-options">Command-line Options</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="parallel.html">Parallel BayesNetty</a></li>
+<li class="toctree-l1"><a class="reference internal" href="input-data.html">Input data</a></li>
 </ul>
 
         </div>
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #884dff" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">BayesNetty</a>
       </nav>
@@ -164,64 +168,53 @@ all options in the parameter file define tasks. For example, a task to input som
 </div>
 <p>However, as BayesNetty is not an <code class="docutils literal notranslate"><span class="pre">R</span></code> package (or a programming language), the parameter file uses an unambiguous, longhand, and easy to parse style of syntax.</p>
 <p>The options for all the different tasks may be found in the different task sections of the documentation.</p>
-<p><em>/subsection</em></p>
-<hr class="docutils" />
-<p><em>subsection</em></p>
-<p><em>subsection-name</em> simple-example <em>/subsection-name</em></p>
-<p><em>subsection-title</em> Simple Example <em>/subsection-title</em></p>
-<ul class="simple">
-<li></li>
-</ul>
-<p>Example data and parameter files can be found in the file <em>html</em> &lt;a href=”example.zip”&gt;example.zip&lt;/a&gt; <em>/html</em> <em>tex</em> example.zip <em>/tex</em> . The example parameter file, <code class="docutils literal notranslate"><span class="pre">paras-example.txt</span></code>, can be used to perform a simple analysis by typing
-*</p>
-<ul class="simple">
-<li></li>
-</ul>
-<p>The following shows the <code class="docutils literal notranslate"><span class="pre">paras-example.txt</span></code> file
-*</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>
+</section>
+<section id="simple-example">
+<span id="id3"></span><h2>Simple Example<a class="headerlink" href="#simple-example" title="Link to this heading"></a></h2>
+<p>Example data and parameter files can be found in the file <a class="reference external" href="https://github.com/NewcastleRSE/BayesNetty/raw/refs/heads/main/docs/resources/example.zip">example.zip</a>.
+The example parameter file, <code class="docutils literal notranslate"><span class="pre">paras-example.txt</span></code>, can be used to perform a simple analysis by typing</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>./bayesnetty paras-example.txt
 </pre></div>
 </div>
-<p>#input continuous data
+<p>The following shows the <code class="docutils literal notranslate"><span class="pre">paras-example.txt</span></code> file</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>#input continuous data
 -input-data
 -input-data-file example-cts.dat
--input-data-cts</p>
-<p>#input discrete data
+-input-data-cts
+
+#input discrete data
 -input-data
 -input-data-file example-discrete.dat
--input-data-discrete</p>
-<p>#input SNP data as discrete data
+-input-data-discrete
+
+#input SNP data as discrete data
 -input-data
 -input-data-file example.bed
--input-data-discrete-snp</p>
-<p>#search network models
+-input-data-discrete-snp
+
+#search network models
 -search-models
--search-models-file search-example.dat</p>
-<ul class="simple">
-<li></li>
-</ul>
-<p>The parameter file instructs BayesNetty to perform 4 tasks: (i) load continuous data from file <code class="docutils literal notranslate"><span class="pre">example-cts.dat</span></code>; (ii) load discrete data from file <code class="docutils literal notranslate"><span class="pre">example-discrete.dat</span></code>; (iii) load SNP data to be treated as discrete data from file <code class="docutils literal notranslate"><span class="pre">example.bed</span></code>; and finally (iv) search the network models. The screen output, which is also saved to a log file, will look something as follows:
-*</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>
+-search-models-file search-example.dat
 </pre></div>
 </div>
-</section>
-<section id="bayesnetty-bayesian-network-software-v1-00">
-<h2>BayesNetty: Bayesian Network software, v1.00<a class="headerlink" href="#bayesnetty-bayesian-network-software-v1-00" title="Link to this heading"></a></h2>
-<p>Copyright 2015-present Richard Howey, GNU General Public License, v3
-Institute of Genetic Medicine, Newcastle University</p>
-</section>
-<section id="random-seed-1551700145">
-<h2>Random seed: 1551700145<a class="headerlink" href="#random-seed-1551700145" title="Link to this heading"></a></h2>
-<p>Task name: Task-1
+<p>The parameter file instructs BayesNetty to perform 4 tasks: (i) load continuous data from file <code class="docutils literal notranslate"><span class="pre">example-cts.dat</span></code>; (ii) load discrete data from file <code class="docutils literal notranslate"><span class="pre">example-discrete.dat</span></code>;
+(iii) load SNP data to be treated as discrete data from file <code class="docutils literal notranslate"><span class="pre">example.bed</span></code>; and finally (iv) search the network models. The screen output, which is also saved to a log file, will look something as follows:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>BayesNetty: Bayesian Network software, v1.00
+--------------------------------------------------
+Copyright 2015-present Richard Howey, GNU General Public License, v3
+Institute of Genetic Medicine, Newcastle University
+
+Random seed: 1551700145
+--------------------------------------------------
+Task name: Task-1
 Loading data
 Continuous data file: example-cts.dat
 Number of ID columns: 2
 Including (all) 2 variables in analysis
 Each variable has 1500 data entries
 Missing value: not set
-————————————————–
-————————————————–
+--------------------------------------------------
+--------------------------------------------------
 Task name: Task-2
 Loading data
 Discrete data file: example-discrete.dat
@@ -229,8 +222,8 @@ Number of ID columns: 2
 Including the 1 and only variable in analysis
 Each variable has 1500 data entries
 Missing value: NA
-————————————————–
-————————————————–
+--------------------------------------------------
+--------------------------------------------------
 Task name: Task-3
 Loading data
 SNP binary data file: example.bed
@@ -240,11 +233,11 @@ Total number of subjects: 1500
 Number of ID columns: 2
 Including (all) 2 variables in analysis
 Each variable has 1500 data entries
-————————————————–
-————————————————–
+--------------------------------------------------
+--------------------------------------------------
 Task name: Task-4
 Searching network models
-————————————————–
+--------------------------------------------------
 Loading defaultNetwork network
 Network type: bnlearn
 Network score type: BIC
@@ -253,7 +246,7 @@ Total number of edges: 0
 Network Structure: [express][pheno][mood][rs1][rs2]
 Total data at each node: 1495
 Missing data at each node: 5
-————————————————–
+--------------------------------------------------
 Network: defaultNetwork
 Search: Greedy
 Random restarts: 0
@@ -262,22 +255,18 @@ Network Structure: [mood][rs1][rs2][express|rs1:rs2][pheno|express:mood]
 Network score type: BIC
 Network score = -8213.45
 Network search output to file: search-example.dat
-————————————————–</p>
-<p>Run time: less than one second</p>
-<p><em>/subsection</em></p>
-<hr class="docutils" />
-<p><em>subsection</em></p>
-<p><em>subsection-name</em> command-line <em>/subsection-name</em></p>
-<p><em>subsection-title</em> Command-line Options <em>/subsection-title</em></p>
-<ul class="simple">
-<li></li>
-</ul>
-<p>It is also possible to add options on the command line to modify or add to the options in the parameter file. For example
-*</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>
+--------------------------------------------------
+
+Run time: less than one second
 </pre></div>
 </div>
-<p>./bayesnetty paras-example.txt -seed 1 -log seed-1-results.log</p>
+</section>
+<section id="command-line-options">
+<span id="command-line"></span><h2>Command-line Options<a class="headerlink" href="#command-line-options" title="Link to this heading"></a></h2>
+<p>It is also possible to add options on the command line to modify or add to the options in the parameter file. For example</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>./bayesnetty paras-example.txt -seed 1 -log seed-1-results.log
+</pre></div>
+</div>
 </section>
 </section>
 
@@ -286,6 +275,7 @@ Network search output to file: search-example.dat
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="installation.html" class="btn btn-neutral float-left" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="parallel.html" class="btn btn-neutral float-right" title="Parallel BayesNetty" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

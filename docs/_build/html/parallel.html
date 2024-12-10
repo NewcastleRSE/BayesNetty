@@ -1,0 +1,194 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Parallel BayesNetty &mdash; BayesNetty 1.2 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=d7927a0a" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=61243dd2"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Input data" href="input-data.html" />
+    <link rel="prev" title="Using BayesNetty" href="using.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #884dff" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            BayesNetty
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="using.html">Using BayesNetty</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Parallel BayesNetty</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#compilation-scripts">Compilation Scripts</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="input-data.html">Input data</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #884dff" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">BayesNetty</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Parallel BayesNetty</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/parallel.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="parallel-bayesnetty">
+<span id="parallel"></span><h1>Parallel BayesNetty<a class="headerlink" href="#parallel-bayesnetty" title="Link to this heading"></a></h1>
+<p>It is possible to run BayesNetty using Open MPI (<em>cite</em> openmpi <em>/cite</em>), which is an open source Message Passing Interface (MPI) (<em>cite</em> mpi <em>/cite</em>) implementation designed for parallel programming.</p>
+<p>The parallel version of Bayesnetty speeds up the search through network space for the best network by simultaneously evaluating different networks. This is particularly useful for large networks and any type of analysis that depends on network searches, such as network averaging and imputing data.</p>
+<p>A much faster way to calculate an average network in parallel is given in the <span class="xref std std-ref">Average Network</span> section.</p>
+<p>A much faster way to impute network data in parallel is given in the <span class="xref std std-ref">Impute Data</span> section.</p>
+<p>After installing Open MPI on your system if it is not already installed, see <em>cite</em> openmpi <em>/cite</em>, a parallel version of BayesNetty needs to be compiled. This can be done by firstly uncommenting a few lines in the <code class="docutils literal notranslate"><span class="pre">main.h</span></code> file. So that the following:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>// Comment out if not using Open MPI for parallel processing
+//#ifndef USING_OPEN_MPI
+//#define USING_OPEN_MPI
+//#endif //OPEN_MPI
+</pre></div>
+</div>
+<p>becomes</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>// Comment out if not using Open MPI for parallel processing
+#ifndef USING_OPEN_MPI
+#define USING_OPEN_MPI
+#endif //OPEN_MPI
+</pre></div>
+</div>
+<p>then compile the parallel code as follows:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>mpicxx -O3 -o pbayesnetty *.cpp
+</pre></div>
+</div>
+<p>The code can then be ran using how many processes that you wish, for example to run with 12 processes use</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>mpirun -n 12 ./pbayesnetty paras-example.txt
+</pre></div>
+</div>
+<p>For such a trivial example the code will not run any quicker, and in fact for very small networks one may find that analyses take longer.
+There is some overhead in using the MPI libraries, so if trivial networks are used there may be no speed up.</p>
+<p>Even for large networks the optimal number of processes to perform the analysis as quick as possible may not be as many processes as you can use. As there is an overhead for processes the best amount to use may be a lot, but not too many…
+The best amount will vary depending on the analysis, the data and the computing system that you are using, so some trial and error may be needed.</p>
+<p>The output will show the number of processes as well as the random seed. If you wish to reproduce exactly the same results both of these need to be set to the same value.
+The seed is set with the <code class="docutils literal notranslate"><span class="pre">-seed</span></code> option.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>BayesNetty: Bayesian Network software, v1.00
+--------------------------------------------------
+Copyright 2015-present Richard Howey, GNU General Public License, v3
+Institute of Genetic Medicine, Newcastle University
+
+Number of processes: 12
+Random seed: 1541430503
+--------------------------------------------------
+Task name: Task-1
+Loading data
+Continuous data file: example-cts.dat
+Number of ID columns: 2
+Including (all) 2 variables in analysis
+Each variable has 1500 data entries
+Missing value: not set
+--------------------------------------------------
+--------------------------------------------------
+
+...
+</pre></div>
+</div>
+<section id="compilation-scripts">
+<span id="compile-parallel-code"></span><h2>Compilation Scripts<a class="headerlink" href="#compilation-scripts" title="Link to this heading"></a></h2>
+<p>Scripts to compile Bayesnetty as either parallel or non-parallel while automatically uncommenting or commenting the code as appropriate are given below.</p>
+<p>Script to compile code in parallel:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>sed -i s://#ifndef\ USING_OPEN_MPI:#ifndef\ USING_OPEN_MPI:g main.h
+sed -i s://#define\ USING_OPEN_MPI:#define\ USING_OPEN_MPI:g main.h
+sed -i s://#endif\ //:#endif\ //:g main.h
+
+mpicxx -O3 -o pbayesnetty *.cpp
+</pre></div>
+</div>
+<p>Script to compile code in non-parallel:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>sed -i s://#ifndef\ USING_OPEN_MPI:#ifndef\ USING_OPEN_MPI:g main.h
+sed -i s://#define\ USING_OPEN_MPI:#define\ USING_OPEN_MPI:g main.h
+sed -i s://#endif\ //:#endif\ //:g main.h
+
+sed -i s:#ifndef\ USING_OPEN_MPI://#ifndef\ USING_OPEN_MPI:g main.h
+sed -i s:#define\ USING_OPEN_MPI://#define\ USING_OPEN_MPI:g main.h
+sed -i s:#endif\ //://#endif\ //:g main.h
+
+g++ -O3 *.cpp -o bayesnetty
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="using.html" class="btn btn-neutral float-left" title="Using BayesNetty" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="input-data.html" class="btn btn-neutral float-right" title="Input data" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Richard Howey.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
