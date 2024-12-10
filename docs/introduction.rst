@@ -8,8 +8,8 @@ BayesNetty is copyright, 2015-present Richard Howey, GNU General Public License,
 |
 |
 
-The **recommended use** of BayesNetty is to calculate the average network as described in *ref* average-network */ref*,
-possibly additionally using imputation to fill in missing data as descibed in *ref* impute-data */ref*.
+The **recommended use** of BayesNetty is to calculate the average network as described in the :ref:`Average Network<average-network>` section,
+possibly additionally using imputation to fill in missing data as descibed in :ref:`Impute Data<impute-data>` section.
 However, for new users we reccomend you work your way through all sections in numerical order,
 in order to understand the functionality of the program. 
 

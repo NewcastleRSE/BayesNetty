@@ -6,6 +6,8 @@
 Welcome to BayesNetty's webpage!
 ================================
 
+**!! UNDER CONSTRUCTION !!** Use the old `BayesNetty webpage <https://www.staff.ncl.ac.uk/richard.howey/bayesnetty/>`_ for now.
+
 Please use the menu to the left to navigate through the documentation for BayesNetty or use the PDF of these webpages, `bayesnetty.pdf <https://github.com/NewcastleRSE/BayesNetty/blob/main/docs/_build/latex/bayesnetty.pdf>`_.
 
 Citation
@@ -13,7 +15,7 @@ Citation
 
 Please use the following papers *cite* howey:etal:21 */cite* and *cite* howey:etal:20 */cite* to reference the BayesNetty software as follows:
 
-.. code-block::
+.. code-block:: none
 
    @article{howey:etal:21,
    author={Howey, R AND Clark, A D AND Naamane, N AND Reynard, L N AND Pratt, A G AND Cordell, H J},
@@ -48,3 +50,24 @@ BayesNetty is copyright, 2015-present Richard Howey, GNU General Public License,
    :caption: Contents:
 
    introduction
+   installation
+   using
+   parallel
+   input-data
+   input-network
+   bnlearn
+   deal
+   calc-score
+   calc-posterior
+   search-models
+   average-network
+   impute-data
+   estimate-impute
+   calc-recall-precision
+   sim-data
+   markov-blanket
+   output-network
+   output-priors
+   output-posteriors
+   plot-network
+   references
