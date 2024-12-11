@@ -64,7 +64,7 @@
 
 
 \title{BayesNetty}
-\date{Dec 09, 2024}
+\date{Dec 11, 2024}
 \release{1.2}
 \author{Richard Howey}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -86,38 +86,41 @@
 
 
 \sphinxAtStartPar
+\sphinxstylestrong{!! UNDER CONSTRUCTION !!} Use the old \sphinxhref{https://www.staff.ncl.ac.uk/richard.howey/bayesnetty/}{BayesNetty webpage} for now.
+
+\sphinxAtStartPar
 Please use the menu to the left to navigate through the documentation for BayesNetty or use the PDF of these webpages, \sphinxhref{https://github.com/NewcastleRSE/BayesNetty/blob/main/docs/\_build/latex/bayesnetty.pdf}{bayesnetty.pdf}.
 
 
 \chapter{Citation}
 \label{\detokenize{index:citation}}
 \sphinxAtStartPar
-Please use the following papers \sphinxstyleemphasis{cite} howey:etal:21 \sphinxstyleemphasis{/cite} and \sphinxstyleemphasis{cite} howey:etal:20 \sphinxstyleemphasis{/cite} to reference the BayesNetty software as follows:
+Please use the following papers \sphinxcite{references:howey-etal-21} and \sphinxcite{references:howey-etal-20} to reference the BayesNetty software as follows:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n+nd}{@article}\PYG{p}{\PYGZob{}}\PYG{n}{howey}\PYG{p}{:}\PYG{n}{etal}\PYG{p}{:}\PYG{l+m+mi}{21}\PYG{p}{,}
-\PYG{n}{author}\PYG{o}{=}\PYG{p}{\PYGZob{}}\PYG{n}{Howey}\PYG{p}{,} \PYG{n}{R} \PYG{n}{AND} \PYG{n}{Clark}\PYG{p}{,} \PYG{n}{A} \PYG{n}{D} \PYG{n}{AND} \PYG{n}{Naamane}\PYG{p}{,} \PYG{n}{N} \PYG{n}{AND} \PYG{n}{Reynard}\PYG{p}{,} \PYG{n}{L} \PYG{n}{N} \PYG{n}{AND} \PYG{n}{Pratt}\PYG{p}{,} \PYG{n}{A} \PYG{n}{G} \PYG{n}{AND} \PYG{n}{Cordell}\PYG{p}{,} \PYG{n}{H} \PYG{n}{J}\PYG{p}{\PYGZcb{}}\PYG{p}{,}
-\PYG{n}{title}\PYG{o}{=}\PYG{p}{\PYGZob{}}\PYG{p}{\PYGZob{}}\PYG{n}{A} \PYG{n}{Bayesian} \PYG{n}{network} \PYG{n}{approach} \PYG{n}{incorporating} \PYG{n}{imputation} \PYG{n}{of} \PYG{n}{missing} \PYG{n}{data} \PYG{n}{enables} \PYG{n}{exploratory} \PYG{n}{analysis} \PYG{n}{of} \PYG{n+nb}{complex} \PYG{n}{causal} \PYG{n}{biological} \PYG{n}{relationships}\PYG{p}{\PYGZcb{}}\PYG{p}{\PYGZcb{}}\PYG{p}{,}
-\PYG{n}{journal}\PYG{o}{=}\PYG{p}{\PYGZob{}}\PYG{n}{PLOS} \PYG{n}{Genetics}\PYG{p}{\PYGZcb{}}\PYG{p}{,}
-\PYG{n}{month} \PYG{o}{=} \PYG{p}{\PYGZob{}}\PYG{n}{September}\PYG{p}{\PYGZcb{}}\PYG{p}{,}
-\PYG{n}{volume}\PYG{o}{=}\PYG{p}{\PYGZob{}}\PYG{l+m+mi}{17}\PYG{p}{\PYGZcb{}}\PYG{p}{,}
-\PYG{n}{number}\PYG{o}{=}\PYG{p}{\PYGZob{}}\PYG{l+m+mi}{9}\PYG{p}{\PYGZcb{}}\PYG{p}{,}
-\PYG{n}{doi} \PYG{o}{=} \PYG{p}{\PYGZob{}}\PYG{l+m+mf}{10.1371}\PYG{o}{/}\PYG{n}{journal}\PYG{o}{.}\PYG{n}{pgen}\PYG{l+m+mf}{.1009811}\PYG{p}{\PYGZcb{}}\PYG{p}{,}
-\PYG{n}{url} \PYG{o}{=} \PYG{p}{\PYGZob{}}\PYG{n}{https}\PYG{p}{:}\PYG{o}{/}\PYG{o}{/}\PYG{n}{doi}\PYG{o}{.}\PYG{n}{org}\PYG{o}{/}\PYG{l+m+mf}{10.1371}\PYG{o}{/}\PYG{n}{journal}\PYG{o}{.}\PYG{n}{pgen}\PYG{l+m+mf}{.1009811}\PYG{p}{\PYGZcb{}}\PYG{p}{,}
-\PYG{n}{pages}\PYG{o}{=}\PYG{p}{\PYGZob{}}\PYG{n}{e1009811}\PYG{p}{\PYGZcb{}}\PYG{p}{,}
-\PYG{n}{year}\PYG{o}{=}\PYG{p}{\PYGZob{}}\PYG{l+m+mi}{2021}\PYG{p}{\PYGZcb{}}\PYG{p}{\PYGZcb{}}
+@article\PYGZob{}howey:etal:21,
+author=\PYGZob{}Howey, R AND Clark, A D AND Naamane, N AND Reynard, L N AND Pratt, A G AND Cordell, H J\PYGZcb{},
+title=\PYGZob{}\PYGZob{}A Bayesian network approach incorporating imputation of missing data enables exploratory analysis of complex causal biological relationships\PYGZcb{}\PYGZcb{},
+journal=\PYGZob{}PLOS Genetics\PYGZcb{},
+month = \PYGZob{}September\PYGZcb{},
+volume=\PYGZob{}17\PYGZcb{},
+number=\PYGZob{}9\PYGZcb{},
+doi = \PYGZob{}10.1371/journal.pgen.1009811\PYGZcb{},
+url = \PYGZob{}https://doi.org/10.1371/journal.pgen.1009811\PYGZcb{},
+pages=\PYGZob{}e1009811\PYGZcb{},
+year=\PYGZob{}2021\PYGZcb{}\PYGZcb{}
 
-\PYG{n+nd}{@article}\PYG{p}{\PYGZob{}}\PYG{n}{howey}\PYG{p}{:}\PYG{n}{etal}\PYG{p}{:}\PYG{l+m+mi}{20}\PYG{p}{,}
-\PYG{n}{author} \PYG{o}{=} \PYG{p}{\PYGZob{}}\PYG{n}{Howey}\PYG{p}{,} \PYG{n}{R} \PYG{n}{AND} \PYG{n}{Shin}\PYG{p}{,} \PYG{n}{S}\PYG{o}{\PYGZhy{}}\PYG{n}{Y} \PYG{n}{AND} \PYG{n}{Relton}\PYG{p}{,} \PYG{n}{C} \PYG{n}{AND} \PYG{n}{Davey} \PYG{n}{Smith}\PYG{p}{,} \PYG{n}{G} \PYG{n}{AND} \PYG{n}{Cordell}\PYG{p}{,} \PYG{n}{H} \PYG{n}{J}\PYG{p}{\PYGZcb{}}\PYG{p}{,}
-\PYG{n}{journal} \PYG{o}{=} \PYG{p}{\PYGZob{}}\PYG{n}{PLOS} \PYG{n}{Genetics}\PYG{p}{\PYGZcb{}}\PYG{p}{,}
-\PYG{n}{title} \PYG{o}{=} \PYG{p}{\PYGZob{}}\PYG{n}{Bayesian} \PYG{n}{network} \PYG{n}{analysis} \PYG{n}{incorporating} \PYG{n}{genetic} \PYG{n}{anchors} \PYG{n}{complements} \PYG{n}{conventional} \PYG{n}{Mendelian} \PYG{n}{randomization} \PYG{n}{approaches} \PYG{k}{for} \PYG{n}{exploratory} \PYG{n}{analysis} \PYG{n}{of} \PYG{n}{causal} \PYG{n}{relationships} \PYG{o+ow}{in} \PYG{n+nb}{complex} \PYG{n}{data}\PYG{p}{\PYGZcb{}}\PYG{p}{,}
-\PYG{n}{year} \PYG{o}{=} \PYG{p}{\PYGZob{}}\PYG{l+m+mi}{2020}\PYG{p}{\PYGZcb{}}\PYG{p}{,}
-\PYG{n}{month} \PYG{o}{=} \PYG{p}{\PYGZob{}}\PYG{n}{March}\PYG{p}{\PYGZcb{}}\PYG{p}{,}
-\PYG{n}{volume} \PYG{o}{=} \PYG{p}{\PYGZob{}}\PYG{l+m+mi}{16}\PYG{p}{\PYGZcb{}}\PYG{p}{,}
-\PYG{n}{url} \PYG{o}{=} \PYG{p}{\PYGZob{}}\PYG{n}{https}\PYG{p}{:}\PYG{o}{/}\PYG{o}{/}\PYG{n}{doi}\PYG{o}{.}\PYG{n}{org}\PYG{o}{/}\PYG{l+m+mf}{10.1371}\PYG{o}{/}\PYG{n}{journal}\PYG{o}{.}\PYG{n}{pgen}\PYG{l+m+mf}{.1008198}\PYG{p}{\PYGZcb{}}\PYG{p}{,}
-\PYG{n}{pages} \PYG{o}{=} \PYG{p}{\PYGZob{}}\PYG{l+m+mi}{1}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{35}\PYG{p}{\PYGZcb{}}\PYG{p}{,}
-\PYG{n}{number} \PYG{o}{=} \PYG{p}{\PYGZob{}}\PYG{l+m+mi}{3}\PYG{p}{\PYGZcb{}}\PYG{p}{,}
-\PYG{n}{doi} \PYG{o}{=} \PYG{p}{\PYGZob{}}\PYG{l+m+mf}{10.1371}\PYG{o}{/}\PYG{n}{journal}\PYG{o}{.}\PYG{n}{pgen}\PYG{l+m+mf}{.1008198}\PYG{p}{\PYGZcb{}}\PYG{p}{\PYGZcb{}}
+@article\PYGZob{}howey:etal:20,
+author = \PYGZob{}Howey, R AND Shin, S\PYGZhy{}Y AND Relton, C AND Davey Smith, G AND Cordell, H J\PYGZcb{},
+journal = \PYGZob{}PLOS Genetics\PYGZcb{},
+title = \PYGZob{}Bayesian network analysis incorporating genetic anchors complements conventional Mendelian randomization approaches for exploratory analysis of causal relationships in complex data\PYGZcb{},
+year = \PYGZob{}2020\PYGZcb{},
+month = \PYGZob{}March\PYGZcb{},
+volume = \PYGZob{}16\PYGZcb{},
+url = \PYGZob{}https://doi.org/10.1371/journal.pgen.1008198\PYGZcb{},
+pages = \PYGZob{}1\PYGZhy{}35\PYGZcb{},
+number = \PYGZob{}3\PYGZcb{},
+doi = \PYGZob{}10.1371/journal.pgen.1008198\PYGZcb{}\PYGZcb{}
 \end{sphinxVerbatim}
 
 \sphinxAtStartPar
@@ -127,7 +130,7 @@ BayesNetty is copyright, 2015\sphinxhyphen{}present Richard Howey, GNU General P
 
 
 \section{Introduction}
-\label{\detokenize{introduction:introduction}}\label{\detokenize{introduction::doc}}
+\label{\detokenize{introduction:introduction}}\label{\detokenize{introduction:id1}}\label{\detokenize{introduction::doc}}
 \sphinxAtStartPar
 BayesNetty is a C++ program written to perform Bayesian network analyses using genetic and phenotypic data.
 
@@ -140,10 +143,1409 @@ BayesNetty is copyright, 2015\sphinxhyphen{}present Richard Howey, GNU General P
 \end{DUlineblock}
 
 \sphinxAtStartPar
-The \sphinxstylestrong{recommended use} of BayesNetty is to calculate the average network as described in \sphinxstyleemphasis{ref} average\sphinxhyphen{}network \sphinxstyleemphasis{/ref},
-possibly additionally using imputation to fill in missing data as descibed in \sphinxstyleemphasis{ref} impute\sphinxhyphen{}data \sphinxstyleemphasis{/ref}.
+The \sphinxstylestrong{recommended use} of BayesNetty is to calculate the average network as described in the \DUrole{xref,std,std-ref}{Average Network} section,
+possibly additionally using imputation to fill in missing data as descibed in \DUrole{xref,std,std-ref}{Impute Data} section.
 However, for new users we reccomend you work your way through all sections in numerical order,
 in order to understand the functionality of the program.
+
+\sphinxstepscope
+
+
+\section{Installation}
+\label{\detokenize{installation:installation}}\label{\detokenize{installation:id1}}\label{\detokenize{installation::doc}}
+\sphinxAtStartPar
+Download an executable file from the \sphinxhref{https://github.com/NewcastleRSE/BayesNetty/releases}{GitHub download page}
+for your system and off you go, or do the following:
+\begin{enumerate}
+\sphinxsetlistlabels{\arabic}{enumi}{enumii}{}{.}%
+\item {} 
+\sphinxAtStartPar
+Download the code from the download page.
+
+\item {} 
+\sphinxAtStartPar
+Compile it by typing something like the following:
+
+\end{enumerate}
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+g++ \PYGZhy{}m64 \PYGZhy{}O3 *.cpp \PYGZhy{}o bayesnetty
+\end{sphinxVerbatim}
+\begin{enumerate}
+\sphinxsetlistlabels{\arabic}{enumi}{enumii}{}{.}%
+\setcounter{enumi}{2}
+\item {} 
+\sphinxAtStartPar
+Start using BayesNetty!
+
+\end{enumerate}
+
+\sphinxstepscope
+
+
+\section{Using BayesNetty}
+\label{\detokenize{using:using-bayesnetty}}\label{\detokenize{using:id1}}\label{\detokenize{using::doc}}
+\sphinxAtStartPar
+BayesNetty is executed as follows:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+./bayesnetty paras.txt
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+where \sphinxcode{\sphinxupquote{paras.txt}} is a parameter file as described in the following sections.
+
+
+\subsection{Basic Options}
+\label{\detokenize{using:basic-options}}\label{\detokenize{using:id2}}
+\sphinxAtStartPar
+The basic options for BayesNetty are as follows (typing \sphinxcode{\sphinxupquote{./bayesnetty}} with no options will output the available options):
+
+
+\begin{savenotes}\sphinxattablestart
+\sphinxthistablewithglobalstyle
+\centering
+\begin{tabulary}{\linewidth}[t]{TTT}
+\sphinxtoprule
+\sphinxstyletheadfamily 
+\sphinxAtStartPar
+Option
+&\sphinxstyletheadfamily 
+\sphinxAtStartPar
+Description
+&\sphinxstyletheadfamily 
+\sphinxAtStartPar
+Default
+\\
+\sphinxmidrule
+\sphinxtableatstartofbodyhook
+\sphinxAtStartPar
+\sphinxhyphen{}log file.log
+&
+\sphinxAtStartPar
+log file of screen output
+&
+\sphinxAtStartPar
+bayesnetty.log
+\\
+\sphinxhline
+\sphinxAtStartPar
+\sphinxhyphen{}so
+&
+\sphinxAtStartPar
+suppress output to screen
+&\\
+\sphinxhline
+\sphinxAtStartPar
+\sphinxhyphen{}seed number
+&
+\sphinxAtStartPar
+random number generator seed
+&
+\sphinxAtStartPar
+set by execution time
+\\
+\sphinxbottomrule
+\end{tabulary}
+\sphinxtableafterendhook\par
+\sphinxattableend\end{savenotes}
+
+
+\subsubsection{Random Seed}
+\label{\detokenize{using:random-seed}}
+\sphinxAtStartPar
+The random seed option \sphinxcode{\sphinxupquote{\sphinxhyphen{}seed}} may be used to ensure exactly the same output for testing and reproducibility purposes.
+If you do this it is important to use the same number of processes if also using the parallel version of BayesNetty.
+
+
+\subsection{Parameter file}
+\label{\detokenize{using:parameter-file}}
+\sphinxAtStartPar
+There are many different things that BayesNetty can do, each of these different things is referred to as a “task”.
+The parameter file defines which tasks BayesNetty will perform and the order in which they are executed. With the exception of the {\hyperref[\detokenize{using:basic-options}]{\sphinxcrossref{\DUrole{std,std-ref}{basic options}}}},
+all options in the parameter file define tasks. For example, a task to input some continuous data may be given as follows:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYGZhy{}input\PYGZhy{}data
+\PYGZhy{}input\PYGZhy{}data\PYGZhy{}name myGreatData
+\PYGZhy{}input\PYGZhy{}data\PYGZhy{}file example\PYGZhy{}cts.dat
+\PYGZhy{}input\PYGZhy{}data\PYGZhy{}cts
+\PYGZhy{}input\PYGZhy{}data\PYGZhy{}ids 1
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+There are a few basic rules for parameter files:
+\begin{enumerate}
+\sphinxsetlistlabels{\arabic}{enumi}{enumii}{}{.}%
+\item {} 
+\sphinxAtStartPar
+Each option must be written on a separate line.
+
+\item {} 
+\sphinxAtStartPar
+Each line that does not start with a dash, “\sphinxhyphen{}”, will be ignored, thus allowing comments to be written.
+
+\item {} 
+\sphinxAtStartPar
+The task must first be declared and then followed by any options for the task.
+
+\item {} 
+\sphinxAtStartPar
+An option for a task is always written by first writing the name of the task. For example, the task option to give the name of an input data file is given by \sphinxcode{\sphinxupquote{\sphinxhyphen{}input\sphinxhyphen{}data\sphinxhyphen{}file}}, which begins with \sphinxcode{\sphinxupquote{\sphinxhyphen{}input\sphinxhyphen{}data}}, the name of the task to input data.
+
+\item {} 
+\sphinxAtStartPar
+A task, \sphinxcode{\sphinxupquote{XXX}}, may always be given a task name with the option \sphinxcode{\sphinxupquote{XXX\sphinxhyphen{}name}}. The task may then be referenced by other tasks (if permitted). This may be useful if there is more than one network.
+
+\item {} 
+\sphinxAtStartPar
+Tasks are executed in order, so any tasks that depend on other tasks must be ordered accordingly.
+
+\item {} 
+\sphinxAtStartPar
+Any tasks that require a network will be default use the previously defined network. Therefore, if there is only one network it is not necessary to name or reference it. By default tasks are name “Task\sphinxhyphen{}n”, where n is the number of the task.
+
+\end{enumerate}
+
+\sphinxAtStartPar
+The following is an extract from an example parameter file where a network is referenced by a task to calculate the network score:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+...
+
+\PYGZsh{} This is my comment
+\PYGZhy{}input\PYGZhy{}network
+\PYGZhy{}input\PYGZhy{}network\PYGZhy{}name myNetwork
+\PYGZhy{}input\PYGZhy{}network\PYGZhy{}file network\PYGZhy{}model.dat
+
+\PYGZhy{}calc\PYGZhy{}network\PYGZhy{}score
+\PYGZhy{}calc\PYGZhy{}network\PYGZhy{}score\PYGZhy{}network\PYGZhy{}name myNetwork
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+The parameter file could be thought of as in an \sphinxcode{\sphinxupquote{R}} programming style, such that the above would look as follows:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{k+kc}{...}
+
+\PYG{c+c1}{\PYGZsh{} This is my comment}
+\PYG{n}{myNetwork}\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{n+nf}{input.network}\PYG{p}{(}\PYG{n}{file}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{network\PYGZhy{}model.dat\PYGZdq{}}\PYG{p}{)}
+
+\PYG{n+nf}{calc.network.score}\PYG{p}{(}\PYG{n}{network.name}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{myNetwork}\PYG{p}{)}
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+However, as BayesNetty is not an \sphinxcode{\sphinxupquote{R}} package (or a programming language), the parameter file uses an unambiguous, longhand, and easy to parse style of syntax.
+
+\sphinxAtStartPar
+The options for all the different tasks may be found in the different task sections of the documentation.
+
+
+\subsection{Simple Example}
+\label{\detokenize{using:simple-example}}\label{\detokenize{using:id3}}
+\sphinxAtStartPar
+Example data and parameter files can be found in the file \sphinxhref{https://github.com/NewcastleRSE/BayesNetty/raw/refs/heads/main/docs/resources/example.zip}{example.zip}.
+The example parameter file, \sphinxcode{\sphinxupquote{paras\sphinxhyphen{}example.txt}}, can be used to perform a simple analysis by typing
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+./bayesnetty paras\PYGZhy{}example.txt
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+The following shows the \sphinxcode{\sphinxupquote{paras\sphinxhyphen{}example.txt}} file
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYGZsh{}input continuous data
+\PYGZhy{}input\PYGZhy{}data
+\PYGZhy{}input\PYGZhy{}data\PYGZhy{}file example\PYGZhy{}cts.dat
+\PYGZhy{}input\PYGZhy{}data\PYGZhy{}cts
+
+\PYGZsh{}input discrete data
+\PYGZhy{}input\PYGZhy{}data
+\PYGZhy{}input\PYGZhy{}data\PYGZhy{}file example\PYGZhy{}discrete.dat
+\PYGZhy{}input\PYGZhy{}data\PYGZhy{}discrete
+
+\PYGZsh{}input SNP data as discrete data
+\PYGZhy{}input\PYGZhy{}data
+\PYGZhy{}input\PYGZhy{}data\PYGZhy{}file example.bed
+\PYGZhy{}input\PYGZhy{}data\PYGZhy{}discrete\PYGZhy{}snp
+
+\PYGZsh{}search network models
+\PYGZhy{}search\PYGZhy{}models
+\PYGZhy{}search\PYGZhy{}models\PYGZhy{}file search\PYGZhy{}example.dat
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+The parameter file instructs BayesNetty to perform 4 tasks: (i) load continuous data from file \sphinxcode{\sphinxupquote{example\sphinxhyphen{}cts.dat}}; (ii) load discrete data from file \sphinxcode{\sphinxupquote{example\sphinxhyphen{}discrete.dat}};
+(iii) load SNP data to be treated as discrete data from file \sphinxcode{\sphinxupquote{example.bed}}; and finally (iv) search the network models. The screen output, which is also saved to a log file, will look something as follows:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+BayesNetty: Bayesian Network software, v1.00
+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}
+Copyright 2015\PYGZhy{}present Richard Howey, GNU General Public License, v3
+Institute of Genetic Medicine, Newcastle University
+
+Random seed: 1551700145
+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}
+Task name: Task\PYGZhy{}1
+Loading data
+Continuous data file: example\PYGZhy{}cts.dat
+Number of ID columns: 2
+Including (all) 2 variables in analysis
+Each variable has 1500 data entries
+Missing value: not set
+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}
+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}
+Task name: Task\PYGZhy{}2
+Loading data
+Discrete data file: example\PYGZhy{}discrete.dat
+Number of ID columns: 2
+Including the 1 and only variable in analysis
+Each variable has 1500 data entries
+Missing value: NA
+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}
+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}
+Task name: Task\PYGZhy{}3
+Loading data
+SNP binary data file: example.bed
+SNP data treated as discrete data
+Total number of SNPs: 2
+Total number of subjects: 1500
+Number of ID columns: 2
+Including (all) 2 variables in analysis
+Each variable has 1500 data entries
+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}
+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}
+Task name: Task\PYGZhy{}4
+Searching network models
+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}
+Loading defaultNetwork network
+Network type: bnlearn
+Network score type: BIC
+Total number of nodes: 5 (Discrete: 3 | Factor: 0 | Continuous: 2)
+Total number of edges: 0
+Network Structure: [express][pheno][mood][rs1][rs2]
+Total data at each node: 1495
+Missing data at each node: 5
+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}
+Network: defaultNetwork
+Search: Greedy
+Random restarts: 0
+Random jitter restarts: 0
+Network Structure: [mood][rs1][rs2][express|rs1:rs2][pheno|express:mood]
+Network score type: BIC
+Network score = \PYGZhy{}8213.45
+Network search output to file: search\PYGZhy{}example.dat
+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}
+
+Run time: less than one second
+\end{sphinxVerbatim}
+
+
+\subsection{Command\sphinxhyphen{}line Options}
+\label{\detokenize{using:command-line-options}}\label{\detokenize{using:command-line}}
+\sphinxAtStartPar
+It is also possible to add options on the command line to modify or add to the options in the parameter file. For example
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+./bayesnetty paras\PYGZhy{}example.txt \PYGZhy{}seed 1 \PYGZhy{}log seed\PYGZhy{}1\PYGZhy{}results.log
+\end{sphinxVerbatim}
+
+\sphinxstepscope
+
+
+\section{Parallel BayesNetty}
+\label{\detokenize{parallel:parallel-bayesnetty}}\label{\detokenize{parallel:parallel}}\label{\detokenize{parallel::doc}}
+\sphinxAtStartPar
+It is possible to run BayesNetty using Open MPI (\sphinxstyleemphasis{cite} openmpi \sphinxstyleemphasis{/cite}), which is an open source Message Passing Interface (MPI) (\sphinxstyleemphasis{cite} mpi \sphinxstyleemphasis{/cite}) implementation designed for parallel programming.
+
+\sphinxAtStartPar
+The parallel version of Bayesnetty speeds up the search through network space for the best network by simultaneously evaluating different networks. This is particularly useful for large networks and any type of analysis that depends on network searches, such as network averaging and imputing data.
+
+\sphinxAtStartPar
+A much faster way to calculate an average network in parallel is given in the \DUrole{xref,std,std-ref}{Average Network} section.
+
+\sphinxAtStartPar
+A much faster way to impute network data in parallel is given in the \DUrole{xref,std,std-ref}{Impute Data} section.
+
+\sphinxAtStartPar
+After installing Open MPI on your system if it is not already installed, see \sphinxstyleemphasis{cite} openmpi \sphinxstyleemphasis{/cite}, a parallel version of BayesNetty needs to be compiled. This can be done by firstly uncommenting a few lines in the \sphinxcode{\sphinxupquote{main.h}} file. So that the following:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+// Comment out if not using Open MPI for parallel processing
+//\PYGZsh{}ifndef USING\PYGZus{}OPEN\PYGZus{}MPI
+//\PYGZsh{}define USING\PYGZus{}OPEN\PYGZus{}MPI
+//\PYGZsh{}endif //OPEN\PYGZus{}MPI
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+becomes
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+// Comment out if not using Open MPI for parallel processing
+\PYGZsh{}ifndef USING\PYGZus{}OPEN\PYGZus{}MPI
+\PYGZsh{}define USING\PYGZus{}OPEN\PYGZus{}MPI
+\PYGZsh{}endif //OPEN\PYGZus{}MPI
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+then compile the parallel code as follows:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+mpicxx \PYGZhy{}O3 \PYGZhy{}o pbayesnetty *.cpp
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+The code can then be ran using how many processes that you wish, for example to run with 12 processes use
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+mpirun \PYGZhy{}n 12 ./pbayesnetty paras\PYGZhy{}example.txt
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+For such a trivial example the code will not run any quicker, and in fact for very small networks one may find that analyses take longer.
+There is some overhead in using the MPI libraries, so if trivial networks are used there may be no speed up.
+
+\sphinxAtStartPar
+Even for large networks the optimal number of processes to perform the analysis as quick as possible may not be as many processes as you can use. As there is an overhead for processes the best amount to use may be a lot, but not too many…
+The best amount will vary depending on the analysis, the data and the computing system that you are using, so some trial and error may be needed.
+
+\sphinxAtStartPar
+The output will show the number of processes as well as the random seed. If you wish to reproduce exactly the same results both of these need to be set to the same value.
+The seed is set with the \sphinxcode{\sphinxupquote{\sphinxhyphen{}seed}} option.
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+BayesNetty: Bayesian Network software, v1.00
+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}
+Copyright 2015\PYGZhy{}present Richard Howey, GNU General Public License, v3
+Institute of Genetic Medicine, Newcastle University
+
+Number of processes: 12
+Random seed: 1541430503
+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}
+Task name: Task\PYGZhy{}1
+Loading data
+Continuous data file: example\PYGZhy{}cts.dat
+Number of ID columns: 2
+Including (all) 2 variables in analysis
+Each variable has 1500 data entries
+Missing value: not set
+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}
+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}
+
+...
+\end{sphinxVerbatim}
+
+
+\subsection{Compilation Scripts}
+\label{\detokenize{parallel:compilation-scripts}}\label{\detokenize{parallel:compile-parallel-code}}
+\sphinxAtStartPar
+Scripts to compile Bayesnetty as either parallel or non\sphinxhyphen{}parallel while automatically uncommenting or commenting the code as appropriate are given below.
+
+\sphinxAtStartPar
+Script to compile code in parallel:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+sed \PYGZhy{}i s://\PYGZsh{}ifndef\PYGZbs{} USING\PYGZus{}OPEN\PYGZus{}MPI:\PYGZsh{}ifndef\PYGZbs{} USING\PYGZus{}OPEN\PYGZus{}MPI:g main.h
+sed \PYGZhy{}i s://\PYGZsh{}define\PYGZbs{} USING\PYGZus{}OPEN\PYGZus{}MPI:\PYGZsh{}define\PYGZbs{} USING\PYGZus{}OPEN\PYGZus{}MPI:g main.h
+sed \PYGZhy{}i s://\PYGZsh{}endif\PYGZbs{} //:\PYGZsh{}endif\PYGZbs{} //:g main.h
+
+mpicxx \PYGZhy{}O3 \PYGZhy{}o pbayesnetty *.cpp
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+Script to compile code in non\sphinxhyphen{}parallel:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+sed \PYGZhy{}i s://\PYGZsh{}ifndef\PYGZbs{} USING\PYGZus{}OPEN\PYGZus{}MPI:\PYGZsh{}ifndef\PYGZbs{} USING\PYGZus{}OPEN\PYGZus{}MPI:g main.h
+sed \PYGZhy{}i s://\PYGZsh{}define\PYGZbs{} USING\PYGZus{}OPEN\PYGZus{}MPI:\PYGZsh{}define\PYGZbs{} USING\PYGZus{}OPEN\PYGZus{}MPI:g main.h
+sed \PYGZhy{}i s://\PYGZsh{}endif\PYGZbs{} //:\PYGZsh{}endif\PYGZbs{} //:g main.h
+
+sed \PYGZhy{}i s:\PYGZsh{}ifndef\PYGZbs{} USING\PYGZus{}OPEN\PYGZus{}MPI://\PYGZsh{}ifndef\PYGZbs{} USING\PYGZus{}OPEN\PYGZus{}MPI:g main.h
+sed \PYGZhy{}i s:\PYGZsh{}define\PYGZbs{} USING\PYGZus{}OPEN\PYGZus{}MPI://\PYGZsh{}define\PYGZbs{} USING\PYGZus{}OPEN\PYGZus{}MPI:g main.h
+sed \PYGZhy{}i s:\PYGZsh{}endif\PYGZbs{} //://\PYGZsh{}endif\PYGZbs{} //:g main.h
+
+g++ \PYGZhy{}O3 *.cpp \PYGZhy{}o bayesnetty
+\end{sphinxVerbatim}
+
+\sphinxstepscope
+
+
+\section{Input data}
+\label{\detokenize{input-data:input-data}}\label{\detokenize{input-data:id1}}\label{\detokenize{input-data::doc}}
+\sphinxAtStartPar
+All data must be input using the \sphinxcode{\sphinxupquote{\sphinxhyphen{}input\sphinxhyphen{}data}} task.
+
+
+\subsection{Options}
+\label{\detokenize{input-data:options}}\label{\detokenize{input-data:input-data-options}}
+\sphinxAtStartPar
+The options are as follows:
+
+
+\begin{savenotes}\sphinxattablestart
+\sphinxthistablewithglobalstyle
+\centering
+\begin{tabulary}{\linewidth}[t]{TTT}
+\sphinxtoprule
+\sphinxstyletheadfamily 
+\sphinxAtStartPar
+Option
+&\sphinxstyletheadfamily 
+\sphinxAtStartPar
+Description
+&\sphinxstyletheadfamily 
+\sphinxAtStartPar
+Default
+\\
+\sphinxmidrule
+\sphinxtableatstartofbodyhook
+\sphinxAtStartPar
+\sphinxhyphen{}input\sphinxhyphen{}data
+&
+\sphinxAtStartPar
+do a task to input data
+&\\
+\sphinxhline
+\sphinxAtStartPar
+\sphinxhyphen{}input\sphinxhyphen{}data\sphinxhyphen{}name name
+&
+\sphinxAtStartPar
+label the task with a name
+&
+\sphinxAtStartPar
+Task\sphinxhyphen{}n
+\\
+\sphinxhline
+\sphinxAtStartPar
+\sphinxhyphen{}impute\sphinxhyphen{}network\sphinxhyphen{}data\sphinxhyphen{}network\sphinxhyphen{}name network
+&
+\sphinxAtStartPar
+the name of the network to impute data for
+&
+\sphinxAtStartPar
+previous network (or the default model if there is no previous network) given by a node for each data variable and no edges
+\\
+\sphinxhline
+\sphinxAtStartPar
+\sphinxhyphen{}input\sphinxhyphen{}data\sphinxhyphen{}include\sphinxhyphen{}file nodes.dat
+&
+\sphinxAtStartPar
+a list of nodes/variables from the data file to be included in the network. Only the nodes in this list will be used in any analysis.
+&\\
+\sphinxhline
+\sphinxAtStartPar
+\sphinxhyphen{}input\sphinxhyphen{}data\sphinxhyphen{}exclude\sphinxhyphen{}file nodes.dat
+&
+\sphinxAtStartPar
+a list of nodes/variables to be excluded from the network
+&\\
+\sphinxhline
+\sphinxAtStartPar
+\sphinxhyphen{}input\sphinxhyphen{}data\sphinxhyphen{}cts
+&
+\sphinxAtStartPar
+set the data file as containing continuous data
+&\\
+\sphinxhline
+\sphinxAtStartPar
+\sphinxhyphen{}input\sphinxhyphen{}data\sphinxhyphen{}cts\sphinxhyphen{}snp
+&
+\sphinxAtStartPar
+set the .bed data file as containing SNP data to be treated as continuous data (0, 1, 2) in the network
+&\\
+\sphinxhline
+\sphinxAtStartPar
+\sphinxhyphen{}input\sphinxhyphen{}data\sphinxhyphen{}cts\sphinxhyphen{}snp2
+&
+\sphinxAtStartPar
+set the data file as containing continuous SNP data (taking any continuous values)
+&\\
+\sphinxhline
+\sphinxAtStartPar
+\sphinxhyphen{}input\sphinxhyphen{}data\sphinxhyphen{}cts\sphinxhyphen{}missing\sphinxhyphen{}value x
+&
+\sphinxAtStartPar
+set the value of missing data for continuous data to x
+&\\
+\sphinxhline
+\sphinxAtStartPar
+\sphinxhyphen{}input\sphinxhyphen{}data\sphinxhyphen{}discrete
+&
+\sphinxAtStartPar
+set the data file as containing discrete data
+&\\
+\sphinxhline
+\sphinxAtStartPar
+\sphinxhyphen{}input\sphinxhyphen{}data\sphinxhyphen{}discrete\sphinxhyphen{}snp
+&
+\sphinxAtStartPar
+set the .bed data file as containing SNP data to be treated as discrete data in the network
+&\\
+\sphinxhline
+\sphinxAtStartPar
+\sphinxhyphen{}input\sphinxhyphen{}data\sphinxhyphen{}discrete\sphinxhyphen{}snp2
+&
+\sphinxAtStartPar
+set the data file as containing discrete SNP data (taking any number of discrete values)
+&\\
+\sphinxhline
+\sphinxAtStartPar
+\sphinxhyphen{}input\sphinxhyphen{}data\sphinxhyphen{}discrete\sphinxhyphen{}missing\sphinxhyphen{}value x
+&
+\sphinxAtStartPar
+set the value of missing data for discrete data to x
+&
+\sphinxAtStartPar
+NA
+\\
+\sphinxhline
+\sphinxAtStartPar
+\sphinxhyphen{}input\sphinxhyphen{}data\sphinxhyphen{}factor
+&
+\sphinxAtStartPar
+set the data file as containing discrete data encoded using factor variables
+&\\
+\sphinxhline
+\sphinxAtStartPar
+\sphinxhyphen{}input\sphinxhyphen{}data\sphinxhyphen{}factor\sphinxhyphen{}snp
+&
+\sphinxAtStartPar
+set the .bed file as containing SNP data to be treated as discrete factor data in the network
+&\\
+\sphinxhline
+\sphinxAtStartPar
+\sphinxhyphen{}input\sphinxhyphen{}data\sphinxhyphen{}factor\sphinxhyphen{}snp2
+&
+\sphinxAtStartPar
+set the data file as containing discrete factor SNP data (taking any number of discrete values)
+&\\
+\sphinxhline
+\sphinxAtStartPar
+\sphinxhyphen{}input\sphinxhyphen{}data\sphinxhyphen{}factor\sphinxhyphen{}missing\sphinxhyphen{}value x
+&
+\sphinxAtStartPar
+set the value of missing data for discrete factor data to x
+&
+\sphinxAtStartPar
+NA
+\\
+\sphinxhline
+\sphinxAtStartPar
+\sphinxhyphen{}input\sphinxhyphen{}data\sphinxhyphen{}ids n
+&
+\sphinxAtStartPar
+the number of ID columns in each data file
+&
+\sphinxAtStartPar
+2
+\\
+\sphinxhline
+\sphinxAtStartPar
+\sphinxhyphen{}input\sphinxhyphen{}data\sphinxhyphen{}csv
+&
+\sphinxAtStartPar
+set the data file as a comma separated file, .csv
+&\\
+\sphinxbottomrule
+\end{tabulary}
+\sphinxtableafterendhook\par
+\sphinxattableend\end{savenotes}
+
+
+\subsection{Discrete data}
+\label{\detokenize{input-data:discrete-data}}\label{\detokenize{input-data:input-data-discrete}}
+\sphinxAtStartPar
+Discrete data is automatically constrained to have no parent nodes that are continuous.
+
+\sphinxAtStartPar
+Discrete data is input by using the \sphinxcode{\sphinxupquote{\sphinxhyphen{}input\sphinxhyphen{}data}} task, setting the data file and setting the data file to discrete. For example, the following
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYGZhy{}input\PYGZhy{}data
+\PYGZhy{}input\PYGZhy{}data\PYGZhy{}file example\PYGZhy{}discrete.dat
+\PYGZhy{}input\PYGZhy{}data\PYGZhy{}discrete
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+could be used and the output would be something as follows:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+BayesNetty: Bayesian Network software, v1.00
+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}
+Copyright 2015\PYGZhy{}present Richard Howey, GNU General Public License, v3
+Institute of Genetic Medicine, Newcastle University
+
+Random seed: 1551695824
+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}
+Task name: Task\PYGZhy{}1
+Loading data
+Discrete data file: example\PYGZhy{}discrete.dat
+Number of ID columns: 2
+Including the 1 and only variable in analysis
+Each variable has 1500 data entries
+Missing value: NA
+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}
+
+Run time: less than one second
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+This parameter file can be found \sphinxcode{\sphinxupquote{paras\sphinxhyphen{}input\sphinxhyphen{}discrete.txt}} in the examples, \sphinxhref{https://github.com/NewcastleRSE/BayesNetty/raw/refs/heads/main/docs/resources/example.zip}{example.zip}.
+
+
+\subsection{Continuous data}
+\label{\detokenize{input-data:continuous-data}}\label{\detokenize{input-data:input-data-cts}}
+\sphinxAtStartPar
+Continuous data is input by using the \sphinxcode{\sphinxupquote{\sphinxhyphen{}input\sphinxhyphen{}data}} task, setting the data file and setting the data file to continuous. For example, the following
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYGZhy{}input\PYGZhy{}data
+\PYGZhy{}input\PYGZhy{}data\PYGZhy{}file example\PYGZhy{}cts.dat
+\PYGZhy{}input\PYGZhy{}data\PYGZhy{}cts
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+could be used and the output would be something as follows:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+BayesNetty: Bayesian Network software, v1.00
+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}
+Copyright 2015\PYGZhy{}present Richard Howey, GNU General Public License, v3
+Institute of Genetic Medicine, Newcastle University
+
+Random seed: 1551695897
+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}
+Task name: Task\PYGZhy{}1
+Loading data
+Continuous data file: example\PYGZhy{}cts.dat
+Number of ID columns: 2
+Including (all) 2 variables in analysis
+Each variable has 1500 data entries
+Missing value: not set
+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}
+
+Run time: less than one second
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+This parameter file can be found \sphinxcode{\sphinxupquote{paras\sphinxhyphen{}input\sphinxhyphen{}cts.txt}} in the examples, \sphinxhref{https://github.com/NewcastleRSE/BayesNetty/raw/refs/heads/main/docs/resources/example.zip}{example.zip}.
+
+
+\subsection{Factor data}
+\label{\detokenize{input-data:factor-data}}\label{\detokenize{input-data:input-data-factor}}
+\sphinxAtStartPar
+Another way of handling discrete data is with the use of \sphinxstyleemphasis{factors}. Indicator variables are created, one for each different discrete category minus one.
+These are treated as continuous explanatory variables in the linear regressions when they are parent nodes.
+A restriction of using discrete data with factors is that they cannot be child nodes of other nodes. Input by using the \sphinxcode{\sphinxupquote{\sphinxhyphen{}input\sphinxhyphen{}data}} task, setting the data file and setting the data file to factor.
+For example, the following
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYGZhy{}input\PYGZhy{}data
+\PYGZhy{}input\PYGZhy{}data\PYGZhy{}file example\PYGZhy{}discrete.dat
+\PYGZhy{}input\PYGZhy{}data\PYGZhy{}factor
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+could be used and the output would be something as follows:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+BayesNetty: Bayesian Network software, v1.00
+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}
+Copyright 2015\PYGZhy{}present Richard Howey, GNU General Public License, v3
+Institute of Genetic Medicine, Newcastle University
+
+Random seed: 1551695930
+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}
+Task name: Task\PYGZhy{}1
+Loading data
+Discrete data file: example\PYGZhy{}discrete.dat
+Data treated as factors
+Number of ID columns: 2
+Including the 1 and only variable in analysis
+Each variable has 1500 data entries
+Missing value: NA
+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}
+
+Run time: less than one second
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+This parameter file, \sphinxcode{\sphinxupquote{paras\sphinxhyphen{}input\sphinxhyphen{}factor.txt}}, can be found in the examples, \sphinxhref{https://github.com/NewcastleRSE/BayesNetty/raw/refs/heads/main/docs/resources/example.zip}{example.zip}.
+
+
+\subsection{SNP data}
+\label{\detokenize{input-data:snp-data}}\label{\detokenize{input-data:input-data-snp}}
+\sphinxAtStartPar
+SNP data is automatically constrained to have no parent nodes.
+
+\sphinxAtStartPar
+SNP data may be input as a \sphinxhref{https://zzz.bwh.harvard.edu/plink/binary.shtml}{binary} PLINK format pedigree file, a \sphinxcode{\sphinxupquote{.bed}} file, see \sphinxcite{references:purcell-etal-07} .
+This requires that the corresponding \sphinxcode{\sphinxupquote{.bim}} and \sphinxcode{\sphinxupquote{.fam}}, files are also available. A text PLINK pedigree file, \sphinxcode{\sphinxupquote{.ped}}, with corresponding map file, \sphinxcode{\sphinxupquote{.map}}, may be used to create a binary file using PLINK as follows:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+plink \PYGZhy{}\PYGZhy{}noweb \PYGZhy{}\PYGZhy{}file mydata \PYGZhy{}\PYGZhy{}make\PYGZhy{}bed \PYGZhy{}\PYGZhy{}out myfile
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+This will create the binary pedigree file, \sphinxcode{\sphinxupquote{myfile.bed}}, map file, \sphinxcode{\sphinxupquote{myfile.bim}}, and family file, \sphinxcode{\sphinxupquote{myfile.fam}} required.
+
+\sphinxAtStartPar
+The SNP data is input by using the \sphinxcode{\sphinxupquote{\sphinxhyphen{}input\sphinxhyphen{}data}} task, setting the PLINK binary file and setting the data file to a SNP file in discrete mode or continuous mode. For example, in discrete mode, the following
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYGZhy{}input\PYGZhy{}data
+\PYGZhy{}input\PYGZhy{}data\PYGZhy{}file example.bed
+\PYGZhy{}input\PYGZhy{}data\PYGZhy{}discrete\PYGZhy{}snp
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+could be used and the output would be something as follows:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+BayesNetty: Bayesian Network software, v1.00
+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}
+Copyright 2015\PYGZhy{}present Richard Howey, GNU General Public License, v3
+Institute of Genetic Medicine, Newcastle University
+
+Random seed: 1551695984
+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}
+Task name: Task\PYGZhy{}1
+Loading data
+SNP binary data file: example.bed
+SNP data treated as discrete data
+Total number of SNPs: 2
+Total number of subjects: 1500
+Number of ID columns: 2
+Including (all) 2 variables in analysis
+Each variable has 1500 data entries
+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}
+
+Run time: less than one second
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+This parameter file can be found \sphinxcode{\sphinxupquote{paras\sphinxhyphen{}input\sphinxhyphen{}snp.txt}} in the examples, \sphinxhref{https://github.com/NewcastleRSE/BayesNetty/raw/refs/heads/main/docs/resources/example.zip}{example.zip}.
+
+
+\subsection{Missing data}
+\label{\detokenize{input-data:missing-data}}\label{\detokenize{input-data:input-data-missing}}
+\sphinxAtStartPar
+Missing data is determined by any data matching the given missing value as defined by \sphinxcode{\sphinxupquote{\sphinxhyphen{}input\sphinxhyphen{}data\sphinxhyphen{}discrete\sphinxhyphen{}missing\sphinxhyphen{}value}} and \sphinxcode{\sphinxupquote{\sphinxhyphen{}input\sphinxhyphen{}data\sphinxhyphen{}cts\sphinxhyphen{}missing\sphinxhyphen{}value}}
+when inputting discrete and continuous data respectively (or \sphinxcode{\sphinxupquote{\sphinxhyphen{}input\sphinxhyphen{}data\sphinxhyphen{}factor\sphinxhyphen{}missing\sphinxhyphen{}value}} when inputting factor data).
+When continuous data has an invalid entry this will also be set to missing, for example a value of “NaN” will be set to missing since a numerical value is required.
+Missing data for SNP data is given as defined by the PLINK \sphinxhref{https://zzz.bwh.harvard.edu/plink/binary.shtml}{binary} pedigree format.
+When there is missing data for a node for a certain individual then data for this certain individual is considered as missing for \sphinxstyleemphasis{every} node in the network.
+Therefore the amount of missing data depends on which nodes are in the network.
+
+\sphinxAtStartPar
+Consider a network with 2 continuous nodes, with structure as given by network file \sphinxcode{\sphinxupquote{example\sphinxhyphen{}network\sphinxhyphen{}missing1.dat}} and input using parameter file \sphinxcode{\sphinxupquote{paras\sphinxhyphen{}input\sphinxhyphen{}missing1.txt}}
+as given in the file \sphinxhref{https://github.com/NewcastleRSE/BayesNetty/raw/refs/heads/main/docs/resources/example.zip}{example.zip}, then the output will be will look something as follows:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+BayesNetty: Bayesian Network software, v1.00
+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}
+Copyright 2015\PYGZhy{}present Richard Howey, GNU General Public License, v3
+Institute of Genetic Medicine, Newcastle University
+
+Random seed: 1551694585
+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}
+Task name: Task\PYGZhy{}1
+Loading data
+Continuous data file: example\PYGZhy{}cts.dat
+Number of ID columns: 2
+Including (all) 2 variables in analysis
+Each variable has 1500 data entries
+Missing value: not set
+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}
+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}
+Task name: myNetwork
+Loading network
+Network file: example\PYGZhy{}network\PYGZhy{}missing1.dat
+Network type: bnlearn
+Network score type: BIC
+Total number of nodes: 2 (Discrete: 0 | Factor: 0 | Continuous: 2)
+Total number of edges: 1
+Network Structure: [express][pheno|express]
+Total data at each node: 1500
+Missing data at each node: 0
+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}
+
+Run time: less than one second
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+As indicated in the network details there is no missing data. However, if the SNP node, \sphinxcode{\sphinxupquote{rs1}}, is added (network file \sphinxcode{\sphinxupquote{example\sphinxhyphen{}network\sphinxhyphen{}missing2.dat}}) then the following is given:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+BayesNetty: Bayesian Network software, v1.00
+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}
+Copyright 2015\PYGZhy{}present Richard Howey, GNU General Public License, v3
+Institute of Genetic Medicine, Newcastle University
+
+Random seed: 1551696539
+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}
+Task name: Task\PYGZhy{}1
+Loading data
+SNP binary data file: example.bed
+SNP data treated as discrete data
+Total number of SNPs: 2
+Total number of subjects: 1500
+Number of ID columns: 2
+Including (all) 2 variables in analysis
+Each variable has 1500 data entries
+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}
+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}
+Task name: Task\PYGZhy{}2
+Loading data
+Continuous data file: example\PYGZhy{}cts.dat
+Number of ID columns: 2
+Including (all) 2 variables in analysis
+Each variable has 1500 data entries
+Missing value: not set
+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}
+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}
+Task name: myNetwork
+Loading network
+Network file: example\PYGZhy{}network\PYGZhy{}missing2.dat
+Network type: bnlearn
+Network score type: BIC
+Total number of nodes: 3 (Discrete: 1 | Factor: 0 | Continuous: 2)
+Total number of edges: 2
+Network Structure: [rs1][express|rs1][pheno|express]
+Total data at each node: 1497
+Missing data at each node: 3
+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}
+
+Run time: less than one second
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+This example is given in network file \sphinxcode{\sphinxupquote{example\sphinxhyphen{}network\sphinxhyphen{}missing2.dat\textasciigrave{}\textasciigrave{}and parameter file \textasciigrave{}\textasciigrave{}paras\sphinxhyphen{}input\sphinxhyphen{}missing2.txt}}.
+The amount of missing data for the network is now 3, indicating that 3 individuals have missing SNP data for \sphinxcode{\sphinxupquote{rs1}}.
+Adding in another SNP node, \sphinxcode{\sphinxupquote{rs2}} (network file \sphinxcode{\sphinxupquote{example\sphinxhyphen{}network\sphinxhyphen{}missing3.dat}}), results in the following:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+BayesNetty: Bayesian Network software, v1.00
+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}
+Copyright 2015\PYGZhy{}present Richard Howey, GNU General Public License, v3
+Institute of Genetic Medicine, Newcastle University
+
+Random seed: 1551696644
+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}
+Task name: Task\PYGZhy{}1
+Loading data
+SNP binary data file: example.bed
+SNP data treated as discrete data
+Total number of SNPs: 2
+Total number of subjects: 1500
+Number of ID columns: 2
+Including (all) 2 variables in analysis
+Each variable has 1500 data entries
+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}
+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}
+Task name: Task\PYGZhy{}2
+Loading data
+Continuous data file: example\PYGZhy{}cts.dat
+Number of ID columns: 2
+Including (all) 2 variables in analysis
+Each variable has 1500 data entries
+Missing value: not set
+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}
+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}
+Task name: myNetwork
+Loading network
+Network file: example\PYGZhy{}network\PYGZhy{}missing3.dat
+Network type: bnlearn
+Network score type: BIC
+Total number of nodes: 4 (Discrete: 2 | Factor: 0 | Continuous: 2)
+Total number of edges: 3
+Network Structure: [rs1][rs2][express|rs1:rs2][pheno|express]
+Total data at each node: 1495
+Missing data at each node: 5
+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}
+
+Run time: less than one second
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+Similarly, this example is given in network file \sphinxcode{\sphinxupquote{example\sphinxhyphen{}network\sphinxhyphen{}missing3.dat}} and parameter file \sphinxcode{\sphinxupquote{paras\sphinxhyphen{}input\sphinxhyphen{}missing3.txt}}.
+Here we see that the amount of missing data in the network has increased due to missing data for SNP node \sphinxcode{\sphinxupquote{rs2}}.
+This node also has missing data for 3 individuals, with the result that the total amount of missing data for each node is 5.
+
+
+\subsection{Data IDs}
+\label{\detokenize{input-data:data-ids}}\label{\detokenize{input-data:input-data-ids}}
+\sphinxAtStartPar
+By default the first two columns of a data file should be IDs and match those in any other data files, and be in the same order (although the ID names in the header do not need to match).
+The number of ID columns can be changed using the \sphinxcode{\sphinxupquote{\sphinxhyphen{}input\sphinxhyphen{}data\sphinxhyphen{}ids}} option, and may be set to zero.
+If the data contains SNP data in a PLINK binary pedigree file, \sphinxcode{\sphinxupquote{.bed}}, then the number of ID columns must be set to 2.
+If the data is a binary pedigree file, \sphinxcode{\sphinxupquote{file.bed}}, then the family and individual IDs in the file \sphinxcode{\sphinxupquote{file.fam}} must match the IDs in any other data files, and all SNPs may be used as network nodes.
+The IDs in different files are checked to be the same including the order, if not BayesNetty will report an error.
+If there are zero IDs then the individuals are assumed to be in the same order in each file and are only checked to have the same number of individuals.
+
+
+\subsection{Example}
+\label{\detokenize{input-data:example}}\label{\detokenize{input-data:input-data-example}}
+\sphinxAtStartPar
+See the above sections for examples of inputting data.
+
+\sphinxstepscope
+
+
+\section{Input network}
+\label{\detokenize{input-network:input-network}}\label{\detokenize{input-network:id1}}\label{\detokenize{input-network::doc}}
+\sphinxAtStartPar
+A network may be specified using the \sphinxcode{\sphinxupquote{\sphinxhyphen{}input\sphinxhyphen{}network}} task. The network may be used as a starting point for analyses, such as searches, or to perform an analysis on this network.
+Only nodes in input files will be used in the network so that a subset of the data may be specified.
+
+\sphinxAtStartPar
+Any network \sphinxstylestrong{constraints} must be set using the \sphinxcode{\sphinxupquote{\sphinxhyphen{}input\sphinxhyphen{}network}} option.
+These constraints then belong to the network and will be used in any subsquent analysis, including searches, calculating average networks etc.
+
+\sphinxAtStartPar
+If no network is specified then a network with no edges and a node for every data variable (as given by the input data) will be created and named “defaultNetwork”.
+
+
+\subsection{Options}
+\label{\detokenize{input-network:options}}\label{\detokenize{input-network:input-network-options}}
+\sphinxAtStartPar
+The options are as follows:
+
+
+\begin{savenotes}\sphinxattablestart
+\sphinxthistablewithglobalstyle
+\centering
+\begin{tabulary}{\linewidth}[t]{TTT}
+\sphinxtoprule
+\sphinxstyletheadfamily 
+\sphinxAtStartPar
+Option
+&\sphinxstyletheadfamily 
+\sphinxAtStartPar
+Description
+&\sphinxstyletheadfamily 
+\sphinxAtStartPar
+Default
+\\
+\sphinxmidrule
+\sphinxtableatstartofbodyhook
+\sphinxAtStartPar
+\sphinxhyphen{}input\sphinxhyphen{}network
+&
+\sphinxAtStartPar
+do a task to input a network
+&\\
+\sphinxhline
+\sphinxAtStartPar
+\sphinxhyphen{}input\sphinxhyphen{}network\sphinxhyphen{}name name
+&
+\sphinxAtStartPar
+label the task and network with a name
+&
+\sphinxAtStartPar
+Task\sphinxhyphen{}n
+\\
+\sphinxhline
+\sphinxAtStartPar
+\sphinxhyphen{}input\sphinxhyphen{}network\sphinxhyphen{}type t
+&
+\sphinxAtStartPar
+the type of Bayesian network, choose between bnlearn or deal
+&
+\sphinxAtStartPar
+bnlearn
+\\
+\sphinxhline
+\sphinxAtStartPar
+\sphinxhyphen{}input\sphinxhyphen{}network\sphinxhyphen{}file network.dat
+&
+\sphinxAtStartPar
+input the network in a format where the nodes and then the edges are listed
+&\\
+\sphinxhline
+\sphinxAtStartPar
+\sphinxhyphen{}input\sphinxhyphen{}network\sphinxhyphen{}file2 network2.dat
+&
+\sphinxAtStartPar
+input the network in this style of format: \sphinxcode{\sphinxupquote{{[}a{]}{[}b|a{]}{[}c|a:b{]}}}
+&\\
+\sphinxhline
+\sphinxAtStartPar
+\sphinxhyphen{}input\sphinxhyphen{}network\sphinxhyphen{}igraph\sphinxhyphen{}file\sphinxhyphen{}prefix mygraph
+&
+\sphinxAtStartPar
+input the network from igraph format files consisting of mygraph\sphinxhyphen{}nodes.dat and mygraph\sphinxhyphen{}edges.dat
+&\\
+\sphinxhline
+\sphinxAtStartPar
+\sphinxhyphen{}input\sphinxhyphen{}network\sphinxhyphen{}empty
+&
+\sphinxAtStartPar
+set the network to one with no edges and one node for every data variable. An input network file is not required if this option is used
+&\\
+\sphinxhline
+\sphinxAtStartPar
+\sphinxhyphen{}input\sphinxhyphen{}network\sphinxhyphen{}whitelist\sphinxhyphen{}file whitelist.dat
+&
+\sphinxAtStartPar
+a list of edges that must be included in any network
+&\\
+\sphinxhline
+\sphinxAtStartPar
+\sphinxhyphen{}input\sphinxhyphen{}network\sphinxhyphen{}blacklist\sphinxhyphen{}file blacklist.dat
+&
+\sphinxAtStartPar
+a list of edges that must \sphinxstyleemphasis{not} be included in any network
+&\\
+\sphinxhline
+\sphinxAtStartPar
+\sphinxhyphen{}input\sphinxhyphen{}network\sphinxhyphen{}blacklist\sphinxhyphen{}edge\sphinxhyphen{}type dataName1 dataName2
+&
+\sphinxAtStartPar
+edge types that may \sphinxstyleemphasis{not} be included in any network. The collection of nodes are given by the data input name, and so the data types must be given in different files
+&\\
+\sphinxhline
+\sphinxAtStartPar
+\sphinxhyphen{}input\sphinxhyphen{}network\sphinxhyphen{}no\sphinxhyphen{}parents\sphinxhyphen{}node nodeX
+&
+\sphinxAtStartPar
+nodeX must not have any parents (except for white edges)
+&\\
+\sphinxhline
+\sphinxAtStartPar
+\sphinxhyphen{}input\sphinxhyphen{}network\sphinxhyphen{}no\sphinxhyphen{}children\sphinxhyphen{}node nodeY
+&
+\sphinxAtStartPar
+nodeY must not have any children (except for white edges)
+&\\
+\sphinxhline
+\sphinxAtStartPar
+\sphinxhyphen{}input\sphinxhyphen{}network\sphinxhyphen{}prob\sphinxhyphen{}edge node1 node2 prob
+&
+\sphinxAtStartPar
+set the prior probability of edge direction of node1 to node2 as prob
+&\\
+\sphinxhline
+\sphinxAtStartPar
+\sphinxhyphen{}input\sphinxhyphen{}network\sphinxhyphen{}prob\sphinxhyphen{}edge\sphinxhyphen{}type nodeType1 nodeType2 prob
+&
+\sphinxAtStartPar
+set the prior probabilities of edge direction of nodeType1 to nodeType2 as prob
+&\\
+\sphinxhline
+\sphinxAtStartPar
+\sphinxhyphen{}input\sphinxhyphen{}network\sphinxhyphen{}imaginary\sphinxhyphen{}sample\sphinxhyphen{}size i
+&
+\sphinxAtStartPar
+for deal networks this sets the imaginary sample size
+&
+\sphinxAtStartPar
+10
+\\
+\sphinxhline
+\sphinxAtStartPar
+\sphinxhyphen{}input\sphinxhyphen{}network\sphinxhyphen{}score score
+&
+\sphinxAtStartPar
+for a bnlearn network choose between loglike, AIC or BIC
+&
+\sphinxAtStartPar
+BIC
+\\
+\sphinxbottomrule
+\end{tabulary}
+\sphinxtableafterendhook\par
+\sphinxattableend\end{savenotes}
+
+
+\subsection{Black lists}
+\label{\detokenize{input-network:black-lists}}\label{\detokenize{input-network:input-network-black}}
+\sphinxAtStartPar
+A black list can be given using the \sphinxcode{\sphinxupquote{\sphinxhyphen{}input\sphinxhyphen{}network\sphinxhyphen{}blacklist\sphinxhyphen{}file}} option to define a list of edges that must not be included in any network.
+The text file should be formatted as follows:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+node1 node2
+node2 node1
+node1 node3
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+such that the two nodes of each blacklisted edge are on one line. The nodes are ordered so the first line states that the edge node1 to node2 is not permitted.
+The next line states that the edge in the reverse direction is also not permitted.
+
+\sphinxAtStartPar
+Any searches will ignore these blacklisted edges and attempting to use a network with a blacklisted edge will result in the edge being removed.
+
+\sphinxAtStartPar
+Edges between different types of nodes may also be blacklisted. This can be done using the \sphinxcode{\sphinxupquote{\sphinxhyphen{}input\sphinxhyphen{}network\sphinxhyphen{}blacklist\sphinxhyphen{}edge\sphinxhyphen{}type}} option. It can be used as follows:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYGZhy{}input\PYGZhy{}data
+\PYGZhy{}input\PYGZhy{}data\PYGZhy{}name horses
+\PYGZhy{}input\PYGZhy{}data\PYGZhy{}file horses.dat
+\PYGZhy{}input\PYGZhy{}data\PYGZhy{}cts
+
+\PYGZhy{}input\PYGZhy{}data
+\PYGZhy{}input\PYGZhy{}data\PYGZhy{}name whips
+\PYGZhy{}input\PYGZhy{}data\PYGZhy{}file whips.dat
+\PYGZhy{}input\PYGZhy{}data\PYGZhy{}cts
+
+\PYGZhy{}input\PYGZhy{}network
+\PYGZhy{}input\PYGZhy{}network\PYGZhy{}name race
+\PYGZhy{}input\PYGZhy{}network\PYGZhy{}file model.dat
+\PYGZhy{}input\PYGZhy{}network\PYGZhy{}blacklist\PYGZhy{}edge\PYGZhy{}type horses whips
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+Firstly the different node types must be loaded separately and given names using the \sphinxcode{\sphinxupquote{\sphinxhyphen{}input\sphinxhyphen{}data\sphinxhyphen{}name}} option.
+Then, when initially loading a network, the \sphinxcode{\sphinxupquote{\sphinxhyphen{}input\sphinxhyphen{}network\sphinxhyphen{}blacklist\sphinxhyphen{}edge\sphinxhyphen{}type}} can be used to forbid any edge from one data set to another data set (or the same data if desired).
+In the above example the network may not have any edge that goes from a horse to a whip, that is, a whip node may not have a horse node as a parent.
+In any search that is performed these edges will not be considered.
+
+
+\subsection{White lists}
+\label{\detokenize{input-network:white-lists}}\label{\detokenize{input-network:input-network-white}}
+\sphinxAtStartPar
+A white list can be given using the \sphinxcode{\sphinxupquote{\sphinxhyphen{}input\sphinxhyphen{}network\sphinxhyphen{}whitelist\sphinxhyphen{}file}} option to define a list of edges that must be included in any network. The text file should be formatted as follows:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+node1 node3
+node1 node2
+node2 node1
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+such that the two nodes of each whitelisted edge are on one line. The nodes are ordered so the first line states that the edge node1 to node3 must be included.
+If both directions are included between two nodes then the edge must be included but may be in any direction.
+
+\sphinxAtStartPar
+If the whitelist and blacklist contradict one another then an error will be given.
+
+
+\subsection{Soft Constraints}
+\label{\detokenize{input-network:soft-constraints}}\label{\detokenize{input-network:input-network-soft-con}}
+\sphinxAtStartPar
+Soft constraints provide a way that the direction of an edge may be influenced but not with certainty, unlike blacklisted edges or whitelisted edges as described above.
+An example parameter file setting a soft constraint, such that the prior probability of variable \sphinxcode{\sphinxupquote{express}} to variable \sphinxcode{\sphinxupquote{pheno}} is believed to be 0.8 is shown below.
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYGZsh{}input continuous data
+\PYGZhy{}input\PYGZhy{}data
+\PYGZhy{}input\PYGZhy{}data\PYGZhy{}file example\PYGZhy{}cts.dat
+\PYGZhy{}input\PYGZhy{}data\PYGZhy{}cts
+
+\PYGZsh{}input discrete data
+\PYGZhy{}input\PYGZhy{}data
+\PYGZhy{}input\PYGZhy{}data\PYGZhy{}file example\PYGZhy{}discrete.dat
+\PYGZhy{}input\PYGZhy{}data\PYGZhy{}discrete
+
+\PYGZsh{}input SNP data as discrete data
+\PYGZhy{}input\PYGZhy{}data
+\PYGZhy{}input\PYGZhy{}data\PYGZhy{}file example.bed
+\PYGZhy{}input\PYGZhy{}data\PYGZhy{}discrete\PYGZhy{}snp
+
+\PYGZsh{}input the example network in format 1
+\PYGZhy{}input\PYGZhy{}network
+\PYGZhy{}input\PYGZhy{}network\PYGZhy{}name myNetwork
+\PYGZhy{}input\PYGZhy{}network\PYGZhy{}file example\PYGZhy{}network\PYGZhy{}format1.dat
+\PYGZhy{}input\PYGZhy{}network\PYGZhy{}prob\PYGZhy{}edge express pheno 0.8
+
+\PYGZsh{}search network models with the soft constraint
+\PYGZhy{}search\PYGZhy{}models
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+This parameter file, \sphinxcode{\sphinxupquote{paras\sphinxhyphen{}soft\sphinxhyphen{}constraints.txt}}, can be found in the file \sphinxhref{https://github.com/NewcastleRSE/BayesNetty/raw/refs/heads/main/docs/resources/example.zip}{example.zip}.
+
+\sphinxAtStartPar
+Any searches will use this prior probability.
+
+\sphinxAtStartPar
+If you wish to blacklist or whitelist an edge you should use those options rather than setting the prior probability to 0 or 1 for the sake of computational efficiency.
+
+
+\subsection{Network formats}
+\label{\detokenize{input-network:network-formats}}\label{\detokenize{input-network:input-network-formats}}
+\sphinxAtStartPar
+The network may be defined using one of 3 different formats.
+
+
+\subsubsection{Network file format 1}
+\label{\detokenize{input-network:network-file-format-1}}\label{\detokenize{input-network:input-network-formats-format1}}
+\sphinxAtStartPar
+The first format is given by using the \sphinxcode{\sphinxupquote{\sphinxhyphen{}input\sphinxhyphen{}network\sphinxhyphen{}file}} option and the network text file should be formatted as follows:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+node1
+node2
+node3
+node2 node1
+node3 node1
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+where the nodes are listed first followed by the directed edges. In the above example there are 3 nodes and 2 edges, which are node2 to node1 and node3 to node1.
+
+
+\subsubsection{Network file format 2}
+\label{\detokenize{input-network:network-file-format-2}}\label{\detokenize{input-network:input-network-formats-format2}}
+\sphinxAtStartPar
+The second format is given by using the \sphinxcode{\sphinxupquote{\sphinxhyphen{}input\sphinxhyphen{}network\sphinxhyphen{}file2}} option and the network text file should be formatted as follows:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+[node2][node3][node1|node2:node3]
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+where the nodes are listed in order of dependency. The independent nodes node2 and node3 are list first followed by node1 which is a child node of both node2 and node3.
+This is the format that is typically output for searches and such like.
+
+
+\subsubsection{Network file format 3}
+\label{\detokenize{input-network:network-file-format-3}}\label{\detokenize{input-network:input-network-formats-format3}}
+\sphinxAtStartPar
+The third format is given by using the \sphinxcode{\sphinxupquote{\sphinxhyphen{}input\sphinxhyphen{}network\sphinxhyphen{}igraph\sphinxhyphen{}file\sphinxhyphen{}prefix}} option using the files that were output to draw the network in \sphinxcode{\sphinxupquote{R}}, see \DUrole{xref,std,std-ref}{igraph}.
+There will be one file for the nodes and one for the edges, for example \sphinxcode{\sphinxupquote{myNetwork\sphinxhyphen{}nodes.dat}} and \sphinxcode{\sphinxupquote{myNetwork\sphinxhyphen{}edges.dat}} respectively. The node file will look something as follows:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+id name type fileno
+1 node1 c 1
+2 node2 c 1
+3 node3 c 1
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+and the edges file will look like something as follows:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+from to chisq
+2 1 6860.83
+3 1 5709.51
+\end{sphinxVerbatim}
+
+
+\subsection{Example}
+\label{\detokenize{input-network:example}}\label{\detokenize{input-network:input-network-example}}
+\sphinxAtStartPar
+The following is an example parameter file to input a network.
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYGZsh{}input continuous data
+\PYGZhy{}input\PYGZhy{}data
+\PYGZhy{}input\PYGZhy{}data\PYGZhy{}file example\PYGZhy{}cts.dat
+\PYGZhy{}input\PYGZhy{}data\PYGZhy{}cts
+
+\PYGZsh{}input discrete data
+\PYGZhy{}input\PYGZhy{}data
+\PYGZhy{}input\PYGZhy{}data\PYGZhy{}file example\PYGZhy{}discrete.dat
+\PYGZhy{}input\PYGZhy{}data\PYGZhy{}discrete
+
+\PYGZsh{}input SNP data as discrete data
+\PYGZhy{}input\PYGZhy{}data
+\PYGZhy{}input\PYGZhy{}data\PYGZhy{}file example.bed
+\PYGZhy{}input\PYGZhy{}data\PYGZhy{}discrete\PYGZhy{}snp
+
+\PYGZsh{}input the example network in format 1
+\PYGZhy{}input\PYGZhy{}network
+\PYGZhy{}input\PYGZhy{}network\PYGZhy{}name myNetwork
+\PYGZhy{}input\PYGZhy{}network\PYGZhy{}file example\PYGZhy{}network\PYGZhy{}format1.dat
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+This parameter file, \sphinxcode{\sphinxupquote{paras\sphinxhyphen{}input\sphinxhyphen{}network.txt}}, can be found in the file \sphinxhref{https://github.com/NewcastleRSE/BayesNetty/raw/refs/heads/main/docs/resources/example.zip}{example.zip} and can be used as follows:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+./bayesnetty paras\PYGZhy{}input\PYGZhy{}network.txt
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+Which should produce output that looks like something as follows:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+BayesNetty: Bayesian Network software, v1.00
+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}
+Copyright 2015\PYGZhy{}present Richard Howey, GNU General Public License, v3
+Institute of Genetic Medicine, Newcastle University
+
+Random seed: 1551697141
+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}
+Task name: Task\PYGZhy{}1
+Loading data
+Continuous data file: example\PYGZhy{}cts.dat
+Number of ID columns: 2
+Including (all) 2 variables in analysis
+Each variable has 1500 data entries
+Missing value: not set
+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}
+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}
+Task name: Task\PYGZhy{}2
+Loading data
+Discrete data file: example\PYGZhy{}discrete.dat
+Number of ID columns: 2
+Including the 1 and only variable in analysis
+Each variable has 1500 data entries
+Missing value: NA
+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}
+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}
+Task name: Task\PYGZhy{}3
+Loading data
+SNP binary data file: example.bed
+SNP data treated as discrete data
+Total number of SNPs: 2
+Total number of subjects: 1500
+Number of ID columns: 2
+Including (all) 2 variables in analysis
+Each variable has 1500 data entries
+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}
+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}
+Task name: myNetwork
+Loading network
+Network file: example\PYGZhy{}network\PYGZhy{}format1.dat
+Network type: bnlearn
+Network score type: BIC
+Total number of nodes: 5 (Discrete: 3 | Factor: 0 | Continuous: 2)
+Total number of edges: 4
+Network Structure: [mood][rs1][rs2][pheno|rs1:rs2][express|pheno:mood]
+Total data at each node: 1495
+Missing data at each node: 5
+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}
+
+Run time: 1 second
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+The data is loaded and then the network is loaded. The network has been named “myNetwork”, and basic information about the network is output.
+
+\sphinxAtStartPar
+Similarly, the network may be input using format 2 and 3 as given in parameter files \sphinxcode{\sphinxupquote{paras\sphinxhyphen{}input\sphinxhyphen{}network2.txt}} and \sphinxcode{\sphinxupquote{paras\sphinxhyphen{}input\sphinxhyphen{}network3.txt}} respectively.
+
+\sphinxstepscope
+
+
+\section{References}
+\label{\detokenize{references:references}}\label{\detokenize{references:id1}}\label{\detokenize{references::doc}}
+\sphinxAtStartPar
+
+
+
+\chapter{Contact}
+\label{\detokenize{index:contact}}\label{\detokenize{index:id3}}
+\sphinxAtStartPar
+Please contact \sphinxhref{https://www.staff.ncl.ac.uk/richard.howey/}{Richard Howey} with any queries about the BayesNetty software.
+
+\begin{sphinxthebibliography}{1}
+\bibitem[1]{references:howey-etal-21}
+\sphinxAtStartPar
+R Howey, A D Clark, N Naamane, L N Reynard, A G Pratt, and H J Cordell. A Bayesian network approach incorporating imputation of missing data enables exploratory analysis of complex causal biological relationships. \sphinxstyleemphasis{PLOS Genetics}, 17(9):e1009811, September 2021. URL: \sphinxurl{https://doi.org/10.1371/journal.pgen.1009811}, \sphinxhref{https://doi.org/10.1371/journal.pgen.1009811}{doi:10.1371/journal.pgen.1009811}.
+\bibitem[2]{references:howey-etal-20}
+\sphinxAtStartPar
+R Howey, S\sphinxhyphen{}Y Shin, C Relton, G Davey Smith, and H J Cordell. Bayesian network analysis incorporating genetic anchors complements conventional mendelian randomization approaches for exploratory analysis of causal relationships in complex data. \sphinxstyleemphasis{PLOS Genetics}, 16(3):1\textendash{}35, 03 2020. URL: \sphinxurl{https://doi.org/10.1371/journal.pgen.1008198}, \sphinxhref{https://doi.org/10.1371/journal.pgen.1008198}{doi:10.1371/journal.pgen.1008198}.
+\bibitem[3]{references:purcell-etal-07}
+\sphinxAtStartPar
+S Purcell, B Neale, K Todd\sphinxhyphen{}Brown, L Thomas, M A Ferreira, D Bender, J Maller, P Sklar, P I de Bakker, M J Daly, and P C Sham. PLINK: a tool set for whole\sphinxhyphen{}genome association and population\sphinxhyphen{}based linkage analyses. \sphinxstyleemphasis{Am J Hum Genet}, 81:559\textendash{}575, 2007.
+\end{sphinxthebibliography}
 
 
 

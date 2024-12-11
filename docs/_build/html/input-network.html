@@ -1,0 +1,416 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Input network &mdash; BayesNetty 1.2 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=661938d9" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=61243dd2"></script>
+      <script src="_static/doctools.js?v=9a2dae69"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="References" href="references.html" />
+    <link rel="prev" title="Input data" href="input-data.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #884dff" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            BayesNetty
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="using.html">Using BayesNetty</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parallel.html">Parallel BayesNetty</a></li>
+<li class="toctree-l1"><a class="reference internal" href="input-data.html">Input data</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Input network</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#options">Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#black-lists">Black lists</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#white-lists">White lists</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#soft-constraints">Soft Constraints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#network-formats">Network formats</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#network-file-format-1">Network file format 1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#network-file-format-2">Network file format 2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#network-file-format-3">Network file format 3</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #884dff" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">BayesNetty</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Input network</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/input-network.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="input-network">
+<span id="id1"></span><h1>Input network<a class="headerlink" href="#input-network" title="Link to this heading"></a></h1>
+<p>A network may be specified using the <code class="docutils literal notranslate"><span class="pre">-input-network</span></code> task. The network may be used as a starting point for analyses, such as searches, or to perform an analysis on this network.
+Only nodes in input files will be used in the network so that a subset of the data may be specified.</p>
+<p>Any network <strong>constraints</strong> must be set using the <code class="docutils literal notranslate"><span class="pre">-input-network</span></code> option.
+These constraints then belong to the network and will be used in any subsquent analysis, including searches, calculating average networks etc.</p>
+<p>If no network is specified then a network with no edges and a node for every data variable (as given by the input data) will be created and named “defaultNetwork”.</p>
+<section id="options">
+<span id="input-network-options"></span><h2>Options<a class="headerlink" href="#options" title="Link to this heading"></a></h2>
+<p>The options are as follows:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Option</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Default</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>-input-network</p></td>
+<td><p>do a task to input a network</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>-input-network-name name</p></td>
+<td><p>label the task and network with a name</p></td>
+<td><p>Task-n</p></td>
+</tr>
+<tr class="row-even"><td><p>-input-network-type t</p></td>
+<td><p>the type of Bayesian network, choose between bnlearn or deal</p></td>
+<td><p>bnlearn</p></td>
+</tr>
+<tr class="row-odd"><td><p>-input-network-file network.dat</p></td>
+<td><p>input the network in a format where the nodes and then the edges are listed</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>-input-network-file2 network2.dat</p></td>
+<td><p>input the network in this style of format: <code class="docutils literal notranslate"><span class="pre">[a][b|a][c|a:b]</span></code></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>-input-network-igraph-file-prefix mygraph</p></td>
+<td><p>input the network from igraph format files consisting of mygraph-nodes.dat and mygraph-edges.dat</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>-input-network-empty</p></td>
+<td><p>set the network to one with no edges and one node for every data variable. An input network file is not required if this option is used</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>-input-network-whitelist-file whitelist.dat</p></td>
+<td><p>a list of edges that must be included in any network</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>-input-network-blacklist-file blacklist.dat</p></td>
+<td><p>a list of edges that must <em>not</em> be included in any network</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>-input-network-blacklist-edge-type dataName1 dataName2</p></td>
+<td><p>edge types that may <em>not</em> be included in any network. The collection of nodes are given by the data input name, and so the data types must be given in different files</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>-input-network-no-parents-node nodeX</p></td>
+<td><p>nodeX must not have any parents (except for white edges)</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>-input-network-no-children-node nodeY</p></td>
+<td><p>nodeY must not have any children (except for white edges)</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>-input-network-prob-edge node1 node2 prob</p></td>
+<td><p>set the prior probability of edge direction of node1 to node2 as prob</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>-input-network-prob-edge-type nodeType1 nodeType2 prob</p></td>
+<td><p>set the prior probabilities of edge direction of nodeType1 to nodeType2 as prob</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>-input-network-imaginary-sample-size i</p></td>
+<td><p>for deal networks this sets the imaginary sample size</p></td>
+<td><p>10</p></td>
+</tr>
+<tr class="row-odd"><td><p>-input-network-score score</p></td>
+<td><p>for a bnlearn network choose between loglike, AIC or BIC</p></td>
+<td><p>BIC</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="black-lists">
+<span id="input-network-black"></span><h2>Black lists<a class="headerlink" href="#black-lists" title="Link to this heading"></a></h2>
+<p>A black list can be given using the <code class="docutils literal notranslate"><span class="pre">-input-network-blacklist-file</span></code> option to define a list of edges that must not be included in any network.
+The text file should be formatted as follows:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>node1 node2
+node2 node1
+node1 node3
+</pre></div>
+</div>
+<p>such that the two nodes of each blacklisted edge are on one line. The nodes are ordered so the first line states that the edge node1 to node2 is not permitted.
+The next line states that the edge in the reverse direction is also not permitted.</p>
+<p>Any searches will ignore these blacklisted edges and attempting to use a network with a blacklisted edge will result in the edge being removed.</p>
+<p>Edges between different types of nodes may also be blacklisted. This can be done using the <code class="docutils literal notranslate"><span class="pre">-input-network-blacklist-edge-type</span></code> option. It can be used as follows:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>-input-data
+-input-data-name horses
+-input-data-file horses.dat
+-input-data-cts
+
+-input-data
+-input-data-name whips
+-input-data-file whips.dat
+-input-data-cts
+
+-input-network
+-input-network-name race
+-input-network-file model.dat
+-input-network-blacklist-edge-type horses whips
+</pre></div>
+</div>
+<p>Firstly the different node types must be loaded separately and given names using the <code class="docutils literal notranslate"><span class="pre">-input-data-name</span></code> option.
+Then, when initially loading a network, the <code class="docutils literal notranslate"><span class="pre">-input-network-blacklist-edge-type</span></code> can be used to forbid any edge from one data set to another data set (or the same data if desired).
+In the above example the network may not have any edge that goes from a horse to a whip, that is, a whip node may not have a horse node as a parent.
+In any search that is performed these edges will not be considered.</p>
+</section>
+<section id="white-lists">
+<span id="input-network-white"></span><h2>White lists<a class="headerlink" href="#white-lists" title="Link to this heading"></a></h2>
+<p>A white list can be given using the <code class="docutils literal notranslate"><span class="pre">-input-network-whitelist-file</span></code> option to define a list of edges that must be included in any network. The text file should be formatted as follows:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>node1 node3
+node1 node2
+node2 node1
+</pre></div>
+</div>
+<p>such that the two nodes of each whitelisted edge are on one line. The nodes are ordered so the first line states that the edge node1 to node3 must be included.
+If both directions are included between two nodes then the edge must be included but may be in any direction.</p>
+<p>If the whitelist and blacklist contradict one another then an error will be given.</p>
+</section>
+<section id="soft-constraints">
+<span id="input-network-soft-con"></span><h2>Soft Constraints<a class="headerlink" href="#soft-constraints" title="Link to this heading"></a></h2>
+<p>Soft constraints provide a way that the direction of an edge may be influenced but not with certainty, unlike blacklisted edges or whitelisted edges as described above.
+An example parameter file setting a soft constraint, such that the prior probability of variable <code class="docutils literal notranslate"><span class="pre">express</span></code> to variable <code class="docutils literal notranslate"><span class="pre">pheno</span></code> is believed to be 0.8 is shown below.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>#input continuous data
+-input-data
+-input-data-file example-cts.dat
+-input-data-cts
+
+#input discrete data
+-input-data
+-input-data-file example-discrete.dat
+-input-data-discrete
+
+#input SNP data as discrete data
+-input-data
+-input-data-file example.bed
+-input-data-discrete-snp
+
+#input the example network in format 1
+-input-network
+-input-network-name myNetwork
+-input-network-file example-network-format1.dat
+-input-network-prob-edge express pheno 0.8
+
+#search network models with the soft constraint
+-search-models
+</pre></div>
+</div>
+<p>This parameter file, <code class="docutils literal notranslate"><span class="pre">paras-soft-constraints.txt</span></code>, can be found in the file <a class="reference external" href="https://github.com/NewcastleRSE/BayesNetty/raw/refs/heads/main/docs/resources/example.zip">example.zip</a>.</p>
+<p>Any searches will use this prior probability.</p>
+<p>If you wish to blacklist or whitelist an edge you should use those options rather than setting the prior probability to 0 or 1 for the sake of computational efficiency.</p>
+</section>
+<section id="network-formats">
+<span id="input-network-formats"></span><h2>Network formats<a class="headerlink" href="#network-formats" title="Link to this heading"></a></h2>
+<p>The network may be defined using one of 3 different formats.</p>
+<section id="network-file-format-1">
+<span id="input-network-formats-format1"></span><h3>Network file format 1<a class="headerlink" href="#network-file-format-1" title="Link to this heading"></a></h3>
+<p>The first format is given by using the <code class="docutils literal notranslate"><span class="pre">-input-network-file</span></code> option and the network text file should be formatted as follows:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>node1
+node2
+node3
+node2 node1
+node3 node1
+</pre></div>
+</div>
+<p>where the nodes are listed first followed by the directed edges. In the above example there are 3 nodes and 2 edges, which are node2 to node1 and node3 to node1.</p>
+</section>
+<section id="network-file-format-2">
+<span id="input-network-formats-format2"></span><h3>Network file format 2<a class="headerlink" href="#network-file-format-2" title="Link to this heading"></a></h3>
+<p>The second format is given by using the <code class="docutils literal notranslate"><span class="pre">-input-network-file2</span></code> option and the network text file should be formatted as follows:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[node2][node3][node1|node2:node3]
+</pre></div>
+</div>
+<p>where the nodes are listed in order of dependency. The independent nodes node2 and node3 are list first followed by node1 which is a child node of both node2 and node3.
+This is the format that is typically output for searches and such like.</p>
+</section>
+<section id="network-file-format-3">
+<span id="input-network-formats-format3"></span><h3>Network file format 3<a class="headerlink" href="#network-file-format-3" title="Link to this heading"></a></h3>
+<p>The third format is given by using the <code class="docutils literal notranslate"><span class="pre">-input-network-igraph-file-prefix</span></code> option using the files that were output to draw the network in <code class="docutils literal notranslate"><span class="pre">R</span></code>, see <span class="xref std std-ref">igraph</span>.
+There will be one file for the nodes and one for the edges, for example <code class="docutils literal notranslate"><span class="pre">myNetwork-nodes.dat</span></code> and <code class="docutils literal notranslate"><span class="pre">myNetwork-edges.dat</span></code> respectively. The node file will look something as follows:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>id name type fileno
+1 node1 c 1
+2 node2 c 1
+3 node3 c 1
+</pre></div>
+</div>
+<p>and the edges file will look like something as follows:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>from to chisq
+2 1 6860.83
+3 1 5709.51
+</pre></div>
+</div>
+</section>
+</section>
+<section id="example">
+<span id="input-network-example"></span><h2>Example<a class="headerlink" href="#example" title="Link to this heading"></a></h2>
+<p>The following is an example parameter file to input a network.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>#input continuous data
+-input-data
+-input-data-file example-cts.dat
+-input-data-cts
+
+#input discrete data
+-input-data
+-input-data-file example-discrete.dat
+-input-data-discrete
+
+#input SNP data as discrete data
+-input-data
+-input-data-file example.bed
+-input-data-discrete-snp
+
+#input the example network in format 1
+-input-network
+-input-network-name myNetwork
+-input-network-file example-network-format1.dat
+</pre></div>
+</div>
+<p>This parameter file, <code class="docutils literal notranslate"><span class="pre">paras-input-network.txt</span></code>, can be found in the file <a class="reference external" href="https://github.com/NewcastleRSE/BayesNetty/raw/refs/heads/main/docs/resources/example.zip">example.zip</a> and can be used as follows:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>./bayesnetty paras-input-network.txt
+</pre></div>
+</div>
+<p>Which should produce output that looks like something as follows:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>BayesNetty: Bayesian Network software, v1.00
+--------------------------------------------------
+Copyright 2015-present Richard Howey, GNU General Public License, v3
+Institute of Genetic Medicine, Newcastle University
+
+Random seed: 1551697141
+--------------------------------------------------
+Task name: Task-1
+Loading data
+Continuous data file: example-cts.dat
+Number of ID columns: 2
+Including (all) 2 variables in analysis
+Each variable has 1500 data entries
+Missing value: not set
+--------------------------------------------------
+--------------------------------------------------
+Task name: Task-2
+Loading data
+Discrete data file: example-discrete.dat
+Number of ID columns: 2
+Including the 1 and only variable in analysis
+Each variable has 1500 data entries
+Missing value: NA
+--------------------------------------------------
+--------------------------------------------------
+Task name: Task-3
+Loading data
+SNP binary data file: example.bed
+SNP data treated as discrete data
+Total number of SNPs: 2
+Total number of subjects: 1500
+Number of ID columns: 2
+Including (all) 2 variables in analysis
+Each variable has 1500 data entries
+--------------------------------------------------
+--------------------------------------------------
+Task name: myNetwork
+Loading network
+Network file: example-network-format1.dat
+Network type: bnlearn
+Network score type: BIC
+Total number of nodes: 5 (Discrete: 3 | Factor: 0 | Continuous: 2)
+Total number of edges: 4
+Network Structure: [mood][rs1][rs2][pheno|rs1:rs2][express|pheno:mood]
+Total data at each node: 1495
+Missing data at each node: 5
+--------------------------------------------------
+
+Run time: 1 second
+</pre></div>
+</div>
+<p>The data is loaded and then the network is loaded. The network has been named “myNetwork”, and basic information about the network is output.</p>
+<p>Similarly, the network may be input using format 2 and 3 as given in parameter files <code class="docutils literal notranslate"><span class="pre">paras-input-network2.txt</span></code> and <code class="docutils literal notranslate"><span class="pre">paras-input-network3.txt</span></code> respectively.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="input-data.html" class="btn btn-neutral float-left" title="Input data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="references.html" class="btn btn-neutral float-right" title="References" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Richard Howey.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -9,13 +9,13 @@
   <title>Welcome to BayesNetty’s webpage! &mdash; BayesNetty 1.2 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
-      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=6d2821e3" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=661938d9" />
 
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
       <script src="_static/documentation_options.js?v=61243dd2"></script>
-      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/doctools.js?v=9a2dae69"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
@@ -49,6 +49,8 @@
 <li class="toctree-l1"><a class="reference internal" href="using.html">Using BayesNetty</a></li>
 <li class="toctree-l1"><a class="reference internal" href="parallel.html">Parallel BayesNetty</a></li>
 <li class="toctree-l1"><a class="reference internal" href="input-data.html">Input data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="input-network.html">Input network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
 </ul>
 
         </div>
@@ -81,7 +83,7 @@
 <p>Please use the menu to the left to navigate through the documentation for BayesNetty or use the PDF of these webpages, <a class="reference external" href="https://github.com/NewcastleRSE/BayesNetty/blob/main/docs/_build/latex/bayesnetty.pdf">bayesnetty.pdf</a>.</p>
 <section id="citation">
 <h2>Citation<a class="headerlink" href="#citation" title="Link to this heading"></a></h2>
-<p>Please use the following papers <em>cite</em> howey:etal:21 <em>/cite</em> and <em>cite</em> howey:etal:20 <em>/cite</em> to reference the BayesNetty software as follows:</p>
+<p>Please use the following papers <a class="bibtex reference internal" href="references.html#howey-etal-21" id="id1">[1]</a> and <a class="bibtex reference internal" href="references.html#howey-etal-20" id="id2">[2]</a> to reference the BayesNetty software as follows:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>@article{howey:etal:21,
 author={Howey, R AND Clark, A D AND Naamane, N AND Reynard, L N AND Pratt, A G AND Cordell, H J},
 title={{A Bayesian network approach incorporating imputation of missing data enables exploratory analysis of complex causal biological relationships}},
@@ -126,26 +128,31 @@ doi = {10.1371/journal.pgen.1008198}}
 </li>
 <li class="toctree-l1"><a class="reference internal" href="input-data.html">Input data</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="input-data.html#options">Options</a></li>
-<li class="toctree-l2"><a class="reference internal" href="input-data.html#bayesnetty-bayesian-network-software-v1-00">BayesNetty: Bayesian Network software, v1.00</a></li>
-<li class="toctree-l2"><a class="reference internal" href="input-data.html#random-seed-1551695824">Random seed: 1551695824</a></li>
-<li class="toctree-l2"><a class="reference internal" href="input-data.html#id6">BayesNetty: Bayesian Network software, v1.00</a></li>
-<li class="toctree-l2"><a class="reference internal" href="input-data.html#random-seed-1551695897">Random seed: 1551695897</a></li>
-<li class="toctree-l2"><a class="reference internal" href="input-data.html#id11">BayesNetty: Bayesian Network software, v1.00</a></li>
-<li class="toctree-l2"><a class="reference internal" href="input-data.html#random-seed-1551695930">Random seed: 1551695930</a></li>
-<li class="toctree-l2"><a class="reference internal" href="input-data.html#id32">BayesNetty: Bayesian Network software, v1.00</a></li>
-<li class="toctree-l2"><a class="reference internal" href="input-data.html#random-seed-1551695984">Random seed: 1551695984</a></li>
-<li class="toctree-l2"><a class="reference internal" href="input-data.html#id45">BayesNetty: Bayesian Network software, v1.00</a></li>
-<li class="toctree-l2"><a class="reference internal" href="input-data.html#random-seed-1551694585">Random seed: 1551694585</a></li>
-<li class="toctree-l2"><a class="reference internal" href="input-data.html#id50">BayesNetty: Bayesian Network software, v1.00</a></li>
-<li class="toctree-l2"><a class="reference internal" href="input-data.html#random-seed-1551696539">Random seed: 1551696539</a></li>
-<li class="toctree-l2"><a class="reference internal" href="input-data.html#id61">BayesNetty: Bayesian Network software, v1.00</a></li>
-<li class="toctree-l2"><a class="reference internal" href="input-data.html#random-seed-1551696644">Random seed: 1551696644</a></li>
-<li class="toctree-l2"><a class="reference internal" href="input-data.html#id113">BayesNetty: Bayesian Network software, v1.00</a></li>
-<li class="toctree-l2"><a class="reference internal" href="input-data.html#random-seed-1551697141">Random seed: 1551697141</a></li>
+<li class="toctree-l2"><a class="reference internal" href="input-data.html#discrete-data">Discrete data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="input-data.html#continuous-data">Continuous data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="input-data.html#factor-data">Factor data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="input-data.html#snp-data">SNP data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="input-data.html#missing-data">Missing data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="input-data.html#data-ids">Data IDs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="input-data.html#example">Example</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="input-network.html">Input network</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="input-network.html#options">Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="input-network.html#black-lists">Black lists</a></li>
+<li class="toctree-l2"><a class="reference internal" href="input-network.html#white-lists">White lists</a></li>
+<li class="toctree-l2"><a class="reference internal" href="input-network.html#soft-constraints">Soft Constraints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="input-network.html#network-formats">Network formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="input-network.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
 </ul>
 </div>
+</section>
+<section id="contact">
+<span id="id3"></span><h2>Contact<a class="headerlink" href="#contact" title="Link to this heading"></a></h2>
+<p>Please contact <a class="reference external" href="https://www.staff.ncl.ac.uk/richard.howey/">Richard Howey</a> with any queries about the BayesNetty software.</p>
 </section>
 </section>
 

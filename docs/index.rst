@@ -3,7 +3,6 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-
 Welcome to BayesNetty's webpage!
 ================================
 
@@ -14,7 +13,7 @@ Please use the menu to the left to navigate through the documentation for BayesN
 Citation
 --------
 
-Please use the following papers *cite* howey:etal:21 */cite* and *cite* howey:etal:20 */cite* to reference the BayesNetty software as follows:
+Please use the following papers :cite:`howey:etal:21` and :cite:`howey:etal:20` to reference the BayesNetty software as follows:
 
 .. code-block:: none
 
@@ -72,3 +71,10 @@ BayesNetty is copyright, 2015-present Richard Howey, GNU General Public License,
    output-posteriors
    plot-network
    references
+
+.. _contact:
+
+Contact
+-------
+
+Please contact `Richard Howey <https://www.staff.ncl.ac.uk/richard.howey/>`_ with any queries about the BayesNetty software.

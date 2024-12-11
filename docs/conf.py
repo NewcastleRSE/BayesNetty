@@ -16,6 +16,7 @@ release = '1.2'
 
 extensions = [    
     'sphinx_rtd_theme',
+    'sphinxcontrib.bibtex',
 ]
 
 templates_path = ['_templates']

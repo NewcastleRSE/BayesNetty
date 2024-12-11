@@ -1,21 +1,36 @@
 
 /* Increase the main content width */
 .wy-nav-content {
-    max-width: 1200px; /* Adjust this value to your desired width */
+    max-width: 1000px; /* Adjust this value to your desired width */
 }
 
+/* Fix for bug in theme! */
+.wy-table-responsive table td, .wy-table-responsive table th {
+    white-space: normal;
+}
+
+.wy-table-responsive td:first-child {
+    white-space: nowrap;
+}
+
+/* Table header colour */
+.wy-table-responsive table th {
+background-color: #884dff;          
+color:#ffffff;
+}
 
 /* Restrict the width of tables 
  .wy-table-responsive table {
     max-width: 10%; 
     margin: auto; 
 }
+*/
 
-/* Ensure the table container does not exceed viewport 
+ /*Ensure the table container does not exceed viewport
 .wy-table-responsive {
     overflow-x: auto;
 }
-*/
+ */
 
 /* Center the content 
 .wy-nav-content-wrap {
