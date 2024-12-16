@@ -19,6 +19,15 @@ extensions = [
     'sphinxcontrib.bibtex',
 ]
 
+# Fix for incompatible versions where things have changed location.
+# https://stackoverflow.com/questions/59636631/importerror-cannot-import-name-mutablemapping-from-collections
+
+import collections
+collections.Iterable = collections.abc.Iterable
+collections.Mapping = collections.abc.Mapping
+collections.MutableSet = collections.abc.MutableSet
+collections.MutableMapping = collections.abc.MutableMapping
+
 templates_path = ['_templates']
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 
