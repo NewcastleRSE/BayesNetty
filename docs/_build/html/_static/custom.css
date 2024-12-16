@@ -19,6 +19,11 @@ background-color: #884dff;
 color:#ffffff;
 }
 
+/* Change the color of the "Table of Contents" heading */
+.caption-text {
+    color: #ccb3ff; /* Replace with your desired color */
+}
+
 /* Restrict the width of tables 
  .wy-table-responsive table {
     max-width: 10%; 
