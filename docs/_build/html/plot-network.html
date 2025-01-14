@@ -1,0 +1,302 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calculate network score &mdash; BayesNetty 1.2 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=916d0f66" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=61243dd2"></script>
+      <script src="_static/doctools.js?v=9a2dae69"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="References" href="references.html" />
+    <link rel="prev" title="Calculate network score" href="output-posteriors.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #884dff" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            BayesNetty
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="using.html">Using BayesNetty</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parallel.html">Parallel BayesNetty</a></li>
+<li class="toctree-l1"><a class="reference internal" href="input-data.html">Input data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="input-network.html">Input network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bnlearn.html">bnlearn network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deal.html">deal network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="calc-score.html">Calculate network score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="calc-posterior.html">Calculate posterior</a></li>
+<li class="toctree-l1"><a class="reference internal" href="calc-posterior.html#options">Options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="search-models.html">Search models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="average-network.html">Calculate network score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="impute-data.html">Calculate network score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="estimate-impute.html">Calculate network score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="calc-recall-precision.html">Calculate network score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sim-data.html">Calculate network score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="markov-blanket.html">Calculate network score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="output-network.html">Calculate network score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="output-priors.html">Calculate network score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="output-posteriors.html">Calculate network score</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Calculate network score</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#options">Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #884dff" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">BayesNetty</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Calculate network score</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/plot-network.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="calculate-network-score">
+<span id="calc-score"></span><h1>Calculate network score<a class="headerlink" href="#calculate-network-score" title="Link to this heading"></a></h1>
+<p>The network score is used as a measure of how well the network model describes the data and is used to compare different models when searching through models.
+In BayesNetty the network score is based on the log likelihood and higher values imply a better model
+(see <span class="xref std std-ref">bnlearn-score</span> for further details). This is calculated assuming that discrete nodes follow a multinomial distribution and continuous nodes a normal distribution.
+BayesNetty considers the network score to be a property of the network and its method of calculation is set using the
+option <cite>-input-network-score</cite>, see <a class="reference internal" href="input-network.html#input-network"><span class="std std-ref">Input network</span></a>.</p>
+<section id="options">
+<span id="calc-score-options"></span><h2>Options<a class="headerlink" href="#options" title="Link to this heading"></a></h2>
+<p>The options are as follows:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Option</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Default</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>-calc-network-score</p></td>
+<td><p>do a task to calculate the score</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>-calc-network-score-name name</p></td>
+<td><p>label the task with a name</p></td>
+<td><p>Task-n</p></td>
+</tr>
+<tr class="row-even"><td><p>-calc-network-score-network-name network</p></td>
+<td><p>the name of the network to calculate the score of</p></td>
+<td><p>previous network (or the default model given by a node for each data variable and no edges if there is no previous network)</p></td>
+</tr>
+<tr class="row-odd"><td><p>-calc-network-score-file file</p></td>
+<td><p>write the score to this file</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>-calc-network-score-all-scores network-scores.dat</p></td>
+<td><p>calculate the scores of <em>every</em> possible network and record the results in <cite>network-scores.dat</cite></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="example">
+<span id="calc-score-example"></span><h2>Example<a class="headerlink" href="#example" title="Link to this heading"></a></h2>
+<p>As an example of calculating the score the parameter file <cite>paras-calc-score.txt</cite>, which can be found in <a class="reference external" href="https://github.com/NewcastleRSE/BayesNetty/raw/refs/heads/main/docs/resources/example.zip">example.zip</a>,
+calculates the score for the same network but for different score methods.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>#input continuous data
+-input-data
+-input-data-file example-cts.dat
+-input-data-cts
+
+#input discrete data
+-input-data
+-input-data-file example-discrete.dat
+-input-data-discrete
+
+#input SNP data as discrete data
+-input-data
+-input-data-file example.bed
+-input-data-discrete-snp
+
+#input the example network in format 1
+-input-network
+-input-network-name networkLike
+-input-network-score loglike
+-input-network-file example-network-format1.dat
+
+#input the example network in format 1
+-input-network
+-input-network-name networkBIC
+-input-network-score BIC
+-input-network-file example-network-format1.dat
+
+#calculate the network of the network with BIC
+-calc-network-score
+
+#calculate the network of the network with log likelihood
+-calc-network-score
+-calc-network-score-network-name networkLike
+</pre></div>
+</div>
+<p>This can be executed as usual</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>./bayesnetty paras-calc-score.txt
+</pre></div>
+</div>
+<p>and will output something as follows</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>BayesNetty: Bayesian Network software, v1.00
+--------------------------------------------------
+Copyright 2015-present Richard Howey, GNU General Public License, v3
+Institute of Genetic Medicine, Newcastle University
+
+Random seed: 1551700452
+--------------------------------------------------
+Task name: Task-1
+Loading data
+Continuous data file: example-cts.dat
+Number of ID columns: 2
+Including (all) 2 variables in analysis
+Each variable has 1500 data entries
+Missing value: not set
+--------------------------------------------------
+--------------------------------------------------
+Task name: Task-2
+Loading data
+Discrete data file: example-discrete.dat
+Number of ID columns: 2
+Including the 1 and only variable in analysis
+Each variable has 1500 data entries
+Missing value: NA
+--------------------------------------------------
+--------------------------------------------------
+Task name: Task-3
+Loading data
+SNP binary data file: example.bed
+SNP data treated as discrete data
+Total number of SNPs: 2
+Total number of subjects: 1500
+Number of ID columns: 2
+Including (all) 2 variables in analysis
+Each variable has 1500 data entries
+--------------------------------------------------
+--------------------------------------------------
+Task name: networkLike
+Loading network
+Network file: example-network-format1.dat
+Network type: bnlearn
+Network score type: log likelihood
+Total number of nodes: 5 (Discrete: 3 | Factor: 0 | Continuous: 2)
+Total number of edges: 4
+Network Structure: [mood][rs1][rs2][pheno|rs1:rs2][express|pheno:mood]
+Total data at each node: 1495
+Missing data at each node: 5
+--------------------------------------------------
+--------------------------------------------------
+Task name: networkBIC
+Loading network
+Network file: example-network-format1.dat
+Network type: bnlearn
+Network score type: BIC
+Total number of nodes: 5 (Discrete: 3 | Factor: 0 | Continuous: 2)
+Total number of edges: 4
+Network Structure: [mood][rs1][rs2][pheno|rs1:rs2][express|pheno:mood]
+Total data at each node: 1495
+Missing data at each node: 5
+--------------------------------------------------
+--------------------------------------------------
+Task name: Task-6
+Calculating network score
+Network: networkBIC
+Network structure: [mood][rs1][rs2][pheno|rs1:rs2][express|pheno:mood]
+Network score type: BIC
+Network score = -8519.74
+--------------------------------------------------
+--------------------------------------------------
+Task name: Task-7
+Calculating network score
+Network: networkLike
+Network structure: [mood][rs1][rs2][pheno|rs1:rs2][express|pheno:mood]
+Network score type: log likelihood
+Network score = -8413.75
+--------------------------------------------------
+
+Run time: less than one second
+</pre></div>
+</div>
+<p>The above output shows the data input and then two networks input with the same structure but with different scores.
+The network with the BIC score is evaluated firstly, as by default the most recent network is used unless otherwise stated.
+The network using the log likelihood is then calculated by using the <cite>-calc-network-score-network-name</cite> option to specify which network should be used.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="output-posteriors.html" class="btn btn-neutral float-left" title="Calculate network score" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="references.html" class="btn btn-neutral float-right" title="References" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Richard Howey.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

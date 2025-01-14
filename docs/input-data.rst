@@ -383,7 +383,7 @@ As indicated in the network details there is no missing data. However, if the SN
 
 
 
-This example is given in network file ``example-network-missing2.dat``and parameter file ``paras-input-missing2.txt``.
+This example is given in network file ``example-network-missing2.dat`` and parameter file ``paras-input-missing2.txt``.
 The amount of missing data for the network is now 3, indicating that 3 individuals have missing SNP data for ``rs1``.
 Adding in another SNP node, ``rs2`` (network file ``example-network-missing3.dat``), results in the following:
 

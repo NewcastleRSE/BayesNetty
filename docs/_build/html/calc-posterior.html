@@ -1,0 +1,231 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calculate posterior &mdash; BayesNetty 1.2 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=916d0f66" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=61243dd2"></script>
+      <script src="_static/doctools.js?v=9a2dae69"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Search models" href="search-models.html" />
+    <link rel="prev" title="Calculate network score" href="calc-score.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #884dff" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            BayesNetty
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="using.html">Using BayesNetty</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parallel.html">Parallel BayesNetty</a></li>
+<li class="toctree-l1"><a class="reference internal" href="input-data.html">Input data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="input-network.html">Input network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bnlearn.html">bnlearn network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deal.html">deal network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="calc-score.html">Calculate network score</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Calculate posterior</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#options">Options</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="search-models.html">Search models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="average-network.html">Calculate network score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="impute-data.html">Calculate network score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="estimate-impute.html">Calculate network score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="calc-recall-precision.html">Calculate network score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sim-data.html">Calculate network score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="markov-blanket.html">Calculate network score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="output-network.html">Calculate network score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="output-priors.html">Calculate network score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="output-posteriors.html">Calculate network score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot-network.html">Calculate network score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #884dff" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">BayesNetty</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Calculate posterior</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/calc-posterior.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="calculate-posterior">
+<span id="calc-posterior"></span><h1>Calculate posterior<a class="headerlink" href="#calculate-posterior" title="Link to this heading"></a></h1>
+<p>The likelihood is calculated under specific distributional assumptions,
+namely that discrete nodes follow a multinomial distribution and continuous nodes a normal distribution,
+with distributional parameters determined by the values of the incoming parent nodes. We call the network structure with its corresponding distributional parameters the posterior.</p>
+<p>If only the posterior is of interest then the <cite>-calc-posterior</cite> option can be used without the need to perform any other analyses.
+One would probably want to also use the <cite>-output-posteriors</cite> option to output the posteriors, see <span class="xref std std-ref">output-posteriors</span>.</p>
+</section>
+<section id="options">
+<span id="calc-posterior-options"></span><h1>Options<a class="headerlink" href="#options" title="Link to this heading"></a></h1>
+<p>The options are as follows:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Option</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Default</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>-calc-posterior</p></td>
+<td><p>do a task to calculate the posterior</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>-calc-posterior-name</p></td>
+<td><p>label the task with a name</p></td>
+<td><p>Task-n</p></td>
+</tr>
+<tr class="row-even"><td><p>-calc-posterior-network-name network</p></td>
+<td><p>the name of the network to calculate the posterior of</p></td>
+<td><p>previous network (or the default model given by a node for each data variable and no edges if there is no previous network)</p></td>
+</tr>
+</tbody>
+</table>
+<section id="example">
+<span id="calc-post-example"></span><h2>Example<a class="headerlink" href="#example" title="Link to this heading"></a></h2>
+<p>The posterior is calculated by simply using the <cite>-calc-posterior</cite> option in the parameter file after the data and network has been set up.
+For example:</p>
+<p>Note that the network has not been set for the <cite>-calc-posterior</cite> task as there is only one network, and so by default the most recent network is used.
+This parameter file, <cite>paras-calc-post.txt</cite>, can be found in <a class="reference external" href="https://github.com/NewcastleRSE/BayesNetty/raw/refs/heads/main/docs/resources/example.zip">example.zip</a> and produces the following output:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>BayesNetty: Bayesian Network software, v1.00
+--------------------------------------------------
+Copyright 2015-present Richard Howey, GNU General Public License, v3
+Institute of Genetic Medicine, Newcastle University
+
+Random seed: 1551697290
+--------------------------------------------------
+Task name: Task-1
+Loading data
+Continuous data file: example-cts.dat
+Number of ID columns: 2
+Including (all) 2 variables in analysis
+Each variable has 1500 data entries
+Missing value: not set
+--------------------------------------------------
+--------------------------------------------------
+Task name: Task-2
+Loading data
+Discrete data file: example-discrete.dat
+Number of ID columns: 2
+Including the 1 and only variable in analysis
+Each variable has 1500 data entries
+Missing value: NA
+--------------------------------------------------
+--------------------------------------------------
+Task name: Task-3
+Loading data
+SNP binary data file: example.bed
+SNP data treated as discrete data
+Total number of SNPs: 2
+Total number of subjects: 1500
+Number of ID columns: 2
+Including (all) 2 variables in analysis
+Each variable has 1500 data entries
+--------------------------------------------------
+--------------------------------------------------
+Task name: Task-4
+Loading network
+Network file: example-network-format1.dat
+Network type: bnlearn
+Network score type: BIC
+Total number of nodes: 5 (Discrete: 3 | Factor: 0 | Continuous: 2)
+Total number of edges: 4
+Network Structure: [mood][rs1][rs2][pheno|rs1:rs2][express|pheno:mood]
+Total data at each node: 1495
+Missing data at each node: 5
+--------------------------------------------------
+--------------------------------------------------
+Task name: Task-5
+Calculating posterior
+Network: Task-4
+Network Structure: [mood][rs1][rs2][pheno|rs1:rs2][express|pheno:mood]
+--------------------------------------------------
+
+Run time: less than one second
+</pre></div>
+</div>
+<p>For an example of calculating and outputting the posterior to file, see <span class="xref std std-ref">output-posts-example</span>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="calc-score.html" class="btn btn-neutral float-left" title="Calculate network score" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="search-models.html" class="btn btn-neutral float-right" title="Search models" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Richard Howey.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

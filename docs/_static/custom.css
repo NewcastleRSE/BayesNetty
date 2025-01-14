@@ -20,25 +20,15 @@ color:#ffffff;
 }
 
 /* Change the color of the "Table of Contents" heading */
+/*
 .caption-text {
-    color: #ccb3ff; /* Replace with your desired color */
-}
-
-/* Restrict the width of tables 
- .wy-table-responsive table {
-    max-width: 10%; 
-    margin: auto; 
+    color: #ccb3ff; 
 }
 */
 
- /*Ensure the table container does not exceed viewport
-.wy-table-responsive {
-    overflow-x: auto;
+.custom-figure {
+    border: 2px solid #884dff; /* Replace #3498db with your desired border color */
+    padding: 10px; /* Optional: adds space between the image and the border */
+    display: inline-block; /* Ensures the border wraps tightly around the image */
+    background-color: #f8f9fa; /* Optional: adds a background color */
 }
- */
-
-/* Center the content 
-.wy-nav-content-wrap {
-    margin: 0 auto;
-}
-    */

@@ -9,14 +9,15 @@
   <title>Welcome to BayesNetty’s webpage! &mdash; BayesNetty 1.2 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
-      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=ad281dd8" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=6c12b3ac" />
 
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
       <script src="_static/documentation_options.js?v=61243dd2"></script>
-      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/doctools.js?v=9a2dae69"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -50,6 +51,22 @@
 <li class="toctree-l1"><a class="reference internal" href="parallel.html">Parallel BayesNetty</a></li>
 <li class="toctree-l1"><a class="reference internal" href="input-data.html">Input data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="input-network.html">Input network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bnlearn.html">bnlearn network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deal.html">deal network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="calc-score.html">Calculate network score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="calc-posterior.html">Calculate posterior</a></li>
+<li class="toctree-l1"><a class="reference internal" href="calc-posterior.html#options">Options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="search-models.html">Search models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="average-network.html">Average network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="impute-data.html">Impute Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="estimate-impute.html">Estimate Imputation Benefit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="calc-recall-precision.html">Calculate Recall and Precision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sim-data.html">Calculate network score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="markov-blanket.html">Calculate network score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="output-network.html">Calculate network score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="output-priors.html">Calculate network score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="output-posteriors.html">Calculate network score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot-network.html">Calculate network score</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
 </ul>
 
@@ -83,7 +100,7 @@
 <p>Please use the menu to the left to navigate through the documentation for BayesNetty or use the PDF of these webpages, <a class="reference external" href="https://github.com/NewcastleRSE/BayesNetty/blob/main/docs/_build/latex/bayesnetty.pdf">bayesnetty.pdf</a>.</p>
 <section id="citation">
 <h2>Citation<a class="headerlink" href="#citation" title="Link to this heading"></a></h2>
-<p>Please use the following papers <a class="bibtex reference internal" href="references.html#howey-etal-21" id="id1">[1]</a> and <a class="bibtex reference internal" href="references.html#howey-etal-20" id="id2">[2]</a> to reference the BayesNetty software as follows:</p>
+<p>Please use the following papers <a class="bibtex reference internal" href="references.html#howey-etal-21" id="id1">[2]</a> and <a class="bibtex reference internal" href="references.html#howey-etal-20" id="id2">[3]</a> to reference the BayesNetty software as follows:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>@article{howey:etal:21,
 author={Howey, R AND Clark, A D AND Naamane, N AND Reynard, L N AND Pratt, A G AND Cordell, H J},
 title={{A Bayesian network approach incorporating imputation of missing data enables exploratory analysis of complex causal biological relationships}},
@@ -144,6 +161,85 @@ doi = {10.1371/journal.pgen.1008198}}
 <li class="toctree-l2"><a class="reference internal" href="input-network.html#soft-constraints">Soft Constraints</a></li>
 <li class="toctree-l2"><a class="reference internal" href="input-network.html#network-formats">Network formats</a></li>
 <li class="toctree-l2"><a class="reference internal" href="input-network.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="bnlearn.html">bnlearn network</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="bnlearn.html#network-score">Network score</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="deal.html">deal network</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="deal.html#imaginary-sample-size">Imaginary sample size</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="calc-score.html">Calculate network score</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="calc-score.html#options">Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="calc-score.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="calc-posterior.html">Calculate posterior</a></li>
+<li class="toctree-l1"><a class="reference internal" href="calc-posterior.html#options">Options</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="calc-posterior.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="search-models.html">Search models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="search-models.html#options">Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="search-models.html#greedy-search">Greedy search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="search-models.html#number-of-random-restarts-for-the-greedy-algorithm">Number of random restarts for the greedy algorithm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="search-models.html#number-of-jitter-restarts-for-the-greedy-algorithm">Number of jitter restarts for the greedy algorithm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="search-models.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="average-network.html">Average network</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="average-network.html#options">Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="average-network.html#score-method">Score Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="average-network.html#example">Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="average-network.html#parallel-example">Parallel Example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="impute-data.html">Impute Data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="impute-data.html#options">Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="impute-data.html#example">Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="impute-data.html#parallel-example">Parallel Example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="estimate-impute.html">Estimate Imputation Benefit</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="estimate-impute.html#options">Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="estimate-impute.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="calc-recall-precision.html">Calculate Recall and Precision</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="calc-recall-precision.html#options">Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="calc-recall-precision.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sim-data.html">Calculate network score</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sim-data.html#options">Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sim-data.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="markov-blanket.html">Calculate network score</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="markov-blanket.html#options">Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="markov-blanket.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="output-network.html">Calculate network score</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="output-network.html#options">Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="output-network.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="output-priors.html">Calculate network score</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="output-priors.html#options">Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="output-priors.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="output-posteriors.html">Calculate network score</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="output-posteriors.html#options">Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="output-posteriors.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="plot-network.html">Calculate network score</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="plot-network.html#options">Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot-network.html#example">Example</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>

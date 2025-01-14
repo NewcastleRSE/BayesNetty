@@ -1,0 +1,438 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Impute Data &mdash; BayesNetty 1.2 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=6c12b3ac" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=61243dd2"></script>
+      <script src="_static/doctools.js?v=9a2dae69"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Calculate network score" href="estimate-impute.html" />
+    <link rel="prev" title="Average network" href="average-network.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #884dff" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            BayesNetty
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="using.html">Using BayesNetty</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parallel.html">Parallel BayesNetty</a></li>
+<li class="toctree-l1"><a class="reference internal" href="input-data.html">Input data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="input-network.html">Input network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bnlearn.html">bnlearn network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deal.html">deal network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="calc-score.html">Calculate network score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="calc-posterior.html">Calculate posterior</a></li>
+<li class="toctree-l1"><a class="reference internal" href="calc-posterior.html#options">Options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="search-models.html">Search models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="average-network.html">Average network</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Impute Data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#options">Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#example">Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#parallel-example">Parallel Example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="estimate-impute.html">Calculate network score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="calc-recall-precision.html">Calculate network score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sim-data.html">Calculate network score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="markov-blanket.html">Calculate network score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="output-network.html">Calculate network score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="output-priors.html">Calculate network score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="output-posteriors.html">Calculate network score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot-network.html">Calculate network score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #884dff" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">BayesNetty</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Impute Data</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/impute-data.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="impute-data">
+<span id="id1"></span><h1>Impute Data<a class="headerlink" href="#impute-data" title="Link to this heading"></a></h1>
+<p>When there is missing data, the standard approach is to remove every individual with missing data before performing any Bayesian network analysis, and this is the default behaviour.</p>
+<p>This can be wasteful and undesirable when there are many individuals with missing data, perhaps with only one variable missing, making imputation a natural choice.</p>
+<p>BayesNetty includes a new imputation method designed to increase the power to detect causal relationships whilst accounting for model uncertainty.
+This method uses a version of nearest neighbour imputation, whereby missing data from one individual is replaced with data from another individual, the nearest neighbour.</p>
+<p>An important feature of this approach is that it can be used with both discrete and continuous data.</p>
+<p>For each individual with missing data, subsets of variables that can be used to find the nearest neighbour are chosen by bootstrapping the complete data to estimate a Bayesian network.</p>
+<section id="options">
+<span id="impute-data-options"></span><h2>Options<a class="headerlink" href="#options" title="Link to this heading"></a></h2>
+<p>The options are as follows:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Option</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Default</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>-impute-network-data</p></td>
+<td><p>do a task to impute network data</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>-impute-network-data-name name</p></td>
+<td><p>label the task with a name</p></td>
+<td><p>Task-n</p></td>
+</tr>
+<tr class="row-even"><td><p>-impute-network-data-network-name network</p></td>
+<td><p>the name of the network to impute data for</p></td>
+<td><p>previous network (or the default model given by a node for each data variable and no edges if there is no previous network)</p></td>
+</tr>
+<tr class="row-odd"><td><p>-impute-network-data-min-non-missing-edges x</p></td>
+<td><p>the percentage (0 to 100) of non-missing edges required to impute data for an individual</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>-impute-network-data-random-restarts n</p></td>
+<td><p>for each bootstrap network fit do another n searches starting from a random network</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>-impute-network-data-jitter-restarts m</p></td>
+<td><p>for each bootstrap network fit after the initial search and every random restart search do another m searches jittered from the recently found network</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>-impute-network-data-start-indiv a</p></td>
+<td><p>start imputing data from individual a</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>-impute-network-data-end-indiv b</p></td>
+<td><p>end imputing data at individual b</p></td>
+<td><p>last individual</p></td>
+</tr>
+<tr class="row-even"><td><p>-impute-network-data-job i t</p></td>
+<td><p>only impute individuals for subset i from a total of t subsets</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>The only option that is necessary to impute data is the <cite>-impute-network-data</cite> option.</p>
+<p>Once data has been imputed its missing data is filled in with imputed values and any subsequent analyses in BayesNetty will use this imputed data.</p>
+<p>If an individual has too much missing data then it may not be beneficial to impute the data for this individual,
+as the imputed data would be too poor to add value to any analysis. The <cite>-impute-network-min-non-missing-edges</cite> allows the user to change the required amount of edges between non-missing variables to impute data for an individual.
+Around <strong>50</strong> percent has been shown to be a suitable value to impute most individuals whilst effectively discarding individuals with too much missing data,
+although it may depend on the structure of any fitted networks. If this value is set to 0 then all individuals will have their data imputed, and a value of 100 will result in no data being imputed.
+If data set has a block of data with non-missing data for only a few variables then it is best to simply remove these individuals before using BayesNetty.</p>
+<p>The <cite>-impute-network-data-random-restarts</cite> and <cite>-impute-network-data-jitter-restarts</cite> options can be increased to improve the network search at each step of the algorithm and may potentially increase the quality of the imputed data at the expense of a longer running time.</p>
+<p>The <cite>-impute-network-data-start-indiv</cite>, <cite>-impute-network-data-end-indiv</cite> and <cite>-impute-network-data-job</cite> options may be used to only impute a range of individuals.
+These options may be useful for large networks to impute data in parallel and then combine later if the data is output to file
+(see <span class="xref std std-ref">output-network</span> to output data). See <a class="reference internal" href="#impute-parallel-example"><span class="std std-ref">Parallel Example</span></a> for an example.</p>
+<p>The option <cite>-impute-network-data-job</cite> can also be used to only impute data for some individuals and makes it easier to split the imputation into a number of jobs.</p>
+</section>
+<section id="example">
+<span id="impute-example"></span><h2>Example<a class="headerlink" href="#example" title="Link to this heading"></a></h2>
+<p>The following is an example parameter file to impute network data and search for the best network both before and after imputation.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>#input continuous data
+-input-data
+-input-data-file impute-example-cts.dat
+-input-data-cts
+
+#input SNP data as discrete data
+-input-data
+-input-data-file impute-example.bed
+-input-data-discrete-snp
+
+#search network models with the original data
+-search-models
+
+#impute the missing data
+-impute-network-data
+
+#search network models with the imputed data
+-search-models
+</pre></div>
+</div>
+<p>This parameter file, <cite>paras-impute.txt</cite>, and example data for imputation can be found in <a class="reference external" href="https://github.com/NewcastleRSE/BayesNetty/raw/refs/heads/main/docs/resources/impute-example.zip">impute-example.zip</a> and can be used as follows:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>./bayesnetty paras-impute.txt
+</pre></div>
+</div>
+<p>Which should produce output that looks like something as follows:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>BayesNetty: Bayesian Network software, v1.00
+--------------------------------------------------
+Copyright 2015-present Richard Howey, GNU General Public License, v3
+Institute of Genetic Medicine, Newcastle University
+
+Random seed: 1545221384
+--------------------------------------------------
+Task name: Task-1
+Loading data
+Continuous data file: impute-example-cts.dat
+Number of ID columns: 2
+Including (all) 5 variables in analysis
+Each variable has 1000 data entries
+Missing value: not set
+--------------------------------------------------
+--------------------------------------------------
+Task name: Task-2
+Loading data
+SNP binary data file: impute-example.bed
+SNP data treated as discrete data
+Total number of SNPs: 2
+Total number of subjects: 1000
+Number of ID columns: 2
+Including (all) 2 variables in analysis
+Each variable has 1000 data entries
+--------------------------------------------------
+--------------------------------------------------
+Task name: Task-3
+Searching network models
+--------------------------------------------------
+Loading defaultNetwork network
+Network type: bnlearn
+Network score type: BIC
+Total number of nodes: 7 (Discrete: 2 | Factor: 0 | Continuous: 5)
+Total number of edges: 0
+Network Structure: [bio1][bio2][bio3][trait1][trait2][rs1][rs2]
+Total data at each node: 213
+Missing data at each node: 787
+--------------------------------------------------
+Network: defaultNetwork
+Search: Greedy
+Random restarts: 0
+Random jitter restarts: 0
+Network Structure: [rs1][rs2][trait2|rs2][bio2|trait2][trait1|bio2][bio1|trait1][bio3|bio1:bio2]
+Network score type: BIC
+Network score = -1970.2
+--------------------------------------------------
+--------------------------------------------------
+Task name: Task-4
+Imputing network data
+Network: defaultNetwork
+Network Structure: [rs1][rs2][trait2|rs2][bio2|trait2][trait1|bio2][bio1|trait1][bio3|bio1:bio2]
+Number of individuals with missing data: 787
+Number of individuals imputed: 787
+Percentage of data imputed (when attempted): 98.4466
+Minimum percentage of non-missing edges (or singleton nodes) required to impute individual: 50
+Random restarts: 0
+Random jitter restarts: 0
+--------------------------------------------------
+--------------------------------------------------
+Task name: Task-5
+Searching network models
+Network: defaultNetwork
+Search: Greedy
+Random restarts: 0
+Random jitter restarts: 0
+Network Structure: [bio1][bio2][bio3|bio1:bio2][rs1][rs2][trait1|bio1:rs1][trait2|bio2:rs2]
+Network score type: BIC
+Network score = -9240.19
+--------------------------------------------------
+
+Run time: 34 seconds
+</pre></div>
+</div>
+<p>The data is loaded, a search is performed and then the network data is imputed and another search is performed. The run time for performing imputation is longer than most other operations in BayesNetty.
+This is because, every individual with missing data, we take a 90% sample (without replacement) of the individuals with complete data at the variables of interest.
+This sampled data set is used to find a best fit network. This best fit network determines the variables that are used to choose the nearest neighbour for the individual with missing data,
+and then the missing data is filled in from the nearest neighbour.</p>
+<p>There are a lot of individuals with missing data in this example data resulting in the incorrect network being estimated initially but after the data is imputed the correct network is found.
+That is, the network that the data was simulated from.</p>
+<p>It may be possible that some individuals are not imputed as they have too much missing data, or sometimes only partially imputed if the data is not suitable for the imputation algorithm.</p>
+</section>
+<section id="parallel-example">
+<span id="impute-parallel-example"></span><h2>Parallel Example<a class="headerlink" href="#parallel-example" title="Link to this heading"></a></h2>
+<p>As imputing network data is a computationally intensive task, it makes sense to do it in parallel.
+This can be done by running the parallel version of BayesNetty as described in <a class="reference internal" href="parallel.html#parallel"><span class="std std-ref">Parallel BayesNetty</span></a>,
+but a much quicker way is given here by running the non-parallel version of BayesNetty in parallel where each process imputes a subset of the individuals.
+The data of the imputed individuals can then be output for each process (see <span class="xref std std-ref">output-network</span>) and then combined into the final imputed data set.</p>
+<p>A handy Unix script has been written to do this and is ran as follows:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>./runImputeParallel paras-impute-parallel.txt imputed-data 20
+</pre></div>
+</div>
+<p>The first argument is a Bayesnetty parameter file to impute the data (example shown below).
+The second argument is a file name (without extension) for the imputed data set to be outputted to. The last argument is the number of processes to run.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>#input continuous data
+-input-data
+-input-data-file impute-example-cts.dat
+-input-data-cts
+
+#input SNP data as discrete data
+-input-data
+-input-data-file impute-example.bed
+-input-data-discrete-snp
+
+#impute the missing data
+-impute-network-data
+
+#output the network data, set file names on command line
+-output-network
+</pre></div>
+</div>
+<p>The Unix script <cite>runImputeParallel</cite>, as shown below, runs a number of BayesNetty processes in parallel and outputs separate data files for different subsets of individuals.
+As the random number seed is set by default by the execution time, and the processes are set off at the same time, it is necessary to set the seed to different values.
+The output files are then combined and the data files from separate processes deleted.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
+# $1 = parameter file to impute data in parallel
+# $2 = imputed data file name
+# $3 = no. of processes to run in parallel
+RANDOM=$$
+#run bayesnetty $3 times for X bootstraps each; processes run simultaneously in the background
+for i in $(seq 1 $3);
+do
+
+./bayesnetty $1 -so -seed $i0$RANDOM -output-network-node-data-file-prefix $2$i-i -output-network-node-data-bed-file -output-network-node-data-job $i $3 -impute-network-data-job $i $3&amp;
+
+done
+
+#wait for all processes to finish
+wait
+
+##collate files
+if [ -f &quot;$21-i-cts.dat&quot; ]
+then
+&gt; $2-cts.dat
+fi
+
+if [ -f &quot;$21-i-discrete.dat&quot; ]
+then
+&gt; $2-discrete.dat
+fi
+
+for j in $(seq 1 $3);
+do
+
+#collate cts data
+if [ -f &quot;$2$j-i-cts.dat&quot; ]
+then
+cat $2$j-i-cts.dat &gt;&gt; $2-cts.dat
+rm $2$j-i-cts.dat
+fi
+
+#collate discrete data
+if [ -f &quot;$2$j-i-discrete.dat&quot; ]
+then
+cat $2$j-i-discrete.dat &gt;&gt; $2-discrete.dat
+rm $2$j-i-discrete.dat
+fi
+
+
+#collate SNP plink style data
+if [ -f &quot;$2$j-i.fam&quot; ]
+then
+
+if [ $j == 1 ]
+then
+  cp $2$j-i.fam $2.fam
+  cp $2$j-i.bim $2.bim
+  cp $2$j-i.bed $2.bed
+else
+  plink --noweb --silent --bfile $2 --bmerge $2$j-i.bed $2$j-i.bim $2$j-i.fam --make-bed --out $2-merge
+  mv $2-merge.bed $2.bed
+  mv $2-merge.bim $2.bim
+  mv $2-merge.fam $2.fam
+  rm $2-merge.log
+fi
+
+rm $2$j-i.fam
+rm $2$j-i.bim
+rm $2$j-i.bed
+fi
+
+done
+</pre></div>
+</div>
+<p>The final imputed data can then be used in any BayesNetty analysis. For example, to search for the best fit network:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>./bayesnetty paras-search-imputed-data.txt
+</pre></div>
+</div>
+<p>Where the parameter file is as follows:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>#input imputed continuous data
+-input-data
+-input-data-file imputed-data-cts.dat
+-input-data-cts
+
+#input imputed SNP data as discrete data
+-input-data
+-input-data-file imputed-data.bed
+-input-data-discrete-snp
+
+#search network models with the imputed data
+-search-models
+</pre></div>
+</div>
+<p>The files <cite>paras-impute-parallel.txt</cite>, <cite>runImputeParallel</cite> and <cite>paras-search-imputed-data.txt</cite> can be found in the <a class="reference external" href="https://github.com/NewcastleRSE/BayesNetty/raw/refs/heads/main/docs/resources/impute-example.zip">impute-example.zip</a> file.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="average-network.html" class="btn btn-neutral float-left" title="Average network" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="estimate-impute.html" class="btn btn-neutral float-right" title="Calculate network score" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Richard Howey.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

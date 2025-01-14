@@ -1,0 +1,152 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>bnlearn network &mdash; BayesNetty 1.2 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=916d0f66" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=61243dd2"></script>
+      <script src="_static/doctools.js?v=9a2dae69"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="deal network" href="deal.html" />
+    <link rel="prev" title="Input network" href="input-network.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #884dff" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            BayesNetty
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="using.html">Using BayesNetty</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parallel.html">Parallel BayesNetty</a></li>
+<li class="toctree-l1"><a class="reference internal" href="input-data.html">Input data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="input-network.html">Input network</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">bnlearn network</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#network-score">Network score</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="deal.html">deal network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="calc-score.html">Calculate network score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="calc-posterior.html">Calculate posterior</a></li>
+<li class="toctree-l1"><a class="reference internal" href="calc-posterior.html#options">Options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="search-models.html">Search models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="average-network.html">Calculate network score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="impute-data.html">Calculate network score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="estimate-impute.html">Calculate network score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="calc-recall-precision.html">Calculate network score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sim-data.html">Calculate network score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="markov-blanket.html">Calculate network score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="output-network.html">Calculate network score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="output-priors.html">Calculate network score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="output-posteriors.html">Calculate network score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot-network.html">Calculate network score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #884dff" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">BayesNetty</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">bnlearn network</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/bnlearn.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="bnlearn-network">
+<h1>bnlearn network<a class="headerlink" href="#bnlearn-network" title="Link to this heading"></a></h1>
+<p>The default and recommended Bayesian network in BayesNetty is given by the bnlearn algorithm.
+All future extensions are intended to be built upon this approach. For a given data set and network structure the likelihood can be calculated under specific distributional assumptions,
+namely that discrete nodes follow a multinomial distribution and continuous nodes a normal distribution, with distributional parameters determined by the values of the incoming parent nodes.
+The manner in which the likelihood is calculated can vary between Bayesian network algorithms.
+See <a class="bibtex reference internal" href="references.html#bnlearn" id="id1">[7]</a> and <a class="bibtex reference internal" href="references.html#bnlearn2" id="id2">[4]</a> for further details of bnlearn methodology and R package.</p>
+<section id="network-score">
+<h2>Network score<a class="headerlink" href="#network-score" title="Link to this heading"></a></h2>
+<p>The network score for a bnlearn network may be set to either the log likelihood, AIC or BIC using the <code class="docutils literal notranslate"><span class="pre">-input-network-score</span></code> option, see <a class="reference internal" href="input-network.html#input-network-options"><span class="std std-ref">input network options</span></a>.</p>
+<p><strong>NOTE:</strong> The BIC network score is based on the definition used by bnlearn (see <a class="bibtex reference internal" href="references.html#bnlearn" id="id3">[7]</a>) such that <span class="math notranslate nohighlight">\(\text{BIC} = \log(L) - \frac{d}{2}\log(n)\)</span>, where <span class="math notranslate nohighlight">\(L\)</span> is the likelihood
+of the network for the given data set, <span class="math notranslate nohighlight">\(d\)</span> is the number of parameters and <span class="math notranslate nohighlight">\(n\)</span> is the number of individuals. This is the original definition used by Swartz in 1978,
+see <a class="bibtex reference internal" href="references.html#swartz-1978" id="id4">[6]</a>, rather than subsequent definitions of BIC which are multplied by negative two (for example see <a class="bibtex reference internal" href="references.html#wit-2012" id="id5">[8]</a>). Therefore in BayesNetty the BIC will
+always be negative and higher values of the network score imply a better fit network. (Whichever definition of BIC that one considers, the closer the BIC is to zero the better the model fit.)</p>
+<p>The AIC network score in BayesNetty is defined similarly to the BIC such that <span class="math notranslate nohighlight">\(\text{AIC} = \log(L) - d\)</span>, where <span class="math notranslate nohighlight">\(L\)</span> and <span class="math notranslate nohighlight">\(d\)</span> are defined as above.
+Therefore higher values of the negatively valued AIC (closer to zero) imply a better network fit to the given data set.</p>
+<p>Naturally if only the log likelihood is used then higher values imply a better network fit.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="input-network.html" class="btn btn-neutral float-left" title="Input network" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="deal.html" class="btn btn-neutral float-right" title="deal network" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Richard Howey.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

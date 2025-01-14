@@ -1,0 +1,289 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Estimate Imputation Benefit &mdash; BayesNetty 1.2 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=6c12b3ac" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=61243dd2"></script>
+      <script src="_static/doctools.js?v=9a2dae69"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Calculate network score" href="calc-recall-precision.html" />
+    <link rel="prev" title="Impute Data" href="impute-data.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #884dff" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            BayesNetty
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="using.html">Using BayesNetty</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parallel.html">Parallel BayesNetty</a></li>
+<li class="toctree-l1"><a class="reference internal" href="input-data.html">Input data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="input-network.html">Input network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bnlearn.html">bnlearn network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deal.html">deal network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="calc-score.html">Calculate network score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="calc-posterior.html">Calculate posterior</a></li>
+<li class="toctree-l1"><a class="reference internal" href="calc-posterior.html#options">Options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="search-models.html">Search models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="average-network.html">Average network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="impute-data.html">Impute Data</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Estimate Imputation Benefit</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#options">Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="calc-recall-precision.html">Calculate network score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sim-data.html">Calculate network score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="markov-blanket.html">Calculate network score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="output-network.html">Calculate network score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="output-priors.html">Calculate network score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="output-posteriors.html">Calculate network score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot-network.html">Calculate network score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #884dff" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">BayesNetty</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Estimate Imputation Benefit</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/estimate-impute.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="estimate-imputation-benefit">
+<span id="estimate-impute"></span><h1>Estimate Imputation Benefit<a class="headerlink" href="#estimate-imputation-benefit" title="Link to this heading"></a></h1>
+<p>For a given data set with missing data it is natural to wonder how much benefit imputation brings.
+We include an option in BayesNetty to attempt to compare different methods of fitting a best fit network to this data set.
+We use estimates of the recall and precision to compare the methods.
+The recall is the percentage of edges that were recovered from the simulation model and the precision is the percentage of edges in the fitted model that are in the simulation model.
+For an edge to be correct it must be in the correct direction. However, if the simulating network has equivalent networks such that some edges may be in either direction, then these edges are considered correct if they are in any direction.</p>
+<p>The method follows these steps:</p>
+<ol class="arabic simple">
+<li><p>An initial network is fitted using imputation.</p></li>
+<li><p>Data is simulated using this network for the same number of individuals in the original data set.</p></li>
+<li><p>A best fit network is found for the full data set.</p></li>
+<li><p>The simulated data set has values set to missing as in the original data set.</p></li>
+<li><p>Best fit networks are found for this data set using: (i) a reduced data set with only complete data; (ii) data imputation; (iii) data imputation with complete training data.</p></li>
+<li><p>Recall and precision are calculated for the 4 different best fit networks against the simulation network.</p></li>
+</ol>
+<p>This method can be repeated a number times as is computationally feasible to take average recall and precision estimates to account for variability in the simulated data.
+The recall and precision using the full data set gives an estimate of an upper limit of what may feasibly be achieved using data imputation.
+Comparing the recall and precision of the reduced data set with imputation gives an estimate of the increased benefit of using imputation.
+Comparing the two imputation methods should show when it is appropriate to use the variant imputation method.</p>
+<p>A major drawback of this estimation method is the obvious fact that we do not know the “true” network structure of the data,
+we therefore use an estimated network to simulate the data and hope this is sufficiently close for the results to be useful.
+In general, we have found that the benefits of imputation are often understated as the simulation network tends to be set without some of the weaker edges that cannot always be detected
+(when using data sets where we do actually know the <em>q</em> true <em>/q</em> network).
+Even if we cannot be too sure of the exact gain in benefit of imputation this BayesNetty estimation method can give clear confidence of a benefit when there are large differences (and if the variant method using complete training data performs any better).</p>
+<section id="options">
+<span id="estimate-impute-options"></span><h2>Options<a class="headerlink" href="#options" title="Link to this heading"></a></h2>
+<p>The options are as follows:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Option</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Default</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>-impute-estimate-recall-precision</p></td>
+<td><p>do a task to estimate recall and precision before and after data imputation</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>-impute-estimate-recall-precision name</p></td>
+<td><p>label the task with a name</p></td>
+<td><p>Task-n</p></td>
+</tr>
+<tr class="row-even"><td><p>-impute-estimate-recall-precision-network-name network</p></td>
+<td><p>set the name of the initial network when estimating recall and precision</p></td>
+<td><p>previous network (or the default model given by a node for each data variable and no edges if there is no previous network)</p></td>
+</tr>
+<tr class="row-odd"><td><p>-impute-estimate-recall-precision-random-restarts n</p></td>
+<td><p>for each network fit do another n searches starting from a random network</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>-impute-estimate-recall-precision-jitter-restarts m</p></td>
+<td><p>for each network fit after the initial search and every random restart search do another m searches jittered from the recently found network</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>-impute-estimate-recall-precision-skip-imputation</p></td>
+<td><p>do not estimate recall and precision for imputed data</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>-impute-estimate-recall-precision-iterations i</p></td>
+<td><p>estimate the recall and precision i times and take the average</p></td>
+<td><p>1</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="example">
+<span id="estimate-impute-example"></span><h2>Example<a class="headerlink" href="#example" title="Link to this heading"></a></h2>
+<p>An example of estimating the recall and precision is contained in the parameter file <cite>paras-example-estimate-recall-precision.txt</cite>,
+which can be found in <a class="reference external" href="https://github.com/NewcastleRSE/BayesNetty/raw/refs/heads/main/docs/resources/example.zip">example.zip</a>.
+For simplicity the example is chosen to be a discrete network and this approach can be used for any kind of data.
+The network is the <cite>child</cite> network from the bnlearn repository <a class="bibtex reference internal" href="references.html#bnlearn" id="id1">[7]</a>.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>#input example data to estimate recall and precision from
+-input-data
+-input-data-file data-example-est-recall-precision.dat
+-input-data-ids 0
+-input-data-discrete
+
+#set up network with no edges
+-input-network
+-input-network-empty
+
+#estimate recall and precision for this data set
+-impute-estimate-recall-precision
+-impute-estimate-recall-precision-iterations 10
+-impute-estimate-recall-precision-random-restarts 2
+-impute-estimate-recall-precision-jitter-restarts 2
+</pre></div>
+</div>
+<p>This can be executed as usual</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>./bayesnetty paras-example-estimate-recall-precision.txt
+</pre></div>
+</div>
+<p>and will output something as follows</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>BayesNetty: Bayesian Network software, v1.1
+--------------------------------------------------
+Copyright 2015-present Richard Howey, GNU General Public License, v3
+Institute of Genetic Medicine, Newcastle University
+
+Random seed: 1605624192
+--------------------------------------------------
+Task name: Task-1
+Loading data
+Discrete data file: data-example-est-recall-precision.dat
+Number of ID columns: 0
+Including (all) 20 variables in analysis
+Each variable has 500 data entries
+Missing value: NA
+--------------------------------------------------
+--------------------------------------------------
+Task name: Task-2
+Loading network
+Network set with no edges
+Network type: bnlearn
+Network score type: BIC
+Total number of nodes: 20 (Discrete: 20 | Factor: 0 | Continuous: 0)
+Total number of edges: 0
+Network Structure: [Age][BirthAsphyxia][CO2Report][CO2][CardiacMixing][ChestXray][Disease][DuctFlow]
+[GruntingReport][Grunting][HypDistrib][HypoxiaInO2][LVH][LVHreport][LowerBodyO2][LungFlow][LungParench][RUQO2][Sick][XrayReport]
+Total data at each node: 54
+Missing data at each node: 446
+--------------------------------------------------
+--------------------------------------------------
+Task name: Task-3
+Estimating the recall and precision when imputing network data
+Network: Task-2
+Number of iterations: 10
+Random restarts: 2
+Random jitter restarts: 2
+Minimum percentage of non-missing edges (or singleton nodes) required to impute individual: 0
+Individuals with data: 54
+Individuals with missing data: 446
+
+Recall: the percentage of edges found from the original true network
+Precision: the percentage of edges in the network that are also in the original true network
+
+                                  Recall     Precision
+No imputation                      40.91      61.66
+Imputation                         78.95      89.03
+Imputation (complete training)     67.75      80.04
+Full data (upper limit)            90.21      95.02
+
+--------------------------------------------------
+
+Run time: 1 hour, 39 minutes and 23 seconds
+</pre></div>
+</div>
+<p>From the example output we can see that with no imputation the recall is estimated to be 40.91 percent and the precision estimated to be is 61.66 percent,
+but if the full data were available it would be 90.21 and 95.02 respectively.
+Using our imputation method the estimated recall and precision is 78.95 and 89.03 respectively, which is quite a large increase.
+Our variant imputation method with complete training data also increases the recall and precision by quite a lot.</p>
+<p>Note that the estimation is stochastic due to the stochastic nature of the imputation method, and to a lesser extent the stochastic nature of finding a best fit model,
+and so rerunning the analyses may results in slightly different estimates.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="impute-data.html" class="btn btn-neutral float-left" title="Impute Data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="calc-recall-precision.html" class="btn btn-neutral float-right" title="Calculate network score" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Richard Howey.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

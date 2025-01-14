@@ -1,0 +1,266 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calculate Recall and Precision &mdash; BayesNetty 1.2 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=6c12b3ac" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=61243dd2"></script>
+      <script src="_static/doctools.js?v=9a2dae69"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Calculate network score" href="sim-data.html" />
+    <link rel="prev" title="Estimate Imputation Benefit" href="estimate-impute.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #884dff" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            BayesNetty
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="using.html">Using BayesNetty</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parallel.html">Parallel BayesNetty</a></li>
+<li class="toctree-l1"><a class="reference internal" href="input-data.html">Input data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="input-network.html">Input network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bnlearn.html">bnlearn network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deal.html">deal network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="calc-score.html">Calculate network score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="calc-posterior.html">Calculate posterior</a></li>
+<li class="toctree-l1"><a class="reference internal" href="calc-posterior.html#options">Options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="search-models.html">Search models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="average-network.html">Average network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="impute-data.html">Impute Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="estimate-impute.html">Estimate Imputation Benefit</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Calculate Recall and Precision</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#options">Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sim-data.html">Calculate network score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="markov-blanket.html">Calculate network score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="output-network.html">Calculate network score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="output-priors.html">Calculate network score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="output-posteriors.html">Calculate network score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot-network.html">Calculate network score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #884dff" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">BayesNetty</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Calculate Recall and Precision</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/calc-recall-precision.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="calculate-recall-and-precision">
+<span id="calc-recall-precision"></span><h1>Calculate Recall and Precision<a class="headerlink" href="#calculate-recall-and-precision" title="Link to this heading"></a></h1>
+<p>It is possible to calculate the recall and precision of a network against the “true” network structure.
+Typically this option will be used when the true network structure is chosen and used to simulate data.
+A best fit network can then be found for this data and the accuaracy assessed by calculating the recall and precision.</p>
+<p>For a network the recall is the percentage of edges found from the original true network.
+The precision is the percentage of edges in the network that are also in the original true network. For an edge to be correct it must be in the correct direction.
+However, if the true network has equivalent networks such that some edges may be in either direction, then these edges are considered correct if they are in either direction.</p>
+<section id="options">
+<span id="calc-recall-precision-options"></span><h2>Options<a class="headerlink" href="#options" title="Link to this heading"></a></h2>
+<p>The options are as follows:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Option</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Default</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>-calculate-recall-precision</p></td>
+<td><p>do a task to calculate the recall and precision</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>-calculate-recall-precision-name</p></td>
+<td><p>label the task with a name</p></td>
+<td><p>Task-n</p></td>
+</tr>
+<tr class="row-even"><td><p>-calculate-recall-precision-network-name network1</p></td>
+<td><p>the name of the network to calculate the recall and precision for</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>-calculate-recall-precision-true-network-name network2</p></td>
+<td><p>the name of the true network to calculate the recall and precision against</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>-calculate-recall-precision-file file.dat</p></td>
+<td><p>file to write recall and precision results to</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="example">
+<span id="calc-recall-precision-example"></span><h2>Example<a class="headerlink" href="#example" title="Link to this heading"></a></h2>
+<p>An example of calculating the recall and precision is contained in the parameter file <cite>paras-example-calc-recall-precision.txt</cite>,
+which can be found in <a class="reference external" href="https://github.com/NewcastleRSE/BayesNetty/raw/refs/heads/main/docs/resources/example.zip">example.zip</a>.
+The network is again taken from the <em>code</em> child <em>/code</em> network from the bnlearn repository <em>cite</em> bnlearn <em>/cite</em>.</p>
+<p>For example, the following parameter file:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>#input the network to calculate the recall and precision of
+-input-network
+-input-network-name example-net
+-input-network-file example-net-calc-recall-pre.dat
+
+#input true network structure for these nodes
+-input-network
+-input-network-name true-net
+-input-network-file example-true-net-child.dat
+
+#calculate the recall and precision
+-calculate-recall-precision
+-calculate-recall-precision-network-name example-net
+-calculate-recall-precision-true-network-name true-net
+-calculate-recall-precision-file recall-precision.dat
+</pre></div>
+</div>
+<p>can be ran in the usual way</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>./bayesnetty paras-example-calc-recall-precision.txt
+</pre></div>
+</div>
+<p>and will output something as follows</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>BayesNetty: Bayesian Network software, v1.1
+--------------------------------------------------
+Copyright 2015-present Richard Howey, GNU General Public License, v3
+Institute of Genetic Medicine, Newcastle University
+
+Random seed: 1605806239
+--------------------------------------------------
+Task name: example-net
+Loading network
+Network file: example-net-calc-recall-pre.dat
+Network type: bnlearn
+Network score type: BIC
+Total number of nodes: 20 (Discrete: 0 | Factor: 0 | Continuous: 0 | No data: 20)
+Total number of edges: 16
+Network Structure: [BirthAsphyxia][LVHreport][RUQO2][Sick][XrayReport][Age|Sick]
+[ChestXray|XrayReport][LVH|LVHreport][LowerBodyO2|LVHreport][CO2Report|Age]
+[HypDistrib|LowerBodyO2][LungFlow|ChestXray][CO2|CO2Report][DuctFlow|LungFlow]
+[Disease|DuctFlow][CardiacMixing|Disease][HypoxiaInO2|CardiacMixing][GruntingReport|Hy...
+The network has nodes with no data
+--------------------------------------------------
+--------------------------------------------------
+Task name: true-net
+Loading network
+Network file: example-true-net-child.dat
+Network type: bnlearn
+Network score type: BIC
+Total number of nodes: 20 (Discrete: 0 | Factor: 0 | Continuous: 0 | No data: 20)
+Total number of edges: 25
+Network Structure: [BirthAsphyxia][Disease|BirthAsphyxia][CardiacMixing|Disease][DuctFlow|Disease]
+[LVH|Disease][LungFlow|Disease][LungParench|Disease][Sick|Disease][Age|Disease:Sick][CO2|LungParench]
+[ChestXray|LungFlow:LungParench][Grunting|LungParench:Sick][HypDistrib|CardiacMixing:DuctFlow][HypoxiaInO2|CardiacMixing...
+The network has nodes with no data
+--------------------------------------------------
+--------------------------------------------------
+Task name: Task-3
+Calculating the recall and precision
+Network: example-net
+Network Structure: [BirthAsphyxia][LVHreport][RUQO2][Sick][XrayReport][Age|Sick][ChestXray|XrayReport]
+[LVH|LVHreport][LowerBodyO2|LVHreport][CO2Report|Age][HypDistrib|LowerBodyO2][LungFlow|ChestXray]
+[CO2|CO2Report][DuctFlow|LungFlow][Disease|DuctFlow][CardiacMixing|Disease][HypoxiaInO2|CardiacMixing][GruntingReport|Hy...
+True Network: true-net
+True Network Structure: [BirthAsphyxia][Disease|BirthAsphyxia][CardiacMixing|Disease][DuctFlow|Disease]
+[LVH|Disease][LungFlow|Disease][LungParench|Disease][Sick|Disease][Age|Disease:Sick][CO2|LungParench]
+[ChestXray|LungFlow:LungParench][Grunting|LungParench:Sick][HypDistrib|CardiacMixing:DuctFlow][HypoxiaInO2|CardiacMixing...
+Recall and precision written to file: recall-precision.dat
+
+Recall: the percentage of edges found from the original true network
+Precision: the percentage of edges in the network that are also in the original true network
+
+Recall: 32
+Precision: 50
+
+Recall and precision written to file: recall-precision.dat
+--------------------------------------------------
+
+Run time: less than one second
+</pre></div>
+</div>
+<p>In this example the network for which we wish we calculate the recall and precision is input into BayesNetty.
+The true network structure is then also input into BayesNetty. Finally the recall and precision is calculated and the results output to a file.
+This file simply contains 2 numbers: the recall followed by the precision.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="estimate-impute.html" class="btn btn-neutral float-left" title="Estimate Imputation Benefit" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="sim-data.html" class="btn btn-neutral float-right" title="Calculate network score" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Richard Howey.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
