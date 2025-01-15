@@ -9,18 +9,18 @@
   <title>Impute Data &mdash; BayesNetty 1.2 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
-      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=6c12b3ac" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=c2378292" />
 
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
       <script src="_static/documentation_options.js?v=61243dd2"></script>
-      <script src="_static/doctools.js?v=9a2dae69"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Calculate network score" href="estimate-impute.html" />
+    <link rel="next" title="Estimate Imputation Benefit" href="estimate-impute.html" />
     <link rel="prev" title="Average network" href="average-network.html" /> 
 </head>
 
@@ -64,14 +64,15 @@
 <li class="toctree-l2"><a class="reference internal" href="#parallel-example">Parallel Example</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="estimate-impute.html">Calculate network score</a></li>
-<li class="toctree-l1"><a class="reference internal" href="calc-recall-precision.html">Calculate network score</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sim-data.html">Calculate network score</a></li>
-<li class="toctree-l1"><a class="reference internal" href="markov-blanket.html">Calculate network score</a></li>
-<li class="toctree-l1"><a class="reference internal" href="output-network.html">Calculate network score</a></li>
-<li class="toctree-l1"><a class="reference internal" href="output-priors.html">Calculate network score</a></li>
-<li class="toctree-l1"><a class="reference internal" href="output-posteriors.html">Calculate network score</a></li>
-<li class="toctree-l1"><a class="reference internal" href="plot-network.html">Calculate network score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="estimate-impute.html">Estimate Imputation Benefit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="calc-recall-precision.html">Calculate Recall and Precision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sim-data.html">Simulate network data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="markov-blanket.html">Markov blanket</a></li>
+<li class="toctree-l1"><a class="reference internal" href="output-network.html">Output network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="output-priors.html">Output priors (deal only)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="output-priors.html#options">Options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="output-posteriors.html">Output posteriors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot-network.html">Network plotting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
 </ul>
 
@@ -166,7 +167,7 @@ If data set has a block of data with non-missing data for only a few variables t
 <p>The <cite>-impute-network-data-random-restarts</cite> and <cite>-impute-network-data-jitter-restarts</cite> options can be increased to improve the network search at each step of the algorithm and may potentially increase the quality of the imputed data at the expense of a longer running time.</p>
 <p>The <cite>-impute-network-data-start-indiv</cite>, <cite>-impute-network-data-end-indiv</cite> and <cite>-impute-network-data-job</cite> options may be used to only impute a range of individuals.
 These options may be useful for large networks to impute data in parallel and then combine later if the data is output to file
-(see <span class="xref std std-ref">output-network</span> to output data). See <a class="reference internal" href="#impute-parallel-example"><span class="std std-ref">Parallel Example</span></a> for an example.</p>
+(see <a class="reference internal" href="output-network.html#output-network"><span class="std std-ref">Output network</span></a> to output data). See <a class="reference internal" href="#impute-parallel-example"><span class="std std-ref">Parallel Example</span></a> for an example.</p>
 <p>The option <cite>-impute-network-data-job</cite> can also be used to only impute data for some individuals and makes it easier to split the imputation into a number of jobs.</p>
 </section>
 <section id="example">
@@ -284,7 +285,7 @@ That is, the network that the data was simulated from.</p>
 <p>As imputing network data is a computationally intensive task, it makes sense to do it in parallel.
 This can be done by running the parallel version of BayesNetty as described in <a class="reference internal" href="parallel.html#parallel"><span class="std std-ref">Parallel BayesNetty</span></a>,
 but a much quicker way is given here by running the non-parallel version of BayesNetty in parallel where each process imputes a subset of the individuals.
-The data of the imputed individuals can then be output for each process (see <span class="xref std std-ref">output-network</span>) and then combined into the final imputed data set.</p>
+The data of the imputed individuals can then be output for each process (see <a class="reference internal" href="output-network.html#output-network"><span class="std std-ref">Output network</span></a>) and then combined into the final imputed data set.</p>
 <p>A handy Unix script has been written to do this and is ran as follows:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>./runImputeParallel paras-impute-parallel.txt imputed-data 20
 </pre></div>
@@ -409,13 +410,13 @@ done
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="average-network.html" class="btn btn-neutral float-left" title="Average network" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="estimate-impute.html" class="btn btn-neutral float-right" title="Calculate network score" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="estimate-impute.html" class="btn btn-neutral float-right" title="Estimate Imputation Benefit" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2024, Richard Howey.</p>
+    <p>&#169; Copyright 2025, Richard Howey.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

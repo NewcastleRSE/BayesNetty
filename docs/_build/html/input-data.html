@@ -9,13 +9,13 @@
   <title>Input data &mdash; BayesNetty 1.2 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
-      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=916d0f66" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=c2378292" />
 
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
       <script src="_static/documentation_options.js?v=61243dd2"></script>
-      <script src="_static/doctools.js?v=9a2dae69"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
@@ -67,16 +67,17 @@
 <li class="toctree-l1"><a class="reference internal" href="calc-posterior.html">Calculate posterior</a></li>
 <li class="toctree-l1"><a class="reference internal" href="calc-posterior.html#options">Options</a></li>
 <li class="toctree-l1"><a class="reference internal" href="search-models.html">Search models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="average-network.html">Calculate network score</a></li>
-<li class="toctree-l1"><a class="reference internal" href="impute-data.html">Calculate network score</a></li>
-<li class="toctree-l1"><a class="reference internal" href="estimate-impute.html">Calculate network score</a></li>
-<li class="toctree-l1"><a class="reference internal" href="calc-recall-precision.html">Calculate network score</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sim-data.html">Calculate network score</a></li>
-<li class="toctree-l1"><a class="reference internal" href="markov-blanket.html">Calculate network score</a></li>
-<li class="toctree-l1"><a class="reference internal" href="output-network.html">Calculate network score</a></li>
-<li class="toctree-l1"><a class="reference internal" href="output-priors.html">Calculate network score</a></li>
-<li class="toctree-l1"><a class="reference internal" href="output-posteriors.html">Calculate network score</a></li>
-<li class="toctree-l1"><a class="reference internal" href="plot-network.html">Calculate network score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="average-network.html">Average network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="impute-data.html">Impute Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="estimate-impute.html">Estimate Imputation Benefit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="calc-recall-precision.html">Calculate Recall and Precision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sim-data.html">Simulate network data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="markov-blanket.html">Markov blanket</a></li>
+<li class="toctree-l1"><a class="reference internal" href="output-network.html">Output network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="output-priors.html">Output priors (deal only)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="output-priors.html#options">Options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="output-posteriors.html">Output posteriors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot-network.html">Network plotting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
 </ul>
 
@@ -295,7 +296,7 @@ Run time: less than one second
 <section id="snp-data">
 <span id="input-data-snp"></span><h2>SNP data<a class="headerlink" href="#snp-data" title="Link to this heading"></a></h2>
 <p>SNP data is automatically constrained to have no parent nodes.</p>
-<p>SNP data may be input as a <a class="reference external" href="https://zzz.bwh.harvard.edu/plink/binary.shtml">binary</a> PLINK format pedigree file, a <code class="docutils literal notranslate"><span class="pre">.bed</span></code> file, see <a class="bibtex reference internal" href="references.html#purcell-etal-07" id="id4">[5]</a> .
+<p>SNP data may be input as a <a class="reference external" href="https://zzz.bwh.harvard.edu/plink/binary.shtml">binary</a> PLINK format pedigree file, a <code class="docutils literal notranslate"><span class="pre">.bed</span></code> file, see <a class="bibtex reference internal" href="references.html#purcell-etal-07" id="id4">[6]</a> .
 This requires that the corresponding <code class="docutils literal notranslate"><span class="pre">.bim</span></code> and <code class="docutils literal notranslate"><span class="pre">.fam</span></code>, files are also available. A text PLINK pedigree file, <code class="docutils literal notranslate"><span class="pre">.ped</span></code>, with corresponding map file, <code class="docutils literal notranslate"><span class="pre">.map</span></code>, may be used to create a binary file using PLINK as follows:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>plink --noweb --file mydata --make-bed --out myfile
 </pre></div>
@@ -490,7 +491,7 @@ If there are zero IDs then the individuals are assumed to be in the same order i
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2024, Richard Howey.</p>
+    <p>&#169; Copyright 2025, Richard Howey.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

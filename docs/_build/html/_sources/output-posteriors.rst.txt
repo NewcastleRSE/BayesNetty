@@ -1,20 +1,19 @@
-.. _calc-score: 
 
-Calculate network score
-=======================
+.. _output-posteriors:
 
-The network score is used as a measure of how well the network model describes the data and is used to compare different models when searching through models.
-In BayesNetty the network score is based on the log likelihood and higher values imply a better model
-(see :ref:`bnlearn-score` for further details). This is calculated assuming that discrete nodes follow a multinomial distribution and continuous nodes a normal distribution.
-BayesNetty considers the network score to be a property of the network and its method of calculation is set using the
-option `-input-network-score`, see :ref:`input-network`.
+Output posteriors
+=================
 
-.. _calc-score-options:
+
+The posteriors may be output to file for inspection with the `-output-posteriors`.
+
+.. _output-posteriors-options:
 
 Options
 -------
 
 The options are as follows:
+
 
 .. list-table:: 
     :header-rows: 1
@@ -23,35 +22,30 @@ The options are as follows:
       - Description
       - Default
 
-    * - -calc-network-score
-      - do a task to calculate the score
+    * -  -output-posteriors
+      - do a task to output the posteriors of a network to file
       -
 
-    * - -calc-network-score-name name
+    * - -output-posteriors-name name
       - label the task with a name
       - Task-n
 
-    * - -calc-network-score-network-name network
-      - the name of the network to calculate the score of
-      - previous network (or the default model given by a node for each data variable and no edges if there is no previous network) 
+    * - -output-posteriors-network-name network
+      - output posteriors for this network
+      - previous network (or the default model given by a node for each data variable and no edges if there is no previous network)
 
-    * - -calc-network-score-file file
-      - write the score to this file
-      - 
+    * - -output-posteriors-file posts.dat
+      - output the posteriors to file posts.dat
+      - posteriors.dat
 
-    * - -calc-network-score-all-scores network-scores.dat
-      - calculate the scores of *every* possible network and record the results in `network-scores.dat`
-      - 
 
-  
-.. _calc-score-example:
+
+.. _output-posts-example:
 
 Example
 -------
 
-As an example of calculating the score the parameter file `paras-calc-score.txt`, which can be found in `example.zip <https://github.com/NewcastleRSE/BayesNetty/raw/refs/heads/main/docs/resources/example.zip>`_,
-calculates the score for the same network but for different score methods.
-
+The following is an example parameter file to output the posteriors of a network.
 
 .. code-block:: none
 
@@ -72,30 +66,25 @@ calculates the score for the same network but for different score methods.
 
     #input the example network in format 1
     -input-network
-    -input-network-name networkLike
-    -input-network-score loglike
     -input-network-file example-network-format1.dat
 
-    #input the example network in format 1
-    -input-network
-    -input-network-name networkBIC
-    -input-network-score BIC
-    -input-network-file example-network-format1.dat
+    #calculate the posterior of the network
+    -calc-posterior
 
-    #calculate the network of the network with BIC
-    -calc-network-score
+    #output the posteriors to file
+    -output-posteriors
+    -output-posteriors-file example-posteriors.dat
 
-    #calculate the network of the network with log likelihood
-    -calc-network-score
-    -calc-network-score-network-name networkLike
 
-This can be executed as usual
+This parameter file, `paras-output-post.txt`, can be found in `example.zip <https://github.com/NewcastleRSE/BayesNetty/raw/refs/heads/main/docs/resources/example.zip>`_ and can be used as follows:
+
 
 .. code-block:: none
 
-    ./bayesnetty paras-calc-score.txt
+    ./bayesnetty paras-output-post.txt
 
-and will output something as follows
+
+Which should produce output that looks like something as follows:
 
 .. code-block:: none
 
@@ -104,7 +93,7 @@ and will output something as follows
     Copyright 2015-present Richard Howey, GNU General Public License, v3
     Institute of Genetic Medicine, Newcastle University
 
-    Random seed: 1551700452
+    Random seed: 1551958097
     --------------------------------------------------
     Task name: Task-1
     Loading data
@@ -135,19 +124,7 @@ and will output something as follows
     Each variable has 1500 data entries
     --------------------------------------------------
     --------------------------------------------------
-    Task name: networkLike
-    Loading network
-    Network file: example-network-format1.dat
-    Network type: bnlearn
-    Network score type: log likelihood
-    Total number of nodes: 5 (Discrete: 3 | Factor: 0 | Continuous: 2)
-    Total number of edges: 4
-    Network Structure: [mood][rs1][rs2][pheno|rs1:rs2][express|pheno:mood]
-    Total data at each node: 1495
-    Missing data at each node: 5
-    --------------------------------------------------
-    --------------------------------------------------
-    Task name: networkBIC
+    Task name: Task-4
     Loading network
     Network file: example-network-format1.dat
     Network type: bnlearn
@@ -157,26 +134,23 @@ and will output something as follows
     Network Structure: [mood][rs1][rs2][pheno|rs1:rs2][express|pheno:mood]
     Total data at each node: 1495
     Missing data at each node: 5
+    --------------------------------------------------
+    --------------------------------------------------
+    Task name: Task-5
+    Calculating posterior
+    Network: Task-4
+    Network Structure: [mood][rs1][rs2][pheno|rs1:rs2][express|pheno:mood]
     --------------------------------------------------
     --------------------------------------------------
     Task name: Task-6
-    Calculating network score
-    Network: networkBIC
-    Network structure: [mood][rs1][rs2][pheno|rs1:rs2][express|pheno:mood]
-    Network score type: BIC
-    Network score = -8519.74
-    --------------------------------------------------
-    --------------------------------------------------
-    Task name: Task-7
-    Calculating network score
-    Network: networkLike
-    Network structure: [mood][rs1][rs2][pheno|rs1:rs2][express|pheno:mood]
-    Network score type: log likelihood
-    Network score = -8413.75
+    Outputting posteriors
+    Network: Task-4
+    Network Structure: [mood][rs1][rs2][pheno|rs1:rs2][express|pheno:mood]
+    Output posteriors to file: example-posteriors.dat
     --------------------------------------------------
 
     Run time: less than one second
 
-The above output shows the data input and then two networks input with the same structure but with different scores.
-The network with the BIC score is evaluated firstly, as by default the most recent network is used unless otherwise stated.
-The network using the log likelihood is then calculated by using the `-calc-network-score-network-name` option to specify which network should be used.
+
+The data is loaded, the network input, the posterior is calculated and then output to a file.
+

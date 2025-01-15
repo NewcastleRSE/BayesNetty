@@ -1,15 +1,17 @@
-.. _calc-score: 
+.. _markov-blanket:
 
-Calculate network score
-=======================
+Markov blanket
+==============
 
-The network score is used as a measure of how well the network model describes the data and is used to compare different models when searching through models.
-In BayesNetty the network score is based on the log likelihood and higher values imply a better model
-(see :ref:`bnlearn-score` for further details). This is calculated assuming that discrete nodes follow a multinomial distribution and continuous nodes a normal distribution.
-BayesNetty considers the network score to be a property of the network and its method of calculation is set using the
-option `-input-network-score`, see :ref:`input-network`.
 
-.. _calc-score-options:
+The Markov blanket for a node contains all the variables that shield the node from the rest of the network.
+This means that the Markov blanket of a node is the only knowledge needed to predict the behaviour of that node and its children.
+This may be useful for large networks where some nodes are of particular interest. See :cite:`bnlearn` for more details.
+
+The `-markov-blanket` option can be used to calculate the Markov blanket for a given node.
+A sub-network is created for the given node and its Markov blanket which may be output using the `-output-network` option, see :ref:`output-network`, or used in any other network analysis.
+
+.. _markov-blanket-options: 
 
 Options
 -------
@@ -23,79 +25,50 @@ The options are as follows:
       - Description
       - Default
 
-    * - -calc-network-score
-      - do a task to calculate the score
+    * - -markov-blanket
+      - do a task to calculate the Markov blanket for a given node
       -
 
-    * - -calc-network-score-name name
+    * - -markov-blanket-name name
       - label the task with a name
       - Task-n
 
-    * - -calc-network-score-network-name network
-      - the name of the network to calculate the score of
-      - previous network (or the default model given by a node for each data variable and no edges if there is no previous network) 
+    * - -markov-blanket-network-name network
+      - the name of the network to calculate the Markov blanket
+      - previous network (or the default model given by a node for each data variable and no edges if there is no previous network)
 
-    * - -calc-network-score-file file
-      - write the score to this file
-      - 
+    * - -markov-blanket-node-name node
+      - calculate the Markov blanket for the node with this name
+      -
 
-    * - -calc-network-score-all-scores network-scores.dat
-      - calculate the scores of *every* possible network and record the results in `network-scores.dat`
-      - 
 
-  
-.. _calc-score-example:
+.. _calc-blanket-example:
 
 Example
 -------
 
-As an example of calculating the score the parameter file `paras-calc-score.txt`, which can be found in `example.zip <https://github.com/NewcastleRSE/BayesNetty/raw/refs/heads/main/docs/resources/example.zip>`_,
-calculates the score for the same network but for different score methods.
+The Markov blanket for a given node is calculated by using the `-markov-blanket` option together with the `-markov-blanket-node-name` option to choose the node. For example:
 
 
 .. code-block:: none
 
-    #input continuous data
-    -input-data
-    -input-data-file example-cts.dat
-    -input-data-cts
-
-    #input discrete data
-    -input-data
-    -input-data-file example-discrete.dat
-    -input-data-discrete
-
-    #input SNP data as discrete data
-    -input-data
-    -input-data-file example.bed
-    -input-data-discrete-snp
-
-    #input the example network in format 1
+    #input the example network
     -input-network
-    -input-network-name networkLike
-    -input-network-score loglike
     -input-network-file example-network-format1.dat
 
-    #input the example network in format 1
-    -input-network
-    -input-network-name networkBIC
-    -input-network-score BIC
-    -input-network-file example-network-format1.dat
+    #calculate the Markov Blanket
+    -markov-blanket
+    -markov-blanket-node-name express
 
-    #calculate the network of the network with BIC
-    -calc-network-score
+    #output the network
+    -output-network
+    -output-network-file express-markov-blanket.dat
 
-    #calculate the network of the network with log likelihood
-    -calc-network-score
-    -calc-network-score-network-name networkLike
 
-This can be executed as usual
+As the Markov blanket does not depend on the data of the nodes it is possible to calculate the Markov blanket without data.
+In the example the network structure is input, the Markov blanket calculated for the "express" node and then output to the file `express-markov-blanket.dat`.
+This parameter file, `paras-blanket.txt`, can be found in `example.zip <https://github.com/NewcastleRSE/BayesNetty/raw/refs/heads/main/docs/resources/example.zip>`_ and produces output which should look something as follows:
 
-.. code-block:: none
-
-    ./bayesnetty paras-calc-score.txt
-
-and will output something as follows
 
 .. code-block:: none
 
@@ -104,79 +77,32 @@ and will output something as follows
     Copyright 2015-present Richard Howey, GNU General Public License, v3
     Institute of Genetic Medicine, Newcastle University
 
-    Random seed: 1551700452
+    Random seed: 1551956198
     --------------------------------------------------
     Task name: Task-1
-    Loading data
-    Continuous data file: example-cts.dat
-    Number of ID columns: 2
-    Including (all) 2 variables in analysis
-    Each variable has 1500 data entries
-    Missing value: not set
+    Loading network
+    Network file: example-network-format1.dat
+    Network type: bnlearn
+    Network score type: BIC
+    Total number of nodes: 5 (Discrete: 0 | Factor: 0 | Continuous: 0 | No data: 5)
+    Total number of edges: 4
+    Network Structure: [rs1][rs2][mood][pheno|rs1:rs2][express|mood:pheno]
+    The network has nodes with no data
     --------------------------------------------------
     --------------------------------------------------
     Task name: Task-2
-    Loading data
-    Discrete data file: example-discrete.dat
-    Number of ID columns: 2
-    Including the 1 and only variable in analysis
-    Each variable has 1500 data entries
-    Missing value: NA
+    Calculating Markov blanket
+    Network: Task-1
+    Node: express
+    Network structure: [rs1][rs2][mood][pheno|rs1:rs2][express|mood:pheno]
+    Markov blanket network structure: [mood][pheno][express|mood:pheno]
     --------------------------------------------------
     --------------------------------------------------
     Task name: Task-3
-    Loading data
-    SNP binary data file: example.bed
-    SNP data treated as discrete data
-    Total number of SNPs: 2
-    Total number of subjects: 1500
-    Number of ID columns: 2
-    Including (all) 2 variables in analysis
-    Each variable has 1500 data entries
-    --------------------------------------------------
-    --------------------------------------------------
-    Task name: networkLike
-    Loading network
-    Network file: example-network-format1.dat
-    Network type: bnlearn
-    Network score type: log likelihood
-    Total number of nodes: 5 (Discrete: 3 | Factor: 0 | Continuous: 2)
-    Total number of edges: 4
-    Network Structure: [mood][rs1][rs2][pheno|rs1:rs2][express|pheno:mood]
-    Total data at each node: 1495
-    Missing data at each node: 5
-    --------------------------------------------------
-    --------------------------------------------------
-    Task name: networkBIC
-    Loading network
-    Network file: example-network-format1.dat
-    Network type: bnlearn
-    Network score type: BIC
-    Total number of nodes: 5 (Discrete: 3 | Factor: 0 | Continuous: 2)
-    Total number of edges: 4
-    Network Structure: [mood][rs1][rs2][pheno|rs1:rs2][express|pheno:mood]
-    Total data at each node: 1495
-    Missing data at each node: 5
-    --------------------------------------------------
-    --------------------------------------------------
-    Task name: Task-6
-    Calculating network score
-    Network: networkBIC
-    Network structure: [mood][rs1][rs2][pheno|rs1:rs2][express|pheno:mood]
-    Network score type: BIC
-    Network score = -8519.74
-    --------------------------------------------------
-    --------------------------------------------------
-    Task name: Task-7
-    Calculating network score
-    Network: networkLike
-    Network structure: [mood][rs1][rs2][pheno|rs1:rs2][express|pheno:mood]
-    Network score type: log likelihood
-    Network score = -8413.75
+    Outputting network
+    Network: Task-2
+    Network Structure: [mood][pheno][express|mood:pheno]
+    Network output to file: express-markov-blanket.dat
     --------------------------------------------------
 
     Run time: less than one second
-
-The above output shows the data input and then two networks input with the same structure but with different scores.
-The network with the BIC score is evaluated firstly, as by default the most recent network is used unless otherwise stated.
-The network using the log likelihood is then calculated by using the `-calc-network-score-network-name` option to specify which network should be used.

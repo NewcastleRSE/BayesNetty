@@ -7,7 +7,7 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
 project = 'BayesNetty'
-copyright = '2024, Richard Howey'
+copyright = '2025, Richard Howey'
 author = 'Richard Howey'
 release = '1.2'
 

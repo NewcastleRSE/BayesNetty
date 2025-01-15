@@ -46,7 +46,7 @@ The options are as follows:
       -
 
     * - -input-network-file2 network2.dat
-      - input the network in this style of format: ``[a][b|a][c|a:b]``
+      - input the network in this style of format: [a][b|a][c|a:b]
       -
 
     * - -input-network-igraph-file-prefix mygraph

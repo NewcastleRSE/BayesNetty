@@ -3,7 +3,7 @@
 deal network
 ============
 
-The deal Bayesian network approach was developed by :cite:`deal` as an approach to model mixed discrete/continuous networks.
+The deal Bayesian network approach was developed by :cite:`deal_paper` as an approach to model mixed discrete/continuous networks.
 It calculates the likelihood differently to bnlearn. However we found several issues with the method, not least that it is no longer actively supported.
 Therefore, it is not recommended to use a deal network for network analyses and is included only for comparison purposes.  
 

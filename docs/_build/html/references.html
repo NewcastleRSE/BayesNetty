@@ -9,18 +9,18 @@
   <title>References &mdash; BayesNetty 1.2 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
-      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=916d0f66" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=c2378292" />
 
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
       <script src="_static/documentation_options.js?v=61243dd2"></script>
-      <script src="_static/doctools.js?v=9a2dae69"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Calculate network score" href="plot-network.html" /> 
+    <link rel="prev" title="Network plotting" href="plot-network.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -56,16 +56,17 @@
 <li class="toctree-l1"><a class="reference internal" href="calc-posterior.html">Calculate posterior</a></li>
 <li class="toctree-l1"><a class="reference internal" href="calc-posterior.html#options">Options</a></li>
 <li class="toctree-l1"><a class="reference internal" href="search-models.html">Search models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="average-network.html">Calculate network score</a></li>
-<li class="toctree-l1"><a class="reference internal" href="impute-data.html">Calculate network score</a></li>
-<li class="toctree-l1"><a class="reference internal" href="estimate-impute.html">Calculate network score</a></li>
-<li class="toctree-l1"><a class="reference internal" href="calc-recall-precision.html">Calculate network score</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sim-data.html">Calculate network score</a></li>
-<li class="toctree-l1"><a class="reference internal" href="markov-blanket.html">Calculate network score</a></li>
-<li class="toctree-l1"><a class="reference internal" href="output-network.html">Calculate network score</a></li>
-<li class="toctree-l1"><a class="reference internal" href="output-priors.html">Calculate network score</a></li>
-<li class="toctree-l1"><a class="reference internal" href="output-posteriors.html">Calculate network score</a></li>
-<li class="toctree-l1"><a class="reference internal" href="plot-network.html">Calculate network score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="average-network.html">Average network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="impute-data.html">Impute Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="estimate-impute.html">Estimate Imputation Benefit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="calc-recall-precision.html">Calculate Recall and Precision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sim-data.html">Simulate network data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="markov-blanket.html">Markov blanket</a></li>
+<li class="toctree-l1"><a class="reference internal" href="output-network.html">Output network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="output-priors.html">Output priors (deal only)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="output-priors.html#options">Options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="output-posteriors.html">Output posteriors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot-network.html">Network plotting</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">References</a></li>
 </ul>
 
@@ -96,36 +97,40 @@
   <section id="references">
 <span id="id1"></span><h1>References<a class="headerlink" href="#references" title="Link to this heading"></a></h1>
 <p id="bibtex-bibliography-references-0"><div role="list" class="citation-list">
-<div class="citation bibtex" id="deal" role="doc-biblioentry">
+<div class="citation bibtex" id="deal-paper" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
 <p>S G Boettcher and C Dethlefsen. Deal: a package for learning bayesian networks. <em>Journal of Statistical Software</em>, 2003.</p>
 </div>
-<div class="citation bibtex" id="howey-etal-21" role="doc-biblioentry">
+<div class="citation bibtex" id="igraph-paper" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></span>
+<p>G Csardi and T Nepusz. The igraph software package for complex network research. <em>InterJournal</em>, Complex Systems:1695, 2006. URL: <a class="reference external" href="https://igraph.org">https://igraph.org</a>.</p>
+</div>
+<div class="citation bibtex" id="howey-etal-21" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></span>
 <p>R Howey, A D Clark, N Naamane, L N Reynard, A G Pratt, and H J Cordell. A Bayesian network approach incorporating imputation of missing data enables exploratory analysis of complex causal biological relationships. <em>PLOS Genetics</em>, 17(9):e1009811, September 2021. URL: <a class="reference external" href="https://doi.org/10.1371/journal.pgen.1009811">https://doi.org/10.1371/journal.pgen.1009811</a>, <a class="reference external" href="https://doi.org/10.1371/journal.pgen.1009811">doi:10.1371/journal.pgen.1009811</a>.</p>
 </div>
 <div class="citation bibtex" id="howey-etal-20" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></span>
+<span class="label"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></span>
 <p>R Howey, S-Y Shin, C Relton, G Davey Smith, and H J Cordell. Bayesian network analysis incorporating genetic anchors complements conventional mendelian randomization approaches for exploratory analysis of causal relationships in complex data. <em>PLOS Genetics</em>, 16(3):1–35, 03 2020. URL: <a class="reference external" href="https://doi.org/10.1371/journal.pgen.1008198">https://doi.org/10.1371/journal.pgen.1008198</a>, <a class="reference external" href="https://doi.org/10.1371/journal.pgen.1008198">doi:10.1371/journal.pgen.1008198</a>.</p>
 </div>
 <div class="citation bibtex" id="bnlearn2" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></span>
+<span class="label"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></span>
 <p>R Nagarajan, M Scutari, and M Lèbre. <em>Bayesian Networks in R with Applications in Systems Biology</em>. Springer (US), 2013.</p>
 </div>
 <div class="citation bibtex" id="purcell-etal-07" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></span>
+<span class="label"><span class="fn-bracket">[</span>6<span class="fn-bracket">]</span></span>
 <p>S Purcell, B Neale, K Todd-Brown, L Thomas, M A Ferreira, D Bender, J Maller, P Sklar, P I de Bakker, M J Daly, and P C Sham. PLINK: a tool set for whole-genome association and population-based linkage analyses. <em>Am J Hum Genet</em>, 81:559–575, 2007.</p>
 </div>
 <div class="citation bibtex" id="swartz-1978" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span>6<span class="fn-bracket">]</span></span>
+<span class="label"><span class="fn-bracket">[</span>7<span class="fn-bracket">]</span></span>
 <p>Gideon Schwarz. Estimating the Dimension of a Model. <em>The Annals of Statistics</em>, 6(2):461 – 464, 1978. URL: <a class="reference external" href="https://doi.org/10.1214/aos/1176344136">https://doi.org/10.1214/aos/1176344136</a>, <a class="reference external" href="https://doi.org/10.1214/aos/1176344136">doi:10.1214/aos/1176344136</a>.</p>
 </div>
 <div class="citation bibtex" id="bnlearn" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span>7<span class="fn-bracket">]</span></span>
+<span class="label"><span class="fn-bracket">[</span>8<span class="fn-bracket">]</span></span>
 <p>M Scutari and J-B Denis. <em>Bayesian Networks with Examples in R</em>. Texts in Statistical Science, Chapman &amp; Hall/CRC (US), 2014.</p>
 </div>
 <div class="citation bibtex" id="wit-2012" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span>8<span class="fn-bracket">]</span></span>
+<span class="label"><span class="fn-bracket">[</span>9<span class="fn-bracket">]</span></span>
 <p>Ernst Wit, Edwin van den Heuvel, and Jan-Willem Romeijn. ‘all models are wrong…’: an introduction to model uncertainty. <em>Statistica Neerlandica</em>, 66(3):217–236, 2012. URL: <a class="reference external" href="https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1467-9574.2012.00530.x">https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1467-9574.2012.00530.x</a>, <a class="reference external" href="https://arxiv.org/abs/https://onlinelibrary.wiley.com/doi/pdf/10.1111/j.1467-9574.2012.00530.x">arXiv:https://onlinelibrary.wiley.com/doi/pdf/10.1111/j.1467-9574.2012.00530.x</a>, <a class="reference external" href="https://doi.org/https://doi.org/10.1111/j.1467-9574.2012.00530.x">doi:https://doi.org/10.1111/j.1467-9574.2012.00530.x</a>.</p>
 </div>
 </div>
@@ -136,13 +141,13 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="plot-network.html" class="btn btn-neutral float-left" title="Calculate network score" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="plot-network.html" class="btn btn-neutral float-left" title="Network plotting" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2024, Richard Howey.</p>
+    <p>&#169; Copyright 2025, Richard Howey.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

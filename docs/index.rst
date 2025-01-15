@@ -6,8 +6,6 @@
 Welcome to BayesNetty's webpage!
 ================================
 
-**!! UNDER CONSTRUCTION !!** Use the old `BayesNetty webpage <https://www.staff.ncl.ac.uk/richard.howey/bayesnetty/>`_ for now.
-
 Please use the menu to the left to navigate through the documentation for BayesNetty or use the PDF of these webpages, `bayesnetty.pdf <https://github.com/NewcastleRSE/BayesNetty/blob/main/docs/_build/latex/bayesnetty.pdf>`_.
 
 Citation

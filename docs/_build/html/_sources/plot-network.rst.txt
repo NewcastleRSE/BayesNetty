@@ -1,60 +1,29 @@
-.. _calc-score: 
 
-Calculate network score
-=======================
+.. _plot-network:
 
-The network score is used as a measure of how well the network model describes the data and is used to compare different models when searching through models.
-In BayesNetty the network score is based on the log likelihood and higher values imply a better model
-(see :ref:`bnlearn-score` for further details). This is calculated assuming that discrete nodes follow a multinomial distribution and continuous nodes a normal distribution.
-BayesNetty considers the network score to be a property of the network and its method of calculation is set using the
-option `-input-network-score`, see :ref:`input-network`.
+Network plotting
+================
 
-.. _calc-score-options:
+.. _igraph: 
 
-Options
--------
+igraph
+------
 
-The options are as follows:
+A network may be plotted using the `igraph <https://igraph.org>`_ R package, see :cite:`igraph_paper` for details.
+The option is part of the network output options, see :ref:`output-network`.
 
-.. list-table:: 
-    :header-rows: 1
-
-    * - Option
-      - Description
-      - Default
-
-    * - -calc-network-score
-      - do a task to calculate the score
-      -
-
-    * - -calc-network-score-name name
-      - label the task with a name
-      - Task-n
-
-    * - -calc-network-score-network-name network
-      - the name of the network to calculate the score of
-      - previous network (or the default model given by a node for each data variable and no edges if there is no previous network) 
-
-    * - -calc-network-score-file file
-      - write the score to this file
-      - 
-
-    * - -calc-network-score-all-scores network-scores.dat
-      - calculate the scores of *every* possible network and record the results in `network-scores.dat`
-      - 
-
-  
-.. _calc-score-example:
+.. _igraph-example:
 
 Example
 -------
 
-As an example of calculating the score the parameter file `paras-calc-score.txt`, which can be found in `example.zip <https://github.com/NewcastleRSE/BayesNetty/raw/refs/heads/main/docs/resources/example.zip>`_,
-calculates the score for the same network but for different score methods.
+The following is an example parameter file to output the necessary files to plot the network in R with the igraph package.
+BayesNetty uses the input data and the input network to calculate for each edge a chi squared value,
+representing twice the difference in log likelihoods between the network where the edge is present and the network where it is absent. 
 
 
 .. code-block:: none
-
+      
     #input continuous data
     -input-data
     -input-data-file example-cts.dat
@@ -72,39 +41,31 @@ calculates the score for the same network but for different score methods.
 
     #input the example network in format 1
     -input-network
-    -input-network-name networkLike
-    -input-network-score loglike
     -input-network-file example-network-format1.dat
 
-    #input the example network in format 1
-    -input-network
-    -input-network-name networkBIC
-    -input-network-score BIC
-    -input-network-file example-network-format1.dat
+    #output files to plot the network
+    -output-network
+    -output-network-igraph-file-prefix exampleGraph
 
-    #calculate the network of the network with BIC
-    -calc-network-score
 
-    #calculate the network of the network with log likelihood
-    -calc-network-score
-    -calc-network-score-network-name networkLike
+This parameter file, `paras-plot-network.txt`, can be found in `example.zip <https://github.com/NewcastleRSE/BayesNetty/raw/refs/heads/main/docs/resources/example.zip>`_ and can be used as follows:
 
-This can be executed as usual
 
 .. code-block:: none
 
-    ./bayesnetty paras-calc-score.txt
+    ./bayesnetty paras-plot-network.txt
 
-and will output something as follows
+
+Which should produce output that looks like something as follows:
 
 .. code-block:: none
-
+      
     BayesNetty: Bayesian Network software, v1.00
     --------------------------------------------------
     Copyright 2015-present Richard Howey, GNU General Public License, v3
     Institute of Genetic Medicine, Newcastle University
 
-    Random seed: 1551700452
+    Random seed: 1551716944
     --------------------------------------------------
     Task name: Task-1
     Loading data
@@ -135,19 +96,7 @@ and will output something as follows
     Each variable has 1500 data entries
     --------------------------------------------------
     --------------------------------------------------
-    Task name: networkLike
-    Loading network
-    Network file: example-network-format1.dat
-    Network type: bnlearn
-    Network score type: log likelihood
-    Total number of nodes: 5 (Discrete: 3 | Factor: 0 | Continuous: 2)
-    Total number of edges: 4
-    Network Structure: [mood][rs1][rs2][pheno|rs1:rs2][express|pheno:mood]
-    Total data at each node: 1495
-    Missing data at each node: 5
-    --------------------------------------------------
-    --------------------------------------------------
-    Task name: networkBIC
+    Task name: Task-4
     Loading network
     Network file: example-network-format1.dat
     Network type: bnlearn
@@ -159,24 +108,103 @@ and will output something as follows
     Missing data at each node: 5
     --------------------------------------------------
     --------------------------------------------------
-    Task name: Task-6
-    Calculating network score
-    Network: networkBIC
-    Network structure: [mood][rs1][rs2][pheno|rs1:rs2][express|pheno:mood]
-    Network score type: BIC
-    Network score = -8519.74
-    --------------------------------------------------
-    --------------------------------------------------
-    Task name: Task-7
-    Calculating network score
-    Network: networkLike
-    Network structure: [mood][rs1][rs2][pheno|rs1:rs2][express|pheno:mood]
-    Network score type: log likelihood
-    Network score = -8413.75
+    Task name: Task-5
+    Outputting network
+    Network: Task-4
+    Network Structure: [mood][rs1][rs2][pheno|rs1:rs2][express|pheno:mood]
+    Network output to igraph files:
+    exampleGraph-nodes.dat
+    exampleGraph-edges.dat
+    R code to plot network using igraph package: exampleGraph-plot.R
     --------------------------------------------------
 
     Run time: less than one second
 
-The above output shows the data input and then two networks input with the same structure but with different scores.
-The network with the BIC score is evaluated firstly, as by default the most recent network is used unless otherwise stated.
-The network using the log likelihood is then calculated by using the `-calc-network-score-network-name` option to specify which network should be used.
+
+The data is loaded, the network input and output to 2 separate files, one containing the node data and another containing the edge data.
+
+
+There is also an R file which is output which will look something as follows:
+
+
+.. code-block:: none
+      
+    #load igraph library, http://igraph.org/r/
+    library(igraph)
+
+    #load network graph
+    nodes<-read.table("exampleGraph-nodes.dat", header=TRUE)
+    edges<-read.table("exampleGraph-edges.dat", header=TRUE)
+
+    #create graph
+    graph<-graph_from_data_frame(edges, directed = TRUE, vertices = nodes)
+
+    #plot the network and output png file, edit style as required
+
+    #style for continuous nodes
+    shape<-rep("circle", length(nodes$type))
+    vcolor<-rep("#eeeeee", length(nodes$type))
+    vsize<-rep(25, length(nodes$type))
+    color<-rep("black", length(nodes$type))
+
+    #style for discrete nodes
+    shape[nodes$type=="d"]<-"rectangle"
+    vcolor[nodes$type=="d"]<-"#111111"
+    vsize[nodes$type=="d"]<-20
+    color[nodes$type=="d"]<-"white"
+
+    #style for factor nodes
+    shape[nodes$type=="f"]<-"rectangle"
+    vcolor[nodes$type=="f"]<-"#eeeeee"
+    vsize[nodes$type=="f"]<-20
+    color[nodes$type=="f"]<-"black"
+
+    #edge widths for significances
+    minWidth<-0.3
+    maxWidth<-10
+    edgeMax<-max(edges$chisq)
+    edgeMin<-min(edges$chisq)
+    widths<-((edges$chisq-edgeMin)/(edgeMax-edgeMin))*(maxWidth - minWidth) + minWidth
+    styles<-rep(1, length(widths))
+
+    #plot to a png file
+    png(filename="exampleGraph.png", width=800, height=800)
+
+    plot(graph, vertex.shape=shape, vertex.size=vsize, vertex.color=vcolor, vertex.label.color=color, edge.width=widths, edge.lty=styles, edge.color="black", edge.arrow.size=1.5)
+
+    #finish png file
+    dev.off()
+
+
+This R file can be ran as follows in Linux
+
+.. code-block:: none
+
+    R --vanilla < exampleGraph-plot.R
+
+
+and produces the .png image file of the network
+
+.. _plot1-fig:
+
+.. figure:: images/exampleGraph.png
+   :class: custom-figure
+
+   Plot of the example network drawn using the igraph R package.
+
+
+
+The edges are drawn proportional to the log likelihood difference between networks with and without the edge in question.
+The minimum and maximum thickness of the plotted edges can be changed by modifying the `minWidth` and `maxWidth` variables in the R file.
+The plot can easily be updated to your needs by following the `example.zip <https://github.com/NewcastleRSE/BayesNetty/raw/refs/heads/main/docs/resources/example.zip>`_ R package documentation. 
+
+
+If a search is performed to find the best network (see parameter file `paras-plot-network2.txt`), it can be plotted as above and gives the following network:
+
+.. _plot2-fig:
+
+.. figure:: images/exampleGraph2.png
+   :class: custom-figure
+
+   Plot of the best fit network drawn using the igraph R package.
+

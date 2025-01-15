@@ -20,9 +20,15 @@ color:#ffffff;
 }
 
 /* Change the color of the "Table of Contents" heading */
+
 /*
 .caption-text {
-    color: #ccb3ff; 
+    color: #ccb3ff;  
+}*/
+
+/*
+caption {
+    color: #884dff;  
 }
 */
 
@@ -31,4 +37,10 @@ color:#ffffff;
     padding: 10px; /* Optional: adds space between the image and the border */
     display: inline-block; /* Ensures the border wraps tightly around the image */
     background-color: #f8f9fa; /* Optional: adds a background color */
+    width: 700px;    
 }
+
+/* For images */ 
+/* .align-default {
+    text-align: center;    
+}*/

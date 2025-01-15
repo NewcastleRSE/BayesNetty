@@ -6,22 +6,22 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Calculate network score &mdash; BayesNetty 1.2 documentation</title>
+  <title>Network plotting &mdash; BayesNetty 1.2 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
-      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=916d0f66" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=c2378292" />
 
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
       <script src="_static/documentation_options.js?v=61243dd2"></script>
-      <script src="_static/doctools.js?v=9a2dae69"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="References" href="references.html" />
-    <link rel="prev" title="Calculate network score" href="output-posteriors.html" /> 
+    <link rel="prev" title="Output posteriors" href="output-posteriors.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -57,17 +57,18 @@
 <li class="toctree-l1"><a class="reference internal" href="calc-posterior.html">Calculate posterior</a></li>
 <li class="toctree-l1"><a class="reference internal" href="calc-posterior.html#options">Options</a></li>
 <li class="toctree-l1"><a class="reference internal" href="search-models.html">Search models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="average-network.html">Calculate network score</a></li>
-<li class="toctree-l1"><a class="reference internal" href="impute-data.html">Calculate network score</a></li>
-<li class="toctree-l1"><a class="reference internal" href="estimate-impute.html">Calculate network score</a></li>
-<li class="toctree-l1"><a class="reference internal" href="calc-recall-precision.html">Calculate network score</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sim-data.html">Calculate network score</a></li>
-<li class="toctree-l1"><a class="reference internal" href="markov-blanket.html">Calculate network score</a></li>
-<li class="toctree-l1"><a class="reference internal" href="output-network.html">Calculate network score</a></li>
-<li class="toctree-l1"><a class="reference internal" href="output-priors.html">Calculate network score</a></li>
-<li class="toctree-l1"><a class="reference internal" href="output-posteriors.html">Calculate network score</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Calculate network score</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#options">Options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="average-network.html">Average network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="impute-data.html">Impute Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="estimate-impute.html">Estimate Imputation Benefit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="calc-recall-precision.html">Calculate Recall and Precision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sim-data.html">Simulate network data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="markov-blanket.html">Markov blanket</a></li>
+<li class="toctree-l1"><a class="reference internal" href="output-network.html">Output network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="output-priors.html">Output priors (deal only)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="output-priors.html#options">Options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="output-posteriors.html">Output posteriors</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Network plotting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#igraph">igraph</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#example">Example</a></li>
 </ul>
 </li>
@@ -88,7 +89,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Calculate network score</li>
+      <li class="breadcrumb-item active">Network plotting</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/plot-network.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -98,51 +99,18 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="calculate-network-score">
-<span id="calc-score"></span><h1>Calculate network score<a class="headerlink" href="#calculate-network-score" title="Link to this heading"></a></h1>
-<p>The network score is used as a measure of how well the network model describes the data and is used to compare different models when searching through models.
-In BayesNetty the network score is based on the log likelihood and higher values imply a better model
-(see <span class="xref std std-ref">bnlearn-score</span> for further details). This is calculated assuming that discrete nodes follow a multinomial distribution and continuous nodes a normal distribution.
-BayesNetty considers the network score to be a property of the network and its method of calculation is set using the
-option <cite>-input-network-score</cite>, see <a class="reference internal" href="input-network.html#input-network"><span class="std std-ref">Input network</span></a>.</p>
-<section id="options">
-<span id="calc-score-options"></span><h2>Options<a class="headerlink" href="#options" title="Link to this heading"></a></h2>
-<p>The options are as follows:</p>
-<table class="docutils align-default">
-<thead>
-<tr class="row-odd"><th class="head"><p>Option</p></th>
-<th class="head"><p>Description</p></th>
-<th class="head"><p>Default</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>-calc-network-score</p></td>
-<td><p>do a task to calculate the score</p></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p>-calc-network-score-name name</p></td>
-<td><p>label the task with a name</p></td>
-<td><p>Task-n</p></td>
-</tr>
-<tr class="row-even"><td><p>-calc-network-score-network-name network</p></td>
-<td><p>the name of the network to calculate the score of</p></td>
-<td><p>previous network (or the default model given by a node for each data variable and no edges if there is no previous network)</p></td>
-</tr>
-<tr class="row-odd"><td><p>-calc-network-score-file file</p></td>
-<td><p>write the score to this file</p></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p>-calc-network-score-all-scores network-scores.dat</p></td>
-<td><p>calculate the scores of <em>every</em> possible network and record the results in <cite>network-scores.dat</cite></p></td>
-<td></td>
-</tr>
-</tbody>
-</table>
+  <section id="network-plotting">
+<span id="plot-network"></span><h1>Network plotting<a class="headerlink" href="#network-plotting" title="Link to this heading"></a></h1>
+<section id="igraph">
+<span id="id1"></span><h2>igraph<a class="headerlink" href="#igraph" title="Link to this heading"></a></h2>
+<p>A network may be plotted using the <a class="reference external" href="https://igraph.org">igraph</a> R package, see <a class="bibtex reference internal" href="references.html#igraph-paper" id="id3">[2]</a> for details.
+The option is part of the network output options, see <a class="reference internal" href="output-network.html#output-network"><span class="std std-ref">Output network</span></a>.</p>
 </section>
 <section id="example">
-<span id="calc-score-example"></span><h2>Example<a class="headerlink" href="#example" title="Link to this heading"></a></h2>
-<p>As an example of calculating the score the parameter file <cite>paras-calc-score.txt</cite>, which can be found in <a class="reference external" href="https://github.com/NewcastleRSE/BayesNetty/raw/refs/heads/main/docs/resources/example.zip">example.zip</a>,
-calculates the score for the same network but for different score methods.</p>
+<span id="igraph-example"></span><h2>Example<a class="headerlink" href="#example" title="Link to this heading"></a></h2>
+<p>The following is an example parameter file to output the necessary files to plot the network in R with the igraph package.
+BayesNetty uses the input data and the input network to calculate for each edge a chi squared value,
+representing twice the difference in log likelihoods between the network where the edge is present and the network where it is absent.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>#input continuous data
 -input-data
 -input-data-file example-cts.dat
@@ -160,35 +128,24 @@ calculates the score for the same network but for different score methods.</p>
 
 #input the example network in format 1
 -input-network
--input-network-name networkLike
--input-network-score loglike
 -input-network-file example-network-format1.dat
 
-#input the example network in format 1
--input-network
--input-network-name networkBIC
--input-network-score BIC
--input-network-file example-network-format1.dat
-
-#calculate the network of the network with BIC
--calc-network-score
-
-#calculate the network of the network with log likelihood
--calc-network-score
--calc-network-score-network-name networkLike
+#output files to plot the network
+-output-network
+-output-network-igraph-file-prefix exampleGraph
 </pre></div>
 </div>
-<p>This can be executed as usual</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>./bayesnetty paras-calc-score.txt
+<p>This parameter file, <cite>paras-plot-network.txt</cite>, can be found in <a class="reference external" href="https://github.com/NewcastleRSE/BayesNetty/raw/refs/heads/main/docs/resources/example.zip">example.zip</a> and can be used as follows:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>./bayesnetty paras-plot-network.txt
 </pre></div>
 </div>
-<p>and will output something as follows</p>
+<p>Which should produce output that looks like something as follows:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>BayesNetty: Bayesian Network software, v1.00
 --------------------------------------------------
 Copyright 2015-present Richard Howey, GNU General Public License, v3
 Institute of Genetic Medicine, Newcastle University
 
-Random seed: 1551700452
+Random seed: 1551716944
 --------------------------------------------------
 Task name: Task-1
 Loading data
@@ -219,19 +176,7 @@ Including (all) 2 variables in analysis
 Each variable has 1500 data entries
 --------------------------------------------------
 --------------------------------------------------
-Task name: networkLike
-Loading network
-Network file: example-network-format1.dat
-Network type: bnlearn
-Network score type: log likelihood
-Total number of nodes: 5 (Discrete: 3 | Factor: 0 | Continuous: 2)
-Total number of edges: 4
-Network Structure: [mood][rs1][rs2][pheno|rs1:rs2][express|pheno:mood]
-Total data at each node: 1495
-Missing data at each node: 5
---------------------------------------------------
---------------------------------------------------
-Task name: networkBIC
+Task name: Task-4
 Loading network
 Network file: example-network-format1.dat
 Network type: bnlearn
@@ -243,28 +188,89 @@ Total data at each node: 1495
 Missing data at each node: 5
 --------------------------------------------------
 --------------------------------------------------
-Task name: Task-6
-Calculating network score
-Network: networkBIC
-Network structure: [mood][rs1][rs2][pheno|rs1:rs2][express|pheno:mood]
-Network score type: BIC
-Network score = -8519.74
---------------------------------------------------
---------------------------------------------------
-Task name: Task-7
-Calculating network score
-Network: networkLike
-Network structure: [mood][rs1][rs2][pheno|rs1:rs2][express|pheno:mood]
-Network score type: log likelihood
-Network score = -8413.75
+Task name: Task-5
+Outputting network
+Network: Task-4
+Network Structure: [mood][rs1][rs2][pheno|rs1:rs2][express|pheno:mood]
+Network output to igraph files:
+exampleGraph-nodes.dat
+exampleGraph-edges.dat
+R code to plot network using igraph package: exampleGraph-plot.R
 --------------------------------------------------
 
 Run time: less than one second
 </pre></div>
 </div>
-<p>The above output shows the data input and then two networks input with the same structure but with different scores.
-The network with the BIC score is evaluated firstly, as by default the most recent network is used unless otherwise stated.
-The network using the log likelihood is then calculated by using the <cite>-calc-network-score-network-name</cite> option to specify which network should be used.</p>
+<p>The data is loaded, the network input and output to 2 separate files, one containing the node data and another containing the edge data.</p>
+<p>There is also an R file which is output which will look something as follows:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>#load igraph library, http://igraph.org/r/
+library(igraph)
+
+#load network graph
+nodes&lt;-read.table(&quot;exampleGraph-nodes.dat&quot;, header=TRUE)
+edges&lt;-read.table(&quot;exampleGraph-edges.dat&quot;, header=TRUE)
+
+#create graph
+graph&lt;-graph_from_data_frame(edges, directed = TRUE, vertices = nodes)
+
+#plot the network and output png file, edit style as required
+
+#style for continuous nodes
+shape&lt;-rep(&quot;circle&quot;, length(nodes$type))
+vcolor&lt;-rep(&quot;#eeeeee&quot;, length(nodes$type))
+vsize&lt;-rep(25, length(nodes$type))
+color&lt;-rep(&quot;black&quot;, length(nodes$type))
+
+#style for discrete nodes
+shape[nodes$type==&quot;d&quot;]&lt;-&quot;rectangle&quot;
+vcolor[nodes$type==&quot;d&quot;]&lt;-&quot;#111111&quot;
+vsize[nodes$type==&quot;d&quot;]&lt;-20
+color[nodes$type==&quot;d&quot;]&lt;-&quot;white&quot;
+
+#style for factor nodes
+shape[nodes$type==&quot;f&quot;]&lt;-&quot;rectangle&quot;
+vcolor[nodes$type==&quot;f&quot;]&lt;-&quot;#eeeeee&quot;
+vsize[nodes$type==&quot;f&quot;]&lt;-20
+color[nodes$type==&quot;f&quot;]&lt;-&quot;black&quot;
+
+#edge widths for significances
+minWidth&lt;-0.3
+maxWidth&lt;-10
+edgeMax&lt;-max(edges$chisq)
+edgeMin&lt;-min(edges$chisq)
+widths&lt;-((edges$chisq-edgeMin)/(edgeMax-edgeMin))*(maxWidth - minWidth) + minWidth
+styles&lt;-rep(1, length(widths))
+
+#plot to a png file
+png(filename=&quot;exampleGraph.png&quot;, width=800, height=800)
+
+plot(graph, vertex.shape=shape, vertex.size=vsize, vertex.color=vcolor, vertex.label.color=color, edge.width=widths, edge.lty=styles, edge.color=&quot;black&quot;, edge.arrow.size=1.5)
+
+#finish png file
+dev.off()
+</pre></div>
+</div>
+<p>This R file can be ran as follows in Linux</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>R --vanilla &lt; exampleGraph-plot.R
+</pre></div>
+</div>
+<p>and produces the .png image file of the network</p>
+<figure class="align-default" id="id5">
+<span id="plot1-fig"></span><img alt="_images/exampleGraph.png" class="custom-figure" src="_images/exampleGraph.png" />
+<figcaption>
+<p><span class="caption-text">Plot of the example network drawn using the igraph R package.</span><a class="headerlink" href="#id5" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>The edges are drawn proportional to the log likelihood difference between networks with and without the edge in question.
+The minimum and maximum thickness of the plotted edges can be changed by modifying the <cite>minWidth</cite> and <cite>maxWidth</cite> variables in the R file.
+The plot can easily be updated to your needs by following the <a class="reference external" href="https://github.com/NewcastleRSE/BayesNetty/raw/refs/heads/main/docs/resources/example.zip">example.zip</a> R package documentation.</p>
+<p>If a search is performed to find the best network (see parameter file <cite>paras-plot-network2.txt</cite>), it can be plotted as above and gives the following network:</p>
+<figure class="align-default" id="id6">
+<span id="plot2-fig"></span><img alt="_images/exampleGraph2.png" class="custom-figure" src="_images/exampleGraph2.png" />
+<figcaption>
+<p><span class="caption-text">Plot of the best fit network drawn using the igraph R package.</span><a class="headerlink" href="#id6" title="Link to this image"></a></p>
+</figcaption>
+</figure>
 </section>
 </section>
 
@@ -272,14 +278,14 @@ The network using the log likelihood is then calculated by using the <cite>-calc
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="output-posteriors.html" class="btn btn-neutral float-left" title="Calculate network score" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="output-posteriors.html" class="btn btn-neutral float-left" title="Output posteriors" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="references.html" class="btn btn-neutral float-right" title="References" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2024, Richard Howey.</p>
+    <p>&#169; Copyright 2025, Richard Howey.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

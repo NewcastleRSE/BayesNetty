@@ -266,7 +266,7 @@ The network parameter file, `example-network-parameters.txt`, will look somethin
 The data was simulated using default network node parameters. The simulated node data and subsequent fitted parameters are thus close to these values.
 
 
-The network parameter file, *code* example-network-parameters.txt */code*, can now be edited using parameters of your choice.
+The network parameter file, `example-network-parameters.txt`, can now be edited using parameters of your choice.
 The mean is not required, this simply reports the mean of the node data for continuous nodes. The "Posteriors" title in the file is also not required, but these may be left in the file.
 The levels of discrete nodes are labelled 0, 1, 2 etc. These may be renamed to something more meaningful in this file. For example, for node "mood" the levels could be renamed "sad" and "happy".
 

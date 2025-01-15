@@ -9,13 +9,13 @@
   <title>Average network &mdash; BayesNetty 1.2 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
-      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=6c12b3ac" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=c2378292" />
 
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
       <script src="_static/documentation_options.js?v=61243dd2"></script>
-      <script src="_static/doctools.js?v=9a2dae69"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
@@ -65,14 +65,15 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="impute-data.html">Impute Data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="estimate-impute.html">Calculate network score</a></li>
-<li class="toctree-l1"><a class="reference internal" href="calc-recall-precision.html">Calculate network score</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sim-data.html">Calculate network score</a></li>
-<li class="toctree-l1"><a class="reference internal" href="markov-blanket.html">Calculate network score</a></li>
-<li class="toctree-l1"><a class="reference internal" href="output-network.html">Calculate network score</a></li>
-<li class="toctree-l1"><a class="reference internal" href="output-priors.html">Calculate network score</a></li>
-<li class="toctree-l1"><a class="reference internal" href="output-posteriors.html">Calculate network score</a></li>
-<li class="toctree-l1"><a class="reference internal" href="plot-network.html">Calculate network score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="estimate-impute.html">Estimate Imputation Benefit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="calc-recall-precision.html">Calculate Recall and Precision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sim-data.html">Simulate network data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="markov-blanket.html">Markov blanket</a></li>
+<li class="toctree-l1"><a class="reference internal" href="output-network.html">Output network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="output-priors.html">Output priors (deal only)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="output-priors.html#options">Options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="output-posteriors.html">Output posteriors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot-network.html">Network plotting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
 </ul>
 
@@ -103,7 +104,7 @@
   <section id="average-network">
 <span id="id1"></span><h1>Average network<a class="headerlink" href="#average-network" title="Link to this heading"></a></h1>
 <p>The primary usage of BayesNetty is to calculate an average network as described in this section.
-An average network can be calculated using the methods described by <a class="bibtex reference internal" href="references.html#bnlearn" id="id2">[7]</a>.
+An average network can be calculated using the methods described by <a class="bibtex reference internal" href="references.html#bnlearn" id="id2">[8]</a>.
 In brief, a bootstrap sample (with replacement) of the data is taken and a network search is used to find a best fit network.
 The process is repeated <em>k</em> times and the resulting <em>k</em> networks are averaged to give a final average network,
 in which the edge strengths represent the proportion of replicates in which that edge appeared.</p>
@@ -284,7 +285,7 @@ rs2     d       mood    d       0.003   1
 rs1     d       mood    d       0.002   1
 </pre></div>
 </div>
-<p>The option to output R code and data to plot the average network, <cite>-average-networks-igraph-file-prefix</cite>, was also used. This is similar to the method used to draw a regular network, see <span class="xref std std-ref">plot-network</span>.</p>
+<p>The option to output R code and data to plot the average network, <cite>-average-networks-igraph-file-prefix</cite>, was also used. This is similar to the method used to draw a regular network, see <a class="reference internal" href="plot-network.html#plot-network"><span class="std std-ref">Network plotting</span></a>.</p>
 <p>The R file, <cite>ave-graph-example.R</cite>, will look something as follows:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>#threshold, an arc must be greater than the threshold to be plotted
 threshold&lt;-0.09
@@ -600,7 +601,7 @@ write.table(bestThreshold, paste(fileName,&quot;-threshold.dat&quot;,sep=&quot;&
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2024, Richard Howey.</p>
+    <p>&#169; Copyright 2025, Richard Howey.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

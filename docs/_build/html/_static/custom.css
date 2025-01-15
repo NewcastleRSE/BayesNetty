@@ -20,15 +20,26 @@ color:#ffffff;
 }
 
 /* Change the color of the "Table of Contents" heading */
+
 /*
 .caption-text {
-    color: #ccb3ff; 
+    color: #ccb3ff;  
+}*/
+
+.caption {
+    color: #ccb3ff;  
 }
-*/
+
 
 .custom-figure {
     border: 2px solid #884dff; /* Replace #3498db with your desired border color */
     padding: 10px; /* Optional: adds space between the image and the border */
     display: inline-block; /* Ensures the border wraps tightly around the image */
     background-color: #f8f9fa; /* Optional: adds a background color */
+    width: 700px;    
 }
+
+/* For images */ 
+/* .align-default {
+    text-align: center;    
+}*/

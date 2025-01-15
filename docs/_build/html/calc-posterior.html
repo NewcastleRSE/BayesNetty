@@ -9,13 +9,13 @@
   <title>Calculate posterior &mdash; BayesNetty 1.2 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
-      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=916d0f66" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=c2378292" />
 
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
       <script src="_static/documentation_options.js?v=61243dd2"></script>
-      <script src="_static/doctools.js?v=9a2dae69"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
@@ -60,16 +60,17 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="search-models.html">Search models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="average-network.html">Calculate network score</a></li>
-<li class="toctree-l1"><a class="reference internal" href="impute-data.html">Calculate network score</a></li>
-<li class="toctree-l1"><a class="reference internal" href="estimate-impute.html">Calculate network score</a></li>
-<li class="toctree-l1"><a class="reference internal" href="calc-recall-precision.html">Calculate network score</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sim-data.html">Calculate network score</a></li>
-<li class="toctree-l1"><a class="reference internal" href="markov-blanket.html">Calculate network score</a></li>
-<li class="toctree-l1"><a class="reference internal" href="output-network.html">Calculate network score</a></li>
-<li class="toctree-l1"><a class="reference internal" href="output-priors.html">Calculate network score</a></li>
-<li class="toctree-l1"><a class="reference internal" href="output-posteriors.html">Calculate network score</a></li>
-<li class="toctree-l1"><a class="reference internal" href="plot-network.html">Calculate network score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="average-network.html">Average network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="impute-data.html">Impute Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="estimate-impute.html">Estimate Imputation Benefit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="calc-recall-precision.html">Calculate Recall and Precision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sim-data.html">Simulate network data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="markov-blanket.html">Markov blanket</a></li>
+<li class="toctree-l1"><a class="reference internal" href="output-network.html">Output network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="output-priors.html">Output priors (deal only)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="output-priors.html#options">Options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="output-posteriors.html">Output posteriors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot-network.html">Network plotting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
 </ul>
 
@@ -103,7 +104,7 @@
 namely that discrete nodes follow a multinomial distribution and continuous nodes a normal distribution,
 with distributional parameters determined by the values of the incoming parent nodes. We call the network structure with its corresponding distributional parameters the posterior.</p>
 <p>If only the posterior is of interest then the <cite>-calc-posterior</cite> option can be used without the need to perform any other analyses.
-One would probably want to also use the <cite>-output-posteriors</cite> option to output the posteriors, see <span class="xref std std-ref">output-posteriors</span>.</p>
+One would probably want to also use the <cite>-output-posteriors</cite> option to output the posteriors, see <a class="reference internal" href="output-posteriors.html#output-posteriors"><span class="std std-ref">Output posteriors</span></a>.</p>
 </section>
 <section id="options">
 <span id="calc-posterior-options"></span><h1>Options<a class="headerlink" href="#options" title="Link to this heading"></a></h1>
@@ -193,7 +194,7 @@ Network Structure: [mood][rs1][rs2][pheno|rs1:rs2][express|pheno:mood]
 Run time: less than one second
 </pre></div>
 </div>
-<p>For an example of calculating and outputting the posterior to file, see <span class="xref std std-ref">output-posts-example</span>.</p>
+<p>For an example of calculating and outputting the posterior to file, see <a class="reference internal" href="output-posteriors.html#output-posts-example"><span class="std std-ref">Example</span></a>.</p>
 </section>
 </section>
 
@@ -208,7 +209,7 @@ Run time: less than one second
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2024, Richard Howey.</p>
+    <p>&#169; Copyright 2025, Richard Howey.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
