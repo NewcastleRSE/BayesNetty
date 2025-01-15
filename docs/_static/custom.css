@@ -44,3 +44,8 @@ caption {
 /* .align-default {
     text-align: center;    
 }*/
+
+#content[role=heading] {
+    /* CSS goes here */
+    color: #884dff; 
+  }
