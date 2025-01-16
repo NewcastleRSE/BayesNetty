@@ -21,12 +21,16 @@ color:#ffffff;
 
 /* Change the color of the "Table of Contents" heading */
 
-/*
+
 .caption-text {
-    color: #884dff; 
+    color: #ccb3ff; 
+}
+
+/*
+caption {
+    color: #884dff;  
 }
 */
-
 
 .custom-figure {
     border: 2px solid #884dff; /* Replace #3498db with your desired border color */
@@ -41,4 +45,7 @@ color:#ffffff;
     text-align: center;    
 }*/
 
-
+/*.content {
+   
+    color: #884dff; 
+  } */

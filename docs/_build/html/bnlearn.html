@@ -9,13 +9,13 @@
   <title>bnlearn network &mdash; BayesNetty 1.2 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
-      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=c2378292" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=9a974c2e" />
 
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
       <script src="_static/documentation_options.js?v=61243dd2"></script>
-      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/doctools.js?v=9a2dae69"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
       <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="_static/js/theme.js"></script>
@@ -100,14 +100,14 @@
            <div itemprop="articleBody">
              
   <section id="bnlearn-network">
-<h1>bnlearn network<a class="headerlink" href="#bnlearn-network" title="Link to this heading"></a></h1>
+<span id="bnlearn"></span><h1>bnlearn network<a class="headerlink" href="#bnlearn-network" title="Link to this heading"></a></h1>
 <p>The default and recommended Bayesian network in BayesNetty is given by the bnlearn algorithm.
 All future extensions are intended to be built upon this approach. For a given data set and network structure the likelihood can be calculated under specific distributional assumptions,
 namely that discrete nodes follow a multinomial distribution and continuous nodes a normal distribution, with distributional parameters determined by the values of the incoming parent nodes.
 The manner in which the likelihood is calculated can vary between Bayesian network algorithms.
 See <a class="bibtex reference internal" href="references.html#bnlearn" id="id1">[8]</a> and <a class="bibtex reference internal" href="references.html#bnlearn2" id="id2">[5]</a> for further details of bnlearn methodology and R package.</p>
 <section id="network-score">
-<h2>Network score<a class="headerlink" href="#network-score" title="Link to this heading"></a></h2>
+<span id="bnlearn-score"></span><h2>Network score<a class="headerlink" href="#network-score" title="Link to this heading"></a></h2>
 <p>The network score for a bnlearn network may be set to either the log likelihood, AIC or BIC using the <code class="docutils literal notranslate"><span class="pre">-input-network-score</span></code> option, see <a class="reference internal" href="input-network.html#input-network-options"><span class="std std-ref">input network options</span></a>.</p>
 <p><strong>NOTE:</strong> The BIC network score is based on the definition used by bnlearn (see <a class="bibtex reference internal" href="references.html#bnlearn" id="id3">[8]</a>) such that <span class="math notranslate nohighlight">\(\text{BIC} = \log(L) - \frac{d}{2}\log(n)\)</span>, where <span class="math notranslate nohighlight">\(L\)</span> is the likelihood
 of the network for the given data set, <span class="math notranslate nohighlight">\(d\)</span> is the number of parameters and <span class="math notranslate nohighlight">\(n\)</span> is the number of individuals. This is the original definition used by Swartz in 1978,

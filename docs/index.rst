@@ -42,10 +42,11 @@ Please use the following papers :cite:`howey:etal:21` and :cite:`howey:etal:20` 
 
 BayesNetty is copyright, 2015-present Richard Howey, GNU General Public License, version 3.
 
+Contents
+--------
 
 .. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+   :maxdepth: 2  
 
    introduction
    installation

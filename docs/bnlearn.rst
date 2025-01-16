@@ -1,4 +1,4 @@
-.. bnlearn_:
+.. _bnlearn:
 
 bnlearn network
 ===============
@@ -10,7 +10,7 @@ The manner in which the likelihood is calculated can vary between Bayesian netwo
 See :cite:`bnlearn` and :cite:`bnlearn2` for further details of bnlearn methodology and R package.
 
 
-.. bnlearn-score:
+.. _bnlearn-score:
 
 Network score
 -------------
