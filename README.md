@@ -1,13 +1,9 @@
 # BayesNetty
 Bayesian Network Software for Genetic Analyses
 
-For full details on how to install and use BayesNetty please read the documentation file:
+For full details on how to install and use BayesNetty please use the BayesNetty website:
 
-docs/bayesnetty.pdf
-
-or look at the BayesNetty website which is easier to navigate and read:
-
-https://www.staff.ncl.ac.uk/richard.howey/bayesnetty
+https://bayesnetty.readthedocs.io/en/latest/
 
 If the website is not available then please download the docs directory and view the website offline:
 
