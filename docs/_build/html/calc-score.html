@@ -9,9 +9,10 @@
   <title>Calculate network score &mdash; BayesNetty 1.2 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
-      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=9a974c2e" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=106f80a0" />
 
   
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
       <script src="_static/documentation_options.js?v=61243dd2"></script>
@@ -43,8 +44,7 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul class="current">
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="using.html">Using BayesNetty</a></li>
@@ -103,7 +103,7 @@
 <span id="calc-score"></span><h1>Calculate network score<a class="headerlink" href="#calculate-network-score" title="Link to this heading"></a></h1>
 <p>The network score is used as a measure of how well the network model describes the data and is used to compare different models when searching through models.
 In BayesNetty the network score is based on the log likelihood and higher values imply a better model
-(see <span class="xref std std-ref">bnlearn-score</span> for further details). This is calculated assuming that discrete nodes follow a multinomial distribution and continuous nodes a normal distribution.
+(see <a class="reference internal" href="bnlearn.html#bnlearn-score"><span class="std std-ref">Network score</span></a> for further details). This is calculated assuming that discrete nodes follow a multinomial distribution and continuous nodes a normal distribution.
 BayesNetty considers the network score to be a property of the network and its method of calculation is set using the
 option <cite>-input-network-score</cite>, see <a class="reference internal" href="input-network.html#input-network"><span class="std std-ref">Input network</span></a>.</p>
 <section id="options">
