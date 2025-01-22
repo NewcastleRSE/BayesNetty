@@ -10,7 +10,7 @@ The bnlearn Bayesian network, which is the recommended and default Bayesian netw
 .. _output-priors-options:
 
 Options
-=======
+-------
 
 The options are as follows:
 

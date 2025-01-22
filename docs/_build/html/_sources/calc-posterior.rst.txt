@@ -14,7 +14,7 @@ One would probably want to also use the `-output-posteriors` option to output th
 .. _calc-posterior-options: 
 
 Options
-=======
+-------
 
 The options are as follows:
 

@@ -54,7 +54,6 @@
 <li class="toctree-l1"><a class="reference internal" href="deal.html">deal network</a></li>
 <li class="toctree-l1"><a class="reference internal" href="calc-score.html">Calculate network score</a></li>
 <li class="toctree-l1"><a class="reference internal" href="calc-posterior.html">Calculate posterior</a></li>
-<li class="toctree-l1"><a class="reference internal" href="calc-posterior.html#options">Options</a></li>
 <li class="toctree-l1"><a class="reference internal" href="search-models.html">Search models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="average-network.html">Average network</a></li>
 <li class="toctree-l1"><a class="reference internal" href="impute-data.html">Impute Data</a></li>
@@ -63,8 +62,8 @@
 <li class="toctree-l1"><a class="reference internal" href="sim-data.html">Simulate network data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="markov-blanket.html">Markov blanket</a></li>
 <li class="toctree-l1"><a class="reference internal" href="output-network.html">Output network</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Output priors (deal only)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#options">Options</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Output priors (deal only)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#options">Options</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#example">Example</a></li>
 </ul>
 </li>
@@ -102,9 +101,8 @@
 <p>The priors for a deal network may be output to file for inspection with the <cite>-output-priors</cite>.
 The deal Bayesian network model has a quite complex default prior which is based on the given network data, structure and imaginary sample size, see <a class="bibtex reference internal" href="references.html#deal-paper" id="id1">[1]</a> for details.
 The bnlearn Bayesian network, which is the recommended and default Bayesian network model, has no prior to output, see <a class="bibtex reference internal" href="references.html#bnlearn-paper" id="id2">[8]</a> for details.</p>
-</section>
 <section id="options">
-<span id="output-priors-options"></span><h1>Options<a class="headerlink" href="#options" title="Link to this heading"></a></h1>
+<span id="output-priors-options"></span><h2>Options<a class="headerlink" href="#options" title="Link to this heading"></a></h2>
 <p>The options are as follows:</p>
 <table class="docutils align-default">
 <thead>
@@ -132,6 +130,7 @@ The bnlearn Bayesian network, which is the recommended and default Bayesian netw
 </tr>
 </tbody>
 </table>
+</section>
 <section id="example">
 <span id="output-priors-example"></span><h2>Example<a class="headerlink" href="#example" title="Link to this heading"></a></h2>
 <p>The following is an example parameter file to output the priors of a network.</p>
