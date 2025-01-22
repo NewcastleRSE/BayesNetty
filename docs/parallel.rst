@@ -4,7 +4,7 @@ Parallel BayesNetty
 ===================
 
 
-It is possible to run BayesNetty using Open MPI (*cite* openmpi */cite*), which is an open source Message Passing Interface (MPI) (*cite* mpi */cite*) implementation designed for parallel programming. 
+It is possible to run BayesNetty using Open MPI (:cite:`openmpi`), which is an open source Message Passing Interface (MPI) (:cite:`mpi`) implementation designed for parallel programming. 
 
 
 The parallel version of Bayesnetty speeds up the search through network space for the best network by simultaneously evaluating different networks. This is particularly useful for large networks and any type of analysis that depends on network searches, such as network averaging and imputing data.
@@ -15,7 +15,7 @@ A much faster way to calculate an average network in parallel is given in the :r
 A much faster way to impute network data in parallel is given in the :ref:`Impute Data<impute-parallel-example>` section. 
 
 
-After installing Open MPI on your system if it is not already installed, see *cite* openmpi */cite*, a parallel version of BayesNetty needs to be compiled. This can be done by firstly uncommenting a few lines in the ``main.h`` file. So that the following:
+After installing Open MPI on your system if it is not already installed, see :cite:`openmpi`, a parallel version of BayesNetty needs to be compiled. This can be done by firstly uncommenting a few lines in the ``main.h`` file. So that the following:
 
 .. code-block:: none
 

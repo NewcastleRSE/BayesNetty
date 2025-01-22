@@ -99,11 +99,11 @@
              
   <section id="parallel-bayesnetty">
 <span id="parallel"></span><h1>Parallel BayesNetty<a class="headerlink" href="#parallel-bayesnetty" title="Link to this heading"></a></h1>
-<p>It is possible to run BayesNetty using Open MPI (<em>cite</em> openmpi <em>/cite</em>), which is an open source Message Passing Interface (MPI) (<em>cite</em> mpi <em>/cite</em>) implementation designed for parallel programming.</p>
+<p>It is possible to run BayesNetty using Open MPI (<a class="bibtex reference internal" href="references.html#openmpi" id="id1">[11]</a>), which is an open source Message Passing Interface (MPI) (<a class="bibtex reference internal" href="references.html#mpi" id="id2">[10]</a>) implementation designed for parallel programming.</p>
 <p>The parallel version of Bayesnetty speeds up the search through network space for the best network by simultaneously evaluating different networks. This is particularly useful for large networks and any type of analysis that depends on network searches, such as network averaging and imputing data.</p>
 <p>A much faster way to calculate an average network in parallel is given in the <a class="reference internal" href="average-network.html#average-network-parallel"><span class="std std-ref">Average Network</span></a> section.</p>
 <p>A much faster way to impute network data in parallel is given in the <a class="reference internal" href="impute-data.html#impute-parallel-example"><span class="std std-ref">Impute Data</span></a> section.</p>
-<p>After installing Open MPI on your system if it is not already installed, see <em>cite</em> openmpi <em>/cite</em>, a parallel version of BayesNetty needs to be compiled. This can be done by firstly uncommenting a few lines in the <code class="docutils literal notranslate"><span class="pre">main.h</span></code> file. So that the following:</p>
+<p>After installing Open MPI on your system if it is not already installed, see <a class="bibtex reference internal" href="references.html#openmpi" id="id3">[11]</a>, a parallel version of BayesNetty needs to be compiled. This can be done by firstly uncommenting a few lines in the <code class="docutils literal notranslate"><span class="pre">main.h</span></code> file. So that the following:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>// Comment out if not using Open MPI for parallel processing
 //#ifndef USING_OPEN_MPI
 //#define USING_OPEN_MPI
