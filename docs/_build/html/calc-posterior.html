@@ -12,11 +12,10 @@
       <link rel="stylesheet" type="text/css" href="_static/custom.css?v=106f80a0" />
 
   
-    <link rel="shortcut icon" href="_static/favicon.ico"/>
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
       <script src="_static/documentation_options.js?v=61243dd2"></script>
-      <script src="_static/doctools.js?v=9a2dae69"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
@@ -135,6 +134,29 @@ One would probably want to also use the <cite>-output-posteriors</cite> option t
 <span id="calc-post-example"></span><h2>Example<a class="headerlink" href="#example" title="Link to this heading"></a></h2>
 <p>The posterior is calculated by simply using the <cite>-calc-posterior</cite> option in the parameter file after the data and network has been set up.
 For example:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>#input continuous data
+-input-data
+-input-data-file example-cts.dat
+-input-data-cts
+
+#input discrete data
+-input-data
+-input-data-file example-discrete.dat
+-input-data-discrete
+
+#input SNP data as discrete data
+-input-data
+-input-data-file example.bed
+-input-data-discrete-snp
+
+#input the example network in format 1
+-input-network
+-input-network-file example-network-format1.dat
+
+#calculate the posterior of the network
+-calc-posterior
+</pre></div>
+</div>
 <p>Note that the network has not been set for the <cite>-calc-posterior</cite> task as there is only one network, and so by default the most recent network is used.
 This parameter file, <cite>paras-calc-post.txt</cite>, can be found in <a class="reference external" href="https://github.com/NewcastleRSE/BayesNetty/raw/refs/heads/main/docs/resources/example.zip">example.zip</a> and produces the following output:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>BayesNetty: Bayesian Network software, v1.00

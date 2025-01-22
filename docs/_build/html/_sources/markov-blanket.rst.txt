@@ -6,7 +6,7 @@ Markov blanket
 
 The Markov blanket for a node contains all the variables that shield the node from the rest of the network.
 This means that the Markov blanket of a node is the only knowledge needed to predict the behaviour of that node and its children.
-This may be useful for large networks where some nodes are of particular interest. See :cite:`bnlearn` for more details.
+This may be useful for large networks where some nodes are of particular interest. See :cite:`bnlearn_paper` for more details.
 
 The `-markov-blanket` option can be used to calculate the Markov blanket for a given node.
 A sub-network is created for the given node and its Markov blanket which may be output using the `-output-network` option, see :ref:`output-network`, or used in any other network analysis.

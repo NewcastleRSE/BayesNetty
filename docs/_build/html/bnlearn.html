@@ -12,11 +12,10 @@
       <link rel="stylesheet" type="text/css" href="_static/custom.css?v=106f80a0" />
 
   
-    <link rel="shortcut icon" href="_static/favicon.ico"/>
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
       <script src="_static/documentation_options.js?v=61243dd2"></script>
-      <script src="_static/doctools.js?v=9a2dae69"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
       <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="_static/js/theme.js"></script>
@@ -105,11 +104,11 @@
 All future extensions are intended to be built upon this approach. For a given data set and network structure the likelihood can be calculated under specific distributional assumptions,
 namely that discrete nodes follow a multinomial distribution and continuous nodes a normal distribution, with distributional parameters determined by the values of the incoming parent nodes.
 The manner in which the likelihood is calculated can vary between Bayesian network algorithms.
-See <a class="bibtex reference internal" href="references.html#bnlearn" id="id1">[8]</a> and <a class="bibtex reference internal" href="references.html#bnlearn2" id="id2">[5]</a> for further details of bnlearn methodology and R package.</p>
+See <a class="bibtex reference internal" href="references.html#bnlearn-paper" id="id1">[8]</a> and <a class="bibtex reference internal" href="references.html#bnlearn2" id="id2">[5]</a> for further details of bnlearn methodology and R package.</p>
 <section id="network-score">
 <span id="bnlearn-score"></span><h2>Network score<a class="headerlink" href="#network-score" title="Link to this heading"></a></h2>
 <p>The network score for a bnlearn network may be set to either the log likelihood, AIC or BIC using the <code class="docutils literal notranslate"><span class="pre">-input-network-score</span></code> option, see <a class="reference internal" href="input-network.html#input-network-options"><span class="std std-ref">input network options</span></a>.</p>
-<p><strong>NOTE:</strong> The BIC network score is based on the definition used by bnlearn (see <a class="bibtex reference internal" href="references.html#bnlearn" id="id3">[8]</a>) such that <span class="math notranslate nohighlight">\(\text{BIC} = \log(L) - \frac{d}{2}\log(n)\)</span>, where <span class="math notranslate nohighlight">\(L\)</span> is the likelihood
+<p><strong>NOTE:</strong> The BIC network score is based on the definition used by bnlearn (see <a class="bibtex reference internal" href="references.html#bnlearn-paper" id="id3">[8]</a>) such that <span class="math notranslate nohighlight">\(\text{BIC} = \log(L) - \frac{d}{2}\log(n)\)</span>, where <span class="math notranslate nohighlight">\(L\)</span> is the likelihood
 of the network for the given data set, <span class="math notranslate nohighlight">\(d\)</span> is the number of parameters and <span class="math notranslate nohighlight">\(n\)</span> is the number of individuals. This is the original definition used by Swartz in 1978,
 see <a class="bibtex reference internal" href="references.html#swartz-1978" id="id4">[7]</a>, rather than subsequent definitions of BIC which are multplied by negative two (for example see <a class="bibtex reference internal" href="references.html#wit-2012" id="id5">[9]</a>). Therefore in BayesNetty the BIC will
 always be negative and higher values of the network score imply a better fit network. (Whichever definition of BIC that one considers, the closer the BIC is to zero the better the model fit.)</p>

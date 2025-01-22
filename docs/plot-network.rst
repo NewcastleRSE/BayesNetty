@@ -9,10 +9,10 @@ Network plotting
 igraph
 ------
 
-A network may be plotted using the `igraph <https://igraph.org>`_ R package, see :cite:`igraph_paper` for details.
+A network may be plotted using the `igraph <https://igraph.org>`__ R package, see :cite:`igraph_paper` for details.
 The option is part of the network output options, see :ref:`output-network`.
 
-.. _igraph-example:
+.. _igraph_example:
 
 Example
 -------

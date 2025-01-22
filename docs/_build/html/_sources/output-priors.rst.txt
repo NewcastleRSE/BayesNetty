@@ -5,7 +5,7 @@ Output priors (deal only)
 
 The priors for a deal network may be output to file for inspection with the `-output-priors`.
 The deal Bayesian network model has a quite complex default prior which is based on the given network data, structure and imaginary sample size, see :cite:`deal_paper` for details.
-The bnlearn Bayesian network, which is the recommended and default Bayesian network model, has no prior to output, see :cite:`bnlearn` for details.
+The bnlearn Bayesian network, which is the recommended and default Bayesian network model, has no prior to output, see :cite:`bnlearn_paper` for details.
 
 .. _output-priors-options:
 

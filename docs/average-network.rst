@@ -4,7 +4,7 @@ Average network
 ===============
 
 The primary usage of BayesNetty is to calculate an average network as described in this section.
-An average network can be calculated using the methods described by :cite:`bnlearn`.
+An average network can be calculated using the methods described by :cite:`bnlearn_paper`.
 In brief, a bootstrap sample (with replacement) of the data is taken and a network search is used to find a best fit network.
 The process is repeated *k* times and the resulting *k* networks are averaged to give a final average network,
 in which the edge strengths represent the proportion of replicates in which that edge appeared.  
@@ -318,7 +318,7 @@ that is, the proportion of best fit networks that the edge appears in after boot
 can be weighted using the chi square values of each edge significance. The direction indicates the proportion of times the edge points in the given direction when it appears in a best fit network.
 The edges are labelled in red with the strength values followed by the direction values in brackets.
 Edges between discrete and continuous nodes do not have a direction value as they are constrained to be from the discrete node to the continuus node.
-The plot can easily be updated to your needs by following the `igraph <https://www.staff.ncl.ac.uk/richard.howey/bayesnetty/>`_ R package documentation. 
+The plot can easily be updated to your needs by following the `igraph <https://www.staff.ncl.ac.uk/richard.howey/bayesnetty/>`__ R package documentation. 
 
 A graph may also be output to show the cumulative number of edges in the average network for different strength thresholds.
 If an edge has a strength greater than the strength threshold then it is included in the average network. 

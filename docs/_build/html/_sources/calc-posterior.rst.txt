@@ -46,8 +46,7 @@ Example
 The posterior is calculated by simply using the `-calc-posterior` option in the parameter file after the data and network has been set up.
 For example:
 
-.. list-table:: 
-    :header-rows: 1
+.. code-block:: none
 
     #input continuous data
     -input-data

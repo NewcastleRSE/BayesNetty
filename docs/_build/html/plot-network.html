@@ -12,11 +12,10 @@
       <link rel="stylesheet" type="text/css" href="_static/custom.css?v=106f80a0" />
 
   
-    <link rel="shortcut icon" href="_static/favicon.ico"/>
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
       <script src="_static/documentation_options.js?v=61243dd2"></script>
-      <script src="_static/doctools.js?v=9a2dae69"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
@@ -103,7 +102,7 @@
 <span id="plot-network"></span><h1>Network plotting<a class="headerlink" href="#network-plotting" title="Link to this heading"></a></h1>
 <section id="igraph">
 <span id="id1"></span><h2>igraph<a class="headerlink" href="#igraph" title="Link to this heading"></a></h2>
-<p>A network may be plotted using the <a class="reference external" href="https://igraph.org">igraph</a> R package, see <a class="bibtex reference internal" href="references.html#igraph-paper" id="id3">[2]</a> for details.
+<p>A network may be plotted using the <a class="reference external" href="https://igraph.org">igraph</a> R package, see <a class="bibtex reference internal" href="references.html#igraph-paper" id="id2">[2]</a> for details.
 The option is part of the network output options, see <a class="reference internal" href="output-network.html#output-network"><span class="std std-ref">Output network</span></a>.</p>
 </section>
 <section id="example">
@@ -255,20 +254,20 @@ dev.off()
 </pre></div>
 </div>
 <p>and produces the .png image file of the network</p>
-<figure class="align-default" id="id5">
+<figure class="align-default" id="id4">
 <span id="plot1-fig"></span><img alt="_images/exampleGraph.png" class="custom-figure" src="_images/exampleGraph.png" />
 <figcaption>
-<p><span class="caption-text">Plot of the example network drawn using the igraph R package.</span><a class="headerlink" href="#id5" title="Link to this image"></a></p>
+<p><span class="caption-text">Plot of the example network drawn using the igraph R package.</span><a class="headerlink" href="#id4" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 <p>The edges are drawn proportional to the log likelihood difference between networks with and without the edge in question.
 The minimum and maximum thickness of the plotted edges can be changed by modifying the <cite>minWidth</cite> and <cite>maxWidth</cite> variables in the R file.
 The plot can easily be updated to your needs by following the <a class="reference external" href="https://github.com/NewcastleRSE/BayesNetty/raw/refs/heads/main/docs/resources/example.zip">example.zip</a> R package documentation.</p>
 <p>If a search is performed to find the best network (see parameter file <cite>paras-plot-network2.txt</cite>), it can be plotted as above and gives the following network:</p>
-<figure class="align-default" id="id6">
+<figure class="align-default" id="id5">
 <span id="plot2-fig"></span><img alt="_images/exampleGraph2.png" class="custom-figure" src="_images/exampleGraph2.png" />
 <figcaption>
-<p><span class="caption-text">Plot of the best fit network drawn using the igraph R package.</span><a class="headerlink" href="#id6" title="Link to this image"></a></p>
+<p><span class="caption-text">Plot of the best fit network drawn using the igraph R package.</span><a class="headerlink" href="#id5" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 </section>

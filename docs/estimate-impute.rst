@@ -85,7 +85,7 @@ Example
 An example of estimating the recall and precision is contained in the parameter file `paras-example-estimate-recall-precision.txt`,
 which can be found in `example.zip <https://github.com/NewcastleRSE/BayesNetty/raw/refs/heads/main/docs/resources/example.zip>`_.
 For simplicity the example is chosen to be a discrete network and this approach can be used for any kind of data.
-The network is the `child` network from the bnlearn repository :cite:`bnlearn`.
+The network is the `child` network from the bnlearn repository :cite:`bnlearn_paper`.
 
 
 .. code-block:: none
