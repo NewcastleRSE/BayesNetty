@@ -22,7 +22,7 @@ The options are as follows:
       - Default
 
     * - -simulate-network-data
-      - do a task to simualte network data
+      - do a task to simulate network data
       -
 
     * - -simulate-network-data
