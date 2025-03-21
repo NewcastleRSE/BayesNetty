@@ -22,7 +22,7 @@ The options are as follows:
       - Description
       - Default
 
-    * -  -output-posteriors
+    * - -output-posteriors
       - do a task to output the posteriors of a network to file
       -
 

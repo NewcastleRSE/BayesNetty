@@ -21,8 +21,8 @@ The options are as follows:
       - Description
       - Default
 
-    * - -calculate-recall-precision
-      - do a task to calculate the recall and precision
+    * - -simulate-network-data
+      - do a task to simualte network data
       -
 
     * - -simulate-network-data

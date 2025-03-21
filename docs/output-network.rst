@@ -23,6 +23,10 @@ The options are as follows:
       - Description
       - Default
 
+    * - -output-network
+      - do a task to output a network or network data to file
+      -   
+
     * - -output-network-name name
       - label the task with a name
       - Task-n
