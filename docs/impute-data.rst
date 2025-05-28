@@ -98,7 +98,7 @@ These options may be useful for large networks to impute data in parallel and th
 
 The option `-impute-network-data-job` can also be used to only impute data for some individuals and makes it easier to split the imputation into a number of jobs.
 
-The imputation process can be computationally expensive and slow since for each individual a best fit network is found. If the dataset that you wish to impute is very large then this can be prohibitive - however
+The imputation process can be slow and computationally intensive, as it requires identifying a best fit network for each individual. If the dataset that you wish to impute is very large then this can be prohibitive - however,
 the imputation process can be sped up by using the option `-impute-network-subsample-percent 0`. This fits only one best fit network for all individuals using all data. This has demonstrated performance approaching that of the standard approach.
 
 
