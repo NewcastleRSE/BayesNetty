@@ -46,12 +46,24 @@ The options are as follows:
       - the percentage (0 to 100) of non-missing edges required to impute data for an individual
       - 0
 
+    * - -impute-network-subsample-percent n
+      - percentage of data to use when taking a subsample for training data (default 90). Set to 0 to use all data and fit only once. Advised for v. large datasets.
+      - 90
+
+    * - -impute-network-data-complete-training
+      - use complete data for training data (default if complete data is at least 40 percent)
+      - 
+
+    * - -impute-network-data-random-training
+      - use randomly sampled values for missing data for training data
+      - 
+
     * - -impute-network-data-random-restarts n
-      - for each bootstrap network fit do another n searches starting from a random network
+      - for each subsample network fit do another n searches starting from a random network
       - 0
 
     * - -impute-network-data-jitter-restarts m
-      - for each bootstrap network fit after the initial search and every random restart search do another m searches jittered from the recently found network
+      - for each subsample network fit after the initial search and every random restart search do another m searches jittered from the recently found network
       - 0
 
     * - -impute-network-data-start-indiv a
@@ -76,7 +88,7 @@ If an individual has too much missing data then it may not be beneficial to impu
 as the imputed data would be too poor to add value to any analysis. The `-impute-network-min-non-missing-edges` allows the user to change the required amount of edges between non-missing variables to impute data for an individual.
 Around **50** percent has been shown to be a suitable value to impute most individuals whilst effectively discarding individuals with too much missing data,
 although it may depend on the structure of any fitted networks. If this value is set to 0 then all individuals will have their data imputed, and a value of 100 will result in no data being imputed.
-If data set has a block of data with non-missing data for only a few variables then it is best to simply remove these individuals before using BayesNetty.
+If a dataset has a block of data with non-missing data for only a few variables then it is best to simply remove these individuals before using BayesNetty.
 
 The `-impute-network-data-random-restarts` and `-impute-network-data-jitter-restarts` options can be increased to improve the network search at each step of the algorithm and may potentially increase the quality of the imputed data at the expense of a longer running time.
 
@@ -84,8 +96,11 @@ The `-impute-network-data-start-indiv`, `-impute-network-data-end-indiv` and `-i
 These options may be useful for large networks to impute data in parallel and then combine later if the data is output to file
 (see :ref:`output-network` to output data). See :ref:`impute-parallel-example` for an example. 
 
-
 The option `-impute-network-data-job` can also be used to only impute data for some individuals and makes it easier to split the imputation into a number of jobs.
+
+The imputation process can be computationally expensive and slow since for each individual a best fit network is found. If the dataset that you wish to impute is very large then this can be prohibitive -
+ however the imputation process can be sped up by using the option `-impute-network-subsample-percent 0`. This fits only one best fit network for all individuals using all the data. This has demonstrated performance approaching that of the standard approach.
+
 
 .. _impute-example:
 
@@ -205,8 +220,8 @@ Which should produce output that looks like something as follows:
 
 
 The data is loaded, a search is performed and then the network data is imputed and another search is performed. The run time for performing imputation is longer than most other operations in BayesNetty.
-This is because, every individual with missing data, we take a 90% sample (without replacement) of the individuals with complete data at the variables of interest.
-This sampled data set is used to find a best fit network. This best fit network determines the variables that are used to choose the nearest neighbour for the individual with missing data,
+This is because, every individual with missing data, we take a 90% sample (without replacement) of the individuals with complete data at the variables of interest. This sampled data set is used to find a best fit network.
+This best fit network determines the variables that are used to choose the nearest neighbour for the individual with missing data,
 and then the missing data is filled in from the nearest neighbour.
 
 There are a lot of individuals with missing data in this example data resulting in the incorrect network being estimated initially but after the data is imputed the correct network is found.

@@ -3,7 +3,7 @@
 Installation
 ============
 
-Download an executable file from the `GitHub download page <https://github.com/NewcastleRSE/BayesNetty/releases>`_
+Download an executable file from the `GitHub download page <https://github.com/NewcastleRSE/BayesNetty>`_
 for your system and off you go, or do the following:
 
 1. Download the code from the download page.

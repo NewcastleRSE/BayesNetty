@@ -182,8 +182,9 @@ void usage()
 		//out("  -impute-network-data-max-missing") getLatestImputeNetworkDataTask()->setMaxMissing(getUIntOptionValue());
 		out("  -impute-network-data-min-non-missing-edges x -- the percentage (0 to 100) of non-missing edges required to impute data for an individual (default: 50)\n");
 		//out("  -impute-network-data-use-prev-network") getLatestImputeNetworkDataTask()->setUsePrevNetwork();
-		out("  -impute-network-data-complete-training       -- use complete data for initial training data (default if complete data is at least 40)\n");
-	    out("  -impute-network-data-random-training         -- use randomly sampled values for missing data for initial training data\n"); 
+		out("  -impute-network-subsample-percent n          -- percentage of data to use when taking a subsample for training data (default 90). Set to 0 to use all data and fit only once. Advised for v. large datasets.\n");
+		out("  -impute-network-data-complete-training       -- use complete data for training data (default if complete data is at least 40)\n");
+	    out("  -impute-network-data-random-training         -- use randomly sampled values for missing data for training data\n"); 
 		out("  -impute-network-data-random-restarts n       -- for each bootstrap network fit do another n searches starting from a random network (default: 0)\n");
 		out("  -impute-network-data-jitter-restarts m       -- for each bootstrap network fit after the initial search and every random restart search do another m searches jittered from the recently found network (default: 0)\n");
 		out("  -impute-network-data-start-indiv a           -- start imputing data from individual a (default: individual 1)\n");
