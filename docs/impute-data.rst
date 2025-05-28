@@ -47,7 +47,7 @@ The options are as follows:
       - 0
 
     * - -impute-network-subsample-percent n
-      - percentage of data to use when taking a subsample for training data (default 90). Set to 0 to use all data and fit only once. Advised for v. large datasets.
+      - percentage of data to use when taking a subsample for training data. Set to 0 to use all data and fit only once - advised for v. large datasets.
       - 90
 
     * - -impute-network-data-complete-training
@@ -55,7 +55,7 @@ The options are as follows:
       - 
 
     * - -impute-network-data-random-training
-      - use randomly sampled values for missing data for training data
+      - use randomly sampled values for missing data for training data (default if complete data is less than 40 percent)
       - 
 
     * - -impute-network-data-random-restarts n
@@ -98,8 +98,8 @@ These options may be useful for large networks to impute data in parallel and th
 
 The option `-impute-network-data-job` can also be used to only impute data for some individuals and makes it easier to split the imputation into a number of jobs.
 
-The imputation process can be computationally expensive and slow since for each individual a best fit network is found. If the dataset that you wish to impute is very large then this can be prohibitive -
- however the imputation process can be sped up by using the option `-impute-network-subsample-percent 0`. This fits only one best fit network for all individuals using all the data. This has demonstrated performance approaching that of the standard approach.
+The imputation process can be computationally expensive and slow since for each individual a best fit network is found. If the dataset that you wish to impute is very large then this can be prohibitive - however
+ the imputation process can be sped up by using the option `-impute-network-subsample-percent 0`. This fits only one best fit network for all individuals using all data. This has demonstrated performance approaching that of the standard approach.
 
 
 .. _impute-example:
