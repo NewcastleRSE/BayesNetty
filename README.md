@@ -1,5 +1,5 @@
 # BayesNetty
-Bayesian Network Software for Genetic Analyses test
+Bayesian Network Software for Genetic Analyses
 
 For full details on how to install and use BayesNetty please use the BayesNetty website:
 
