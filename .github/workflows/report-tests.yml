@@ -1,0 +1,50 @@
+name: Count 'test' and Unit Test Frameworks
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  analyze-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Count 'test' and unit test frameworks
+      run: |
+        REPORT_FILE="test-report.log"
+        echo "🔍 Test Analysis Report" > "$REPORT_FILE"
+        echo "==========================" >> "$REPORT_FILE"
+
+        echo "📌 Counting occurrences of the word 'test'..." | tee -a "$REPORT_FILE"
+        COUNT=$(grep -iroh 'test' . | wc -l)
+        echo "The word 'test' appears $COUNT times in the repository." | tee -a "$REPORT_FILE"
+        echo "" >> "$REPORT_FILE"
+
+        echo "📌 Detecting known unit test frameworks..." | tee -a "$REPORT_FILE"
+
+        declare -A frameworks=(
+          [pytest]="pytest"
+          [unittest]="unittest"
+          [jest]="jest"
+          [mocha]="mocha"
+          [junit]="junit"
+          [testng]="testng"
+          [rspec]="rspec"
+          [go test]="\"testing\""
+          [phpunit]="phpunit"
+          [nose]="nose"
+        )
+
+        for key in "${!frameworks[@]}"; do
+          pattern="${frameworks[$key]}"
+          count=$(grep -iro "$pattern" . | wc -l)
+          echo "$key: $count" | tee -a "$REPORT_FILE"
+        done
+
+        echo "" >> "$REPORT_FILE"
+        echo "✅ Report complete. Contents of $REPORT_FILE:"
+        cat "$REPORT_FILE"
